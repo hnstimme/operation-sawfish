@@ -1,17 +1,17 @@
 {
-    "name": "operation sawfish",
-    "version": "0.1",
-    "main": "index.html",
-    "private": true,
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-    },
-    "devDependencies": {
-    }
+  "name": "operation sawfish",
+  "version": "0.1",
+  "main": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.4.13"
+  },
+  "devDependencies": {}
 }

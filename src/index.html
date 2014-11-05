@@ -13,14 +13,11 @@
 </head>
 <body ng-app="app">
 
-<section class="content">
-    <div id="initial-video">
-	<video id="initial-video" controls="controls">
-	    <source src="mov/final_film.ogg" type="video/ogg">
-	</video>
-    </div>
-
-</section>
+<div class="talkie-video">
+    <video autoplay loop>
+        <source src="mov/final_film.ogg" type="video/ogg">
+    </video>
+</div>
 
 <nav ng-controller="NavCtrl">
     <button type="button" ng-click="gotoTalkie('video')">Video</button>

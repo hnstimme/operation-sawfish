@@ -9,6 +9,7 @@ var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
 var rev = require('gulp-rev');
 var del = require('del');
+var deploy = require('gulp-gh-pages');
 
 /**
  * build tasks
@@ -92,6 +93,14 @@ gulp.task('watch-files', function () {
     gulp.watch(['./src/**/*.html', './src/css/*.css', './src/js/**/*.js'], function (event) {
         gulp.src(event.path).pipe(connect.reload());
     });
+});
+
+/**
+ * deployment
+ */
+gulp.task('deploy', function () {
+    return gulp.src('./dist/**/*')
+        .pipe(deploy(options));
 });
 
 /**

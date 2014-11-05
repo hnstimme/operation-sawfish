@@ -13,4 +13,5 @@ test-results.xml
 *.iml
 atlassian-ide-plugin.xml
 npm-debug.log
+/nbproject/private/npm-debug.log
 *.css

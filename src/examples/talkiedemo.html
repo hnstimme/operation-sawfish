@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Countdown – Talkie demo 01</title>
+    
+    <link rel="stylesheet" type="text/css" href="http://kiln.it/talkie/ui/1.0/talkie.css">
+    
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://kiln.it/talkie-1.min.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+
+
+    
+    <style>
+      body { background: white; font-family: Helvetica, Arial, sans-serif; }
+      #wrapper { width:100%; max-width: 800px; margin: auto; position: relative; }
+      #controls { width:100%; max-width: 800px; padding: 0  ; margin-top:10px; }
+      #controls audio { width: 100%;}
+      #display { width: 100%; height: 450px; text-align: right; font-size: 50px; line-height: 50px; }
+      #display #big-number {position:absolute; z-index:1;font-size: 50px;line-height: 50px;text-align:center; width:100%;}
+      #canvas { border: 1px solid black;} 
+      #map {  height:100%; width:100%; max-width:790px; padding: 0px 5px;  }     
+    </style>
+  </head>
+  
+  <body id="example-01-countdown">
+    
+    <div id="wrapper">
+      <div id="display">
+         <div id='map'><div id="big-number">5</div></div>
+         
+      </div>
+    
+      <div id="controls">
+        <audio id="soundtrack" controls="controls">
+          <source src="http://kiln.it/talkie/examples/audio/01.countdown.ogg" type="audio/ogg">
+          <source src="http://kiln.it/talkie/examples/audio/01.countdown.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+    
+    <script>
+      L.mapbox.accessToken = 'pk.eyJ1IjoiYnJlYWsyayIsImEiOiJ2c3F3WS1BIn0.QC0c8eFJVyNrYgE-LxTjlA';
+      var map = L.mapbox.map('map', 'examples.map-i86nkdio').setView([49.139498488636754,9.221512377262115], 5);
+      var circle_options = {
+          color: '#fff',      // Stroke color
+          opacity: 1,         // Stroke opacity
+          weight: 10,         // Stroke weight
+          fillColor: '#000',  // Fill color
+          fillOpacity: 0.4    // Fill opacity
+      };
+      
+      var linepoints = ([
+        [49.139234, 9.221170],
+        [49.139971, 9.221218],
+        [49.139706,  9.221921],
+        [49.139178,  9.222455],
+        [49.139234, 9.221170]]);
+        var lng = 9.221512377262115;
+        var lineoptions = {color: '#000'};
+                var polyline = L.polyline([]).addTo(map);
+        var pointsAdded = 0;
+      var number = Talkie.animate().select("#big-number");
+      var timeline = Talkie.timeline("#soundtrack", {
+        "0:01.0":function(){
+          map.setView([49.139498488636754,9.221512377262115], 10);
+        },
+        "0:01.1": number.text("4"),
+        
+        "0:02.0":function(){
+          map.setView([49.139498488636754,9.221512377262115], 15);
+        },
+        "0:02.1": number.text("3"),
+        
+        "0:03.0":function(){
+          map.setView([49.139498488636754,9.221512377262115], 18);
+        },
+        "0:03.1": number.text("2"),
+        
+        "0:04.0":function(){
+          map.setView([49.139498488636754,9.221512377262115], 20);
+        },
+        "0:04.1": number.text("1"),
+        "0:05.0":function(){
+          map.setView([49.139498488636754,9.221512377262115], 25);
+          
+        },
+        "0:05.1": number.text("0"),
+        "0:05.5": function(){
+        //var polyline = L.polyline(linepoints, lineoptions).addTo(map);
+        //var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+        // Start drawing the polyline.
+        add();
+        var overlay = L.imageOverlay("http://static1.heilbronnerstimme.de/data/images/layout/logo.png",[[49.139552, 9.221427],[49.139352, 9.222263]]).addTo(map);
+        //var circle_one = L.circle([49.139498488636754, 9.221512377262115], 40, circle_options).addTo(map);
+        },
+
+      });
+      
+      Talkie.ui.playButton("#wrapper", timeline);
+      
+      
+      
+      function add() {
+      
+    // `addLatLng` takes a new latLng coordinate and puts it at the end of the
+    // line. You optionally pull points from your data or generate them. Here
+    // we make a sine wave with some math.
+    
+    polyline.addLatLng( 49.139498488636754, lng + 0.0000000001 );
+    //console.log 
+       
+
+    // Pan the map along with where the line is being added.
+    map.setView([49.139498488636754, pointsAdded], 25);
+
+    // Continue to draw and pan the map by calling `add()`
+    // until `pointsAdded` reaches 360.
+    if (++pointsAdded < 360) window.setTimeout(add, 100);
+}
+      
+    
+      
+    </script>
+  </body>
+</html>

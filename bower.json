@@ -1,0 +1,17 @@
+{
+    "name": "operation sawfish",
+    "version": "0.1",
+    "main": "index.html",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+    },
+    "devDependencies": {
+    }
+}

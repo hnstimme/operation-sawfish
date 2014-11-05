@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <!-- endbuild -->
-    <title>Angular Bootstrap App</title>
+    <title>Operation Sawfish</title>
 </head>
 <body ng-app="app">
 
@@ -19,15 +19,19 @@
     </video>
 </div>
 
+<div class="talkie-targets">
+    <d
+</div>
+
 <nav ng-controller="NavCtrl">
+    <button type="button" ng-click="talkie.pause()">Play</button>
+
     <button type="button" ng-click="gotoTalkie('video')">Video</button>
     <button type="button" ng-click="gotoTalkie('targets')">Zielmarkierungen</button>
     <button type="button" ng-click="gotoTalkie('flight')">Anflug</button>
     <button type="button" ng-click="gotoTalkie('bombs')">Bombardierung</button>
     <button type="button" ng-click="gotoTalkie('destruction')">Zerstörte Stadt</button>
     <button type="button" ng-click="gotoTalkie('comparison')">Städtevergleich</button>
-
-    <button type="button" ng-click="talkie.pause()">Play</button>
 </nav>
 
 <!-- build:js js/app.min.js -->

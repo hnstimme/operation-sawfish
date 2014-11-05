@@ -6,29 +6,33 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- build:css css/app.min.css -->
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <!-- endbuild -->
     <title>Angular Bootstrap App</title>
 </head>
-<body>
+<body ng-app="app">
 
 <section class="content">
 
 </section>
 
-<nav>
-    <button type="button">Video</button>
-    <button type="button">Zielmarkerungen</button>
-    <button type="button">Anflug</button>
-    <button type="button">Bombardierung</button>
-    <button type="button">Zerstörte Stadt</button>
-    <button type="button">Städtevergleich</button>
+<nav ng-controller="NavCtrl">
+    <button type="button" ng-click="gotoTalkie('video')">Video</button>
+    <button type="button" ng-click="gotoTalkie('targets')">Zielmarkierungen</button>
+    <button type="button" ng-click="gotoTalkie('flight')">Anflug</button>
+    <button type="button" ng-click="gotoTalkie('bombs')">Bombardierung</button>
+    <button type="button" ng-click="gotoTalkie('destruction')">Zerstörte Stadt</button>
+    <button type="button" ng-click="gotoTalkie('comparison')">Städtevergleich</button>
 
-    <button type="button">Play</button>
+    <button type="button" ng-click="talkie.pause()">Play</button>
 </nav>
 
 <!-- build:js js/app.min.js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
 <script src="bower_components/d3/d3.js"></script>
+<script src="js/app.js"></script>
 <script src="lib/talkie.js"></script>
 <!-- endbuild -->
 </body>

@@ -13,14 +13,13 @@
 </head>
 <body ng-app="app">
 
-<div class="talkie-video">
+<div class="talkie-video" style="display: none">
     <video autoplay loop>
         <source src="mov/final_film.ogg" type="video/ogg">
     </video>
 </div>
 
-<div class="talkie-targets">
-    <d
+<div class="talkie-targets" id="container" style="display: none">
 </div>
 
 <nav ng-controller="NavCtrl">
@@ -38,7 +37,9 @@
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
 <script src="bower_components/d3/d3.js"></script>
+<script src="bower_components/topojson/topojson.js"></script>
 <script src="js/app.js"></script>
+<script src="js/talkie-targets.js"></script>
 <script src="lib/talkie.js"></script>
 <!-- endbuild -->
 </body>

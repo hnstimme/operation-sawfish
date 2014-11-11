@@ -26,8 +26,6 @@
             return feature.properties.name === "Germany";
         });
         var germany = matching[0];
-        console.log(germany);
-        console.log(json);
         // create a first guess for the projection
         var center = d3.geo.centroid(json);
         var scale = 150;

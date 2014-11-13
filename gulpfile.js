@@ -34,6 +34,18 @@ gulp.task('copy-images', ['clean'], function () {
     return gulp.src('src/img/**/*.{jpg,png,gif,svg}')
         .pipe(gulp.dest('build/img'));
 });
+gulp.task('copy-audio', ['clean'], function () {
+    return gulp.src('src/audio/**/*.{mp3,ogg}')
+        .pipe(gulp.dest('build/audio'));
+});
+gulp.task('copy-movies', ['clean'], function () {
+    return gulp.src('src/mov/*.ogg')
+        .pipe(gulp.dest('build/mov'));
+});
+gulp.task('copy-data', ['clean'], function () {
+    return gulp.src('src/data/**')
+        .pipe(gulp.dest('build/data'));
+});
 gulp.task('copy-partials', ['clean'], function () {
     return gulp.src('src/partials/**/*.html')
         .pipe(gulp.dest('build/partials'));
@@ -48,7 +60,7 @@ gulp.task('copy-fonts', ['clean'], function () {
 });
 
 gulp.task('build-src', ['compile-less']);
-gulp.task('build', ['build-src', 'copy-images', 'copy-partials', 'copy-js-components', 'copy-fonts'], function () {
+gulp.task('build', ['build-src', 'copy-images', 'copy-audio', 'copy-movies', 'copy-data', 'copy-partials', 'copy-js-components', 'copy-fonts'], function () {
     gulp.src('src/*.html')
         .pipe(usemin({
             css: [minifyCss(), 'concat', rev()],
@@ -99,8 +111,8 @@ gulp.task('watch-files', function () {
  * deployment
  */
 gulp.task('deploy', function () {
-    return gulp.src('./dist/**/*')
-        .pipe(deploy(options));
+    return gulp.src('./build/**/*')
+        .pipe(deploy());
 });
 
 /**

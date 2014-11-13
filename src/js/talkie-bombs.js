@@ -48,7 +48,7 @@
         var svg = document.getElementById("bombs-svg"),
             animate = Talkie.animate(svg);
 
-        d3.select(svg).attr('height', document.body.offsetHeight - 90);
+        d3.select(svg).attr('height', document.body.offsetHeight - 140);
 
         var airplaneTransitionGroups = [];
         airplanes.forEach(function (airplane) {

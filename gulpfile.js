@@ -58,9 +58,13 @@ gulp.task('copy-fonts', ['clean'], function () {
     return gulp.src('src/bower_components/bootstrap/fonts/*')
         .pipe(gulp.dest('build/fonts'));
 });
+gulp.task('copy-cname', ['clean'], function () {
+    return gulp.src('CNAME')
+        .pipe(gulp.dest('build/CNAME'));
+});
 
 gulp.task('build-src', ['compile-less']);
-gulp.task('build', ['build-src', 'copy-images', 'copy-audio', 'copy-movies', 'copy-data', 'copy-partials', 'copy-js-components', 'copy-fonts'], function () {
+gulp.task('build', ['build-src', 'copy-images', 'copy-audio', 'copy-movies', 'copy-data', 'copy-partials', 'copy-js-components', 'copy-fonts', 'copy-cname'], function () {
     gulp.src('src/*.html')
         .pipe(usemin({
             css: [minifyCss(), 'concat', rev()],

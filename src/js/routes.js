@@ -12,8 +12,17 @@
             .when('/targetSelection', {
                 templateUrl: 'partials/targetSelection.html'
             })
+            .when('/flight', {
+                templateUrl: 'partials/flight.html'
+            })
             .when('/bombing', {
                 templateUrl: 'partials/bombing.html'
+            })
+            .when('/destruction', {
+                templateUrl: 'partials/destruction.html'
+            })
+            .when('/comparison', {
+                templateUrl: 'partials/comparison.html'
             })
             .otherwise({
                 redirectTo: '/'

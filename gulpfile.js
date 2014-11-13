@@ -60,7 +60,7 @@ gulp.task('copy-fonts', ['clean'], function () {
 });
 gulp.task('copy-cname', ['clean'], function () {
     return gulp.src('CNAME')
-        .pipe(gulp.dest('build/CNAME'));
+        .pipe(gulp.dest('build'));
 });
 
 gulp.task('build-src', ['compile-less']);

@@ -1,10 +1,15 @@
-(function (d3, talkies) {
-    var width = 500;
-    var height = 500;
+(function (angular) {
+    'use strict';
+    angular.module('app').directive('targetSelection', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs, ctrl) {
+                var width = 500;
+                var height = 500;
 
-    var svg = d3.select("#container").append("svg")
-        .attr("width", width + 200)
-        .attr("height", height + 200);
+                var svg = d3.select("#container").append("svg")
+                    .attr("width", width + 200)
+                    .attr("height", height + 200);
 //
 //    // Create a unit projection.
 //    var projection = d3.geo.mercator()
@@ -20,46 +25,46 @@
 //        s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
 //        t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
-    d3.json("data/world.topo.json", function (error, world) {
-        var json = topojson.feature(world, world.objects.countries);
-        var matching = json.features.filter(function (feature) {
-            return feature.properties.name === "Germany";
-        });
-        var germany = matching[0];
-        // create a first guess for the projection
-        var center = d3.geo.centroid(json);
-        var scale = 150;
-        var offset = [width / 2, height / 2];
-        var projection = d3.geo.mercator().scale(scale).center(center)
-            .translate(offset);
+                d3.json("data/world.topo.json", function (error, world) {
+                    var json = topojson.feature(world, world.objects.countries);
+                    var matching = json.features.filter(function (feature) {
+                        return feature.properties.name === "Germany";
+                    });
+                    var germany = matching[0];
+                    // create a first guess for the projection
+                    var center = d3.geo.centroid(json);
+                    var scale = 150;
+                    var offset = [width / 2, height / 2];
+                    var projection = d3.geo.mercator().scale(scale).center(center)
+                        .translate(offset);
 
-        // create the path
-        var path = d3.geo.path().projection(projection);
+                    // create the path
+                    var path = d3.geo.path().projection(projection);
 
-        // using the path determine the bounds of the current map and use
-        // these to determine better values for the scale and translation
-        var bounds = path.bounds(germany);
-        var hscale = scale * width / (bounds[1][0] - bounds[0][0]);
-        var vscale = scale * height / (bounds[1][1] - bounds[0][1]);
-        scale = (hscale < vscale) ? hscale : vscale;
-        offset = [width - (bounds[0][0] + bounds[1][0]) / 2,
-            height - (bounds[0][1] + bounds[1][1]) / 2];
+                    // using the path determine the bounds of the current map and use
+                    // these to determine better values for the scale and translation
+                    var bounds = path.bounds(germany);
+                    var hscale = scale * width / (bounds[1][0] - bounds[0][0]);
+                    var vscale = scale * height / (bounds[1][1] - bounds[0][1]);
+                    scale = (hscale < vscale) ? hscale : vscale;
+                    offset = [width - (bounds[0][0] + bounds[1][0]) / 2,
+                        height - (bounds[0][1] + bounds[1][1]) / 2];
 
-        // new projection
-        projection = d3.geo.mercator().center([9.13, 49.09])
-            .scale(scale).translate(offset);
-        path = path.projection(projection);
+                    // new projection
+                    projection = d3.geo.mercator().center([9.13, 49.09])
+                        .scale(scale).translate(offset);
+                    path = path.projection(projection);
 
-        // add a rectangle to see the bound of the svg
-        svg.append("rect").attr('width', width).attr('height', height)
-            .style('stroke', 'black').style('fill', 'none');
+                    // add a rectangle to see the bound of the svg
+                    svg.append("rect").attr('width', width).attr('height', height)
+                        .style('stroke', 'black').style('fill', 'none');
 
-        svg.selectAll("path").data(json.features).enter().append("path")
-            .attr("d", path)
-            .style("fill", "red")
-            .style("stroke-width", "1")
-            .style("stroke", "black")
-    });
+                    svg.selectAll("path").data(json.features).enter().append("path")
+                        .attr("d", path)
+                        .style("fill", "red")
+                        .style("stroke-width", "1")
+                        .style("stroke", "black")
+                });
 
 //// Update the projection to use computed scale & translate.
 //    projection
@@ -188,4 +193,7 @@
 //        'stop': null,
 //        'pause': null
 //    }
-})(d3, talkies);
+            }
+        }
+    });
+})(angular);

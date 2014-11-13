@@ -8,6 +8,13 @@
     <!-- build:css css/app.min.css -->
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/mobile_2000.css" media="only screen and (max-width: 2000px)" class="screenresize" id="css-2000-2" />
+    <link rel="stylesheet" href="css/mobile_1400.css" media="only screen and (max-width: 1400px)" class="screenresize" id="css-1400-2" />
+    <link rel="stylesheet" href="css/mobile_1300.css" media="only screen and (max-width: 1300px)" class="screenresize" id="css-1300-2" />
+    <link rel="stylesheet" href="css/mobile_960.css" media="only screen and (max-width: 960px)" class="screenresize" id="css-960-2" />
+    <link rel="stylesheet" href="css/mobile_730.css" media="only screen and (max-width: 730px)" class="screenresize" id="css-730-2" />
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    
     <!-- endbuild -->
     <title>Operation Sawfish</title>
 </head>
@@ -18,14 +25,14 @@
 <nav ng-controller="NavCtrl">
     <button type="button">Play</button>
 
-    <a href="/video">Video</a>
-    <a href="/targetSelection">Zielmarkierungen</a>
-    <a href="/flight">Anflug</a>
-    <a href="/bombing">Bombardierung</a>
-    <a href="/destruction">Zerstörte Stadt</a>
-    <a href="/comparison">Städtevergleich</a>
+    <a href="/video"><div class="number">1</div> <div class="menu-headline">Video</div></a>
+    <a href="/targetSelection"><div class="number">2</div> <div class="menu-headline">Zielmarkierungen</div></a>
+    <a href="/flight"><div class="number">3</div> <div class="menu-headline">Anflug</div></a>
+    <a href="/bombing"><div class="number">4</div> <div class="menu-headline">Bombardierung</div></a>
+    <a href="/destruction"><div class="number">5</div> <div class="menu-headline">Zerstörte Stadt</div></a>
+    <a href="/comparison"><div class="number">6</div> <div class="menu-headline">Städtevergleich</div></a>
 </nav>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- build:js js/app.min.js -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
@@ -38,6 +45,8 @@
 <script src="js/NavCtrl.js"></script>
 <script src="js/bombing/bombingDirective.js"></script>
 <script src="js/targetSelection/targetSelectionDirective.js"></script>
+<script src="js/NavAnimate.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>

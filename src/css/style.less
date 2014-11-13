@@ -4,14 +4,19 @@ body, html {
   padding: 0;
   margin: 0;
   background: #000;
-  background-image: url("img/Startscreen.jpg");
   color: #FFF;
+  font-family: 'Raleway', sans-serif;
 }
 
 .content {
   position: relative;
   height: 90%;
 }
+
+.number {
+    display:none;
+}
+  
 
 nav {
   position: absolute;
@@ -21,14 +26,19 @@ nav {
   background: #646463;
   padding: 10px;
   box-sizing: border-box;
+  
   a {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
     display: inline-block;
     background: none;
     border: none;
     border-right: 1px solid #CECECE;
-    font-size: 14px;
+    font-size: 1.1em;
     padding: 14px;
     color: #FFF;
+    text-decoration:none;
+    
     .active {
       color: #A6A7A6
     }
@@ -40,7 +50,7 @@ nav {
 
   video {
     @media (min-aspect-ratio: 1/1) {
-      width: 140%;
+      width: 100%;
       margin-left: -20%;
     }
     @media (max-aspect-ratio: 1/1) {
@@ -58,3 +68,46 @@ svg {
     fill: #000;
   }
 }
+
+.start {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image: url("/img/Stratscreen.jpg") ;
+    background-size: 100% 90%;
+    float:left;
+    
+    
+    
+}
+
+.container {
+    width:80%;
+    height:250px;
+    top:0;
+    
+}
+
+.playbutton {
+    height:450px;
+    width:550px;
+    background-image: url("/img/10_Start_Play_gross.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float:left;
+    margin-left:-150px;
+    margin-top: -30px;
+}
+.headline {
+    float:left;
+    margin-top:70px;
+    
+    
+}
+.start h1 {
+    font-size: 3em;
+    line-height: 0.5em;
+    
+    
+}
+

@@ -22,62 +22,11 @@
         }
     };
 
-    angular.module('app.explore').directive('map', function ($http, $filter, $q) {
-        return {
-            restrict: 'E',
-            template: '<div id="map"></div>',
-            replace: true,
-            link: function (scope, element) {
-                map.numberFormatter = $filter('number');
-                map.init();
-                var areaPromise = null, dataPromise = null;
-
-                var updateAreas = function () {
-                    if (scope.styleOptions.form !== 'map') return false;
-                    areaPromise = $q(function (resolve, reject) {
-                        map.addAreaLayer(scope.cubeFilter.level, resolve);
-                    });
-                    return areaPromise;
-                };
-
-                var updateData = function () {
-                    if (scope.styleOptions.form !== 'map') return false;
-                    var deferred = $q.defer();
-                    var i = 0;
-                    setTimeout(function () {
-                        i++;
-                        if (areaPromise != null) {
-                            areaPromise.then(function () {
-                                map.addData(scope.cube.data, scope.cubeConfig, scope.cubeFilter);
-                            });
-                            deferred.resolve();
-                        }
-                        if (i > 5) {
-                            deferred.reject();
-                        }
-                    }, 200);
-                    return deferred.promise;
-                };
-
-                var update = function () {
-                    if (scope.styleOptions.form !== 'map') return false;
-                    updateAreas();
-                    updateData();
-                };
-
-                scope.$watch('styleOptions.form', update);
-                scope.$watch('cubeFilter.level', updateAreas);
-                scope.$watch('cube.data', updateData);
-                scope.$watch('cubeConfig.relation', updateData);
-            }
-        };
-    });
-
     angular.module('app').directive('targetSelection', function () {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
-
+                map.init();
             }
         }
     });

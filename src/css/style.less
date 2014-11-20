@@ -10,13 +10,17 @@ body, html {
   font-family: 'Raleway', sans-serif;
 }
 
+h1 {
+  margin-bottom: 1em;
+}
+
 .content-container {
   position: relative;
   height: 90%;
 }
 
 .number {
-    display:none;
+  display: none;
 }
 
 nav {
@@ -27,7 +31,7 @@ nav {
   background: #646463;
   padding: 10px;
   box-sizing: border-box;
-  
+
   a {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
@@ -38,8 +42,8 @@ nav {
     font-size: 1.1em;
     padding: 14px;
     color: #FFF;
-    text-decoration:none;
-    
+    text-decoration: none;
+
     .active {
       color: #A6A7A6
     }
@@ -71,94 +75,88 @@ svg {
 }
 
 .start {
-    position:absolute;
-    width:100%;
-    height:100%;
-    background-image: url("/img/Stratscreen.jpg") ;
-    background-size: 100% 90%;
-    float:left;
-    
-    
-    
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/img/Stratscreen.jpg");
+  background-size: 100% 90%;
+  float: left;
+
 }
 
 .container {
-    width:80%;
-    height:250px;
-    top:0;
-    
+  width: 80%;
+  height: 250px;
+  top: 0;
+
 }
 
 .playbutton {
-    height:450px;
-    width:550px;
-    background-image: url("/img/10_Start_Play_gross.svg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    float:left;
-    margin-left:-150px;
-    margin-top: -30px;
-}
-.headline {
-    float:left;
-    margin-top:70px;
-    
-    
-}
-.start h1 {
-    font-size: 3em;
-    line-height: 0.5em;
-    
-    
+  height: 450px;
+  width: 550px;
+  background-image: url("/img/10_Start_Play_gross.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  float: left;
+  margin-left: -150px;
+  margin-top: -30px;
 }
 
+.headline {
+  float: left;
+  margin-top: 70px;
+
+}
+
+.start h1 {
+  font-size: 3em;
+  line-height: 0.5em;
+
+}
 
 // Responsive ab 960 pixel
 @media only screen and (max-width: 960px) {
-.number {
-    display:block;
-    
-}
+  .number {
+    display: block;
 
-.menu-headline {
-    display:none;
-    
-}
+  }
 
-.container {
-    width:80%;
-    height:150px;
-    top:0;
-    
-}
-.playbutton {
-    height:150px;
-    width:250px;
-    margin-left:0px;
+  .menu-headline {
+    display: none;
+
+  }
+
+  .container {
+    width: 80%;
+    height: 150px;
+    top: 0;
+
+  }
+
+  .playbutton {
+    height: 150px;
+    width: 250px;
+    margin-left: 0px;
     margin-top: 0px;
-    
-}
 
-.headline {
-    float:left;
-    margin-top:20px;
-    
-    
-}
-.start h1 {
+  }
+
+  .headline {
+    float: left;
+    margin-top: 20px;
+
+  }
+
+  .start h1 {
     font-size: 1em;
     line-height: 0.2em;
-    
-    
-}
 
-.start h2 {
+  }
+
+  .start h2 {
     font-size: 0.8em;
 
-    
-    
-}
-
+  }
 
 }
 

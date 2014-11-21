@@ -6,14 +6,13 @@
         layers: {},
         init: function () {
             this.leafletMap = L.map('map', {
-                center: [49.14, 9.22],
+                center: [49.145, 9.22],
                 zoom: 13,
                 minZoom: 5,
-                maxZoom: 20
+                maxZoom: 18
             });
 
             this.addTileLayer();
-            this.addAreas();
         },
         addTileLayer: function () {
             var attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
@@ -23,31 +22,46 @@
                 'attribution': attribution
             }).addTo(this.leafletMap);
         },
-        addAreas: function () {
-            var areas = ['areal1', 'areal2', 'areal3'];
-            var that = this;
-            areas.forEach(function (area) {
-                var imageUrl = 'img/' + area + '.svg',
-                    imageBounds = [[49.12107, 9.17307], [49.17003, 9.25135]];
-                that.layers[area] = L.imageOverlay(imageUrl, imageBounds).addTo(that.leafletMap);
-                that.layers[area].setOpacity(0);
-            })
+        addImageLayer: function () {
+            var imageUrl = 'img/hn-1944.png',
+                imageBounds = [[49.12107, 9.16907], [49.17003, 9.25135]];
+            L.imageOverlay(imageUrl, imageBounds).addTo(this.leafletMap);
+        },
+        addArea: function (feature) {
+            return L.geoJson(feature, {
+                style: {
+                    fillColor: feature.properties.color,
+                    fill: feature.properties.color,
+                    opacity: 1,
+                    color: '#FFFFFF',
+                    weight: 2
+                }
+            }).addTo(this.leafletMap);
         }
     };
 
-    angular.module('app').directive('targetSelection', function () {
+    angular.module('app').directive('targetSelection', function ($http) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
                 map.init();
 
+                var features = {};
+                var areas = {};
+                $http.get('data/targetareas.json').success(function (geojson) {
+                    geojson.features.forEach(function (feature) {
+                        features[feature.properties.id] = feature;
+                    });
+                });
+
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
                     var timeline = Talkie.timeline("#audio-container audio", {
-                        0.2: function () {
-                            map.layers['areal1'].setOpacity(1);
+                        0: function () {
+                            areas['stadt'] = map.addArea(features['stadt']);
                             this.setUndo(function () {
-                                map.layers['areal1'].setOpacity(0);
+                                areas['stadt'].removeFrom(map.leafletMap);
+                                areas['stadt'] = null;
                             })
                         },
                         10.9: function () {
@@ -57,9 +71,13 @@
                             });
                         },
                         11: function () {
-                            map.layers['areal2'].setOpacity(1);
+                            areas['zielgebiet1'] = map.addArea(features['zielgebiet1']);
+                            areas['zielgebiet12'] = map.addArea(features['zielgebiet2']);
                             this.setUndo(function () {
-                                map.layers['areal2'].setOpacity(0);
+                                areas['zielgebiet1'].removeFrom(map.leafletMap);
+                                areas['zielgebiet2'].removeFrom(map.leafletMap);
+                                areas['zielgebiet1'] = null;
+                                areas['zielgebiet2'] = null;
                             })
                         },
                         19.9: function () {
@@ -69,9 +87,10 @@
                             });
                         },
                         20: function () {
-                            map.layers['areal3'].setOpacity(1);
+                            areas['brandanfaellig'] = map.addArea(features['brandanfaellig']);
                             this.setUndo(function () {
-                                map.layers['areal3'].setOpacity(0);
+                                areas['brandanfaellig'].removeFrom(map.leafletMap);
+                                areas['brandanfaellig'] = null;
                             })
                         }
                     });

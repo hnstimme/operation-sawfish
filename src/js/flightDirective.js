@@ -67,7 +67,7 @@
                     for (var i = 0; i < groupToBuild.columns; i++) {
                         group.push({
                             'id': i,
-                            'transform': 'scale(0.06) translate(' + i * 580 + ' 0)'
+                            'transform': 'scale(0.06) translate(' + i * 580 + ' 8701)'
                         });
                     }
                     for (var i = 0; i < groupToBuild.rows; i++) {
@@ -84,7 +84,7 @@
                 for (var j = 0; j < 5; j++) {
                     mosquitos.push({
                         id: j,
-                        transform: 'translate(' + j * 32 + ' 0)'
+                        transform: 'translate(' + j * 32 + ' 188)'
                     })
                 }
                 scope.mosquitoGroups = [];
@@ -102,7 +102,7 @@
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
                     var timelineDef = {};
-                    var opacityTime = 10;
+                    var opacityTime = 4;
 
                     var lancesters = [];
                     scope.lancesterGroups.forEach(function (group) {
@@ -116,8 +116,8 @@
                     var count = 0;
                     lancesters.forEach(function (lancester, index) {
                         count++;
-                        timelineDef[index * timePerLancester] = lancester.style('opacity', 1);
-                        timelineDef[index * timePerLancester + 0.001] = lancesterCounter.text(count);
+                        timelineDef[index * timePerLancester + 6] = lancester.attr('transform', lancester.element.attr('transform').replace(/ 8701/, " 0"), 2000);
+                        timelineDef[index * timePerLancester + 7.201] = lancesterCounter.text(count);
                     });
 
                     var mosquitos = [];
@@ -132,8 +132,8 @@
                     var mosquitoCount = 0;
                     mosquitos.forEach(function (mosquito, index) {
                         mosquitoCount++;
-                        timelineDef[index * timePerMosquito + 0.001] = mosquito.style('opacity', 1);
-                        timelineDef[index * timePerMosquito + 0.002] = mosquitoCounter.text(mosquitoCount);
+                        timelineDef[index * timePerMosquito + 6.001] = mosquito.attr('transform', mosquito.element.attr('transform').replace(/ 188/, " 0"), 2500);
+                        timelineDef[index * timePerMosquito + 7.502] = mosquitoCounter.text(mosquitoCount);
                     });
 
                     var timeline = Talkie.timeline("#audio-container audio", timelineDef);

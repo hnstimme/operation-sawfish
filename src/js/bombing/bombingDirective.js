@@ -118,7 +118,8 @@
                         24.5: mosquitoTransitionGroups[2].attr('transform', 'translate(3800 100)', 3000),
                         25: mosquitoTransitionGroups[3].attr('transform', 'translate(31000 40)', 3000),
                         23.1: airplaneTransitionGroups[0].attr('transform', 'translate(-3000 0)'),
-                        24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 2000)
+                        24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
+                        26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 250)', 24000)
                     });
                     Talkie.ui.playButton("#wrapper", timeline);
                 }, 500);

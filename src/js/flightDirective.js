@@ -1,5 +1,12 @@
 (function (angular) {
     'use strict';
+    var airportIcon = L.icon({
+        iconUrl: 'img/06_Markierung_Flugplatz.png',
+        iconSize: [30, 41],
+        iconAnchor: [15, 41],
+        popupAnchor: [-3, -76]
+    });
+
     var map = {
         leafletMap: null,
         layers: {},
@@ -18,6 +25,13 @@
             L.tileLayer('https://{s}.tiles.mapbox.com/v3/danielstahl.k91489gn/{z}/{x}/{y}.png', {
                 'maxZoom': 18,
                 'attribution': attribution
+            }).addTo(this.leafletMap);
+        },
+        addMarker: function (feature) {
+            return L.geoJson(feature, {
+                pointToLayer: function (feature, latlng) {
+                    return new L.marker(latlng, {icon: airportIcon});
+                }
             }).addTo(this.leafletMap);
         }
     };
@@ -41,14 +55,18 @@
         return array;
     }
 
-    angular.module('app').directive('flight', function () {
+    angular.module('app').directive('flight', function ($http) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
                 map.init();
 
+                var airportFeatures = [];
+                $http.get('data/airports.json').success(function (geojson) {
+                    airportFeatures = geojson.features;
+                });
+
                 scope.lancesterGroups = [];
-                // (28*8)+(22*2)+(10*3)-16 oder (28*8)+(18*2)+(10*3)
                 var groupsToBuild = [{
                     columns: 27,
                     rowOffset: 0,
@@ -164,6 +182,22 @@
                             element.attr('style', '');
                         });
                     };
+
+                    // airports
+                    timelineDef[27.05] = function () {
+                        map.leafletMap.setView([53.186287573913305, 0.015106201171874998], 10);
+                        this.setUndo(function () {
+                            map.leafletMap.setView([52.00366, -0.547855], 8);
+                        });
+                    };
+                    airportFeatures.forEach(function (feature, index) {
+                        timelineDef[27.5 + 0.2 * index] = function () {
+                            var marker = map.addMarker(feature);
+                            this.setUndo(function () {
+                                map.leafletMap.removeLayer(marker);
+                            });
+                        }
+                    });
 
                     var timeline = Talkie.timeline("#audio-container audio", timelineDef);
                     Talkie.ui.playButton("#a-wrapper", timeline);

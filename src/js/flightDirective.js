@@ -104,6 +104,9 @@
                     var timelineDef = {};
                     var opacityTime = 4;
 
+                    var gPlanes = animate.select('.planes');
+                    var gPlaneTypes = animate.select('.plane-types');
+
                     var lancesters = [];
                     scope.lancesterGroups.forEach(function (group) {
                         group.lancesters.forEach(function (lancester) {
@@ -135,6 +138,32 @@
                         timelineDef[index * timePerMosquito + 6.001] = mosquito.attr('transform', mosquito.element.attr('transform').replace(/ 188/, " 0"), 2500);
                         timelineDef[index * timePerMosquito + 7.502] = mosquitoCounter.text(mosquitoCount);
                     });
+
+                    timelineDef[5] = function () {
+                        element.attr('style', '');
+                        this.setUndo(function () {
+                            element.attr('style', 'visibility:hidden');
+                        });
+                    };
+
+                    timelineDef[2.5] = function () {
+                        map.leafletMap.setView([52.00366, -0.547855], 8);
+                        this.setUndo(function () {
+                            map.leafletMap.setView([51.481382896100975, 5.196533203125], 6);
+                        });
+                    };
+
+                    timelineDef[13] = gPlanes.style('opacity', 0, 500);
+                    timelineDef[13.1] = gPlaneTypes.style('opacity', 1, 500);
+                    timelineDef[21.5] = animate.select('.lancester').style('opacity', 0.5, 500);
+                    timelineDef[21.6] = animate.select('.mosquito').style('opacity', 1, 500);
+
+                    timelineDef[27] = function () {
+                        element.attr('style', 'visibility:hidden');
+                        this.setUndo(function () {
+                            element.attr('style', '');
+                        });
+                    };
 
                     var timeline = Talkie.timeline("#audio-container audio", timelineDef);
                     Talkie.ui.playButton("#a-wrapper", timeline);

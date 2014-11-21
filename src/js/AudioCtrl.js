@@ -3,8 +3,7 @@
 
     angular.module('app').controller('AudioCtrl', function ($scope) {
         $scope.videogularConfig = {
-            sources: null,
-            theme: {url: "css/style.css"}
+            sources: null
         };
     });
 })(angular);

@@ -55,10 +55,12 @@ gulp.task('copy-js-components', ['clean'], function () {
         .pipe(gulp.dest('build/bower_components'));
 });
 gulp.task('copy-fonts', ['clean'], function () {
-    return gulp.src('src/bower_components/bootstrap/fonts/*')
-        .pipe(gulp.dest('build/fonts'));
+    return gulp.src('src/bower_components/videogular-themes-default/fonts/*')
+        .pipe(gulp.dest('build/css/fonts'));
 });
 gulp.task('copy-cname', ['clean'], function () {
+    gulp.src('src/404.md')
+        .pipe(gulp.dest('build'));
     return gulp.src('CNAME')
         .pipe(gulp.dest('build'));
 });

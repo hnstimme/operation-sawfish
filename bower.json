@@ -21,7 +21,8 @@
     "videogular-controls": "~0.7.0",
     "videogular-overlay-play": "~0.7.0",
     "videogular-poster": "~0.7.0",
-    "videogular-buffering": "~0.7.0"
+    "videogular-buffering": "~0.7.0",
+    "videogular-themes-default": "~0.7.0"
   },
   "devDependencies": {},
   "resolutions": {

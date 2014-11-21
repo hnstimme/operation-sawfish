@@ -43,7 +43,7 @@
 
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
-                    var timeline = Talkie.timeline("#ts-controls", {
+                    var timeline = Talkie.timeline("#audio-container audio", {
                         0.2: function () {
                             map.layers['areal1'].setOpacity(1);
                             this.setUndo(function () {

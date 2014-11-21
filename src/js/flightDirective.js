@@ -51,7 +51,7 @@
                 setTimeout(function () {
                     var lancesterGroups = animate.select('.lancester-groups');
 
-                    var timeline = Talkie.timeline("#a-controls", {
+                    var timeline = Talkie.timeline("#audio-container audio", {
                         2: lancesterGroups.attr('transform', 'translate(0 0)', 2000)
                     });
                     Talkie.ui.playButton("#a-wrapper", timeline);

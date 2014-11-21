@@ -47,7 +47,7 @@
                 var svg = element[0],
                     animate = Talkie.animate(svg);
 
-                d3.select(svg).attr('height', document.body.offsetHeight - 140);
+                d3.select(svg).attr('height', document.body.offsetHeight * 0.9);
 
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
@@ -69,7 +69,7 @@
                     });
                     var bomb7 = animate.select('.bomb7');
 
-                    var timeline = Talkie.timeline("#controls", {
+                    var timeline = Talkie.timeline("#audio-container audio", {
                         0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
                         3.5: bomb7.style('opacity', 1, 500),
                         3.6: bomb7.attr('transform', 'translate(600, 420)', 2000),
@@ -119,7 +119,7 @@
                         25: mosquitoTransitionGroups[3].attr('transform', 'translate(31000 40)', 3000),
                         23.1: airplaneTransitionGroups[0].attr('transform', 'translate(-3000 0)'),
                         24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
-                        26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 250)', 24000)
+                        26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 24000)
                     });
                     Talkie.ui.playButton("#wrapper", timeline);
                 }, 500);

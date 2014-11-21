@@ -22,7 +22,7 @@
         },
         addTileLayer: function () {
             var attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
-            L.tileLayer('https://{s}.tiles.mapbox.com/v3/danielstahl.k91489gn/{z}/{x}/{y}.png', {
+            L.tileLayer('https://{s}.tiles.mapbox.com/v3/danielstahl.k90gp8cm/{z}/{x}/{y}.png', {
                 'maxZoom': 18,
                 'attribution': attribution
             }).addTo(this.leafletMap);
@@ -64,6 +64,10 @@
                 var airportFeatures = [];
                 $http.get('data/airports.json').success(function (geojson) {
                     airportFeatures = geojson.features;
+                });
+                var waypointFeatures = [];
+                $http.get('data/waypoints.json').success(function (geojson) {
+                    waypointFeatures = geojson.features;
                 });
 
                 scope.lancesterGroups = [];

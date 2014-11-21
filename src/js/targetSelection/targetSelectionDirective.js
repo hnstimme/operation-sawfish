@@ -43,8 +43,6 @@
 
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
-                    var tl = TalkieLeaflet(map.leafletMap);
-
                     var timeline = Talkie.timeline("#ts-controls", {
                         0.2: function () {
                             map.layers['areal1'].setOpacity(1);
@@ -52,14 +50,24 @@
                                 map.layers['areal1'].setOpacity(0);
                             })
                         },
-                        10.9: tl.setView([49.14, 9.22], 14),
+                        10.9: function () {
+                            map.leafletMap.setZoom(14);
+                            this.setUndo(function () {
+                                map.leafletMap.setZoom(13);
+                            });
+                        },
                         11: function () {
                             map.layers['areal2'].setOpacity(1);
                             this.setUndo(function () {
                                 map.layers['areal2'].setOpacity(0);
                             })
                         },
-                        19.9: tl.setView([49.14, 9.22], 15),
+                        19.9: function () {
+                            map.leafletMap.setZoom(15);
+                            this.setUndo(function () {
+                                map.leafletMap.setZoom(14);
+                            });
+                        },
                         20: function () {
                             map.layers['areal3'].setOpacity(1);
                             this.setUndo(function () {
@@ -67,7 +75,6 @@
                             })
                         }
                     });
-                    tl.undoViewChanges(timeline);
                     Talkie.ui.playButton("#ts-wrapper", timeline);
                 }, 500);
             }

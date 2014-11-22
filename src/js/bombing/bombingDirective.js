@@ -45,8 +45,7 @@
                 scope.mosquitoAirplanes = mosquitoAirplanes;
 
                 var svg = element[0],
-                    animate = Talkie.animate(svg);
-                var animateBombsCounter = Talkie.animate(document.getElementById('bombs-counter-container'));
+                    animate = Talkie.animate(document.getElementById('bombs-wrapper'));
                 new Odometer({
                     el: document.getElementById('bombs-counter'),
                     value: 0,
@@ -75,8 +74,14 @@
                     });
                     var bomb7 = animate.select('.bomb7');
                     var currentTime = animate.select('.current-time');
-                    var bombsCounter = animateBombsCounter.select('.bombs-counter');
+                    var bombsCounter = animate.select('.bombs-counter');
                     var bombs = animate.select('.bombs');
+
+                    var imgClasses = ['hbf', 'hotel', 'feuersturm'];
+                    var imgs = [];
+                    imgClasses.forEach(function (imgClass) {
+                        imgs[imgClass] = animate.select('.img-' + imgClass);
+                    });
 
                     var timeline = Talkie.timeline("#audio-container audio", {
                         0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
@@ -153,9 +158,14 @@
                         46: currentTime.text('19:37'),
                         47: currentTime.text('19:38'),
                         48: currentTime.text('19:39'),
-                        49: currentTime.text('19:40')
+                        49: currentTime.text('19:40'),
+                        62: imgs['feuersturm'].style('opacity', 1, 1000),
+                        66.5: imgs['hotel'].style('opacity', 1, 1000),
+                        66.51: imgs['feuersturm'].style('opacity', 0, 1000),
+                        71: imgs['hbf'].style('opacity', 1, 1000),
+                        71.01: imgs['hotel'].style('opacity', 0, 1000)
                     });
-                    Talkie.ui.playButton("#wrapper", timeline);
+                    Talkie.ui.playButton("#bombs-wrapper", timeline);
                 }, 500);
             }
         }

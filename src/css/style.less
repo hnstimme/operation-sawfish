@@ -67,10 +67,15 @@ nav {
 
 #a-wrapper svg,
 .talkie-bombs svg {
-  background: #C6C7AF;
   path {
     stroke-width: 1px;
     stroke: #000;
+  }
+}
+
+.talkie-bombs svg {
+  background: #C6C7AF;
+  path {
     fill: #000;
   }
 }
@@ -199,6 +204,9 @@ svg#flight-svg {
   opacity: 0.7;
   background: #FFF;
   margin: 0 auto;
+  .mosquito path {
+    stroke-width: 3px;
+  }
 }
 
 #flight-map {
@@ -209,6 +217,93 @@ svg#flight-svg {
   left: 0;
   width: 100%;
   z-index: 10;
+}
+
+@keyframes move {
+  0% {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+  }
+  15% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 2000;
+  }
+  15.01% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: -10;
+  }
+  100% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: -10000;
+  }
+}
+
+@-webkit-keyframes move {
+  0% {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+  }
+  15% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 2000;
+  }
+  15.01% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: -10000;
+  }
+}
+
+@-moz-keyframes move {
+  0% {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+  }
+  15% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 2000;
+  }
+  15.01% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: -10000;
+  }
+}
+
+@-o-keyframes move {
+  0% {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+  }
+  15% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 2000;
+  }
+  15.01% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: -10000;
+  }
+}
+
+#flight-map svg path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  stroke-width: 4;
+  stroke: #FFFFFF;
+  animation: move 300s linear infinite;
+  -webkit-animation: move 300s linear infinite;
+  -moz-animation: move 300s linear infinite;
+  -o-animation: move 300s linear infinite;
 }
 
 #a-wrapper audio {

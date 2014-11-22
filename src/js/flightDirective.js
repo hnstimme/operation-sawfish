@@ -18,6 +18,15 @@
                 maxZoom: 20
             });
 
+            var printPos = function () {
+                setTimeout(function () {
+                    console.log(map.leafletMap.getCenter());
+                    console.log(map.leafletMap.getZoom());
+                    printPos();
+                }, 5000);
+            };
+            printPos();
+
             this.addTileLayer();
         },
         addTileLayer: function () {
@@ -30,9 +39,19 @@
         addMarker: function (feature) {
             return L.geoJson(feature, {
                 pointToLayer: function (feature, latlng) {
-                    return new L.marker(latlng, {icon: airportIcon});
+                    return L.marker(latlng, {icon: airportIcon});
                 }
             }).addTo(this.leafletMap);
+        },
+        addPolyline: function (feature) {
+            return L.geoJson(feature).addTo(this.leafletMap);
+        },
+        addCircleMarker: function (lat, lon) {
+            var marker = L.circleMarker(L.latLng(lat, lon), {
+                fillColor: '#000000'
+            });
+            map.leafletMap.addLayer(marker);
+            return marker;
         }
     };
 
@@ -65,9 +84,16 @@
                 $http.get('data/airports.json').success(function (geojson) {
                     airportFeatures = geojson.features;
                 });
-                var waypointFeatures = [];
+                var airportsToReadingLines = [];
+                var readingToHnLine = null;
                 $http.get('data/waypoints.json').success(function (geojson) {
-                    waypointFeatures = geojson.features;
+                    geojson.features.forEach(function (feature) {
+                        if (!feature.properties.id) {
+                            airportsToReadingLines.push(feature);
+                        } else {
+                            readingToHnLine = feature;
+                        }
+                    });
                 });
 
                 scope.lancesterGroups = [];
@@ -202,6 +228,47 @@
                             });
                         }
                     });
+
+                    // flight
+                    timelineDef[30] = function () {
+                        map.leafletMap.setView([52.315195264379575, 0], 7);
+                        this.setUndo(function () {
+                            map.leafletMap.setView([53.186287573913305, 0.015106201171874998], 10);
+                        });
+                    };
+                    timelineDef[29.5] = function () {
+                        var circleMarker = map.addCircleMarker(51.542919, -0.962162);
+                        var polylines = [];
+                        airportsToReadingLines.forEach(function (line) {
+                            var polyline = map.addPolyline(line);
+                            polylines.push(polyline);
+                        });
+                        this.setUndo(function () {
+                            polylines.forEach(function (polyline) {
+                                map.leafletMap.removeLayer(polyline);
+                            });
+                            map.leafletMap.removeLayer(circleMarker);
+                        });
+                    };
+
+                    timelineDef[34.5] = function () {
+                        var polyline = map.addPolyline(readingToHnLine);
+                        this.setUndo(function () {
+                            map.leafletMap.removeLayer(polyline);
+                        });
+                    };
+                    timelineDef[36] = function () {
+                        map.leafletMap.setView([51.42661449707482, 4.2626953125], 6);
+                        this.setUndo(function () {
+                            map.leafletMap.setView([52.315195264379575, 0], 7);
+                        });
+                    };
+                    timelineDef[44] = function () {
+                        var circleMarker = map.addCircleMarker(49.140281, 9.188591);
+                        this.setUndo(function () {
+                            map.leafletMap.removeLayer(circleMarker);
+                        });
+                    };
 
                     var timeline = Talkie.timeline("#audio-container audio", timelineDef);
                     Talkie.ui.playButton("#a-wrapper", timeline);

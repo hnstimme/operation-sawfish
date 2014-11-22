@@ -78,6 +78,9 @@ nav {
   path {
     fill: #000;
   }
+  .bombs path {
+    fill: none;
+  }
 }
 
 .start {
@@ -309,4 +312,16 @@ svg#flight-svg {
 #a-wrapper audio {
   position: absolute;
   bottom: 0;
+}
+
+/** bombing **/
+#bombs-counter-container {
+  position: absolute;
+  z-index: 30;
+  left: 0;
+  right: 8%;
+  top: 25%;
+  text-align: center;
+  color: #000;
+  font-size: 55px;
 }

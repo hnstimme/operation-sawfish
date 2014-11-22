@@ -46,9 +46,15 @@
 
                 var svg = element[0],
                     animate = Talkie.animate(svg);
+                var animateBombsCounter = Talkie.animate(document.getElementById('bombs-counter-container'));
+                new Odometer({
+                    el: document.getElementById('bombs-counter'),
+                    value: 0,
+                    duration: 13000,
+                    animation: 'count'
+                });
 
                 d3.select(svg).attr('height', document.body.offsetHeight * 0.9);
-
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
                     var airplaneTransitionGroups = [];
@@ -69,10 +75,13 @@
                     });
                     var bomb7 = animate.select('.bomb7');
                     var currentTime = animate.select('.current-time');
+                    var bombsCounter = animateBombsCounter.select('.bombs-counter');
+                    var bombs = animate.select('.bombs');
 
                     var timeline = Talkie.timeline("#audio-container audio", {
                         0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
-                        9.1: currentTime.text('19:20'),
+                        4: currentTime.text('19:19'),
+                        8.1: currentTime.text('19:20'),
                         3.5: bomb7.style('opacity', 1, 500),
                         3.6: bomb7.attr('transform', 'translate(600, 420)', 2000),
                         5.4: circleGroups['green-1'].style('opacity', 1, 300),
@@ -100,7 +109,8 @@
                         16.5: christbaumGroups[1].style('opacity', 0, 300),
                         16.7: christbaumGroups[2].style('opacity', 0, 300),
                         16.9: christbaumGroups[3].style('opacity', 0, 300),
-                        17.55: currentTime.text('19:22'),
+                        12.01: currentTime.text('19:21'),
+                        16.01: currentTime.text('19:22'),
                         17.1: christbaumGroups[4].style('opacity', 0, 300),
                         17.4: christbaumGroups[5].style('opacity', 0, 300),
                         17.5: christbaumGroups[6].style('opacity', 0, 300),
@@ -122,9 +132,17 @@
                         25: mosquitoTransitionGroups[3].attr('transform', 'translate(31000 40)', 3000),
                         23.1: airplaneTransitionGroups[0].attr('transform', 'translate(-3000 0)'),
                         24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
-                        26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 24000),
+                        26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 12000),
+                        19.5: currentTime.text('19:23'),
+                        22.1: currentTime.text('19:24'),
+                        26.1: currentTime.text('19:25'),
+                        29: currentTime.text('19:26'),
                         32: currentTime.text('19:27'),
-                        38: currentTime.text('19:29')
+                        35: currentTime.text('19:28'),
+                        37: bombs.style('opacity', 1, 300),
+                        38: currentTime.text('19:29'),
+                        38.1: bombsCounter.style('display', 'inline'),
+                        38.2: bombsCounter.text('225049')
                     });
                     Talkie.ui.playButton("#wrapper", timeline);
                 }, 500);

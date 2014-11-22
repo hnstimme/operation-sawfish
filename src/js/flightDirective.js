@@ -18,15 +18,6 @@
                 maxZoom: 20
             });
 
-            var printPos = function () {
-                setTimeout(function () {
-                    console.log(map.leafletMap.getCenter());
-                    console.log(map.leafletMap.getZoom());
-                    printPos();
-                }, 5000);
-            };
-            printPos();
-
             this.addTileLayer();
         },
         addTileLayer: function () {

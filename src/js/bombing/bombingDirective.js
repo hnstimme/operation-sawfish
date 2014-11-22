@@ -50,7 +50,7 @@
                 new Odometer({
                     el: document.getElementById('bombs-counter'),
                     value: 0,
-                    duration: 13000,
+                    duration: 11000,
                     animation: 'count'
                 });
 
@@ -139,10 +139,21 @@
                         29: currentTime.text('19:26'),
                         32: currentTime.text('19:27'),
                         35: currentTime.text('19:28'),
-                        37: bombs.style('opacity', 1, 300),
+                        33.5: bombs.style('opacity', 1, 2000),
                         38: currentTime.text('19:29'),
-                        38.1: bombsCounter.style('display', 'inline'),
-                        38.2: bombsCounter.text('225049')
+                        38.01: bombsCounter.style('display', 'inline'),
+                        38.02: bombsCounter.text('225049'),
+                        39: currentTime.text('19:30'),
+                        40: currentTime.text('19:31'),
+                        41: currentTime.text('19:32'),
+                        42: currentTime.text('19:33'),
+                        43: currentTime.text('19:34'),
+                        44: currentTime.text('19:35'),
+                        45: currentTime.text('19:36'),
+                        46: currentTime.text('19:37'),
+                        47: currentTime.text('19:38'),
+                        48: currentTime.text('19:39'),
+                        49: currentTime.text('19:40')
                     });
                     Talkie.ui.playButton("#wrapper", timeline);
                 }, 500);

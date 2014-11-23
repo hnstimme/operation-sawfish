@@ -147,7 +147,7 @@
                         33.5: bombs.style('opacity', 1, 2000),
                         38: currentTime.text('19:29'),
                         38.01: bombsCounter.style('display', 'inline'),
-                        38.02: bombsCounter.text('225049'),
+                        38.02: bombsCounter.text('245029'),
                         39: currentTime.text('19:30'),
                         40: currentTime.text('19:31'),
                         41: currentTime.text('19:32'),
@@ -160,12 +160,11 @@
                         48: currentTime.text('19:39'),
                         49: currentTime.text('19:40'),
                         62.5: imgs['feuersturm'].style('opacity', 1, 1000),
-                        67: imgs['hotel'].style('opacity', 1, 1000),
+                        67: imgs['hotel'].style('opacity', 1, 0),
                         67.01: imgs['feuersturm'].style('opacity', 0, 1000),
-                        71: imgs['hbf'].style('opacity', 1, 1000),
+                        71: imgs['hbf'].style('opacity', 1, 0),
                         71.01: imgs['hotel'].style('opacity', 0, 1000)
                     });
-                    Talkie.ui.playButton("#bombs-wrapper", timeline);
                 }, 500);
             }
         }

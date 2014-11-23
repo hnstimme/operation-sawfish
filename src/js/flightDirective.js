@@ -261,8 +261,7 @@
                         });
                     };
 
-                    var timeline = Talkie.timeline("#audio-container audio", timelineDef);
-                    Talkie.ui.playButton("#a-wrapper", timeline);
+                    Talkie.timeline("#audio-container audio", timelineDef);
                 }, 500);
             }
         }

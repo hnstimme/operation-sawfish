@@ -94,7 +94,6 @@
                             })
                         }
                     });
-                    Talkie.ui.playButton("#ts-wrapper", timeline);
                 }, 500);
             }
         }

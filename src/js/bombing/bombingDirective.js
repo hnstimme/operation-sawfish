@@ -85,7 +85,6 @@
 
                     var timeline = Talkie.timeline("#audio-container audio", {
                         0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
-                        4: currentTime.text('19:19'),
                         8.1: currentTime.text('19:20'),
                         3.5: bomb7.style('opacity', 1, 500),
                         3.6: bomb7.attr('transform', 'translate(600, 420)', 2000),
@@ -114,7 +113,6 @@
                         16.5: christbaumGroups[1].style('opacity', 0, 300),
                         16.7: christbaumGroups[2].style('opacity', 0, 300),
                         16.9: christbaumGroups[3].style('opacity', 0, 300),
-                        12.01: currentTime.text('19:21'),
                         16.01: currentTime.text('19:22'),
                         17.1: christbaumGroups[4].style('opacity', 0, 300),
                         17.4: christbaumGroups[5].style('opacity', 0, 300),
@@ -138,12 +136,7 @@
                         23.1: airplaneTransitionGroups[0].attr('transform', 'translate(-3000 0)'),
                         24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
                         26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 12000),
-                        19.5: currentTime.text('19:23'),
-                        22.1: currentTime.text('19:24'),
-                        26.1: currentTime.text('19:25'),
-                        29: currentTime.text('19:26'),
                         32: currentTime.text('19:27'),
-                        35: currentTime.text('19:28'),
                         33.5: bombs.style('opacity', 1, 2000),
                         38: currentTime.text('19:29'),
                         38.01: bombsCounter.style('display', 'inline'),

@@ -2,6 +2,10 @@
 @import "modules/map";
 @import "modules/audio";
 
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
 body, html {
   height: 100%;
   width: 100%;
@@ -39,7 +43,7 @@ nav {
     background: none;
     border: none;
     border-right: 1px solid #CECECE;
-    font-size: 1.1em;
+    font-size: 12px;
     padding: 14px;
     color: #FFF;
     text-decoration: none;
@@ -69,17 +73,22 @@ nav {
 .talkie-bombs svg {
   path {
     stroke-width: 1px;
-    stroke: #000;
+    stroke: #4E4E4E;
   }
 }
 
 .talkie-bombs svg {
   background: #C4C4C4;
   path {
-    fill: #000;
+    fill: #4E4E4E;
+    stroke: #4E4E4E;
   }
   .bombs path {
     fill: none;
+  }
+  .clock {
+    fill: #572623;
+    font-weight: bold;
   }
 }
 
@@ -322,7 +331,7 @@ svg#flight-svg {
   right: 8%;
   top: 25%;
   text-align: center;
-  color: #000;
+  color: #4E4E4E;
   font-size: 55px;
 }
 
@@ -403,7 +412,7 @@ svg.comparison-chart {
   .axis path,
   .axis line {
     fill: none;
-    stroke: #000;
+    stroke: #4E4E4E;
     shape-rendering: crispEdges;
   }
 

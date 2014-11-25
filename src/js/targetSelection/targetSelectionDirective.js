@@ -40,7 +40,7 @@
         }
     };
 
-    angular.module('app').directive('targetSelection', function ($http) {
+    angular.module('app').directive('targetSelection', function ($http, $analytics) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
@@ -62,7 +62,12 @@
                             this.setUndo(function () {
                                 areas['stadt'].removeFrom(map.leafletMap);
                                 areas['stadt'] = null;
-                            })
+                            });
+                            $analytics.eventTrack('playing', {
+                                category: 'Der Plan',
+                                label: 'Stadtgebiet wird eingezeichnet',
+                                value: 0
+                            });
                         },
                         10.9: function () {
                             map.leafletMap.setZoom(14);
@@ -91,7 +96,7 @@
                             this.setUndo(function () {
                                 areas['brandanfaellig'].removeFrom(map.leafletMap);
                                 areas['brandanfaellig'] = null;
-                            })
+                            });
                         }
                     });
                 }, 500);

@@ -46,12 +46,6 @@
 
                 var svg = element[0],
                     animate = Talkie.animate(document.getElementById('bombs-wrapper'));
-                new Odometer({
-                    el: document.getElementById('bombs-counter'),
-                    value: 0,
-                    duration: 11000,
-                    animation: 'count'
-                });
 
                 d3.select(svg).attr('height', document.body.offsetHeight * 0.9);
                 // TODO setTimeout is a temporary workaround
@@ -75,7 +69,9 @@
                     var bomb7 = animate.select('.bomb7');
                     var currentTime = animate.select('.current-time');
                     var bombsCounter = animate.select('.bombs-counter');
+                    var bombsCounterLabel = animate.select('.bombs-counter-label');
                     var bombs = animate.select('.bombs');
+                    var cloud = animate.select('.cloud');
 
                     var imgClasses = ['hbf', 'hotel', 'feuersturm'];
                     var imgs = [];
@@ -137,21 +133,38 @@
                         24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
                         26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 12000),
                         32: currentTime.text('19:27'),
-                        33.5: bombs.style('opacity', 1, 2000),
-                        38: currentTime.text('19:29'),
+                        38: currentTime.text('19:29:01').attr('transform', 'translate(350 -400)', 1000),
                         38.01: bombsCounter.style('display', 'inline'),
-                        38.02: bombsCounter.text('245029'),
-                        39: currentTime.text('19:30'),
-                        40: currentTime.text('19:31'),
-                        41: currentTime.text('19:32'),
-                        42: currentTime.text('19:33'),
-                        43: currentTime.text('19:34'),
-                        44: currentTime.text('19:35'),
-                        45: currentTime.text('19:36'),
-                        46: currentTime.text('19:37'),
-                        47: currentTime.text('19:38'),
-                        48: currentTime.text('19:39'),
-                        49: currentTime.text('19:40'),
+                        38.02: bombsCounterLabel.style('display', 'inline'),
+                        39: bombsCounter.text('400'),
+                        39.01: currentTime.text('19:29:02'),
+                        39.05: cloud.style('opacity', 0.4, 6000),
+                        40: bombsCounter.text('800'),
+                        40.01: currentTime.text('19:29:03'),
+                        41: bombsCounter.text('1200'),
+                        41.01: currentTime.text('19:29:04'),
+                        42: bombsCounter.text('1600'),
+                        42.01: currentTime.text('19:29:05'),
+                        42.02: function () {
+                            var odometer = new Odometer({
+                                el: document.getElementById('bombs-counter'),
+                                value: 1600,
+                                duration: 10000,
+                                animation: 'count'
+                            });
+                        },
+                        43.02: bombsCounter.text('245029'),
+                        43.01: currentTime.text('19:30'),
+                        44.01: currentTime.text('19:31'),
+                        45.01: currentTime.text('19:32'),
+                        46.01: currentTime.text('19:33'),
+                        47.01: currentTime.text('19:34'),
+                        48.01: currentTime.text('19:35'),
+                        49.01: currentTime.text('19:36'),
+                        50.01: currentTime.text('19:37'),
+                        51.01: currentTime.text('19:38'),
+                        52.01: currentTime.text('19:30'),
+                        53.01: currentTime.text('19:40'),
                         62.5: imgs['feuersturm'].style('opacity', 1, 1000),
                         67: imgs['hotel'].style('opacity', 1, 0),
                         67.01: imgs['feuersturm'].style('opacity', 0, 1000),

@@ -34,8 +34,7 @@
 <body ng-app="app" ng-controller="AudioCtrl" ng-cloak>
 <section class="content-container" ng-view></section>
 
-<nav ng-controller="NavCtrl">
-    <div style="float:right;width:400px;" ng-show="videogularConfig.sources">
+    <div style="heigth:10px;margin-top:-50px;position:relative;" ng-show="videogularConfig.sources">
         <div class="videogular-container">
             <videogular vg-theme="videogularConfig.theme.url" class="videogular-container audio">
                 <vg-audio vg-src="videogularConfig.sources" id="audio-container"></vg-audio>
@@ -53,6 +52,8 @@
             </videogular>
         </div>
     </div>
+<nav id="navigation" ng-controller="NavCtrl">
+
 
     <a href="/video">
         <div class="number">1</div>

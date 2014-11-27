@@ -1,26 +1,30 @@
+@import "variables";
+
+@nav-height: 60px;
+
 body, html {
   height: 100%;
   width: 100%;
   background: #000;
-  color: #FFF;
+  color: @font-color;
   font-family: 'Raleway', sans-serif;
 }
 
-.content-container {
+.content-container,
+nav {
   position: absolute;
-  top: 0;
   left: 0;
   bottom: 0;
   width: 100%;
-  margin-bottom: 60px;
+}
+
+.content-container {
+  top: 0;
+  margin-bottom: @{nav-height};
 }
 
 nav {
-  position: absolute;
   top: 100%;
-  bottom: 0;
-  margin-top: -60px;
-  left: 0;
-  width: 100%;
-  background: #4E4E4E;
+  margin-top: -@{nav-height};
+  background: @nav-bg;
 }

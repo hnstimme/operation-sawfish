@@ -11,17 +11,12 @@
             type: "video/ogg"
         }];
         $scope.videogularConfig.objectType = 'video';
-        var unbindWatcher = $scope.$watch('videogularAPI.currentState', function (newVal) {
-            if (newVal === 'play') {
-                $scope.showVideo = true;
-                $analytics.eventTrack('playing', {
-                    category: 'Heilbronn brennt'
-                });
-                unbindWatcher();
-            }
-        });
-        $scope.playVideo = function () {
-            $scope.videogularAPI.play();
+        $scope.play = function () {
+            $scope.showVideo = true;
+            angular.element(document.getElementById('intro-video')).find('video')[0].play();
+            $analytics.eventTrack('playing', {
+                category: 'Heilbronn brennt'
+            });
         }
     });
 })(angular);

@@ -7,7 +7,7 @@
         init: function () {
             this.leafletMap = L.map('map', {
                 center: [49.145, 9.22],
-                zoom: 13,
+                zoom: 14,
                 minZoom: 5,
                 maxZoom: 18
             });
@@ -34,7 +34,8 @@
                     fill: feature.properties.color,
                     opacity: 1,
                     color: '#FFFFFF',
-                    weight: 2
+                    weight: 2,
+                    className: 'path-' + feature.properties.id
                 }
             }).addTo(this.leafletMap);
         }
@@ -43,7 +44,7 @@
     angular.module('app').directive('targetSelection', function ($http, $analytics) {
         return {
             restrict: 'A',
-            link: function (scope, element, attrs, ctrl) {
+            link: function () {
                 map.init();
 
                 var features = {};
@@ -56,26 +57,17 @@
 
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
-                    var timeline = Talkie.timeline("#audio-container audio", {
-                        0: function () {
-                            areas['stadt'] = map.addArea(features['stadt']);
-                            this.setUndo(function () {
-                                areas['stadt'].removeFrom(map.leafletMap);
-                                areas['stadt'] = null;
-                            });
+                    Talkie.timeline("#audio-container audio", {
+                        0.1: function () {
                             $analytics.eventTrack('playing', {
                                 category: 'Der Plan'
                             });
                         },
-                        10.9: function () {
-                            map.leafletMap.setZoom(14);
-                            this.setUndo(function () {
-                                map.leafletMap.setZoom(13);
-                            });
-                        },
-                        11: function () {
+                        2: function () {
                             areas['zielgebiet1'] = map.addArea(features['zielgebiet1']);
                             areas['zielgebiet12'] = map.addArea(features['zielgebiet2']);
+                            new Walkway({selector: '.path-zielgebiet1', duration: '7000'}).draw();
+                            new Walkway({selector: '.path-zielgebiet2', duration: '7000'}).draw();
                             this.setUndo(function () {
                                 areas['zielgebiet1'].removeFrom(map.leafletMap);
                                 areas['zielgebiet2'].removeFrom(map.leafletMap);
@@ -83,14 +75,15 @@
                                 areas['zielgebiet2'] = null;
                             })
                         },
-                        19.9: function () {
+                        13: function () {
                             map.leafletMap.setZoom(15);
                             this.setUndo(function () {
                                 map.leafletMap.setZoom(14);
                             });
                         },
-                        20: function () {
+                        15: function () {
                             areas['brandanfaellig'] = map.addArea(features['brandanfaellig']);
+                            new Walkway({selector: '.path-brandanfaellig', duration: '7000'}).draw();
                             this.setUndo(function () {
                                 areas['brandanfaellig'].removeFrom(map.leafletMap);
                                 areas['brandanfaellig'] = null;

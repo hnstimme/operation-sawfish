@@ -4,8 +4,9 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
+        "type": "Polygon",
         "coordinates": [
+          [
           [
             9.216696469547959,
             49.14685939062854
@@ -38,6 +39,7 @@
             9.216696469547959,
             49.14685939062854
           ]
+          ]
         ]
       },
       "properties": {
@@ -48,8 +50,9 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
+        "type": "Polygon",
         "coordinates": [
+          [
           [
             9.202244050379518,
             49.14254921322217
@@ -286,6 +289,7 @@
             9.202244050379518,
             49.14254921322217
           ]
+          ]
         ]
       },
       "properties": {
@@ -296,8 +300,9 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
+        "type": "Polygon",
         "coordinates": [
+          [
           [
             9.186022096790385,
             49.14125275734085
@@ -370,6 +375,7 @@
             9.186022096790385,
             49.14125275734085
           ]
+          ]
         ]
       },
       "properties": {
@@ -380,8 +386,9 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
+        "type": "Polygon",
         "coordinates": [
+          [
           [
             9.204210272802536,
             49.14186346753923
@@ -413,6 +420,7 @@
           [
             9.204210272802536,
             49.14186346753923
+          ]
           ]
         ]
       },

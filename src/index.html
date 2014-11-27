@@ -36,7 +36,7 @@
 <videogular vg-player-ready="onPlayerReady" id="audio-container">
     <section class="content-container" ng-view></section>
     <vg-audio vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'audio'"></vg-audio>
-    <nav ng-controller="NavCtrl">
+    <nav ng-controller="NavCtrl" class="main-nav">
         <vg-controls class="videogular-controls">
             <div class="scrubbar-container">
                 <vg-scrubBar>

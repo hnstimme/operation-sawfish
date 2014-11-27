@@ -21,6 +21,19 @@ videogular vg-scrubbar :focus vg-scrubBarCurrentTime {
   border-right: 6px #FFF;
 }
 
+videogular vg-controls {
+  height: 100%;
+  top: 0;
+}
+
+videogular vg-controls #controls-container {
+  height: 100%;
+  background: #4E4E4E;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  display: block;
+}
+
 .controls-container {
   display: table;
   height: 50px;
@@ -46,17 +59,4 @@ videogular vg-scrubbar :focus vg-scrubBarCurrentTime {
       color: #A6A7A6
     }
   }
-}
-
-videogular vg-controls {
-  height: 100%;
-  top: 0;
-}
-
-videogular vg-controls #controls-container {
-  height: 100%;
-  background: #4E4E4E;
-  opacity: 1;
-  filter: alpha(opacity=100);
-  display: block;
 }

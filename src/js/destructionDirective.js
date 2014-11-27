@@ -45,6 +45,11 @@
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
                     Talkie.timeline("#audio-container audio", {
+                        0.1: function () {
+                            $analytics.eventTrack('playing', {
+                                category: 'Heilbronn ist zerstört'
+                            });
+                        },
                         3: function () {
                             var layer = map.addDestructionAreas('total');
                             this.setUndo(function () {

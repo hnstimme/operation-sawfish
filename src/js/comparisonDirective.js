@@ -143,6 +143,9 @@
                     }
                     timelineDef[0.1] = function () {
                         d3.select('.line').classed('line-fill', true).datum(effectivityData).attr("d", line);
+                        $analytics.eventTrack('playing', {
+                            category: 'Der Luftkrieg'
+                        });
                     };
 
                     Talkie.timeline("#audio-container audio", timelineDef);

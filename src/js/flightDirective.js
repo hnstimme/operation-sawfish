@@ -261,6 +261,12 @@
                         });
                     };
 
+                    timelineDef[0.1] = function () {
+                        $analytics.eventTrack('playing', {
+                            category: 'Der Anflug'
+                        });
+                    };
+
                     Talkie.timeline("#audio-container audio", timelineDef);
                 }, 500);
             }

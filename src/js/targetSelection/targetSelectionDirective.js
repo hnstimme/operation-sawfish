@@ -64,9 +64,7 @@
                                 areas['stadt'] = null;
                             });
                             $analytics.eventTrack('playing', {
-                                category: 'Der Plan',
-                                label: 'Stadtgebiet wird eingezeichnet',
-                                value: 0
+                                category: 'Der Plan'
                             });
                         },
                         10.9: function () {

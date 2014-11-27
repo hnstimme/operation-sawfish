@@ -81,6 +81,11 @@
 
                     var timeline = Talkie.timeline("#audio-container audio", {
                         0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
+                        0.1: function () {
+                            $analytics.eventTrack('playing', {
+                                category: 'Der Angriff'
+                            });
+                        },
                         8.1: currentTime.text('19:20'),
                         3.5: bomb7.style('opacity', 1, 500),
                         3.6: bomb7.attr('transform', 'translate(600, 420)', 2000),

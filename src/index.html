@@ -33,7 +33,7 @@
     </script>
 </head>
 <body ng-app="app" ng-controller="AudioCtrl" ng-cloak>
-<videogular>
+<videogular id="audio-container">
     <section class="content-container" ng-view></section>
     <vg-video vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'video'"></vg-video>
     <vg-audio vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'audio'"></vg-audio>

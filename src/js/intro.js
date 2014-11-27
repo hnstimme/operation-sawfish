@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict';
 
-    angular.module('app').controller('IntroController', function ($scope, $analytics) {
+    angular.module('app').controller('IntroController', function ($scope) {
         $scope.showVideo = false;
         $scope.videogularConfig.sources = [{
             src: "mov/final_film.mp4",

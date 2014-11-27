@@ -4,17 +4,8 @@
         $locationProvider.html5Mode(true);
         $routeProvider
             .when('/', {
-                templateUrl: 'partials/start.html'
-            })
-            .when('/video', {
-                controller: function ($scope) {
-                    $scope.videogularConfig.sources = [{
-                        src: "mov/final_film.mp4",
-                        type: "video/mp4"
-                    }, {src: "mov/final_film.ogg", type: "video/ogg"}];
-                    $scope.videogularConfig.objectType = 'video';
-                },
-                templateUrl: 'partials/video.html'
+                controller: 'IntroController',
+                templateUrl: 'partials/intro.html'
             })
             .when('/targetSelection', {
                 controller: function ($scope) {

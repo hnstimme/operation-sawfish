@@ -3,8 +3,12 @@
 
     angular.module('app').controller('AudioCtrl', function ($scope) {
         $scope.videogularConfig = {
-            sources: [],
-            objectType: 'video'
+            sources: [{src: "audio/1.mp3", type: "audio/mp3"}],
+            objectType: 'audio'
+        };
+        $scope.videogularAPI = null;
+        $scope.onPlayerReady = function (API) {
+            $scope.videogularAPI = API;
         };
     });
 })(angular);

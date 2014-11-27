@@ -1,6 +1,8 @@
+@import "variables";
+
 .scrubbar-container {
-  height: 10px;
-  background: #6C4F31;
+  height: @scrubbar-height;
+  background: @scrubbar-bg;
 }
 
 videogular vg-scrubbar {
@@ -14,11 +16,11 @@ videogular vg-scrubbar {
 
 videogular vg-scrubBarCurrentTime {
   height: 100%;
-  background-color: #B58E67;
+  background-color: @scrubbar-current-bg;
 }
 
 videogular vg-scrubbar :focus vg-scrubBarCurrentTime {
-  border-right: 6px #FFF;
+  border-right: 6px @scrubbar-focus-color;
 }
 
 videogular vg-controls {
@@ -28,7 +30,7 @@ videogular vg-controls {
 
 videogular vg-controls #controls-container {
   height: 100%;
-  background: #4E4E4E;
+  background: @nav-bg;
   opacity: 1;
   filter: alpha(opacity=100);
   display: block;

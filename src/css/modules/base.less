@@ -1,11 +1,9 @@
 @import "variables";
 
-@nav-height: 60px;
-
 body, html {
   height: 100%;
   width: 100%;
-  background: #000;
+  background: @bg;
   color: @font-color;
   font-family: 'Raleway', sans-serif;
 }
@@ -20,11 +18,11 @@ body, html {
 
 .content-container {
   top: 0;
-  margin-bottom: @{nav-height};
+  margin-bottom: @nav-height;
 }
 
 .main-nav {
   top: 100%;
-  margin-top: -@{nav-height};
+  margin-top: -@nav-height;
   background: @nav-bg;
 }

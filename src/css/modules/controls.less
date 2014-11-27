@@ -1,6 +1,8 @@
+@import "variables";
+
 .controls-container {
   display: table;
-  height: 50px;
+  height: @nav-height - @scrubbar-height;
   width: 100%;
 }
 
@@ -12,14 +14,10 @@
     display: inline-block;
     background: none;
     border: none;
-    border-right: 1px solid #CECECE;
+    border-right: 1px solid darken(@font-color, 30%);
     font-size: 12px;
     padding: 16px 10px;
-    color: #FFF;
+    color: @font-color;
     text-decoration: none;
-
-    .active {
-      color: #A6A7A6
-    }
   }
 }

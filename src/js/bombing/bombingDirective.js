@@ -1,6 +1,6 @@
 (function (angular) {
     'use strict';
-    angular.module('app').directive('bombing', function () {
+    angular.module('app').directive('bombing', function ($analytics) {
         var airplanes = [
             {id: 0},
             {id: 1},

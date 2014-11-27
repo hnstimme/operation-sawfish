@@ -65,7 +65,7 @@
         return array;
     }
 
-    angular.module('app').directive('flight', function ($http) {
+    angular.module('app').directive('flight', function ($http, $analytics) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {

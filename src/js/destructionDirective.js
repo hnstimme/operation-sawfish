@@ -29,7 +29,7 @@
         }
     };
 
-    angular.module('app').directive('destruction', function ($http) {
+    angular.module('app').directive('destruction', function ($analytics) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {

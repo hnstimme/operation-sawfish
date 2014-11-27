@@ -33,7 +33,7 @@
         }
     };
 
-    angular.module('app').directive('comparison', function ($http) {
+    angular.module('app').directive('comparison', function ($http, $analytics) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {

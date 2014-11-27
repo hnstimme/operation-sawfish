@@ -34,9 +34,11 @@
 </head>
 <body ng-app="app" ng-controller="AudioCtrl" ng-cloak>
 <videogular id="audio-container">
-    <section class="content-container" ng-view></section>
-    <vg-video vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'video'"></vg-video>
-    <vg-audio vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'audio'"></vg-audio>
+    <section class="content-container">
+        <vg-video vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'video'"></vg-video>
+        <vg-audio vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'audio'"></vg-audio>
+        <div class="view-container" ng-view></div>
+    </section>
     <nav ng-controller="NavCtrl">
         <vg-controls class="videogular-controls">
             <div class="scrubbar-container">

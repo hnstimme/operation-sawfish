@@ -3,8 +3,8 @@
 
     angular.module('app').controller('AudioCtrl', function ($scope) {
         $scope.videogularConfig = {
-            sources: [{src: "mov/final_film.ogg", type: "video/ogg"}],
-            objectType: 'audio'
+            sources: [],
+            objectType: 'video'
         };
     });
 })(angular);

@@ -12,11 +12,27 @@
         }];
         $scope.videogularConfig.objectType = 'video';
         $scope.play = function () {
-            $scope.showVideo = true;
             angular.element(document.getElementById('intro-video')).find('video')[0].play();
-            $analytics.eventTrack('playing', {
-                category: 'Heilbronn brennt'
-            });
+        }
+    });
+
+    angular.module('app').directive("showVideo", function ($analytics) {
+        return {
+            restrict: "A",
+            require: "^videogular",
+            link: function (scope, elem, attrs, API) {
+                var unbindWatcher = scope.$watch(function () {
+                    return API.currentState;
+                }, function (newVal) {
+                    if (newVal === 'play') {
+                        scope.showVideo = true;
+                        $analytics.eventTrack('playing', {
+                            category: 'Heilbronn brennt'
+                        });
+                        unbindWatcher();
+                    }
+                });
+            }
         }
     });
 })(angular);

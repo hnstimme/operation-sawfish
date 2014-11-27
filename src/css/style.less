@@ -1,10 +1,5 @@
-@import "modules/reset";
 @import "modules/map";
-@import "modules/audio";
-
-* {
-  font-family: 'Raleway', sans-serif;
-}
+@import "modules/controls";
 
 body, html {
   height: 100%;
@@ -14,59 +9,31 @@ body, html {
   font-family: 'Raleway', sans-serif;
 }
 
-h1 {
-  margin-bottom: 1em;
-}
-
 .content-container {
-  position: relative;
-  height: 90%;
-}
-
-.number {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 80px;
 }
 
 nav {
   position: absolute;
-  top: 90%;
+  top: 100%;
   bottom: 0;
+  margin-top: -80px;
+  left: 0;
   width: 100%;
-  background: #646463;
-  padding: 10px;
-  box-sizing: border-box;
-
-  a {
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-    display: inline-block;
-    background: none;
-    border: none;
-    border-right: 1px solid #CECECE;
-    font-size: 12px;
-    padding: 14px;
-    color: #FFF;
-    text-decoration: none;
-
-    .active {
-      color: #A6A7A6
-    }
-  }
+  background: #4E4E4E;
 }
 
-.talkie-video {
-  height: 100%;
+h1 {
+  margin-bottom: 1em;
+}
 
-  video {
-    @media (min-aspect-ratio: 1/1) {
-      width: 140%;
-      margin-left: -20%;
-    }
-    @media (max-aspect-ratio: 1/1) {
-      height: 100%;
-      margin-left: -40%;
-    }
-  }
+.number {
+  display: none;
 }
 
 #a-wrapper svg,
@@ -318,11 +285,6 @@ svg#flight-svg {
   -o-animation: move 300s linear infinite;
 }
 
-#a-wrapper audio {
-  position: absolute;
-  bottom: 0;
-}
-
 /** bombing **/
 .bombs-counter-container {
   position: absolute;
@@ -444,45 +406,3 @@ svg.comparison-chart {
 
 
 
-videogular vg-timedisplay {
-    color: #ffffff;
-    cursor: default;
-    display: table-cell;
-    font-family: Arial;
-    font-size: 18px;
-    text-align: center;
-    vertical-align: middle;
-    width: 75px;
-    display:none;
-}
-
-videogular vg-mutebutton {
-    display:none;
-    
-}
-videogular vg-play-pause-button {
-    margin-top:20px;
-    position:absolute;
-    zoom:200%;
-    
-}
-videogular vg-scrubbar {
-    width:100%;
-    color:#C38A53;
-    height:10px;
-    
-}
-videogular controls-container {
-    display:none;
-    
-}
-#navigation {
-    padding-left:40px;
-}
-
-videogular vg-play-pause-button .play {
-    background-image: url('../img/10_Start_Play.svg');
-    width:50px;
-    height:50px;
-    
-}

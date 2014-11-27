@@ -6,6 +6,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- build:css css/app.min.css -->
+    <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
     <link rel="stylesheet" href="bower_components/videogular-themes-default/videogular.css"/>
     <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css"/>
@@ -32,54 +33,52 @@
     </script>
 </head>
 <body ng-app="app" ng-controller="AudioCtrl" ng-cloak>
-<section class="content-container" ng-view></section>
-
-    <div style="heigth:10px;margin-top:-50px;position:relative;" ng-show="videogularConfig.sources">
-        <div class="videogular-container">
-            <videogular vg-theme="videogularConfig.theme.url" class="videogular-container audio">
-                <vg-audio vg-src="videogularConfig.sources" id="audio-container"></vg-audio>
-                <vg-controls>
-                    <vg-play-pause-button></vg-play-pause-button>
-                    <vg-timedisplay>{{ currentTime | date:'mm:ss' }}</vg-timedisplay>
-                    <vg-scrubBar>
-                        <vg-scrubbarcurrenttime></vg-scrubbarcurrenttime>
-                    </vg-scrubBar>
-                    <vg-timedisplay>{{ timeLeft | date:'mm:ss' }}</vg-timedisplay>
-                    <vg-volume>
-                        <vg-mutebutton></vg-mutebutton>
-                    </vg-volume>
-                </vg-controls>
-            </videogular>
-        </div>
-    </div>
-<nav id="navigation" ng-controller="NavCtrl">
-
-
-    <a href="/video">
-        <div class="number">1</div>
-        <div class="menu-headline">Heilbronn brennt</div>
-    </a>
-    <a href="/targetSelection">
-        <div class="number">2</div>
-        <div class="menu-headline">Der Plan</div>
-    </a>
-    <a href="/flight">
-        <div class="number">3</div>
-        <div class="menu-headline">Der Anflug</div>
-    </a>
-    <a href="/bombing">
-        <div class="number">4</div>
-        <div class="menu-headline">Der Angriff</div>
-    </a>
-    <a href="/destruction">
-        <div class="number">5</div>
-        <div class="menu-headline">Heilbronn ist zerstört</div>
-    </a>
-    <a href="/comparison">
-        <div class="number">6</div>
-        <div class="menu-headline">Der Luftkrieg</div>
-    </a>
-</nav>
+<videogular>
+    <section class="content-container" ng-view></section>
+    <vg-video vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'video'"></vg-video>
+    <vg-audio vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'audio'"></vg-audio>
+    <nav ng-controller="NavCtrl">
+        <vg-controls class="videogular-controls">
+            <div class="scrubbar-container">
+                <vg-scrubBar>
+                    <vg-scrubbarcurrenttime></vg-scrubbarcurrenttime>
+                </vg-scrubBar>
+            </div>
+            <div class="controls-container">
+                <vg-play-pause-button></vg-play-pause-button>
+                <div class="chapters">
+                    <a href="/video">
+                        <div class="number">1</div>
+                        <div class="menu-headline">Heilbronn brennt</div>
+                    </a>
+                    <a href="/targetSelection">
+                        <div class="number">2</div>
+                        <div class="menu-headline">Der Plan</div>
+                    </a>
+                    <a href="/flight">
+                        <div class="number">3</div>
+                        <div class="menu-headline">Der Anflug</div>
+                    </a>
+                    <a href="/bombing">
+                        <div class="number">4</div>
+                        <div class="menu-headline">Der Angriff</div>
+                    </a>
+                    <a href="/destruction">
+                        <div class="number">5</div>
+                        <div class="menu-headline">Heilbronn ist zerstört</div>
+                    </a>
+                    <a href="/comparison">
+                        <div class="number">6</div>
+                        <div class="menu-headline">Der Luftkrieg</div>
+                    </a>
+                </div>
+                <vg-volume>
+                    <vg-mutebutton></vg-mutebutton>
+                </vg-volume>
+            </div>
+        </vg-controls>
+    </nav>
+</videogular>
 <!-- build:js js/app.min.js -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>

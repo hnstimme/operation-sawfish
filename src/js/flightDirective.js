@@ -87,6 +87,17 @@
                     });
                 });
 
+                scope.showLancesterDetails = function () {
+                    d3.select('.lancester .plane-label').transition().attr('y', 40);
+                    d3.select('.lancester-details').transition().style('opacity', 1);
+                    d3.select('.mosquito').transition().style('opacity', 0);
+                };
+                scope.hideLancesterDetails = function () {
+                    d3.select('.lancester .plane-label').transition().attr('y', 70);
+                    d3.select('.lancester-details').transition().style('opacity', 0);
+                    d3.select('.mosquito').transition().style('opacity', 0.6);
+                };
+
                 scope.lancesterGroups = [];
                 var groupsToBuild = [{
                     columns: 27,
@@ -259,6 +270,12 @@
                         this.setUndo(function () {
                             map.leafletMap.removeLayer(circleMarker);
                         });
+                    };
+                    timelineDef[44.5] = function () {
+                        scope.showEndscreen = true;
+                        this.setUndo(function () {
+                            scope.showEndscreen = false;
+                        })
                     };
 
                     timelineDef[0.1] = function () {

@@ -19,6 +19,7 @@
                 controller: function ($scope) {
                     $scope.videogularConfig.sources = [{src: "audio/3.mp3", type: "audio/mp3"}];
                     $scope.videogularConfig.objectType = 'audio';
+                    $scope.showEndscreen = false;
                 },
                 templateUrl: 'partials/flight.html'
             })

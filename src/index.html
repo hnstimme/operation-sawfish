@@ -79,7 +79,7 @@
 		    <div class="share" ng-controller="ShareCtrl" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
 			<img class="share-img" src="../img/share.png" width="40px" height="35px">
 			<div class="animate-show"  ng-show="hoverEdit" >
-			    <div class="fb"><a href="https://www.facebook.com">Facebook</a></div>
+			    <div class=" fb fb-share-button" data-href="http://sawfish.stimme.de" data-layout="button"></div>
 			    <div class="tw"><a href="https://www.twitter.com">Twitter</a></div>
 			    <div class="wa"><a href="https://www.whatsapp.com">Whatsapp</a></div>
 			</div>
@@ -126,5 +126,14 @@
 <script src="js/targetSelection/targetSelectionDirective.js"></script>
 <script src="js/AudioCtrl.js"></script>
 <!-- endbuild -->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

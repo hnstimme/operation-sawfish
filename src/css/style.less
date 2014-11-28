@@ -454,11 +454,7 @@ float:left;
 }
 
 .social {
-    width:40px;
-    height:100px;
-    background-color: #fff;
-    z-index:2;
-    margin-top:-153px;
+
     display:none;
 
 
@@ -477,8 +473,27 @@ float:left;
 
 }
 
+.animate-show {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    opacity: 1;
+    width:40px;
+    height:100px;
+    background-color: #fff;
+    z-index:2;
+    margin-top:-153px;
+}
 
+.animate-show.ng-hide-add,
+.animate-show.ng-hide-remove {
+    display: inline-block !important;
+    
+}
+.animate-show.ng-hide {
+    opacity: 0;
+}
 
-
-
-
+.share-img {
+    width:40px;
+    
+}

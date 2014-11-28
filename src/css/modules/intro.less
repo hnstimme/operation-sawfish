@@ -1,3 +1,4 @@
+@import "variables";
 @import "prefixer";
 
 .intro-video {
@@ -8,5 +9,14 @@
   vg-poster-image img {
     height: 100%;
     margin: 0 auto;
+  }
+
+  .legal-notice {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    z-index: 20;
+    font-size: 12px;
+    color: darken(@font-color, 30%);
   }
 }

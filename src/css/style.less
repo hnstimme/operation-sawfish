@@ -49,7 +49,7 @@ h1 {
   background-image: url("/img/Stratscreen.jpg");
   background-size: 100% 100%;
   float: left;
-  z-index: 50;
+  z-index: 1;
 }
 
 .container {
@@ -408,16 +408,51 @@ svg.comparison-chart {
   }
 }
 
-.share {
-    width:60px;
-    float:left;
-     border-left: 1px solid darken(@font-color, 30%);
+.meta {
+    width:280px;
      height:40px;
-     background-image: url('../img/10_Start_Share.svg') ;
-     background-size: 60px 50px;
-     background-repeat: no-repeat;
+     float:right;
+
 
 }
+.share {
+
+border-right:1px solid darken(@font-color, 30%);
+float:left;
+border-left:1px solid darken(@font-color, 30%);    
+}
+
+vg-volume {
+    float:left;
+}
+
+.info {
+
+border-right:1px solid darken(@font-color, 30%);
+width:50px;
+float:left;
+}
+
+.stimme {
+    float:right;
+    padding-right:10px;
+    padding-top:6px;
+    
+}
+
+.social {
+    width:40px;
+    height:100px;
+    background-color: #fff;
+    z-index:2;
+    margin-top:-153px;
+    display:none;
+
+
+    
+}
+
+
 
 
 

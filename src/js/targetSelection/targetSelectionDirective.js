@@ -31,7 +31,7 @@
             return L.geoJson(feature, {
                 style: {
                     fillColor: feature.properties.color,
-                    fill: feature.properties.color,
+                    fillOpacity: 0,
                     opacity: 1,
                     color: '#FFFFFF',
                     weight: 2,
@@ -65,15 +65,23 @@
                         },
                         2: function () {
                             areas['zielgebiet1'] = map.addArea(features['zielgebiet1']);
-                            areas['zielgebiet12'] = map.addArea(features['zielgebiet2']);
-                            new Walkway({selector: '.path-zielgebiet1', duration: '7000'}).draw();
-                            new Walkway({selector: '.path-zielgebiet2', duration: '7000'}).draw();
+                            areas['zielgebiet2'] = map.addArea(features['zielgebiet2']);
+                            new Walkway({selector: '.path-zielgebiet1', duration: '7000', easing: 'linear'}).draw();
+                            new Walkway({selector: '.path-zielgebiet2', duration: '7000', easing: 'linear'}).draw();
                             this.setUndo(function () {
                                 areas['zielgebiet1'].removeFrom(map.leafletMap);
                                 areas['zielgebiet2'].removeFrom(map.leafletMap);
                                 areas['zielgebiet1'] = null;
                                 areas['zielgebiet2'] = null;
                             })
+                        },
+                        9.25: function () {
+                            areas['zielgebiet2'].setStyle({
+                                fillOpacity: 0.35
+                            });
+                            areas['zielgebiet1'].setStyle({
+                                fillOpacity: 0.35
+                            });
                         },
                         13: function () {
                             map.leafletMap.setZoom(15);
@@ -83,10 +91,15 @@
                         },
                         15: function () {
                             areas['brandanfaellig'] = map.addArea(features['brandanfaellig']);
-                            new Walkway({selector: '.path-brandanfaellig', duration: '7000'}).draw();
+                            new Walkway({selector: '.path-brandanfaellig', duration: '7000', easing: 'linear'}).draw();
                             this.setUndo(function () {
                                 areas['brandanfaellig'].removeFrom(map.leafletMap);
                                 areas['brandanfaellig'] = null;
+                            });
+                        },
+                        22.25: function () {
+                            areas['brandanfaellig'].setStyle({
+                                fillOpacity: 0.35
                             });
                         }
                     });

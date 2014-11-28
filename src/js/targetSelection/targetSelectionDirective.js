@@ -44,7 +44,7 @@
     angular.module('app').directive('targetSelection', function ($http, $analytics) {
         return {
             restrict: 'A',
-            link: function () {
+            link: function (scope) {
                 map.init();
 
                 var features = {};
@@ -69,8 +69,8 @@
                             new Walkway({selector: '.path-zielgebiet1', duration: '7000', easing: 'linear'}).draw();
                             new Walkway({selector: '.path-zielgebiet2', duration: '7000', easing: 'linear'}).draw();
                             this.setUndo(function () {
-                                areas['zielgebiet1'].removeFrom(map.leafletMap);
-                                areas['zielgebiet2'].removeFrom(map.leafletMap);
+                                map.leafletMap.removeLayer(areas['zielgebiet1']);
+                                map.leafletMap.removeLayer(areas['zielgebiet2']);
                                 areas['zielgebiet1'] = null;
                                 areas['zielgebiet2'] = null;
                             })
@@ -93,7 +93,7 @@
                             areas['brandanfaellig'] = map.addArea(features['brandanfaellig']);
                             new Walkway({selector: '.path-brandanfaellig', duration: '7000', easing: 'linear'}).draw();
                             this.setUndo(function () {
-                                areas['brandanfaellig'].removeFrom(map.leafletMap);
+                                map.leafletMap.removeLayer(areas['brandanfaellig']);
                                 areas['brandanfaellig'] = null;
                             });
                         },
@@ -101,6 +101,12 @@
                             areas['brandanfaellig'].setStyle({
                                 fillOpacity: 0.35
                             });
+                        },
+                        33: function () {
+                            scope.showEndscreen = true;
+                            this.setUndo(function () {
+                                scope.showEndscreen = false;
+                            })
                         }
                     });
                 }, 500);

@@ -35,7 +35,11 @@
             }).addTo(this.leafletMap);
         },
         addPolyline: function (feature) {
-            return L.geoJson(feature).addTo(this.leafletMap);
+            return L.geoJson(feature, {
+                style: {
+                    className: 'path-' + feature.properties.id
+                }
+            }).addTo(this.leafletMap);
         },
         addCircleMarker: function (lat, lon) {
             var marker = L.circleMarker(L.latLng(lat, lon), {
@@ -65,7 +69,7 @@
         return array;
     }
 
-    angular.module('app').directive('flight', function ($http, $analytics) {
+    angular.module('app').directive('flight', function ($http, $analytics, $timeout) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
@@ -197,7 +201,7 @@
                         });
                     };
 
-                    timelineDef[2.5] = function () {
+                    timelineDef[2] = function () {
                         map.leafletMap.setView([52.00366, -0.547855], 8);
                         this.setUndo(function () {
                             map.leafletMap.setView([51.481382896100975, 5.196533203125], 6);
@@ -206,10 +210,10 @@
 
                     timelineDef[13] = gPlanes.style('opacity', 0, 500);
                     timelineDef[13.1] = gPlaneTypes.style('opacity', 1, 500);
-                    timelineDef[21.5] = animate.select('.lancester').style('opacity', 0.5, 500);
-                    timelineDef[21.6] = animate.select('.mosquito').style('opacity', 1, 500);
+                    timelineDef[18.1] = animate.select('.lancester').style('opacity', 0.5, 500);
+                    timelineDef[18.2] = animate.select('.mosquito').style('opacity', 1, 500);
 
-                    timelineDef[27] = function () {
+                    timelineDef[21] = function () {
                         element.attr('style', 'visibility:hidden');
                         this.setUndo(function () {
                             element.attr('style', '');
@@ -217,14 +221,14 @@
                     };
 
                     // airports
-                    timelineDef[27.05] = function () {
+                    timelineDef[21.05] = function () {
                         map.leafletMap.setView([53.186287573913305, 0.015106201171874998], 10);
                         this.setUndo(function () {
                             map.leafletMap.setView([52.00366, -0.547855], 8);
                         });
                     };
                     airportFeatures.forEach(function (feature, index) {
-                        timelineDef[27.5 + 0.2 * index] = function () {
+                        timelineDef[21.5 + 0.2 * index] = function () {
                             var marker = map.addMarker(feature);
                             this.setUndo(function () {
                                 map.leafletMap.removeLayer(marker);
@@ -233,13 +237,13 @@
                     });
 
                     // flight
-                    timelineDef[30] = function () {
+                    timelineDef[24] = function () {
                         map.leafletMap.setView([52.315195264379575, 0], 7);
                         this.setUndo(function () {
                             map.leafletMap.setView([53.186287573913305, 0.015106201171874998], 10);
                         });
                     };
-                    timelineDef[29.5] = function () {
+                    timelineDef[23.5] = function () {
                         var circleMarker = map.addCircleMarker(51.542919, -0.962162);
                         var polylines = [];
                         airportsToReadingLines.forEach(function (line) {
@@ -254,27 +258,30 @@
                         });
                     };
 
-                    timelineDef[34.5] = function () {
+                    timelineDef[27] = function () {
                         var polyline = map.addPolyline(readingToHnLine);
                         this.setUndo(function () {
                             map.leafletMap.removeLayer(polyline);
                         });
                     };
-                    timelineDef[36] = function () {
+                    timelineDef[26.5] = function () {
                         map.leafletMap.setView([51.42661449707482, 4.2626953125], 6);
                         this.setUndo(function () {
                             map.leafletMap.setView([52.315195264379575, 0], 7);
                         });
                     };
-                    timelineDef[44] = function () {
+                    timelineDef[36] = function () {
                         var circleMarker = map.addCircleMarker(49.140281, 9.188591);
                         this.setUndo(function () {
                             map.leafletMap.removeLayer(circleMarker);
                         });
                     };
-                    timelineDef[44.5] = function () {
-                        scope.showEndscreen = true;
+                    timelineDef[37] = function () {
+                        var promise = $timeout(function () {
+                            scope.showEndscreen = true;
+                        }, 2000);
                         this.setUndo(function () {
+                            $timeout.cancel(promise);
                             scope.showEndscreen = false;
                         })
                     };

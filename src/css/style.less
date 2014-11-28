@@ -295,10 +295,10 @@ svg#flight-svg {
   stroke-dashoffset: 2000;
   stroke-width: 4;
   stroke: #FFFFFF;
-  animation: move 300s linear infinite;
-  -webkit-animation: move 300s linear infinite;
-  -moz-animation: move 300s linear infinite;
-  -o-animation: move 300s linear infinite;
+  .animation(move 160s linear infinite);
+  &.path-reading-to-hn {
+    .animation(move 270s linear infinite);
+  }
 }
 
 /** bombing **/

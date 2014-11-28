@@ -95,12 +95,25 @@
                     d3.select('.lancester .plane-label').transition().attr('y', 40);
                     d3.select('.lancester-details').transition().style('opacity', 1);
                     d3.select('.lancester').transition().style('opacity', 1);
-                    d3.select('.mosquito').transition().style('opacity', 0);
+                    d3.select('.mosquito').style('display', 'none').style('opacity', 0);
                 };
                 scope.hideLancesterDetails = function () {
                     d3.select('.lancester .plane-label').transition().attr('y', 70);
                     d3.select('.lancester-details').transition().style('opacity', 0);
-                    d3.select('.mosquito').transition().style('opacity', 0.6);
+                    d3.select('.mosquito').style('display', 'block').transition().delay(300).style('opacity', 0.6);
+                };
+                scope.showMosquitoDetails = function () {
+                    d3.select('.mosquito .plane-label').transition().attr('y', 40);
+                    d3.select('.mosquito-default-view').transition().attr('transform', 'translate(-520 0)');
+                    d3.select('.mosquito-details').transition().style('opacity', 1);
+                    d3.select('.mosquito').transition().style('opacity', 1);
+                    d3.select('.lancester').style('display', 'none').style('opacity', 0);
+                };
+                scope.hideMosquitoDetails = function () {
+                    d3.select('.mosquito .plane-label').transition().attr('y', 70);
+                    d3.select('.mosquito-default-view').transition().attr('transform', 'translate(0 0)');
+                    d3.select('.mosquito-details').transition().style('opacity', 0);
+                    d3.select('.lancester').style('display', 'block').transition().delay(300).style('opacity', 0.5);
                 };
 
                 scope.lancesterGroups = [];

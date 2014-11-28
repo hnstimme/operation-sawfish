@@ -1,8 +1,8 @@
 <div id="a-wrapper">
     <div id="flight-map"></div>
 
-	<svg width="100%" height="650px" viewBox="0 0 960 560" style="visibility:visible" xml:space="preserve" id="flight-svg" flight>
-		<g class="planes" style="opacity:0">
+	<svg width="100%" height="650px" viewBox="0 0 960 560" style="visibility:hidden" xml:space="preserve" id="flight-svg" flight>
+		<g class="planes">
 			<text x="0" y="30">Anzahl Flugzeuge</text>
 			<text x="930" y="490" class="counter"><tspan x="930" class="mosquito-counter counter-number">0</tspan><tspan x="930" dy="30" class="counter-label">Mosquito</tspan></text>
 			<text x="470" y="490" class="counter"><tspan x="470" class="lancester-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancaster</tspan></text>
@@ -28,8 +28,8 @@
 			</g>
 		</g>
 
-		<g class="plane-types" style="opacity:1">
-			<g class="lancester">
+		<g class="plane-types" style="opacity:0">
+			<g class="lancester" style="opacity:1">
 				<g class="clickable" ng-click="showLancesterDetails()">
 					<text x="270" y="70" text-anchor="middle" class="plane-label">Lancaster</text>
 					<g transform="translate(-80 -10) rotate(-67.5 420 340)">
@@ -37,7 +37,7 @@
 					</g>
 				</g>
 				<rect x="0" y="0" width="550" height="480" ng-click="showLancesterDetails()" class="clickable clickable-layer"></rect>
-				<g class="lancester-details" style="opacity:1">
+				<g class="lancester-details" style="opacity:0">
 					<g transform="translate(960 20)">
 						<rect x="0" y="0" width="20" height="20" ng-click="hideLancesterDetails()" class="clickable clickable-layer"></rect>
 						<line x1="0" x2="20" y1="0" y2="20" class="dimension-line"></line>
@@ -50,9 +50,9 @@
 					<text y="320" class="plane-feature-list">
 						<tspan x="360">Hersteller: A. V. Roe & Co. Ltd.</tspan>
 						<tspan x="360" dy="16">Besatzung: Sieben Personen</tspan>
-						<tspan x="360" dy="16">Höchstgeschwindigkeit : 462 km/h</tspan>
+						<tspan x="360" dy="16">Höchstgeschwindigkeit: 462 km/h</tspan>
 						<tspan x="360" dy="16">Reisegeschwindigkeit: 322 km/h</tspan>
-						<tspan x="360" dy="16">Reichweite: 4827 Kilometer</tspan>
+						<tspan x="360" dy="16">Reichweite: 4.827 Kilometer</tspan>
 						<tspan x="360" dy="16">Ladegewicht: Bis zu 9.000 kg Bomben.</tspan>
 					</text>
 					<g class="dimension-line-length">
@@ -72,7 +72,7 @@
 					<g class="dimension-line-width">
 						<line x1="568" x2="568" y1="470" y2="435" class="dimension-line"></line>
 						<line x1="568" x2="728" y1="470" y2="470" class="dimension-line"></line>
-						<text x="733" y="478" class="dimension-label">31 m</text>
+						<text x="733" y="473" class="dimension-label">31 m</text>
 						<line x1="758" x2="917" y1="470" y2="470" class="dimension-line"></line>
 						<line x1="917" x2="917" y1="470" y2="435" class="dimension-line"></line>
 					</g>
@@ -86,9 +86,61 @@
 			</g>
 
 			<g class="mosquito" style="opacity:0.6">
-				<text x="760" y="70" text-anchor="middle" class="plane-label">Mosquito</text>
-				<g transform="translate(500 160) rotate(90 300 300)">
-					<g transform="scale(0.45)" ng-include="'partials/svg/mosquito_from_above.svg'"></g>
+				<g class="clickable mosquito-default-view" ng-click="showMosquitoDetails()" transform="translate(0 0)">
+					<text x="760" y="70" text-anchor="middle" class="plane-label">Mosquito</text>
+					<g transform="translate(500 160) rotate(90 300 300)">
+						<g transform="scale(0.45)" ng-include="'partials/svg/mosquito_from_above.svg'"></g>
+					</g>
+				</g>
+				<rect x="560" y="0" width="400" height="480" ng-click="showMosquitoDetails()" class="clickable clickable-layer"></rect>
+				<g class="mosquito-details" style="opacity:0">
+					<g transform="translate(960 20)">
+						<rect x="0" y="0" width="20" height="20" ng-click="hideMosquitoDetails()" class="clickable clickable-layer"></rect>
+						<line x1="0" x2="20" y1="0" y2="20" class="dimension-line"></line>
+						<line x1="0" x2="20" y1="20" y2="0" class="dimension-line"></line>
+					</g>
+					<text y="70" class="plane-description">
+						<tspan x="240" text-anchor="middle">Die zweimotorige Mosquito war ein aus Holz gebautes Flugzeug, das eine</tspan>
+						<tspan x="240" dy="18" text-anchor="middle">Geschwindigkeit von über 600 km/h erreichen konnte und zunächst</tspan>
+						<tspan x="240" dy="18" text-anchor="middle">hauptsächlich als Aufklärer-Flugzeug im Einsatz war.</tspan>
+						<tspan x="240" dy="18" text-anchor="middle">Die Schnellbombervariante konnte knapp 1000 Kilogramm Bomben transportieren.</tspan>
+					</text>
+					<text y="320" class="plane-feature-list">
+						<tspan x="360">Hersteller: de Havilland Aircraft Company</tspan>
+						<tspan x="360" dy="16">Besatzung: Zwei Personen</tspan>
+						<tspan x="360" dy="16">Höchstgeschwindigkeit: 670 km/h</tspan>
+						<tspan x="360" dy="16">Reichweite: 2.400 km bei 1,8 kg Bombenladung</tspan>
+						<tspan x="360" dy="16">Ladegewicht: 1,8 kg</tspan>
+					</text>
+					<g class="dimension-line-length">
+						<line x1="0" x2="50" y1="172" y2="172" class="dimension-line"></line>
+						<line x1="0" x2="0" y1="172" y2="305" class="dimension-line"></line>
+						<text x="99" y="212" transform="rotate(90 0 210)" class="dimension-label">13 m</text>
+						<line x1="0" x2="0" y1="335" y2="467" class="dimension-line"></line>
+						<line x1="0" x2="50" y1="467" y2="467" class="dimension-line"></line>
+					</g>
+					<g class="dimension-line-height">
+						<line x1="917" x2="887" y1="208" y2="208" class="dimension-line"></line>
+						<line x1="917" x2="917" y1="208" y2="240" class="dimension-line"></line>
+						<text x="35" y="-704" transform="rotate(90 0 210)" class="dimension-label">11 m</text>
+						<line x1="917" x2="917" y1="270" y2="301" class="dimension-line"></line>
+						<line x1="917" x2="887" y1="301" y2="301" class="dimension-line"></line>
+					</g>
+					<g class="dimension-line-width">
+						<line x1="592" x2="592" y1="467" y2="435" class="dimension-line"></line>
+						<line x1="592" x2="740" y1="467" y2="467" class="dimension-line"></line>
+						<text x="744" y="470" class="dimension-label">17 m</text>
+						<line x1="770" x2="917" y1="467" y2="467" class="dimension-line"></line>
+						<line x1="917" x2="917" y1="467" y2="435" class="dimension-line"></line>
+					</g>
+					<g transform="translate(470 730)">
+						<g transform="rotate(270 0 0)">
+							<g transform="scale(0.38)" ng-include="'partials/svg/mosquito_front.svg'"></g>
+						</g>
+					</g>
+					<g transform="translate(540 200) scale(1 -1) rotate(180 180 0)">
+						<g transform="scale(0.38)" ng-include="'partials/svg/mosquito_side.svg'"></g>
+					</g>
 				</g>
 			</g>
 		</g>

@@ -39,7 +39,7 @@ gulp.task('copy-audio', ['clean'], function () {
         .pipe(gulp.dest('build/audio'));
 });
 gulp.task('copy-movies', ['clean'], function () {
-    return gulp.src('src/mov/*.{mp4,ogg}')
+    return gulp.src('src/mov/*.{mp4,ogg,ogv}')
         .pipe(gulp.dest('build/mov'));
 });
 gulp.task('copy-data', ['clean'], function () {

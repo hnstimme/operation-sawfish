@@ -1,5 +1,45 @@
+@import "variables";
+
 .map-container {
   position: relative;
   height: 100%;
   width: 100%;
+}
+
+.leaflet-container {
+  font-family: @font-family;
+}
+
+.leaflet-popup-content {
+  color: @nav-bg;
+}
+
+.leaflet-popup-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.legend {
+  max-width: 270px;
+  background: fadeout(@nav-bg, 60%);
+  padding: 21px 21px 3px 21px;
+  font-size: 14px;
+}
+
+.legend-intro {
+  margin-bottom: 14px;
+}
+
+.legend-entry {
+  line-height: 34px;
+  vertical-align: top;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  opacity: 0.35;
+  border: 1px solid @font-color;
+  margin: 0 7px 7px 0;
 }

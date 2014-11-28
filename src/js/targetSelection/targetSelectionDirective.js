@@ -27,6 +27,19 @@
                 imageBounds = [[49.12107, 9.16907], [49.17003, 9.25135]];
             L.imageOverlay(imageUrl, imageBounds).addTo(this.leafletMap);
         },
+        addLegend: function (features) {
+            var legend = L.control({position: 'topright'});
+            legend.onAdd = function () {
+                var div = L.DomUtil.create('div', 'info legend');
+                div.innerHTML += '<p class="legend-intro">Heilbronn geriet 1944 für einen Flächenangriff ins Visier der Royal Air Force.</p>';
+                features.forEach(function (feature) {
+                    div.innerHTML += '<p class="legend-entry"><span class="legend-color" style="background:' + feature.properties.color + '"></span> ' + feature.properties.label + '</p>';
+                });
+                return div;
+            };
+            legend.addTo(this.leafletMap);
+            return legend;
+        },
         addArea: function (feature) {
             return L.geoJson(feature, {
                 style: {
@@ -36,6 +49,9 @@
                     color: '#FFFFFF',
                     weight: 2,
                     className: 'path-' + feature.properties.id
+                },
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup('<p class="leaflet-popup-title">' + feature.properties.label + '</p><p>' + feature.properties.description + '</p>');
                 }
             }).addTo(this.leafletMap);
         }
@@ -53,6 +69,7 @@
                     geojson.features.forEach(function (feature) {
                         features[feature.properties.id] = feature;
                     });
+                    map.addLegend(geojson.features);
                 });
 
                 // TODO setTimeout is a temporary workaround
@@ -64,22 +81,15 @@
                             });
                         },
                         2: function () {
-                            areas['zielgebiet1'] = map.addArea(features['zielgebiet1']);
-                            areas['zielgebiet2'] = map.addArea(features['zielgebiet2']);
-                            new Walkway({selector: '.path-zielgebiet1', duration: '7000', easing: 'linear'}).draw();
-                            new Walkway({selector: '.path-zielgebiet2', duration: '7000', easing: 'linear'}).draw();
+                            areas['zielgebiet'] = map.addArea(features['zielgebiet']);
+                            new Walkway({selector: '.path-zielgebiet', duration: '7000', easing: 'linear'}).draw();
                             this.setUndo(function () {
-                                map.leafletMap.removeLayer(areas['zielgebiet1']);
-                                map.leafletMap.removeLayer(areas['zielgebiet2']);
-                                areas['zielgebiet1'] = null;
-                                areas['zielgebiet2'] = null;
+                                map.leafletMap.removeLayer(areas['zielgebiet']);
+                                areas['zielgebiet'] = null;
                             })
                         },
                         9.25: function () {
-                            areas['zielgebiet2'].setStyle({
-                                fillOpacity: 0.35
-                            });
-                            areas['zielgebiet1'].setStyle({
+                            areas['zielgebiet'].setStyle({
                                 fillOpacity: 0.35
                             });
                         },

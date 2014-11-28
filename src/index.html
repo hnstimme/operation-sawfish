@@ -76,9 +76,9 @@
 		    <vg-volume>
 			<vg-mutebutton></vg-mutebutton>
 		    </vg-volume>
-		    <div class="share">
+		    <div class="share" ng-controller="ShareCtrl" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
 			<img class="share-img" src="../img/share.png" width="40px" height="35px">
-			<div class="social"></div>
+			<div class="animate-show"  ng-show="hoverEdit" ></div>
 		    </div>
 		    <div class="info">
 			<img class="info-img" src="../img/info.png" width="40px" height="35px">
@@ -113,6 +113,7 @@
 <script src="js/intro.js"></script>
 <script src="js/routes.js"></script>
 <script src="js/NavCtrl.js"></script>
+<script src="js/ShareCtrl.js"></script>
 <script src="js/flightDirective.js"></script>
 <script src="js/bombing/bombingDirective.js"></script>
 <script src="js/destructionDirective.js"></script>

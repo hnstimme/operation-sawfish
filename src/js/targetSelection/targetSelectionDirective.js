@@ -31,9 +31,11 @@
             var legend = L.control({position: 'topright'});
             legend.onAdd = function () {
                 var div = L.DomUtil.create('div', 'info legend');
-                div.innerHTML += '<p class="legend-intro">Heilbronn geriet 1944 für einen Flächenangriff ins Visier der Royal Air Force.</p>';
+                div.style.opacity = 0;
+                div.style.minWidth = '300px';
+                div.innerHTML += '<p class="legend-intro" style="display:none">Heilbronn geriet 1944 für einen Flächenangriff ins Visier der Royal Air Force.</p>';
                 features.forEach(function (feature) {
-                    div.innerHTML += '<p class="legend-entry"><span class="legend-color" style="background:' + feature.properties.color + '"></span> ' + feature.properties.label + '</p>';
+                    div.innerHTML += '<p class="legend-entry legend-entry-' + feature.properties.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + feature.properties.color + '"></span> ' + feature.properties.label + '</p>';
                 });
                 return div;
             };
@@ -92,6 +94,10 @@
                             areas['zielgebiet'].setStyle({
                                 fillOpacity: 0.35
                             });
+                            d3.selectAll('.legend, .legend-entry-zielgebiet').style('display', 'block').transition().duration(1000).style('opacity', 1);
+                            this.setUndo(function () {
+                                d3.selectAll('.legend, .legend-entry-zielgebiet').style('display', 'none').style('opacity', 0);
+                            });
                         },
                         13: function () {
                             map.leafletMap.setZoom(15);
@@ -111,11 +117,17 @@
                             areas['brandanfaellig'].setStyle({
                                 fillOpacity: 0.35
                             });
+                            d3.selectAll('.legend-entry-brandanfaellig').style('display', 'block').transition().duration(1000).style('opacity', 1);
+                            this.setUndo(function () {
+                                d3.selectAll('.legend-entry-brandanfaellig').style('display', 'none').style('opacity', 0);
+                            });
                         },
-                        33: function () {
+                        27: function () {
                             scope.showEndscreen = true;
+                            d3.select('.legend-intro').style('display', 'block');
                             this.setUndo(function () {
                                 scope.showEndscreen = false;
+                                d3.select('.legend-intro').style('display', 'none');
                             })
                         }
                     });

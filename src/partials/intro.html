@@ -2,8 +2,8 @@
     <vg-video vg-src="videogularConfig.sources"></vg-video>
     <vg-poster-image vg-url="videogularConfig.plugins.poster"></vg-poster-image>
 </div>
-<div track-video-start>
-    <div class="start" videogular-api ng-hide="videoHasStarted">
+<div track-video-start videogular-api>
+    <div class="start" ng-hide="videoHasStarted">
         <div class="container">
             <a class="playbutton" ng-click="videogularAPI.play()"></a>
 
@@ -14,12 +14,12 @@
             </div>
         </div>
     </div>
-    <div class="endscreen" videogular-api
+    <div class="endscreen"
          ng-show="videogularAPI.isCompleted && videogularAPI.currentState === 'stop' && videoHasStarted">
-        <div class="endscreen-choice">
-            <p><a href="/targetSelection"><img src="img/endscreen/interaktiv.svg"></a></p>
+        <div class="endscreen-choice" intro-video-swapper ng-hide="fullVideoLoaded">
+            <p><a ng-click="showFullVideo()"><img src="img/endscreen/interaktiv.svg"></a></p>
 
-            <p class="endscreen-choice-title"><a href="/targetSelection">Video in voller Länge ansehen</a></p>
+            <p class="endscreen-choice-title"><a ng-click="showFullVideo()">Video in voller Länge ansehen</a></p>
         </div>
         <div class="endscreen-choice">
             <p><a href="/targetSelection"><img src="img/endscreen/next.svg" class="icon-next"></a></p>

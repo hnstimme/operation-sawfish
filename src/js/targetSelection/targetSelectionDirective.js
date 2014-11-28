@@ -82,21 +82,42 @@
                                 category: 'Der Plan'
                             });
                         },
-                        2: function () {
-                            areas['zielgebiet'] = map.addArea(features['zielgebiet']);
-                            new Walkway({selector: '.path-zielgebiet', duration: '7000', easing: 'linear'}).draw();
+                        2.5: function () {
+                            areas['zielgebiet-stadt'] = map.addArea(features['zielgebiet-stadt']);
+                            new Walkway({
+                                selector: '.path-zielgebiet-stadt',
+                                duration: '4500',
+                                easing: 'linear'
+                            }).draw();
                             this.setUndo(function () {
-                                map.leafletMap.removeLayer(areas['zielgebiet']);
-                                areas['zielgebiet'] = null;
+                                map.leafletMap.removeLayer(areas['zielgebiet-stadt']);
+                                areas['zielgebiet-stadt'] = null;
                             })
                         },
-                        9.25: function () {
-                            areas['zielgebiet'].setStyle({
+                        7.25: function () {
+                            areas['zielgebiet-boeckingen'] = map.addArea(features['zielgebiet-boeckingen']);
+                            new Walkway({
+                                selector: '.path-zielgebiet-boeckingen',
+                                duration: '4500',
+                                easing: 'linear'
+                            }).draw();
+                            this.setUndo(function () {
+                                map.leafletMap.removeLayer(areas['zielgebiet-boeckingen']);
+                                areas['zielgebiet-boeckingen'] = null;
+                            })
+                        },
+                        7: function () {
+                            areas['zielgebiet-stadt'].setStyle({
                                 fillOpacity: 0.35
                             });
-                            d3.selectAll('.legend, .legend-entry-zielgebiet').style('display', 'block').transition().duration(1000).style('opacity', 1);
+                            d3.selectAll('.legend, .legend-entry-zielgebiet-stadt').style('display', 'block').transition().duration(1000).style('opacity', 1);
                             this.setUndo(function () {
-                                d3.selectAll('.legend, .legend-entry-zielgebiet').style('display', 'none').style('opacity', 0);
+                                d3.selectAll('.legend, .legend-entry-zielgebiet-stadt').style('display', 'none').style('opacity', 0);
+                            });
+                        },
+                        11.75: function () {
+                            areas['zielgebiet-boeckingen'].setStyle({
+                                fillOpacity: 0.35
                             });
                         },
                         13: function () {

@@ -1,8 +1,8 @@
 <div id="a-wrapper">
     <div id="flight-map"></div>
 
-	<svg width="100%" height="650px" viewBox="0 0 960 560" style="visibility:hidden" xml:space="preserve" id="flight-svg" flight>
-		<g class="planes">
+	<svg width="100%" height="650px" viewBox="0 0 960 560" style="visibility:visible" xml:space="preserve" id="flight-svg" flight>
+		<g class="planes" style="opacity:0">
 			<text x="0" y="30">Anzahl Flugzeuge</text>
 			<text x="930" y="490" class="counter"><tspan x="930" class="mosquito-counter counter-number">0</tspan><tspan x="930" dy="30" class="counter-label">Mosquito</tspan></text>
 			<text x="470" y="490" class="counter"><tspan x="470" class="lancester-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancaster</tspan></text>
@@ -28,7 +28,7 @@
 			</g>
 		</g>
 
-		<g class="plane-types" style="opacity:0">
+		<g class="plane-types" style="opacity:1">
 			<g class="lancester">
 				<g class="clickable" ng-click="showLancesterDetails()">
 					<text x="270" y="70" text-anchor="middle" class="plane-label">Lancaster</text>
@@ -37,7 +37,7 @@
 					</g>
 				</g>
 				<rect x="0" y="0" width="550" height="480" ng-click="showLancesterDetails()" class="clickable clickable-layer"></rect>
-				<g class="lancester-details" style="opacity:0">
+				<g class="lancester-details" style="opacity:1">
 					<g transform="translate(960 20)">
 						<rect x="0" y="0" width="20" height="20" ng-click="hideLancesterDetails()" class="clickable clickable-layer"></rect>
 						<line x1="0" x2="20" y1="0" y2="20" class="dimension-line"></line>
@@ -55,11 +55,27 @@
 						<tspan x="360" dy="16">Reichweite: 4827 Kilometer</tspan>
 						<tspan x="360" dy="16">Ladegewicht: Bis zu 9.000 kg Bomben.</tspan>
 					</text>
-					<line x1="0" x2="50" y1="118" y2="118" class="dimension-line"></line>
-					<line x1="0" x2="0" y1="118" y2="290" class="dimension-line"></line>
-					<text x="85" y="212" transform="rotate(90 0 210)" class="dimension-label">21 m</text>
-					<line x1="0" x2="0" y1="320" y2="470" class="dimension-line"></line>
-					<line x1="0" x2="50" y1="470" y2="470" class="dimension-line"></line>
+					<g class="dimension-line-length">
+						<line x1="0" x2="50" y1="118" y2="118" class="dimension-line"></line>
+						<line x1="0" x2="0" y1="118" y2="290" class="dimension-line"></line>
+						<text x="85" y="212" transform="rotate(90 0 210)" class="dimension-label">21 m</text>
+						<line x1="0" x2="0" y1="320" y2="470" class="dimension-line"></line>
+						<line x1="0" x2="50" y1="470" y2="470" class="dimension-line"></line>
+					</g>
+					<g class="dimension-line-height">
+						<line x1="917" x2="887" y1="225" y2="225" class="dimension-line"></line>
+						<line x1="917" x2="917" y1="225" y2="247" class="dimension-line"></line>
+						<text x="42" y="-704" transform="rotate(90 0 210)" class="dimension-label">6 m</text>
+						<line x1="917" x2="917" y1="272" y2="292" class="dimension-line"></line>
+						<line x1="917" x2="887" y1="292" y2="292" class="dimension-line"></line>
+					</g>
+					<g class="dimension-line-width">
+						<line x1="568" x2="568" y1="470" y2="435" class="dimension-line"></line>
+						<line x1="568" x2="728" y1="470" y2="470" class="dimension-line"></line>
+						<text x="733" y="478" class="dimension-label">31 m</text>
+						<line x1="758" x2="917" y1="470" y2="470" class="dimension-line"></line>
+						<line x1="917" x2="917" y1="470" y2="435" class="dimension-line"></line>
+					</g>
 					<g transform="translate(560 320)">
 						<g transform="scale(0.38)" ng-include="'partials/svg/lancester_front.svg'"></g>
 					</g>

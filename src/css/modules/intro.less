@@ -1,5 +1,12 @@
 @import "prefixer";
 
-#intro-video video {
-  .transform(scale(1.75));
+.intro-video {
+  video,
+  img {
+    .transform(scale(1.75));
+  }
+  vg-poster-image img {
+    height: 100%;
+    margin: 0 auto;
+  }
 }

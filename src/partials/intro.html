@@ -1,16 +1,30 @@
-<vg-video vg-src="videogularConfig.sources" ng-show="showVideo" id="intro-video" show-video></vg-video>
-<div class="start" ng-hide="showVideo">
-    <div class="container">
-        <a class="playbutton" ng-click="play()"></a>
+<div class="video-container intro-video">
+    <vg-video vg-src="videogularConfig.sources"></vg-video>
+    <vg-poster-image vg-url="videogularConfig.plugins.poster"></vg-poster-image>
+</div>
+<div track-video-start>
+    <div class="start" videogular-api ng-hide="videoHasStarted">
+        <div class="container">
+            <a class="playbutton" ng-click="videogularAPI.play()"></a>
 
-        <div class="headline">
-            <h1>Operation Sawfish</h1>
+            <div class="headline">
+                <h1>Operation Sawfish</h1>
 
-            <h2>Die Bombardierung Heilbronns <br/>am 4. Dezember 1944</h2>
+                <h2>Die Bombardierung Heilbronns <br/>am 4. Dezember 1944</h2>
+            </div>
+        </div>
+    </div>
+    <div class="endscreen" videogular-api
+         ng-show="videogularAPI.isCompleted && videogularAPI.currentState === 'stop' && videoHasStarted">
+        <div class="endscreen-choice">
+            <p><a href="/targetSelection"><img src="img/endscreen/interaktiv.svg"></a></p>
+
+            <p class="endscreen-choice-title"><a href="/targetSelection">Video in voller Länge ansehen</a></p>
+        </div>
+        <div class="endscreen-choice">
+            <p><a href="/targetSelection"><img src="img/endscreen/next.svg" class="icon-next"></a></p>
+
+            <p class="endscreen-choice-title"><a href="/targetSelection">Kapitel 2: "Der Plan"</a></p>
         </div>
     </div>
 </div>
-<div class="endscreen">
-
-</div>
-

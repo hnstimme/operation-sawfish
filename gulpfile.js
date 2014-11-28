@@ -47,7 +47,7 @@ gulp.task('copy-data', ['clean'], function () {
         .pipe(gulp.dest('build/data'));
 });
 gulp.task('copy-partials', ['clean'], function () {
-    return gulp.src('src/partials/**/*.html')
+    return gulp.src('src/partials/**/*.{html,svg}')
         .pipe(gulp.dest('build/partials'));
 });
 gulp.task('copy-js-components', ['clean'], function () {

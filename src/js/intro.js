@@ -3,10 +3,10 @@
 
     angular.module('app').controller('IntroController', function ($scope) {
         $scope.videogularConfig.sources = [{
-            src: "mov/final_film.mp4",
+            src: "mov/Video_deutscher_Text.mp4",
             type: "video/mp4"
         }, {
-            src: "mov/final_film.ogg",
+            src: "mov/Video_deutscher_Text.oggtheora.ogv",
             type: "video/ogg"
         }];
         $scope.videogularConfig.objectType = 'video';
@@ -40,7 +40,7 @@
                     $timeout(function () {
                         API.play();
                         scope.fullVideoLoaded = true;
-                    }, 200);
+                    }, 500);
                 }
             }
         }

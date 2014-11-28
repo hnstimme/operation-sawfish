@@ -5,7 +5,7 @@
 		<g class="planes">
 			<text x="0" y="30">Anzahl Flugzeuge</text>
 			<text x="930" y="490" class="counter"><tspan x="930" class="mosquito-counter counter-number">0</tspan><tspan x="930" dy="30" class="counter-label">Mosquito</tspan></text>
-			<text x="470" y="490" class="counter"><tspan x="470" class="lancester-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancester</tspan></text>
+			<text x="470" y="490" class="counter"><tspan x="470" class="lancester-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancaster</tspan></text>
 
 			<g transform="translate(700 460)">
 				<g ng-repeat="mosquitoGroup in mosquitoGroups" ng-attr-transform="{{mosquitoGroup.transform}}">
@@ -31,7 +31,7 @@
 		<g class="plane-types" style="opacity:0">
 			<g class="lancester">
 				<g class="clickable" ng-click="showLancesterDetails()">
-					<text x="270" y="70" text-anchor="middle" class="plane-label">Lancester</text>
+					<text x="270" y="70" text-anchor="middle" class="plane-label">Lancaster</text>
 					<g transform="translate(-80 -10) rotate(-67.5 420 340)">
 						<g transform="scale(0.88)" ng-include="'partials/svg/lancester_from_above.svg'"></g>
 					</g>

@@ -9,7 +9,7 @@
             })
             .when('/targetSelection', {
                 controller: function ($scope) {
-                    $scope.videogularConfig.sources = [{src: "audio/2.mp3", type: "audio/mp3"}];
+                    $scope.videogularConfig.sources = [{src: "audio/Kapitel_2_deutsch.mp3", type: "audio/mp3"}];
                     $scope.videogularConfig.objectType = 'audio';
                     $scope.showEndscreen = false;
                 },
@@ -17,7 +17,7 @@
             })
             .when('/flight', {
                 controller: function ($scope) {
-                    $scope.videogularConfig.sources = [{src: "audio/3.mp3", type: "audio/mp3"}];
+                    $scope.videogularConfig.sources = [{src: "audio/Kapitel_3_deutsch.mp3", type: "audio/mp3"}];
                     $scope.videogularConfig.objectType = 'audio';
                     $scope.showEndscreen = false;
                 },
@@ -25,21 +25,21 @@
             })
             .when('/bombing', {
                 controller: function ($scope) {
-                    $scope.videogularConfig.sources = [{src: "audio/4.mp3", type: "audio/mp3"}];
+                    $scope.videogularConfig.sources = [{src: "audio/Kapitel_4_deutsch.mp3", type: "audio/mp3"}];
                     $scope.videogularConfig.objectType = 'audio';
                 },
                 templateUrl: 'partials/bombing.html'
             })
             .when('/destruction', {
                 controller: function ($scope) {
-                    $scope.videogularConfig.sources = [{src: "audio/5.mp3", type: "audio/mp3"}];
+                    $scope.videogularConfig.sources = [{src: "audio/Kapitel_5_deutsch.mp3", type: "audio/mp3"}];
                     $scope.videogularConfig.objectType = 'audio';
                 },
                 templateUrl: 'partials/destruction.html'
             })
             .when('/comparison', {
                 controller: function ($scope) {
-                    $scope.videogularConfig.sources = [{src: "audio/6.mp3", type: "audio/mp3"}];
+                    $scope.videogularConfig.sources = [{src: "audio/Kapitel_6_deutsch.mp3", type: "audio/mp3"}];
                     $scope.videogularConfig.objectType = 'audio';
                 },
                 templateUrl: 'partials/comparison.html'

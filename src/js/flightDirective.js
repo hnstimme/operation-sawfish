@@ -90,6 +90,7 @@
                 scope.showLancesterDetails = function () {
                     d3.select('.lancester .plane-label').transition().attr('y', 40);
                     d3.select('.lancester-details').transition().style('opacity', 1);
+                    d3.select('.lancester').transition().style('opacity', 1);
                     d3.select('.mosquito').transition().style('opacity', 0);
                 };
                 scope.hideLancesterDetails = function () {

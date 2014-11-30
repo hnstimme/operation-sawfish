@@ -131,7 +131,7 @@
                         35.02: bombsCounterLabel.style('display', 'inline'),
                         36: bombsCounter.text('400'),
                         36.01: currentTime.text('19:29:02'),
-                        36.05: cloud.style('opacity', 0.4, 6000),
+                        36.04: cloud.style('opacity', 0.4, 16000),
                         37: bombsCounter.text('800'),
                         37.01: currentTime.text('19:29:03'),
                         38: bombsCounter.text('1200'),

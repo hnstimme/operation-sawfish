@@ -47,7 +47,6 @@
                 var svg = element[0],
                     animate = Talkie.animate(document.getElementById('bombs-wrapper'));
 
-                d3.select(svg).attr('height', document.body.offsetHeight * 0.9);
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
                     var airplaneTransitionGroups = [];

@@ -17,14 +17,14 @@
         ];
 
         var circles = [
-            {id: 'green-1', color: '#00FF00'},
-            {id: 'green-2', color: '#00FF00', transform: 'translate(160,0)'},
-            {id: 'green-3', color: '#00FF00', transform: 'translate(330,0)'},
-            {id: 'green-4', color: '#00FF00', transform: 'translate(510,0)'},
-            {id: 'yellow-1', color: '#FFFF00', transform: 'translate(300, -350) scale(2)'},
-            {id: 'red-1', color: '#FF0000', transform: 'translate(245,0)'},
-            {id: 'red-2', color: '#FF0000', transform: 'translate(330,0)'},
-            {id: 'red-3', color: '#FF0000', transform: 'translate(480,0)'}
+            {id: 'green-1', color: '#00FF00', opacity: '0.75', translate: 'translate(440 525)', scale: 'scale(1.75)'},
+            {id: 'green-2', color: '#00FF00', opacity: '0.75', translate: 'translate(600 525)', scale: 'scale(1)'},
+            {id: 'green-3', color: '#00FF00', opacity: '0.75', translate: 'translate(760 525)', scale: 'scale(2)'},
+            {id: 'green-4', color: '#00FF00', opacity: '0.75', translate: 'translate(950 525)', scale: 'scale(1.25)'},
+            {id: 'yellow-1', color: '#FFFF00', opacity: '0.9', translate: 'translate(440 525)', scale: 'scale(1.55)'},
+            {id: 'red-1', color: '#FF0000', opacity: '0.9', translate: 'translate(675 518)', scale: 'scale(1.2)'},
+            {id: 'red-2', color: '#FF0000', opacity: '0.9', translate: 'translate(775 518)', scale: 'scale(1.45)'},
+            {id: 'red-3', color: '#FF0000', opacity: '0.9', translate: 'translate(915 518)', scale: 'scale(1)'}
         ];
 
         var christbaumList = [
@@ -33,7 +33,7 @@
             {id: 3, transform: 'translate(320,10)'},
             {id: 4, transform: 'translate(470,60)'},
             {id: 5, transform: 'translate(640,40)'},
-            {id: 6, transform: 'translate(785,120)'}
+            {id: 6, transform: 'translate(785,10)'}
         ];
 
         return {
@@ -43,6 +43,7 @@
                 scope.circles = circles;
                 scope.christbaumList = christbaumList;
                 scope.mosquitoAirplanes = mosquitoAirplanes;
+                scope.timelineDef = {};
 
                 var svg = element[0],
                     animate = Talkie.animate(document.getElementById('bombs-wrapper'));
@@ -56,10 +57,6 @@
                     var mosquitoTransitionGroups = [];
                     mosquitoAirplanes.forEach(function (mosquito) {
                         mosquitoTransitionGroups.push(animate.select('.mosquito-' + mosquito.id));
-                    });
-                    var circleGroups = [];
-                    circles.forEach(function (circle) {
-                        circleGroups[circle.id] = animate.select('.circle-' + circle.id);
                     });
                     var christbaumGroups = [];
                     christbaumList.forEach(function (christbaum) {
@@ -78,7 +75,7 @@
                         imgs[imgClass] = animate.select('.img-' + imgClass);
                     });
 
-                    var timeline = Talkie.timeline("#audio-container audio", {
+                    angular.extend(scope.timelineDef, {
                         0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
                         0.1: function () {
                             $analytics.eventTrack('playing', {
@@ -88,10 +85,6 @@
                         8.1: currentTime.text('19:20'),
                         3.5: bomb7.style('opacity', 1, 500),
                         3.6: bomb7.attr('transform', 'translate(600, 420)', 2000),
-                        5.4: circleGroups['green-1'].style('opacity', 1, 300),
-                        6.2: circleGroups['green-2'].style('opacity', 1, 300),
-                        5: circleGroups['green-3'].style('opacity', 1, 300),
-                        5.8: circleGroups['green-4'].style('opacity', 1, 300),
                         5.5: bomb7.style('opacity', 0, 1000),
                         7: airplaneTransitionGroups[0].attr('transform', 'translate(6000 0)', 3000),
                         7.5: airplaneTransitionGroups[1].attr('transform', 'translate(-300 0)', 2000),
@@ -109,7 +102,7 @@
                         11.9: christbaumGroups[3].attr('transform', 'translate(320, 120)', 5000),
                         12.1: christbaumGroups[4].attr('transform', 'translate(470, 170)', 5000),
                         12.3: christbaumGroups[5].attr('transform', 'translate(640, 160)', 5000),
-                        12.5: christbaumGroups[6].attr('transform', 'translate(785, 230)', 5000),
+                        12.5: christbaumGroups[6].attr('transform', 'translate(785, 120)', 5000),
                         16.5: christbaumGroups[1].style('opacity', 0, 300),
                         16.7: christbaumGroups[2].style('opacity', 0, 300),
                         16.9: christbaumGroups[3].style('opacity', 0, 300),
@@ -125,10 +118,6 @@
                         18: mosquitoTransitionGroups[1].attr('transform', 'translate(600 20)', 2000),
                         19: mosquitoTransitionGroups[2].attr('transform', 'translate(800 100)', 2000),
                         21.5: mosquitoTransitionGroups[3].attr('transform', 'translate(1000 40)', 2000),
-                        19.2: circleGroups['red-1'].style('opacity', 1, 300),
-                        20: circleGroups['red-2'].style('opacity', 1, 300),
-                        21: circleGroups['red-3'].style('opacity', 1, 300),
-                        23: circleGroups['yellow-1'].style('opacity', 1, 300),
                         23.5: mosquitoTransitionGroups[0].attr('transform', 'translate(3400 70)', 3000),
                         23.9: mosquitoTransitionGroups[1].attr('transform', 'translate(3600 20)', 3000),
                         24.5: mosquitoTransitionGroups[2].attr('transform', 'translate(3800 100)', 3000),
@@ -137,19 +126,19 @@
                         24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
                         26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 12000),
                         32: currentTime.text('19:27'),
-                        38: currentTime.text('19:29:01').attr('transform', 'translate(350 -400)', 1000),
-                        38.01: bombsCounter.style('display', 'inline'),
-                        38.02: bombsCounterLabel.style('display', 'inline'),
-                        39: bombsCounter.text('400'),
-                        39.01: currentTime.text('19:29:02'),
-                        39.05: cloud.style('opacity', 0.4, 6000),
-                        40: bombsCounter.text('800'),
-                        40.01: currentTime.text('19:29:03'),
-                        41: bombsCounter.text('1200'),
-                        41.01: currentTime.text('19:29:04'),
-                        42: bombsCounter.text('1600'),
-                        42.01: currentTime.text('19:29:05'),
-                        42.02: function () {
+                        35: currentTime.text('19:29:01').attr('transform', 'translate(350 -400)', 1000),
+                        35.01: bombsCounter.style('display', 'inline'),
+                        35.02: bombsCounterLabel.style('display', 'inline'),
+                        36: bombsCounter.text('400'),
+                        36.01: currentTime.text('19:29:02'),
+                        36.05: cloud.style('opacity', 0.4, 6000),
+                        37: bombsCounter.text('800'),
+                        37.01: currentTime.text('19:29:03'),
+                        38: bombsCounter.text('1200'),
+                        38.01: currentTime.text('19:29:04'),
+                        39: bombsCounter.text('1600'),
+                        39.01: currentTime.text('19:29:05'),
+                        39.02: function () {
                             var odometer = new Odometer({
                                 el: document.getElementById('bombs-counter'),
                                 value: 1600,
@@ -157,24 +146,64 @@
                                 animation: 'count'
                             });
                         },
-                        43.02: bombsCounter.text('245029'),
-                        43.01: currentTime.text('19:30'),
-                        44.01: currentTime.text('19:31'),
-                        45.01: currentTime.text('19:32'),
-                        46.01: currentTime.text('19:33'),
-                        47.01: currentTime.text('19:34'),
-                        48.01: currentTime.text('19:35'),
-                        49.01: currentTime.text('19:36'),
-                        50.01: currentTime.text('19:37'),
-                        51.01: currentTime.text('19:38'),
-                        52.01: currentTime.text('19:30'),
-                        53.01: currentTime.text('19:40'),
-                        62.5: imgs['feuersturm'].style('opacity', 1, 1000),
-                        67: imgs['hotel'].style('opacity', 1, 0),
-                        67.01: imgs['feuersturm'].style('opacity', 0, 1000),
-                        71: imgs['hbf'].style('opacity', 1, 0),
-                        71.01: imgs['hotel'].style('opacity', 0, 1000)
+                        40.02: bombsCounter.text('245029'),
+                        40.01: currentTime.text('19:30'),
+                        41.01: currentTime.text('19:31'),
+                        42.01: currentTime.text('19:32'),
+                        43.01: currentTime.text('19:33'),
+                        44.01: currentTime.text('19:34'),
+                        45.01: currentTime.text('19:35'),
+                        46.01: currentTime.text('19:36'),
+                        47.01: currentTime.text('19:37'),
+                        48.01: currentTime.text('19:38'),
+                        49.01: currentTime.text('19:30'),
+                        50.01: currentTime.text('19:40'),
+                        57.5: imgs['feuersturm'].style('opacity', 1, 1000),
+                        62: imgs['hotel'].style('opacity', 1, 0),
+                        62.01: imgs['feuersturm'].style('opacity', 0, 1000),
+                        66: imgs['hbf'].style('opacity', 1, 0),
+                        66.01: imgs['hotel'].style('opacity', 0, 1000)
                     });
+
+                    var addCircle = function (time, circle) {
+                        scope.timelineDef[time] = animate.select('.circle-' + circle.id).style('opacity', 1, 3000);
+                        scope.timelineDef[time + 0.01] = animate.select('.circle-' + circle.id + ' .inner-circle-1').style('opacity', 1, 500);
+                        scope.timelineDef[time + 0.02] = animate.select('.circle-' + circle.id + ' .inner-circle-2').style('opacity', 0.75, 1000);
+                        scope.timelineDef[time + 0.03] = animate.select('.circle-' + circle.id + ' .inner-circle-3').style('opacity', 0.5, 1500);
+                        scope.timelineDef[time + 0.04] = animate.select('.circle-' + circle.id + ' .inner-circle-4').style('opacity', 0.25, 2000);
+                        scope.timelineDef[time + 0.05] = animate.select('.circle-' + circle.id + ' .inner-circle-5').style('opacity', 0.1, 2500);
+                    };
+                    var removeCircle = function (time, circle) {
+                        scope.timelineDef[time] = animate.select('.circle-' + circle.id).style('opacity', 0, 3000);
+                    };
+                    var scaleCircle = function (time, circle, newScale) {
+                        scope.timelineDef[time] = animate.select('.circle-' + circle.id + ' .inner-circle-group').attr('transform', 'scale(' + newScale + ')', 3000);
+                    };
+                    var modifyCircleColor = function (time, circle, color) {
+                        scope.timelineDef[time] = animate.select('.circle-' + circle.id + ' .inner-circle-1').attr('fill', color, 500);
+                        scope.timelineDef[time + 0.01] = animate.select('.circle-' + circle.id + ' .inner-circle-2').attr('fill', color, 1000);
+                        scope.timelineDef[time + 0.02] = animate.select('.circle-' + circle.id + ' .inner-circle-3').attr('fill', color, 1500);
+                        scope.timelineDef[time + 0.03] = animate.select('.circle-' + circle.id + ' .inner-circle-4').attr('fill', color, 2000);
+                        scope.timelineDef[time + 0.04] = animate.select('.circle-' + circle.id + ' .inner-circle-5').attr('fill', color, 2500);
+                    };
+                    addCircle(5.4, circles[0]);
+                    addCircle(6.2, circles[1]);
+                    addCircle(5, circles[2]);
+                    addCircle(5.8, circles[3]);
+                    addCircle(21.6, circles[4]);
+                    addCircle(19.2, circles[5]);
+                    addCircle(19.9, circles[6]);
+                    addCircle(20.5, circles[7]);
+                    removeCircle(36.05, circles[0]);
+                    removeCircle(38.05, circles[2]);
+                    removeCircle(40.05, circles[3]);
+                    modifyCircleColor(44.05, circles[1], '#FF0000');
+                    modifyCircleColor(45.05, circles[4], '#FF0000');
+                    scaleCircle(41.05, circles[5], 1.5);
+                    scaleCircle(42.05, circles[6], 1.75);
+                    scaleCircle(43.05, circles[7], 1.25);
+
+                    Talkie.timeline("#audio-container audio", scope.timelineDef);
                 }, 500);
             }
         }

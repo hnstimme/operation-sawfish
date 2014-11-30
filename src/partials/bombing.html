@@ -30,11 +30,11 @@
 		<g ng-repeat="christbaum in christbaumList" class="christbaum christbaum-{{christbaum.id}}" ng-attr-transform="{{christbaum.transform}}" style="opacity:0">
 			<g transform="translate(0, 50) scale(0.2)">
 				<g opacity="0.75" transform="translate(1210, -480) scale(2.5)">
-					<circle opacity="0.75" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="22.358"/>
-					<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="38.833"/>
-					<circle opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.914" cy="347.989" r="62.37"/>
-					<circle opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="92.183"/>
-					<circle fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.912" cy="347.989" r="10.983"/>
+					<circle opacity="0.75" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="22.358"></circle>
+					<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="38.833"></circle>
+					<circle opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.914" cy="347.989" r="62.37"></circle>
+					<circle opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="92.183"></circle>
+					<circle fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.912" cy="347.989" r="10.983"></circle>
 				</g>
 				<g ng-include="'partials/svg/christbaum.html'"></g>
 			</g>
@@ -44,13 +44,13 @@
 			<g transform="translate(-250, -100) scale(0.3)" ng-include="'partials/svg/mosquito_side_simplified.html'"></g>
 		</g>
 
-		<g ng-repeat="circle in circles" class="circle circle-{{circle.id}}" transform="translate(720, 190)" style="opacity:0">
-			<g opacity="0.75" ng-attr-transform="{{circle.transform}}">
-				<circle opacity="0.75" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="-292.913" cy="347.989" r="22.358"/>
-				<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="-292.913" cy="347.989" r="38.833"/>
-				<circle opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="-292.914" cy="347.989" r="62.37"/>
-				<circle opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="-292.913" cy="347.989" r="92.183"/>
-				<circle fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="-292.912" cy="347.989" r="10.983"/>
+		<g ng-repeat="circle in circles" class="circle circle-{{circle.id}}" ng-attr-transform="{{circle.translate}}" style="opacity:0">
+			<g class="inner-circle-group" opacity="{{circle.opacity}}" ng-attr-transform="{{circle.scale}}">
+				<circle class="inner-circle-1" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="10.983"></circle>
+				<circle class="inner-circle-2" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="22.358"></circle>
+				<circle class="inner-circle-3" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="38.833"></circle>
+				<circle class="inner-circle-4" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="62.37"></circle>
+				<circle class="inner-circle-5" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="92.183"></circle>
 			</g>
 		</g>
 

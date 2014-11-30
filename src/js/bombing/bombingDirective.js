@@ -93,13 +93,14 @@
                     }
                     var clockContainer = animate.select('.clock-container');
 
-                    var setTime = function (hour, minute, second) {
+                    var setTime = function (hour, minute, second, duration, easing) {
+                        duration = duration || 500;
                         var hourValue = (hour % 12) + minute / 60;
-                        var result = hourHand.attr('transform', 'rotate(' + hourScale(hourValue) + ')', 500).and(minuteHand.attr('transform', 'rotate(' + minuteScale(minute) + ')', 200));
+                        var result = hourHand.attr('transform', 'rotate(' + hourScale(hourValue) + ')', 500).and(minuteHand.attr('transform', 'rotate(' + minuteScale(minute) + ')', duration, easing));
                         var currentTimeText = hour + ':' + minute;
                         if (second !== undefined) {
                             currentTimeText += ':0' + second;
-                            result = result.and(secondHand.style('opacity', 1)).and(secondHand.attr('transform', 'rotate(' + secondScale(second) + ')', 200));
+                            result = result.and(secondHand.style('opacity', 1)).and(secondHand.attr('transform', 'rotate(' + secondScale(second) + ')', duration, easing));
                         } else {
                             result = result.and(secondHand.style('opacity', 0, 500));
                         }
@@ -174,23 +175,19 @@
                         38: bombsCounter.text('1200').and(setTime(19, 29, 3)),
                         39: bombsCounter.text('1600').and(setTime(19, 29, 4)),
                         40: bombsCounter.text('1800').and(setTime(19, 29, 5)),
-                        41: redClockArea.style('opacity', 0.6, 4000).and(function () {
-                            odometer.options.duration = 4000;
+                        41: redClockArea.style('opacity', 0.6, 3000).and(function () {
+                            odometer.options.duration = 3000;
                             odometer.options.value = 245029;
                             this.setUndo(function () {
                                 odometer.options.duration = 0;
                             })
-                        }).and(bombsCounter.text('245029')),
+                        }).and(bombsCounter.text('245029')).and(setTime(19, 40, undefined, 3000, 'linear')),
                         57.5: imgs['feuersturm'].style('opacity', 1, 1000),
                         62: imgs['hotel'].style('opacity', 1, 0),
                         62.01: imgs['feuersturm'].style('opacity', 0, 1000),
                         66: imgs['hbf'].style('opacity', 1, 0),
                         66.01: imgs['hotel'].style('opacity', 0, 1000)
                     });
-                    var initTime = 41.01, duration = 4, startMinute = 30, minutes = 10, timePerMinute = duration / minutes;
-                    for (var i = startMinute; i <= startMinute + minutes; i++) {
-                        scope.timelineDef[initTime + (i - startMinute) * timePerMinute] = setTime(19, i);
-                    }
 
                     var addCircle = function (time, circle) {
                         scope.timelineDef[time] = animate.select('.circle-' + circle.id).style('opacity', 1, 3000);

@@ -28,7 +28,7 @@
 		</g>
 
 		<g ng-repeat="christbaum in christbaumList" class="christbaum christbaum-{{christbaum.id}}" ng-attr-transform="{{christbaum.transform}}" style="opacity:0">
-			<g transform="translate(0, 0) scale(0.35)">
+			<g transform="translate(0, 50) scale(0.2)">
 				<g opacity="0.75" transform="translate(1210, -480) scale(2.5)">
 					<circle opacity="0.75" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="22.358"/>
 					<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="38.833"/>
@@ -41,7 +41,7 @@
 		</g>
 
 		<g ng-repeat="mosquitoAirplane in mosquitoAirplanes" class="mosquito mosquito-{{mosquitoAirplane.id}}" transform="translate(-3000, 0)">
-			<g transform="translate(0, 0) scale(-0.35 0.35)" ng-include="'partials/svg/mosquito_side.html'"></g>
+			<g transform="translate(-250, -100) scale(0.3)" ng-include="'partials/svg/mosquito_side_simplified.html'"></g>
 		</g>
 
 		<g ng-repeat="circle in circles" class="circle circle-{{circle.id}}" transform="translate(720, 190)" style="opacity:0">

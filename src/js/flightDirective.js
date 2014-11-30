@@ -289,7 +289,7 @@
                             map.leafletMap.removeLayer(circleMarker);
                         });
                     };
-                    timelineDef[37] = function () {
+                    timelineDef[36.5] = function () {
                         var promise = $timeout(function () {
                             scope.showEndscreen = true;
                         }, 2000);

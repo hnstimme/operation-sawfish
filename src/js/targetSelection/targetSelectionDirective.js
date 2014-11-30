@@ -143,7 +143,7 @@
                                 d3.selectAll('.legend-entry-brandanfaellig').style('display', 'none').style('opacity', 0);
                             });
                         },
-                        27: function () {
+                        26.5: function () {
                             scope.showEndscreen = true;
                             d3.select('.legend-intro').style('display', 'block');
                             this.setUndo(function () {

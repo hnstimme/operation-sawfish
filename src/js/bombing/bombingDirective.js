@@ -69,7 +69,7 @@
                     var bombs = animate.select('.bombs');
                     var cloud = animate.select('.cloud');
 
-                    var imgClasses = ['hbf', 'hotel', 'feuersturm'];
+                    var imgClasses = ['hbf', 'hotel', 'feuersturm', 'brand3'];
                     var imgs = [];
                     imgClasses.forEach(function (imgClass) {
                         imgs[imgClass] = animate.select('.img-' + imgClass);
@@ -182,11 +182,10 @@
                                 odometer.options.duration = 0;
                             })
                         }).and(bombsCounter.text('245029')).and(setTime(19, 40, undefined, 3000, 'linear')),
-                        57.5: imgs['feuersturm'].style('opacity', 1, 1000),
-                        62: imgs['hotel'].style('opacity', 1, 0),
-                        62.01: imgs['feuersturm'].style('opacity', 0, 1000),
-                        66: imgs['hbf'].style('opacity', 1, 0),
-                        66.01: imgs['hotel'].style('opacity', 0, 1000)
+                        56: imgs['feuersturm'].style('opacity', 1, 1000),
+                        59.5: imgs['hotel'].style('opacity', 1, 300).and(imgs['feuersturm'].style('opacity', 0, 1000)),
+                        63: imgs['brand3'].style('opacity', 1, 300).and(imgs['hotel'].style('opacity', 0, 1000)),
+                        66: imgs['hbf'].style('opacity', 1, 300).and(imgs['brand3'].style('opacity', 0, 1000))
                     });
 
                     var addCircle = function (time, circle) {

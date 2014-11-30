@@ -48,10 +48,19 @@
 		</g>
 
 		<g class="cloud" style="opacity:0">
-			<g transform="scale(0.9) translate(-250 140)" ng-include="'partials/svg/cloud.html'"></g>
+			<g transform="scale(0.7) translate(60 240)" ng-include="'partials/svg/cloud.html'"></g>
 		</g>
 
-		<g class="bombs" transform="scale(0.55) translate(950 50)" style="opacity:0" ng-include="'partials/svg/bombTypes.html'"></g>
+		<g class="bombs" style="opacity:0">
+			<g class="explosive-bombs" style="opacity:0.5">
+				<text x="432" y="80" class="bomb-label" style="opacity:0">Sprengbomben</text>
+				<g transform="scale(0.45) translate(740 -20)" ng-include="'partials/svg/explosiveBombs.html'"></g>
+			</g>
+			<g class="fire-bombs" transform="translate(480 79)" style="opacity:0.5">
+				<text x="210" y="100" class="bomb-label" style="opacity:0">Brandbomben</text>
+				<g transform="scale(0.45)" ng-include="'partials/svg/fireBomb.html'"></g>
+			</g>
+		</g>
 
 		<g ng-repeat="airplane in airplanes" class="airplane airplane-{{airplane.id}}" transform="translate(0, 0) scale(0.35)">
         	<g transform="translate(-2000 0)" ng-include="'partials/svg/lancaster_side_simplified.html'"></g>

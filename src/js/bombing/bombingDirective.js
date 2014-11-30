@@ -67,6 +67,10 @@
                     var bombsCounter = animate.select('.bombs-counter');
                     var bombsCounterLabel = animate.select('.bombs-counter-label');
                     var bombs = animate.select('.bombs');
+                    var explosiveBombs = animate.select('.explosive-bombs');
+                    var explosiveBombsLabel = animate.select('.explosive-bombs text');
+                    var fireBombs = animate.select('.fire-bombs');
+                    var fireBombsLabel = animate.select('.fire-bombs text');
                     var cloud = animate.select('.cloud');
 
                     var imgClasses = ['hbf', 'hotel', 'feuersturm', 'brand3'];
@@ -167,21 +171,22 @@
                         26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 12000),
                         25.5: setTime(19, 27).and(greenClockAreas[3].style('opacity', 0.6, 11400, 'linear')),
                         34: clockContainer.attr('transform', 'translate(350, -330)', 1500),
-                        35: setTime(19, 29, 0),
-                        35.01: bombsCounter.style('display', 'inline'),
-                        35.02: bombsCounterLabel.style('display', 'inline'),
+                        35: setTime(19, 29, 0).and(bombsCounter.style('display', 'inline')).and(bombsCounterLabel.style('display', 'inline')),
                         36: bombsCounter.text('400').and(setTime(19, 29, 1)).and(cloud.style('opacity', 0.4, 16000)),
                         37: bombsCounter.text('800').and(setTime(19, 29, 2)),
                         38: bombsCounter.text('1200').and(setTime(19, 29, 3)),
                         39: bombsCounter.text('1600').and(setTime(19, 29, 4)),
-                        40: bombsCounter.text('1800').and(setTime(19, 29, 5)),
-                        41: redClockArea.style('opacity', 0.6, 3000).and(function () {
-                            odometer.options.duration = 3000;
+                        40: bombsCounter.text('2000').and(setTime(19, 29, 5)),
+                        41: redClockArea.style('opacity', 0.6, 4000).and(function () {
+                            odometer.options.duration = 4000;
                             odometer.options.value = 245029;
                             this.setUndo(function () {
                                 odometer.options.duration = 0;
                             })
-                        }).and(bombsCounter.text('245029')).and(setTime(19, 40, undefined, 3000, 'linear')),
+                        }).and(bombsCounter.text('245029')).and(setTime(19, 40, undefined, 4000, 'linear')),
+                        47: clockContainer.attr('transform', 'translate(0, 0)', 1500).and(bombsCounter.style('display', 'none')).and(bombsCounterLabel.style('display', 'none')).and(bombs.style('opacity', 1, 1500)),
+                        48.5: explosiveBombs.style('opacity', 1, 1000).and(explosiveBombsLabel.style('opacity', 1, 1000)),
+                        51.5: fireBombs.style('opacity', 1, 1000).and(fireBombsLabel.style('opacity', 1, 1000)),
                         56: imgs['feuersturm'].style('opacity', 1, 1000),
                         59.5: imgs['hotel'].style('opacity', 1, 300).and(imgs['feuersturm'].style('opacity', 0, 1000)),
                         63: imgs['brand3'].style('opacity', 1, 300).and(imgs['hotel'].style('opacity', 0, 1000)),

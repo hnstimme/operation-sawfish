@@ -86,8 +86,11 @@
                     var hourHand = animate.select('.hour-hand');
                     var minuteHand = animate.select('.minute-hand');
                     var secondHand = animate.select('.second-hand');
-                    var greenTimeRangeClipPath = animate.select('#greenclockarea path');
                     var redClockArea = animate.select('.redclockarea');
+                    var greenClockAreas = [];
+                    for (var i = 1; i <= 4; i++) {
+                        greenClockAreas.push(animate.select('.greenclockarea' + i));
+                    }
                     var clockContainer = animate.select('.clock-container');
 
                     var setTime = function (hour, minute, second) {
@@ -102,10 +105,6 @@
                         }
                         return result.and(currentTime.text(currentTimeText));
                     };
-                    var setGreenTimeRange = function (greenTimeRange, duration) {
-                        var b = Math.tan(minuteScale(greenTimeRange) * Math.PI / 180) * 98;
-                        return greenTimeRangeClipPath.attr('d', 'M0,0L0,-98L' + b + ',-98Z', duration, 'linear');
-                    };
 
                     angular.extend(scope.timelineDef, {
                         0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
@@ -114,8 +113,8 @@
                                 category: 'Der Angriff'
                             });
                         },
-                        0.2: setGreenTimeRange(2, 5900),
-                        6.1: setTime(19, 20).and(setGreenTimeRange(4, 11900)),
+                        0.2: greenClockAreas[0].style('opacity', 0.6, 5900, 'linear'),
+                        6.1: setTime(19, 20).and(greenClockAreas[1].style('opacity', 0.6, 11900, 'linear')),
                         3.5: bomb7.style('opacity', 1, 500),
                         3.6: bomb7.attr('transform', 'translate(600, 420)', 2000),
                         5.5: bomb7.style('opacity', 0, 1000),
@@ -139,7 +138,7 @@
                         16.5: christbaumGroups[1].style('opacity', 0, 300),
                         16.7: christbaumGroups[2].style('opacity', 0, 300),
                         16.9: christbaumGroups[3].style('opacity', 0, 300),
-                        18.01: setTime(19, 22).and(setGreenTimeRange(9, 7400)),
+                        18.01: setTime(19, 22).and(greenClockAreas[2].style('opacity', 0.6, 7400, 'linear')),
                         17.1: christbaumGroups[4].style('opacity', 0, 300),
                         17.4: christbaumGroups[5].style('opacity', 0, 300),
                         17.5: christbaumGroups[6].style('opacity', 0, 300),
@@ -158,7 +157,7 @@
                         23.1: airplaneTransitionGroups[0].attr('transform', 'translate(-3000 0)'),
                         24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
                         26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 12000),
-                        25.5: setTime(19, 27).and(setGreenTimeRange(11, 11400)),
+                        25.5: setTime(19, 27).and(greenClockAreas[3].style('opacity', 0.6, 11400, 'linear')),
                         35: clockContainer.attr('transform', 'translate(350, -330)', 500).and(setTime(19, 29, 0)),
                         35.01: bombsCounter.style('display', 'inline'),
                         35.02: bombsCounterLabel.style('display', 'inline'),

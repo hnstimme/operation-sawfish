@@ -95,16 +95,23 @@
 
                     var setTime = function (hour, minute, second) {
                         var hourValue = (hour % 12) + minute / 60;
-                        var result = hourHand.attr('transform', 'rotate(' + hourScale(hourValue) + ')', 500).and(minuteHand.attr('transform', 'rotate(' + minuteScale(minute) + ')', 500));
+                        var result = hourHand.attr('transform', 'rotate(' + hourScale(hourValue) + ')', 500).and(minuteHand.attr('transform', 'rotate(' + minuteScale(minute) + ')', 200));
                         var currentTimeText = hour + ':' + minute;
                         if (second !== undefined) {
                             currentTimeText += ':0' + second;
-                            result = result.and(secondHand.style('opacity', 1)).and(secondHand.attr('transform', 'rotate(' + secondScale(second) + ')', 500));
+                            result = result.and(secondHand.style('opacity', 1)).and(secondHand.attr('transform', 'rotate(' + secondScale(second) + ')', 200));
                         } else {
                             result = result.and(secondHand.style('opacity', 0, 500));
                         }
                         return result.and(currentTime.text(currentTimeText));
                     };
+
+                    var odometer = new Odometer({
+                        el: document.getElementById('bombs-counter'),
+                        value: 0,
+                        duration: 0,
+                        animation: 'count'
+                    });
 
                     angular.extend(scope.timelineDef, {
                         0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
@@ -158,44 +165,32 @@
                         24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
                         26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 12000),
                         25.5: setTime(19, 27).and(greenClockAreas[3].style('opacity', 0.6, 11400, 'linear')),
-                        35: clockContainer.attr('transform', 'translate(350, -330)', 500).and(setTime(19, 29, 0)),
+                        34: clockContainer.attr('transform', 'translate(350, -330)', 1500),
+                        35: setTime(19, 29, 0),
                         35.01: bombsCounter.style('display', 'inline'),
                         35.02: bombsCounterLabel.style('display', 'inline'),
-                        36: bombsCounter.text('400'),
-                        36.01: setTime(19, 29, 1),
-                        36.04: cloud.style('opacity', 0.4, 16000),
-                        37: bombsCounter.text('800'),
-                        37.01: setTime(19, 29, 2),
-                        38: bombsCounter.text('1200'),
-                        38.01: setTime(19, 29, 3),
-                        39: bombsCounter.text('1600'),
-                        39.01: setTime(19, 29, 4),
-                        39.02: function () {
-                            var odometer = new Odometer({
-                                el: document.getElementById('bombs-counter'),
-                                value: 1600,
-                                duration: 10000,
-                                animation: 'count'
-                            });
-                        },
-                        40.02: bombsCounter.text('245029'),
-                        40.01: setTime(19, 30).and(redClockArea.style('opacity', 0.6, 10000)),
-                        41.01: setTime(19, 31),
-                        42.01: setTime(19, 32),
-                        43.01: setTime(19, 33),
-                        44.01: setTime(19, 34),
-                        45.01: setTime(19, 35),
-                        46.01: setTime(19, 36),
-                        47.01: setTime(19, 37),
-                        48.01: setTime(19, 38),
-                        49.01: setTime(19, 39),
-                        50.01: setTime(19, 40),
+                        36: bombsCounter.text('400').and(setTime(19, 29, 1)).and(cloud.style('opacity', 0.4, 16000)),
+                        37: bombsCounter.text('800').and(setTime(19, 29, 2)),
+                        38: bombsCounter.text('1200').and(setTime(19, 29, 3)),
+                        39: bombsCounter.text('1600').and(setTime(19, 29, 4)),
+                        40: bombsCounter.text('1800').and(setTime(19, 29, 5)),
+                        41: redClockArea.style('opacity', 0.6, 4000).and(function () {
+                            odometer.options.duration = 4000;
+                            odometer.options.value = 245029;
+                            this.setUndo(function () {
+                                odometer.options.duration = 0;
+                            })
+                        }).and(bombsCounter.text('245029')),
                         57.5: imgs['feuersturm'].style('opacity', 1, 1000),
                         62: imgs['hotel'].style('opacity', 1, 0),
                         62.01: imgs['feuersturm'].style('opacity', 0, 1000),
                         66: imgs['hbf'].style('opacity', 1, 0),
                         66.01: imgs['hotel'].style('opacity', 0, 1000)
                     });
+                    var initTime = 41.01, duration = 4, startMinute = 30, minutes = 10, timePerMinute = duration / minutes;
+                    for (var i = startMinute; i <= startMinute + minutes; i++) {
+                        scope.timelineDef[initTime + (i - startMinute) * timePerMinute] = setTime(19, i);
+                    }
 
                     var addCircle = function (time, circle) {
                         scope.timelineDef[time] = animate.select('.circle-' + circle.id).style('opacity', 1, 3000);

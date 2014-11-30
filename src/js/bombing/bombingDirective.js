@@ -75,6 +75,38 @@
                         imgs[imgClass] = animate.select('.img-' + imgClass);
                     });
 
+                    // clock
+                    var hourScale = d3.scale.linear()
+                        .range([0, 330])
+                        .domain([0, 11]);
+                    var minuteScale = d3.scale.linear()
+                        .range([0, 354])
+                        .domain([0, 59]);
+                    var secondScale = minuteScale;
+                    var hourHand = animate.select('.hour-hand');
+                    var minuteHand = animate.select('.minute-hand');
+                    var secondHand = animate.select('.second-hand');
+                    var greenTimeRangeClipPath = animate.select('#greenclockarea path');
+                    var redClockArea = animate.select('.redclockarea');
+                    var clockContainer = animate.select('.clock-container');
+
+                    var setTime = function (hour, minute, second) {
+                        var hourValue = (hour % 12) + minute / 60;
+                        var result = hourHand.attr('transform', 'rotate(' + hourScale(hourValue) + ')', 500).and(minuteHand.attr('transform', 'rotate(' + minuteScale(minute) + ')', 500));
+                        var currentTimeText = hour + ':' + minute;
+                        if (second !== undefined) {
+                            currentTimeText += ':0' + second;
+                            result = result.and(secondHand.style('opacity', 1)).and(secondHand.attr('transform', 'rotate(' + secondScale(second) + ')', 500));
+                        } else {
+                            result = result.and(secondHand.style('opacity', 0, 500));
+                        }
+                        return result.and(currentTime.text(currentTimeText));
+                    };
+                    var setGreenTimeRange = function (greenTimeRange, duration) {
+                        var b = Math.tan(minuteScale(greenTimeRange) * Math.PI / 180) * 98;
+                        return greenTimeRangeClipPath.attr('d', 'M0,0L0,-98L' + b + ',-98Z', duration, 'linear');
+                    };
+
                     angular.extend(scope.timelineDef, {
                         0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
                         0.1: function () {
@@ -82,7 +114,8 @@
                                 category: 'Der Angriff'
                             });
                         },
-                        8.1: currentTime.text('19:20'),
+                        0.2: setGreenTimeRange(2, 5900),
+                        6.1: setTime(19, 20).and(setGreenTimeRange(4, 11900)),
                         3.5: bomb7.style('opacity', 1, 500),
                         3.6: bomb7.attr('transform', 'translate(600, 420)', 2000),
                         5.5: bomb7.style('opacity', 0, 1000),
@@ -106,7 +139,7 @@
                         16.5: christbaumGroups[1].style('opacity', 0, 300),
                         16.7: christbaumGroups[2].style('opacity', 0, 300),
                         16.9: christbaumGroups[3].style('opacity', 0, 300),
-                        16.01: currentTime.text('19:22'),
+                        18.01: setTime(19, 22).and(setGreenTimeRange(9, 7400)),
                         17.1: christbaumGroups[4].style('opacity', 0, 300),
                         17.4: christbaumGroups[5].style('opacity', 0, 300),
                         17.5: christbaumGroups[6].style('opacity', 0, 300),
@@ -125,19 +158,19 @@
                         23.1: airplaneTransitionGroups[0].attr('transform', 'translate(-3000 0)'),
                         24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
                         26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 12000),
-                        32: currentTime.text('19:27'),
-                        35: currentTime.text('19:29:01').attr('transform', 'translate(350 -400)', 1000),
+                        25.5: setTime(19, 27).and(setGreenTimeRange(11, 11400)),
+                        35: clockContainer.attr('transform', 'translate(350, -330)', 500).and(setTime(19, 29, 0)),
                         35.01: bombsCounter.style('display', 'inline'),
                         35.02: bombsCounterLabel.style('display', 'inline'),
                         36: bombsCounter.text('400'),
-                        36.01: currentTime.text('19:29:02'),
+                        36.01: setTime(19, 29, 1),
                         36.04: cloud.style('opacity', 0.4, 16000),
                         37: bombsCounter.text('800'),
-                        37.01: currentTime.text('19:29:03'),
+                        37.01: setTime(19, 29, 2),
                         38: bombsCounter.text('1200'),
-                        38.01: currentTime.text('19:29:04'),
+                        38.01: setTime(19, 29, 3),
                         39: bombsCounter.text('1600'),
-                        39.01: currentTime.text('19:29:05'),
+                        39.01: setTime(19, 29, 4),
                         39.02: function () {
                             var odometer = new Odometer({
                                 el: document.getElementById('bombs-counter'),
@@ -147,17 +180,17 @@
                             });
                         },
                         40.02: bombsCounter.text('245029'),
-                        40.01: currentTime.text('19:30'),
-                        41.01: currentTime.text('19:31'),
-                        42.01: currentTime.text('19:32'),
-                        43.01: currentTime.text('19:33'),
-                        44.01: currentTime.text('19:34'),
-                        45.01: currentTime.text('19:35'),
-                        46.01: currentTime.text('19:36'),
-                        47.01: currentTime.text('19:37'),
-                        48.01: currentTime.text('19:38'),
-                        49.01: currentTime.text('19:30'),
-                        50.01: currentTime.text('19:40'),
+                        40.01: setTime(19, 30).and(redClockArea.style('opacity', 0.6, 10000)),
+                        41.01: setTime(19, 31),
+                        42.01: setTime(19, 32),
+                        43.01: setTime(19, 33),
+                        44.01: setTime(19, 34),
+                        45.01: setTime(19, 35),
+                        46.01: setTime(19, 36),
+                        47.01: setTime(19, 37),
+                        48.01: setTime(19, 38),
+                        49.01: setTime(19, 39),
+                        50.01: setTime(19, 40),
                         57.5: imgs['feuersturm'].style('opacity', 1, 1000),
                         62: imgs['hotel'].style('opacity', 1, 0),
                         62.01: imgs['feuersturm'].style('opacity', 0, 1000),

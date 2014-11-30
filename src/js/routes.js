@@ -24,9 +24,10 @@
                 templateUrl: 'partials/flight.html'
             })
             .when('/bombing', {
-                controller: function ($scope) {
+                controller: function ($scope, $location) {
                     $scope.videogularConfig.sources = [{src: "audio/Kapitel_4_deutsch.mp3", type: "audio/mp3"}];
                     $scope.videogularConfig.objectType = 'audio';
+                    $scope.path = $location.path();
                 },
                 templateUrl: 'partials/bombing.html'
             })

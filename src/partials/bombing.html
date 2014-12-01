@@ -64,12 +64,12 @@
 
 		<g class="airplanes">
 			<g ng-repeat="airplane in airplanes" class="airplane airplane-{{airplane.id}}" ng-attr-transform="{{airplane.transform}}">
-				<g transform="scale(0.35)" ng-include="'partials/svg/lancaster_side_simplified.html'" style="opacity:0"></g>
+				<g transform="scale(0.25) translate(0 70)" ng-include="'partials/svg/lancaster_side_simplified.html'" style="opacity:0"></g>
 			</g>
 		</g>
 
 		<g ng-repeat="christbaum in christbaumList" class="christbaum christbaum-{{christbaum.id}}" ng-attr-transform="{{christbaum.transform}}" style="opacity:0">
-			<g transform="translate(0, 100) scale(0.2)">
+			<g transform="translate(0, 100) scale(0.15)">
 				<g opacity="0.75" transform="translate(1210, -480) scale(2.5)">
 					<circle opacity="0.75" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="22.358"></circle>
 					<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="38.833"></circle>
@@ -82,7 +82,7 @@
 		</g>
 
 		<g ng-repeat="mosquitoAirplane in mosquitoAirplanes" class="mosquito mosquito-{{mosquitoAirplane.id}}" transform="translate(-3000, 0)">
-			<g transform="translate(-250, -100) scale(0.3)" ng-include="'partials/svg/mosquito_side_simplified.html'"></g>
+			<g transform="translate(-250, -50) scale(0.25)" ng-include="'partials/svg/mosquito_side_simplified.html'"></g>
 		</g>
 
 		<g ng-repeat="circle in circles" class="circle circle-{{circle.id}}" ng-attr-transform="{{circle.translate}}" style="opacity:0">

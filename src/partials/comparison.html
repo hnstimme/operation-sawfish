@@ -8,8 +8,8 @@
         <div class="img-container img-wiederaufbau2" style="opacity:0"></div>
     </div>
 
-    <div class="selectionscreen" videogular-api ng-hide="hideStartScreen">
-        <div class="selectionscreen-choice clickable" ng-click="hideStartScreen=true;videogularAPI.play()">
+    <div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
+        <div class="selectionscreen-choice clickable" ng-click="videogularAPI.play()">
             <h2>Kapitel 6: Der Luftkrieg</h2>
 
             <p><img class="play" src="img/play.svg"></p>

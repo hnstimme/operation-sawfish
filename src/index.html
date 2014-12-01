@@ -34,7 +34,7 @@
     </script>
 </head>
 <body ng-app="app" ng-controller="AudioCtrl" ng-cloak>
-<videogular vg-player-ready="onPlayerReady" id="audio-container">
+<videogular vg-player-ready="onPlayerReady" id="audio-container" stop-video-on-route-change>
     <section class="content-container" ng-view></section>
     <vg-audio vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'audio'"></vg-audio>
     <nav ng-controller="NavCtrl" class="main-nav">

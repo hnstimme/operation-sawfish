@@ -100,8 +100,8 @@
 		</g>
     </svg>
 
-	<div class="selectionscreen" videogular-api ng-hide="hideStartScreen">
-		<div class="selectionscreen-choice clickable" ng-click="hideStartScreen=true;videogularAPI.play()">
+	<div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
+		<div class="selectionscreen-choice clickable" ng-click="videogularAPI.play()">
 			<h2>Kapitel 4: Der Angriff</h2>
 
 			<p><img class="play" src="img/play.svg"></p>

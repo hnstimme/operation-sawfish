@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict';
 
-    angular.module('app').controller('IntroController', function ($scope) {
+    angular.module('app').controller('IntroController', function ($scope, $analytics) {
         $scope.videogularConfig.sources = [{
             src: "mov/Video_deutscher_Text.mp4",
             type: "video/mp4"
@@ -13,6 +13,11 @@
         $scope.videogularConfig.plugins = {
             poster: "img/film_poster.jpg"
         };
+        $scope.$on('videoHasStarted', function () {
+            $analytics.eventTrack('playing', {
+                category: 'Heilbronn brennt'
+            });
+        });
     });
 
     angular.module('app').directive("videogularApi", function () {
@@ -46,7 +51,7 @@
         }
     });
 
-    angular.module('app').directive("trackVideoStart", function ($analytics) {
+    angular.module('app').directive("trackVideoStart", function () {
         return {
             restrict: "A",
             require: "^videogular",
@@ -56,12 +61,22 @@
                     return API.currentState;
                 }, function (newVal) {
                     if (newVal === 'play' || newVal === 'pause') {
-                        $analytics.eventTrack('playing', {
-                            category: 'Heilbronn brennt'
-                        });
                         scope.videoHasStarted = true;
+                        scope.$emit('videoHasStarted');
                         unbindWatcher();
                     }
+                });
+            }
+        }
+    });
+
+    angular.module('app').directive("stopVideoOnRouteChange", function ($rootScope) {
+        return {
+            restrict: "A",
+            require: "^videogular",
+            link: function (scope, elem, attrs, API) {
+                $rootScope.$on('$routeChangeStart', function () {
+                    API.stop();
                 });
             }
         }

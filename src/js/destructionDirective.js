@@ -3,10 +3,9 @@
 
     var map = {
         leafletMap: null,
-        layers: {},
         init: function () {
             this.leafletMap = L.map('destruction-map', {
-                center: [49.145, 9.22],
+                center: [49.1423, 9.2188],
                 zoom: 13,
                 minZoom: 5,
                 maxZoom: 18
@@ -50,12 +49,16 @@
             legend.addTo(this.leafletMap);
             return legend;
         },
-        addMarkers: function () {
-
+        addMarkers: function (geojson, cb) {
+            return L.geoJson(geojson.features, {
+                onEachFeature: function (feature, layer) {
+                    layer.on('click', cb)
+                }
+            }).addTo(this.leafletMap);
         }
     };
 
-    angular.module('app').directive('destruction', function ($analytics) {
+    angular.module('app').directive('destruction', function ($analytics, $http) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
@@ -67,24 +70,54 @@
                 imgClasses.forEach(function (imgClass) {
                     imgs[imgClass] = animate.select('.img-' + imgClass);
                 });
+                var imgsContainer = animate.select('.imgs');
 
+                var imagesOfDestructionGeojson;
+                $http.get('/data/imagesOfDestruction.json').success(function (geojson) {
+                    imagesOfDestructionGeojson = geojson;
+                });
+
+                angular.element(document.getElementsByTagName('html')[0]).bind("keyup", function (event) {
+                    if (event.which === 27) {
+                        scope.$apply(function () {
+                            scope.hideImg();
+                        });
+                    }
+                });
+
+                var showImg = function (event) {
+                    scope.$apply(function () {
+                        scope.img = event.target.feature.properties.img;
+                    });
+                };
+
+                var markerLayer;
                 scope.activateInteractive = function () {
                     scope.showEndscreen = false;
-                    // TODO add markers
+                    map.leafletMap.setZoom(16);
+                    markerLayer = map.addMarkers(imagesOfDestructionGeojson, showImg);
+                };
+                scope.hideImg = function () {
+                    scope.img = null;
                 };
 
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
+                    scope.activateInteractive();
+                    var swapImage = function (toShow, toHide) {
+                        return imgs[toShow].style('opacity', 1, 300).and(imgs[toHide].style('opacity', 0, 1000));
+                    };
+
                     Talkie.timeline("#audio-container audio", {
                         0: function () {
                             $analytics.eventTrack('playing', {
                                 category: 'Heilbronn ist zerstört'
                             });
                         },
-                        1.5: imgs['wollhaus'].style('opacity', 1, 300).and(imgs['luft'].style('opacity', 0, 1000)),
-                        4.5: imgs['rathaus'].style('opacity', 1, 300).and(imgs['wollhaus'].style('opacity', 0, 1000)),
-                        7: imgs['kiliansplatz'].style('opacity', 1, 300).and(imgs['rathaus'].style('opacity', 0, 1000)),
-                        10: imgs['kiliansplatz'].style('opacity', 0, 1000).and(function () {
+                        1.5: swapImage('wollhaus', 'luft'),
+                        4.5: swapImage('rathaus', 'wollhaus'),
+                        7: swapImage('kiliansplatz', 'rathaus'),
+                        10: imgs['kiliansplatz'].style('opacity', 0).and(imgsContainer.style('display', 'none')).and(function () {
                             var layer = map.addDestructionAreas('total');
                             d3.selectAll('.legend, .legend-entry-total').style('display', 'block').transition().duration(2000).style('opacity', 1);
                             this.setUndo(function () {
@@ -104,7 +137,11 @@
                             scope.showEndscreen = true;
                             this.setUndo(function () {
                                 scope.showEndscreen = false;
-                                // TODO remove markers
+                                scope.img = null;
+                                if (markerLayer) {
+                                    map.leafletMap.setZoom(13);
+                                    map.leafletMap.removeLayer(markerLayer);
+                                }
                             })
                         }
                     });

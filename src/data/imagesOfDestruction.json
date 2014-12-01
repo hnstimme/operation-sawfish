@@ -1,0 +1,161 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "rathaus.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.218484163284302,
+          49.142344617379734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "wollhausplatz.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.220436811447144,
+          49.13924229393745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "wiederaufbau2.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.218816757202148,
+          49.13984592864741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "kiliansplatz.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.22002911567688,
+          49.14167082608212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "goetzenturm.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.213742017745972,
+          49.13995823196834
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "deutschhof.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.21777606010437,
+          49.14070223504223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "suelmer1.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.22026515007019,
+          49.142091946716675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "hafenmarktturm.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.220694303512573,
+          49.142737658072775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "kilianskirche2.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.217926263809204,
+          49.14208492806875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "luft.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.211692810058594,
+          49.14415538609907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "hn.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.220190048217773,
+          49.14193051756303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "einhorn1.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.220833778381348,
+          49.14294821430463
+        ]
+      }
+    }
+  ]
+}

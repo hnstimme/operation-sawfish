@@ -1,10 +1,18 @@
 <div class="talkie-wrapper" destruction>
-    <div class="img-container img-kiliansplatz" style="opacity:0"></div>
-    <div class="img-container img-rathaus" style="opacity:0"></div>
-    <div class="img-container img-wollhaus" style="opacity:0"></div>
-    <div class="img-container img-luft" style="opacity:1"></div>
+    <div class="imgs" style="display:none">
+        <div class="img-container img-kiliansplatz" style="opacity:0"></div>
+        <div class="img-container img-rathaus" style="opacity:0"></div>
+        <div class="img-container img-wollhaus" style="opacity:0"></div>
+        <div class="img-container img-luft" style="opacity:1"></div>
+    </div>
 
     <div class="map-container" id="destruction-map"></div>
+
+    <div class="img-container" ng-if="img">
+        <div class="img-container" style="background-image:url('img/destruction/{{img}}')">
+            <div class="x-close-icon close-icon" ng-click="hideImg()">&#10006;</div>
+        </div>
+    </div>
 
     <div class="endscreen" ng-show="showEndscreen">
         <div class="endscreen-choice">

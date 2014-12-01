@@ -397,7 +397,7 @@ svg#flight-svg {
 
 .img-container {
   position: absolute;
-  z-index: 40;
+  z-index: 5000;
   top: 0;
   bottom: 0;
   left: 0;
@@ -405,6 +405,26 @@ svg#flight-svg {
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center center;
+  .close-icon {
+    position: absolute;
+    z-index: 100;
+    top: 14px;
+    right: 14px;
+    text-align: center;
+  }
+}
+
+.x-close-icon {
+  font-size: 40px;
+  line-height: 40px;
+  color: lighten(black, 30%);
+  background: #FFF;
+  border-radius: 6px;
+  border: 1px solid #FFF;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  opacity: 0.75;
 }
 
 .img-hbf {

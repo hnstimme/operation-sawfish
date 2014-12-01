@@ -5,7 +5,6 @@
         leafletMap: null,
         layers: {},
         init: function () {
-            L.Icon.Default.imagePath = 'bower_components/leaflet/dist/images';
             this.leafletMap = L.map('comparison-map', {
                 center: [51.1633, 10.4476],
                 zoom: 6,
@@ -14,6 +13,7 @@
             });
 
             this.addTileLayer();
+            this.addLegend();
         },
         addTileLayer: function () {
             var attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
@@ -23,15 +23,30 @@
                 'attribution': attribution
             }).addTo(this.leafletMap);
         },
-        addCircleMarker: function (lat, lon) {
-            var marker = L.circleMarker(L.latLng(lat, lon), {
+        addCircleMarker: function (city) {
+            var marker = L.circleMarker(L.latLng(city.geometry.coordinates[1], city.geometry.coordinates[0]), {
                 fillColor: '#FF0000',
                 strokeColor: '#FF0000',
                 color: '#FF0000',
+                opacity: 0.3,
+                fillOpacity: 1,
                 radius: 2
             });
+            marker.bindPopup('<p class="leaflet-popup-title">' + city.properties.name + '</p><p>Schwerster Angriff: ' + city.properties.attackDate + '</p>');
             map.leafletMap.addLayer(marker);
             return marker;
+        },
+        addLegend: function () {
+            var legend = L.control({position: 'bottomleft'});
+            legend.onAdd = function () {
+                var div = L.DomUtil.create('div', 'info legend');
+                div.style.minWidth = '150px';
+                div.style.display = 'none';
+                div.innerHTML += '<p class="current-date"></p>';
+                return div;
+            };
+            legend.addTo(this.leafletMap);
+            return legend;
         }
     };
 
@@ -39,6 +54,7 @@
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
+                moment.locale("de");
                 map.init();
                 var animate = Talkie.animate(element[0]);
 
@@ -114,9 +130,11 @@
 
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
+                    var legend = animate.select('.legend');
+                    var currentDate = animate.select('.current-date');
                     var timelineDef = {};
                     var startMoment = moment("01021942", "DDMMYYYY");
-                    var endMoment = moment("30041945", "DDMMYYYY");
+                    var endMoment = moment("31051945", "DDMMYYYY");
                     var monthsBetween = endMoment.diff(startMoment, 'months');
                     var totalTime = 18;
                     var timePerMonth = totalTime / monthsBetween;
@@ -128,10 +146,10 @@
                             var currentMonthsBetween = currentMoment.diff(startMoment, 'months');
                             var time = timePerMonth * currentMonthsBetween;
 
-                            timelineDef[time] = function () {
+                            timelineDef[time] = currentDate.text(currentMoment.format("MMMM YYYY")).and(function () {
                                 var markers = [];
                                 citiesToDisplay.forEach(function (city) {
-                                    var marker = map.addCircleMarker(city.geometry.coordinates[1], city.geometry.coordinates[0]);
+                                    var marker = map.addCircleMarker(city);
                                     markers.push(marker);
                                 });
 
@@ -140,15 +158,14 @@
                                         map.leafletMap.removeLayer(marker);
                                     })
                                 })
-                            };
+                            });
                         })();
                     }
-                    timelineDef[0.1] = function () {
-                        d3.select('.line').classed('line-fill', true).datum(effectivityData).attr("d", line);
+                    timelineDef[0.001] = legend.style('display', 'block').and(function () {
                         $analytics.eventTrack('playing', {
                             category: 'Der Luftkrieg'
                         });
-                    };
+                    });
 
                     Talkie.timeline("#audio-container audio", timelineDef);
                 }, 500);

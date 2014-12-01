@@ -4,6 +4,7 @@
     var map = {
         leafletMap: null,
         init: function () {
+            L.Icon.Default.imagePath = 'bower_components/leaflet/dist/images';
             this.leafletMap = L.map('destruction-map', {
                 center: [49.1423, 9.2188],
                 zoom: 13,

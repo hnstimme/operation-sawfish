@@ -51,7 +51,7 @@ gulp.task('copy-partials', ['clean'], function () {
         .pipe(gulp.dest('build/partials'));
 });
 gulp.task('copy-js-components', ['clean'], function () {
-    return gulp.src('src/bower_components/**/*.js')
+    return gulp.src('src/bower_components/**/*.{js,png}')
         .pipe(gulp.dest('build/bower_components'));
 });
 gulp.task('copy-fonts', ['clean'], function () {

@@ -28,6 +28,7 @@
                     $scope.videogularConfig.sources = [{src: "audio/Kapitel_4_deutsch.mp3", type: "audio/mp3"}];
                     $scope.videogularConfig.objectType = 'audio';
                     $scope.path = $location.path();
+                    $scope.showEndscreen = false;
                 },
                 templateUrl: 'partials/bombing.html'
             })

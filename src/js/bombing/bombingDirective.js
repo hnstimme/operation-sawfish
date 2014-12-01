@@ -1,6 +1,6 @@
 (function (angular) {
     'use strict';
-    angular.module('app').directive('bombing', function ($analytics) {
+    angular.module('app').directive('bombing', function ($analytics, $timeout) {
         var airplanes = [
             {id: 0, transform: 'translate(-1060 -30)'},
             {id: 1, transform: 'translate(-725 15)'},
@@ -194,7 +194,16 @@
                         56: imgs['feuersturm'].style('opacity', 1, 1000),
                         59.5: imgs['hotel'].style('opacity', 1, 300).and(imgs['feuersturm'].style('opacity', 0, 1000)),
                         63: imgs['brand3'].style('opacity', 1, 300).and(imgs['hotel'].style('opacity', 0, 1000)),
-                        66: imgs['hbf'].style('opacity', 1, 300).and(imgs['brand3'].style('opacity', 0, 1000))
+                        66: imgs['hbf'].style('opacity', 1, 300).and(imgs['brand3'].style('opacity', 0, 1000)).and(function () {
+                            var promise = $timeout(function () {
+                                scope.showEndscreen = true;
+                            }, 3000);
+                            this.setUndo(function () {
+                                $timeout.cancel(promise);
+                                scope.showEndscreen = false;
+                                scope.showBombsInteractive = false;
+                            })
+                        })
                     });
 
                     var addCircle = function (time, circle) {

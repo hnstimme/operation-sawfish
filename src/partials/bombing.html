@@ -99,4 +99,100 @@
 			<g transform="translate(135,138)" ng-include="'partials/svg/city.html'"></g>
 		</g>
     </svg>
+
+	<div class="endscreen" ng-show="showEndscreen" videogular-api>
+		<div class="endscreen-choice">
+			<p><a ng-click="showEndscreen=false;showBombsInteractive=true"><img src="img/endscreen/interaktiv.svg"></a>
+			</p>
+
+			<p class="endscreen-choice-title"><a ng-click="showEndscreen=false;showBombsInteractive=true">Bomben
+				erkunden</a></p>
+		</div>
+		<div class="endscreen-choice">
+			<p><a href="/destruction"><img src="img/endscreen/next.svg" class="icon-next"></a></p>
+
+			<p class="endscreen-choice-title"><a href="/flight">Kapitel 5: Heilbronn ist zerstört</a></p>
+		</div>
+	</div>
+
+	<div class="bombs-interactive" ng-if="showBombsInteractive">
+		<div class="bombs-interactive-container">
+			<table class="bomb-table">
+				<tbody>
+				<tr>
+					<td class="bomb-img">
+						<img src="img/bombs/08_Grossladungsbombe.svg">
+					</td>
+					<td class="bomb-desc">
+						<p class="bomb-detail-label">12000-lb-Sprengbomben</p>
+
+						<p>Diese großen Sprengbomben waren mit über 5000 Kilogramm Sprengstoff befüllt. Fünf bis zehn
+							dieser Bomben warfen die Briten über Heilbronn ab. Sie explodierten schon mehrere Meter über
+							dem Boden. So sollten sie die Dächer von den Häusern reißen, damit später kleinere Bomben in
+							die Häuser fallen.</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="bomb-img">
+						<img src="img/bombs/08_Grosse_Sprengbombe.svg">
+						<img src="img/bombs/08_Sprengbombe1.svg">
+						<img src="img/bombs/08_Sprengbombe2.svg">
+						<img src="img/bombs/08_Sprengbombe3.svg">
+						<img src="img/bombs/08_Sprengbombe4.svg">
+					</td>
+					<td class="bomb-desc">
+						<p class="bomb-detail-label">Andere Sprengbomben</p>
+
+						<p>Über 1000 solcher Bomben fielen am 4. Dezember auf Heilbronn. Je nach Größe waren sie mit
+							zwischen 500 und 1800 Kilo Sprengstoff befüllt. Manche der Bomben hatten eingebauten
+							Zeitzünder, um erst später zu explodieren. Diese Bomben finden Arbeiter zum Teil heute noch
+							auf Baustellen, weil die Zeitzünder nicht immer funktionierten.</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="bomb-img">
+						<img src="img/bombs/08_Stabbrandbomben.svg">
+					</td>
+					<td class="bomb-desc">
+						<p class="bomb-detail-label">Stabbrandbomben</p>
+
+						<p>Der große Teil der Bomben, die über Heilbronn fielen, waren solche Stabbrandbomben. Rund
+							200.000 dieser etwa 60 Zentimeter langen Stäbe warfen die Briten ab. Die Bomben waren mit
+							Thermiten gefüllt, die schnell große Hitze entstehen lassen. So sollte ganz Heilbronn
+							brennen. Reste dieser Bomben finden sich heute noch häufig auf Baustellen, zum Beispiel auf
+							dem BuGa-Areal.</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="bomb-img">
+						<img src="img/bombs/08_Leuchtbombe_Christbaum.svg">
+					</td>
+					<td class="bomb-desc">
+						<p class="bomb-detail-label">Leuchtbomben</p>
+
+						<p>Diese sogenannten Christbäume warfen die Flugzeuge an Fallschirmen ab. Die Bomben sanken nur
+							langsam zur Erde. Sie hatten einen etwa neun Kilogramm schweren Leuchtsatz geladen, der rund
+							vier Minuten lang brannte. Mit etwa 1000 dieser Bomben beleuchteten die Kampfflugzeuge den
+							Himmel, um in der Nacht eine bessere Sicht auf Heilbronn zu haben.</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="bomb-img">
+						<img src="img/bombs/08_Markierungsbombe.svg">
+					</td>
+					<td class="bomb-desc">
+						<p class="bomb-detail-label">Zielmarkierungsbomben</p>
+
+						<p>Diese Bomben waren meiste mit 60 Leuchtsätzen bestückt. Sie explodierten am Boden und setzten
+							dann eine roten, grünen oder gelben Rauch frei. Etwa 13 dieser Bomben landeten in Heilbronn.
+							Mit ihrer Hilfe sollten die Kampfflugzeuge ihre Ziele besser erkennen.</p>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+
+			<h2 class="bomb-comparison-title">Bomben im Vergleich</h2>
+			<img src="img/bombs/07_Bomben_im_Vergleich.svg">
+		</div>
+	</div>
 </div>

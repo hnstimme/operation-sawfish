@@ -63,6 +63,10 @@
                     cities = geojson.features;
                 });
 
+                scope.activateInteractive = function () {
+                    scope.showEndscreen = false;
+                };
+
                 // chart
                 var margin = {top: 20, right: 20, bottom: 30, left: 50},
                     width = 960 - margin.left - margin.right,
@@ -166,6 +170,12 @@
                             category: 'Der Luftkrieg'
                         });
                     });
+                    timelineDef[26] = function () {
+                        scope.showEndscreen = true;
+                        this.setUndo(function () {
+                            scope.showEndscreen = false;
+                        })
+                    };
 
                     Talkie.timeline("#audio-container audio", timelineDef);
                 }, 500);

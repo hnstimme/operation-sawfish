@@ -1,7 +1,14 @@
 <div class="talkie-wrapper" comparison>
     <div class="map-container" id="comparison-map"></div>
 
-    <svg viewBox="0 0 960 560" xml:space="preserve" class="comparison-chart" style="display: none;">
+    <svg viewBox="0 0 960 560" xml:space="preserve" class="comparison-chart" style="display: none;"></svg>
 
-    </svg>
+    <div class="endscreen" ng-show="showEndscreen">
+        <div class="endscreen-choice">
+            <p><a ng-click="activateInteractive()"><img src="img/endscreen/interaktiv.svg"></a>
+            </p>
+
+            <p class="endscreen-choice-title"><a ng-click="activateInteractive()">Karte erkunden</a></p>
+        </div>
+    </div>
 </div>

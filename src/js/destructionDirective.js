@@ -24,7 +24,7 @@
         },
         addDestructionAreas: function (id) {
             var imageUrl = 'img/destruction_areas_' + id + '.png',
-                imageBounds = [[49.12107, 9.16907], [49.17003, 9.25135]];
+                imageBounds = [[49.12616111111112, 9.186772222222222], [49.16519166666667, 9.246605555555554]];
             return L.imageOverlay(imageUrl, imageBounds).addTo(this.leafletMap);
         }
     };
@@ -36,7 +36,7 @@
                 map.init();
                 var animate = Talkie.animate(element[0]);
 
-                var imgClasses = ['kiliansplatz', 'rathaus', 'wollhaus'];
+                var imgClasses = ['kiliansplatz', 'wollhaus', 'rathaus', 'luft'];
                 var imgs = [];
                 imgClasses.forEach(function (imgClass) {
                     imgs[imgClass] = animate.select('.img-' + imgClass);
@@ -45,26 +45,26 @@
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
                     Talkie.timeline("#audio-container audio", {
-                        0.1: function () {
+                        0: function () {
                             $analytics.eventTrack('playing', {
                                 category: 'Heilbronn ist zerstört'
                             });
                         },
-                        3: function () {
+                        2: imgs['wollhaus'].style('opacity', 1, 300).and(imgs['luft'].style('opacity', 0, 1000)),
+                        5: imgs['rathaus'].style('opacity', 1, 300).and(imgs['wollhaus'].style('opacity', 0, 1000)),
+                        8: imgs['kiliansplatz'].style('opacity', 1, 300).and(imgs['rathaus'].style('opacity', 0, 1000)),
+                        11: imgs['kiliansplatz'].style('opacity', 0, 1000).and(function () {
                             var layer = map.addDestructionAreas('total');
                             this.setUndo(function () {
                                 map.leafletMap.removeLayer(layer);
                             });
-                        },
-                        10: function () {
+                        }),
+                        14: function () {
                             var layer = map.addDestructionAreas('partial');
                             this.setUndo(function () {
                                 map.leafletMap.removeLayer(layer);
                             });
-                        },
-                        14: imgs['kiliansplatz'].style('opacity', 1, 1000),
-                        19: imgs['rathaus'].style('opacity', 1, 0).and(imgs['kiliansplatz'].style('opacity', 0, 1000)),
-                        24: imgs['wollhaus'].style('opacity', 1, 0).and(imgs['rathaus'].style('opacity', 0, 1000))
+                        }
                     });
                 }, 500);
             }

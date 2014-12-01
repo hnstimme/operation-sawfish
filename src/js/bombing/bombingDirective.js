@@ -118,7 +118,7 @@
                         value: 0,
                         duration: 0,
                         animation: 'count',
-                        format: '(.ddd),dd'
+                        format: '( ddd),dd'
                     });
 
                     var togglePlane = function (index, opacity, duration) {
@@ -176,7 +176,7 @@
                         25.35: togglePlane(0, 1, 3000),
                         25.5: setTime(19, 27).and(greenClockAreas[3].style('opacity', 0.6, 11400, 'linear')),
                         34: clockContainer.attr('transform', 'translate(350, -330)', 1500),
-                        35: setTime(19, 29, 0).and(bombsCounter.style('display', 'inline')).and(bombsCounterLabel.style('display', 'inline')).and(togglePlane(0, 0, 1000)),
+                        35: setTime(19, 29, 0).and(bombsCounter.style('display', 'inline')).and(bombsCounterLabel.style('display', 'block')).and(togglePlane(0, 0, 1000)),
                         36: bombsCounter.text('400').and(setTime(19, 29, 1)).and(cloud.style('opacity', 0.4, 16000)),
                         37: bombsCounter.text('800').and(setTime(19, 29, 2)),
                         38: bombsCounter.text('1200').and(setTime(19, 29, 3)),

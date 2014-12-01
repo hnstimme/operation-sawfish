@@ -2,8 +2,21 @@
     <div class="img-container img-kiliansplatz" style="opacity:0"></div>
     <div class="img-container img-rathaus" style="opacity:0"></div>
     <div class="img-container img-wollhaus" style="opacity:0"></div>
-    <div class="img-container img-luft"></div>
+    <div class="img-container img-luft" style="opacity:1"></div>
 
-    <div class="map-container" id="destruction-map">
+    <div class="map-container" id="destruction-map"></div>
+
+    <div class="endscreen" ng-show="showEndscreen">
+        <div class="endscreen-choice">
+            <p><a ng-click="activateInteractive()"><img src="img/endscreen/interaktiv.svg"></a>
+            </p>
+
+            <p class="endscreen-choice-title"><a ng-click="activateInteractive()">Zerstörte Stadt erkunden</a></p>
+        </div>
+        <div class="endscreen-choice">
+            <p><a href="/comparison"><img src="img/endscreen/next.svg" class="icon-next"></a></p>
+
+            <p class="endscreen-choice-title"><a href="/flight">Kapitel 6: Der Luftkrieg</a></p>
+        </div>
     </div>
 </div>

@@ -49,6 +49,9 @@
             };
             legend.addTo(this.leafletMap);
             return legend;
+        },
+        addMarkers: function () {
+
         }
     };
 
@@ -64,6 +67,11 @@
                 imgClasses.forEach(function (imgClass) {
                     imgs[imgClass] = animate.select('.img-' + imgClass);
                 });
+
+                scope.activateInteractive = function () {
+                    scope.showEndscreen = false;
+                    // TODO add markers
+                };
 
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
@@ -91,6 +99,13 @@
                                 map.leafletMap.removeLayer(layer);
                                 d3.selectAll('.legend, .legend-entry-partial').style('display', 'none').style('opacity', 0);
                             });
+                        },
+                        21: function () {
+                            scope.showEndscreen = true;
+                            this.setUndo(function () {
+                                scope.showEndscreen = false;
+                                // TODO remove markers
+                            })
                         }
                     });
                 }, 500);

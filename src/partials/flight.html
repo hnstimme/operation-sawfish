@@ -146,18 +146,26 @@
 		</g>
     </svg>
 
-	<div class="endscreen" ng-show="showEndscreen" videogular-api>
-		<div class="endscreen-choice">
+	<div class="selectionscreen" videogular-api ng-hide="hideStartScreen">
+		<div class="selectionscreen-choice clickable" ng-click="hideStartScreen=true;videogularAPI.play()">
+			<h2>Kapitel 3: Der Anflug</h2>
+
+			<p><img class="play" src="img/play.svg"></p>
+		</div>
+	</div>
+
+	<div class="selectionscreen" ng-show="showEndscreen" videogular-api>
+		<div class="selectionscreen-choice">
 			<p><a ng-click="showEndscreen=false;videogularAPI.seekTime(14)"><img src="img/endscreen/interaktiv.svg"></a>
 			</p>
 
-			<p class="endscreen-choice-title"><a ng-click="showEndscreen=false;videogularAPI.seekTime(14)">Flugzeuge
+			<p class="selectionscreen-choice-title"><a ng-click="showEndscreen=false;videogularAPI.seekTime(14)">Flugzeuge
 				erkunden</a></p>
 		</div>
-		<div class="endscreen-choice">
+		<div class="selectionscreen-choice">
 			<p><a href="/bombing"><img src="img/endscreen/next.svg" class="icon-next"></a></p>
 
-			<p class="endscreen-choice-title"><a href="/bombing">Kapitel 4: Der Angriff</a></p>
+			<p class="selectionscreen-choice-title"><a href="/bombing">Kapitel 4: Der Angriff</a></p>
 		</div>
 	</div>
 </div>

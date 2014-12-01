@@ -28,9 +28,9 @@
                 fillColor: '#FF0000',
                 strokeColor: '#FF0000',
                 color: '#FF0000',
-                opacity: 0.3,
-                fillOpacity: 1,
-                radius: 2
+                opacity: 0,
+                fillOpacity: 0.3,
+                radius: 10
             });
             marker.bindPopup('<p class="leaflet-popup-title">' + city.properties.name + '</p><p>Schwerster Angriff: ' + city.properties.attackDate + '</p>');
             map.leafletMap.addLayer(marker);

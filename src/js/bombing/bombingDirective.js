@@ -2,13 +2,11 @@
     'use strict';
     angular.module('app').directive('bombing', function ($analytics) {
         var airplanes = [
-            {id: 0},
-            {id: 1},
-            {id: 2},
-            {id: 3},
-            {id: 4}
+            {id: 0, transform: 'translate(-1060 -30)'},
+            {id: 1, transform: 'translate(-725 15)'},
+            {id: 2, transform: 'translate(-610 -50)'},
+            {id: 3, transform: 'translate(-300 0)'}
         ];
-
         var mosquitoAirplanes = [
             {id: 0},
             {id: 1},
@@ -52,8 +50,12 @@
                 setTimeout(function () {
                     var airplaneTransitionGroups = [];
                     airplanes.forEach(function (airplane) {
-                        airplaneTransitionGroups.push(animate.select('.airplane-' + airplane.id + ' g'));
+                        airplaneTransitionGroups.push({
+                            'outer': animate.select('.airplane-' + airplane.id),
+                            'inner': animate.select('.airplane-' + airplane.id + ' g')
+                        });
                     });
+                    var airplanesGroup = animate.select('.airplanes');
                     var mosquitoTransitionGroups = [];
                     mosquitoAirplanes.forEach(function (mosquito) {
                         mosquitoTransitionGroups.push(animate.select('.mosquito-' + mosquito.id));
@@ -62,7 +64,6 @@
                     christbaumList.forEach(function (christbaum) {
                         christbaumGroups[christbaum.id] = animate.select('.christbaum-' + christbaum.id);
                     });
-                    var bomb7 = animate.select('.bomb7');
                     var currentTime = animate.select('.current-time');
                     var bombsCounter = animate.select('.bombs-counter');
                     var bombsCounterLabel = animate.select('.bombs-counter-label');
@@ -115,32 +116,35 @@
                         el: document.getElementById('bombs-counter'),
                         value: 0,
                         duration: 0,
-                        animation: 'count'
+                        animation: 'count',
+                        format: '(.ddd),dd'
                     });
 
+                    var togglePlane = function (index, opacity, duration) {
+                        return airplaneTransitionGroups[index].inner.style('opacity', opacity, duration);
+                    };
+                    var movePlanes = function (x, y, duration, easing) {
+                        return airplanesGroup.attr('transform', 'translate(' + x + ' ' + y + ')', duration, easing);
+                    };
+
                     angular.extend(scope.timelineDef, {
-                        0: airplaneTransitionGroups[0].attr('transform', 'translate(-300 0)', 4000),
-                        0.1: function () {
+                        0: greenClockAreas[0].style('opacity', 0.6, 5900, 'linear').and(function () {
                             $analytics.eventTrack('playing', {
                                 category: 'Der Angriff'
                             });
-                        },
-                        0.2: greenClockAreas[0].style('opacity', 0.6, 5900, 'linear'),
+                        }),
+                        0.5: movePlanes(1060, 0, 3000),
+                        1: togglePlane(3, 1, 1000),
+                        1.75: togglePlane(2, 1, 750),
+                        2.5: togglePlane(1, 1, 500),
+                        2.9: togglePlane(0, 1, 500),
                         6.1: setTime(19, 20).and(greenClockAreas[1].style('opacity', 0.6, 11900, 'linear')),
-                        3.5: bomb7.style('opacity', 1, 500),
-                        3.6: bomb7.attr('transform', 'translate(600, 420)', 2000),
-                        5.5: bomb7.style('opacity', 0, 1000),
-                        7: airplaneTransitionGroups[0].attr('transform', 'translate(6000 0)', 3000),
-                        7.5: airplaneTransitionGroups[1].attr('transform', 'translate(-300 0)', 2000),
-                        8: airplaneTransitionGroups[2].attr('transform', 'translate(600 -150)', 2000),
-                        8.5: airplaneTransitionGroups[3].attr('transform', 'translate(1200 50)', 2000),
-                        9: airplaneTransitionGroups[4].attr('transform', 'translate(2000 -100)', 2000),
-                        11: christbaumGroups[1].style('opacity', 1, 300),
-                        11.2: christbaumGroups[2].style('opacity', 1, 300),
-                        11.4: christbaumGroups[3].style('opacity', 1, 300),
-                        11.6: christbaumGroups[4].style('opacity', 1, 300),
-                        11.8: christbaumGroups[5].style('opacity', 1, 300),
-                        12: christbaumGroups[6].style('opacity', 1, 300),
+                        7: christbaumGroups[1].style('opacity', 1, 3000),
+                        7.2: christbaumGroups[2].style('opacity', 1, 3000),
+                        7.4: christbaumGroups[3].style('opacity', 1, 3000),
+                        7.6: christbaumGroups[4].style('opacity', 1, 3000),
+                        7.8: christbaumGroups[5].style('opacity', 1, 3000),
+                        8: christbaumGroups[6].style('opacity', 1, 3000),
                         11.5: christbaumGroups[1].attr('transform', 'translate(30, 200)', 33000, 'linear'),
                         11.7: christbaumGroups[2].attr('transform', 'translate(200, 240)', 33000, 'linear'),
                         11.9: christbaumGroups[3].attr('transform', 'translate(320, 170)', 33000, 'linear'),
@@ -154,10 +158,10 @@
                         36.1: christbaumGroups[4].style('opacity', 0, 9000),
                         36.4: christbaumGroups[5].style('opacity', 0, 9000),
                         36.5: christbaumGroups[6].style('opacity', 0, 9000),
-                        14: airplaneTransitionGroups[4].attr('transform', 'translate(6000 0)', 3000),
-                        14.4: airplaneTransitionGroups[3].attr('transform', 'translate(6000 0)', 3000),
-                        14.8: airplaneTransitionGroups[2].attr('transform', 'translate(6000 0)', 3000),
-                        15.2: airplaneTransitionGroups[1].attr('transform', 'translate(6000 0)', 3000),
+                        14: airplaneTransitionGroups[0].outer.attr('transform', 'translate(6000 0)', 3000),
+                        14.4: airplaneTransitionGroups[3].outer.attr('transform', 'translate(6000 0)', 3000),
+                        14.8: airplaneTransitionGroups[2].outer.attr('transform', 'translate(6000 0)', 3000),
+                        15.2: airplaneTransitionGroups[1].outer.attr('transform', 'translate(6000 0)', 3000),
                         17: mosquitoTransitionGroups[0].attr('transform', 'translate(400 70)', 2000),
                         18: mosquitoTransitionGroups[1].attr('transform', 'translate(600 20)', 2000),
                         19: mosquitoTransitionGroups[2].attr('transform', 'translate(800 100)', 2000),
@@ -166,12 +170,12 @@
                         23.9: mosquitoTransitionGroups[1].attr('transform', 'translate(3600 20)', 3000),
                         24.5: mosquitoTransitionGroups[2].attr('transform', 'translate(3800 100)', 3000),
                         25: mosquitoTransitionGroups[3].attr('transform', 'translate(31000 40)', 3000),
-                        23.1: airplaneTransitionGroups[0].attr('transform', 'translate(-3000 0)'),
-                        24: airplaneTransitionGroups[0].attr('transform', 'translate(-300 250)', 2000),
-                        26: airplaneTransitionGroups[0].attr('transform', 'translate(3600 200)', 12000),
+                        23.1: togglePlane(0, 0, 0),
+                        25.1: airplaneTransitionGroups[0].outer.attr('transform', 'translate(-1300 220)').and(airplaneTransitionGroups[0].outer.attr('transform', 'translate(0 200)', 12000, 'linear')),
+                        25.35: togglePlane(0, 1, 3000),
                         25.5: setTime(19, 27).and(greenClockAreas[3].style('opacity', 0.6, 11400, 'linear')),
                         34: clockContainer.attr('transform', 'translate(350, -330)', 1500),
-                        35: setTime(19, 29, 0).and(bombsCounter.style('display', 'inline')).and(bombsCounterLabel.style('display', 'inline')),
+                        35: setTime(19, 29, 0).and(bombsCounter.style('display', 'inline')).and(bombsCounterLabel.style('display', 'inline')).and(togglePlane(0, 0, 1000)),
                         36: bombsCounter.text('400').and(setTime(19, 29, 1)).and(cloud.style('opacity', 0.4, 16000)),
                         37: bombsCounter.text('800').and(setTime(19, 29, 2)),
                         38: bombsCounter.text('1200').and(setTime(19, 29, 3)),
@@ -214,10 +218,10 @@
                         scope.timelineDef[time + 0.03] = animate.select('.circle-' + circle.id + ' .inner-circle-4').attr('fill', color, 2000);
                         scope.timelineDef[time + 0.04] = animate.select('.circle-' + circle.id + ' .inner-circle-5').attr('fill', color, 2500);
                     };
-                    addCircle(5.4, circles[0]);
-                    addCircle(6.2, circles[1]);
-                    addCircle(5, circles[2]);
-                    addCircle(5.8, circles[3]);
+                    addCircle(4.5, circles[0]);
+                    addCircle(3.75, circles[1]);
+                    addCircle(3, circles[2]);
+                    addCircle(2.3, circles[3]);
                     addCircle(21.6, circles[4]);
                     addCircle(19.2, circles[5]);
                     addCircle(19.9, circles[6]);

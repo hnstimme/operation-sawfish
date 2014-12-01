@@ -50,7 +50,7 @@
         }
     };
 
-    angular.module('app').directive('comparison', function ($http, $analytics) {
+    angular.module('app').directive('comparison', function ($http, $analytics, $timeout) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
@@ -62,10 +62,6 @@
                 $http.get('data/cities.json').success(function (geojson) {
                     cities = geojson.features;
                 });
-
-                scope.activateInteractive = function () {
-                    scope.showEndscreen = false;
-                };
 
                 // chart
                 var margin = {top: 20, right: 20, bottom: 30, left: 50},
@@ -170,9 +166,25 @@
                             category: 'Der Luftkrieg'
                         });
                     });
+
+                    var imgs = [];
+                    ['wiederaufbau', 'wiederaufbau2'].forEach(function (imgClass) {
+                        imgs[imgClass] = animate.select('.img-' + imgClass);
+                    });
+                    var imgsContainer = animate.select('.imgs');
+                    var swapImage = function (toShow, toHide) {
+                        return imgs[toShow].style('opacity', 1, 300).and(imgs[toHide].style('opacity', 0, 1000));
+                    };
+
+                    timelineDef[22] = imgsContainer.style('display', 'block');
+                    timelineDef[25] = swapImage('wiederaufbau2', 'wiederaufbau');
+
                     timelineDef[26] = function () {
-                        scope.showEndscreen = true;
+                        var promise = $timeout(function () {
+                            scope.showEndscreen = true;
+                        }, 2000);
                         this.setUndo(function () {
+                            $timeout.cancel(promise);
                             scope.showEndscreen = false;
                         })
                     };

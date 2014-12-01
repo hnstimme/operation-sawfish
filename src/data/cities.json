@@ -3,132 +3,1762 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {
-        "month": "02-1942"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          9.99755859375,
-          53.553362785528094
+          6.083887,
+          50.77534599999999
         ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Aachen",
+        "attackDate": "05.10.1944",
+        "attackMonth": "10-1944"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "month": "04-1942"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          9.31640625,
-          49.196064000723794
+          13.695973,
+          53.850291
         ]
+      },
+      "properties": {
+        "attackers": "USAAF/RAF Luftwaffe",
+        "name": "Anklam",
+        "attackDate": "04.08.1944",
+        "attackMonth": "08-1944"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "month": "06-1942"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          13.7548828125,
-          51.04139389812637
+          9.135555,
+          49.980662
         ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Aschaffenburg",
+        "attackDate": "21.11.1944",
+        "attackMonth": "11-1944"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "month": "08-1942"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.9873046875,
-          50.972264889367494
+          10.89779,
+          48.37054500000001
         ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Augsburg",
+        "attackDate": "25./26.02.1944",
+        "attackMonth": "02-1944"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "month": "10-1942"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          9.755859375,
-          52.38901106223458
+          11.571335,
+          49.94564
         ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Bayreuth",
+        "attackDate": "11.04.1945",
+        "attackMonth": "04-1945"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "month": "12-1942"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          8.5693359375,
-          48.922499263758255
+          9.797342,
+          50.968884
         ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Bebra",
+        "attackDate": "04.12.1944",
+        "attackMonth": "12-1944"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "month": "02-1943"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          8.96484375,
-          49.25346477497736
+          13.404954,
+          52.52000700000001
         ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Berlin",
+        "attackDate": "03.02.1945",
+        "attackMonth": "02-1945"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "month": "04-1943"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          11.25,
-          49.396675075193976
+          8.532471,
+          52.030228
         ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Bielefeld",
+        "attackDate": "30.09.1944",
+        "attackMonth": "09-1944"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "month": "06-1943"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          10.1513671875,
-          54.3549556895541
+          7.904596,
+          49.96674000000001
         ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Bingen",
+        "attackDate": "29.12.1944",
+        "attackMonth": "12-1944"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "month": "08-1943"
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          10.01953125,
-          48.48748647988415
+          7.216236,
+          51.481844
         ]
+      },
+      "properties": {
+        "name": "Bochum",
+        "attackDate": "04.11.1944",
+        "attackMonth": "11-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.098206999999999,
+          50.73743
+        ]
+      },
+      "properties": {
+        "name": "Bonn",
+        "attackDate": "18.10.1944",
+        "attackMonth": "10-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.531644,
+          52.412529
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Brandenburg an der Havel",
+        "attackDate": "31.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.52677,
+          52.268874
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Braunschweig",
+        "attackDate": "15.10.1944",
+        "attackMonth": "10-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.801694,
+          53.079296
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Bremen",
+        "attackDate": "18./19.08.1944",
+        "attackMonth": "08-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.580942,
+          53.539584
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Bremerhaven",
+        "attackDate": "18.09.1944",
+        "attackMonth": "09-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.584411,
+          49.124971
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Bruchsal",
+        "attackDate": "01.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.92137,
+          50.827845
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Chemnitz",
+        "attackDate": "05.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.332868,
+          51.756311
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Cottbus",
+        "attackDate": "15.02.1945",
+        "attackMonth": "02-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.651193,
+          49.872825
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Darmstadt",
+        "attackDate": "11./12.09.1944",
+        "attackMonth": "09-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.242452,
+          51.82224399999999
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Dessau",
+        "attackDate": "07.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.964260999999999,
+          51.655968
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Dorsten",
+        "attackDate": "22.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.465298000000001,
+          51.513587
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Dortmund",
+        "attackDate": "12.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.737262,
+          51.050409
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Dresden",
+        "attackDate": "13./14.02.1945",
+        "attackMonth": "02-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.481105,
+          50.802951
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Düren",
+        "attackDate": "16.11.1944",
+        "attackMonth": "11-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.773456,
+          51.22774100000001
+        ]
+      },
+      "properties": {
+        "name": "Düsseldorf",
+        "attackDate": "12.06.1943",
+        "attackMonth": "06-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.762329,
+          51.434408
+        ]
+      },
+      "properties": {
+        "name": "Duisburg",
+        "attackDate": "14./15.10.1944",
+        "attackMonth": "10-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.787587,
+          52.83713300000001
+        ]
+      },
+      "properties": {
+        "attackers": "Luftwaffe",
+        "name": "Eberswalde",
+        "attackDate": "26.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.20601,
+          53.35940299999999
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Emden",
+        "attackDate": "06.09.1944",
+        "attackMonth": "09-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.25173,
+          51.839593
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Emmerich am Rhein",
+        "attackDate": "07.10.1944",
+        "attackMonth": "10-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.02988,
+          50.984768
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Erfurt",
+        "attackDate": "20.07.1944",
+        "attackMonth": "07-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.011555,
+          51.45564300000001
+        ]
+      },
+      "properties": {
+        "name": "Essen",
+        "attackDate": "23./24./25.10.1944",
+        "attackMonth": "10-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.682127,
+          50.110922
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Frankfurt (Oder)",
+        "attackDate": "15.02.1944",
+        "attackMonth": "02-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.786546,
+          52.42265
+        ]
+      },
+      "properties": {
+        "name": "Wolfsburg (Fallersleben)",
+        "attackDate": "05.08.1944",
+        "attackMonth": "08-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.682127,
+          50.110922
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Frankfurt am Main",
+        "attackDate": "22.03.1944",
+        "attackMonth": "03-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.842104,
+          47.999008
+        ]
+      },
+      "properties": {
+        "attackers": "RAFLuftwaffe",
+        "name": "Freiburg im Breisgau",
+        "attackDate": "27.11.1944",
+        "attackMonth": "11-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.480011,
+          47.661765
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Friedrichshafen",
+        "attackDate": "28.04.1944",
+        "attackMonth": "04-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.988667,
+          49.477117
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF/RAF",
+        "name": "Fürth",
+        "attackDate": "25.02.1944",
+        "attackMonth": "02-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.085717,
+          51.51774399999999
+        ]
+      },
+      "properties": {
+        "name": "Gelsenkirchen",
+        "attackDate": "06.11.1944",
+        "attackMonth": "11-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.678403,
+          50.584051
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Gießen",
+        "attackDate": "06.12.1944",
+        "attackMonth": "12-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.915804,
+          51.54128
+        ]
+      },
+      "properties": {
+        "name": "Göttingen",
+        "attackDate": "07.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.385754,
+          51.903237
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Gütersloh",
+        "attackDate": "26.11.1944",
+        "attackMonth": "11-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.463284000000001,
+          51.36707800000001
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Hagen",
+        "attackDate": "15.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.049616,
+          51.894871
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Halberstadt",
+        "attackDate": "08.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.968803,
+          51.49698
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Halle (Saale)",
+        "attackDate": "31.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.993682,
+          53.551085
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Hamburg",
+        "attackDate": "27./28.07.1943",
+        "attackMonth": "07-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.815982,
+          51.673858
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Hamm",
+        "attackDate": "22.04.1944",
+        "attackMonth": "04-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.92831,
+          50.126412
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Hanau",
+        "attackDate": "19.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.73201,
+          52.375892
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Hannover",
+        "attackDate": "09.10.1943",
+        "attackMonth": "10-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.210879,
+          49.142693
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Heilbronn",
+        "attackDate": "04.12.1944",
+        "attackMonth": "12-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.200915000000001,
+          51.536895
+        ]
+      },
+      "properties": {
+        "name": "Herne",
+        "attackDate": "06.11.1944",
+        "attackMonth": "11-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.957965,
+          52.154778
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/RCAF/USAAF",
+        "name": "Hildesheim",
+        "attackDate": "22.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.339843,
+          49.329583
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Homburg",
+        "attackDate": "14.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.425754,
+          48.76653499999999
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Ingolstadt",
+        "attackDate": "09.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.589237,
+          50.927054
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Jena",
+        "attackDate": "19.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.363911999999999,
+          50.922423
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Jülich",
+        "attackDate": "16.11.1944",
+        "attackMonth": "11-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.749126,
+          49.44006600000001
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Kaiserslautern",
+        "attackDate": "28.09.1944",
+        "attackMonth": "09-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.403653,
+          49.00689000000001
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Karlsruhe",
+        "attackDate": "04.12.1944",
+        "attackMonth": "12-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.479746,
+          51.312711
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Kassel",
+        "attackDate": "22.10.1943",
+        "attackMonth": "10-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.122765,
+          54.323293
+        ]
+      },
+      "properties": {
+        "name": "Kiel",
+        "attackDate": "26.08.1944",
+        "attackMonth": "08-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.588995999999999,
+          50.356943
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Koblenz",
+        "attackDate": "06.11.1944",
+        "attackMonth": "11-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.960279,
+          50.93753099999999
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Köln",
+        "attackDate": "30.05.1942",
+        "attackMonth": "05-1942"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.585342000000001,
+          51.338761
+        ]
+      },
+      "properties": {
+        "name": "Krefeld",
+        "attackDate": "21./22.06.1943",
+        "attackMonth": "06-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.118562,
+          49.198886
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Landau in der Pfalz",
+        "attackDate": "16.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.146853,
+          48.544192
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Landshut",
+        "attackDate": "19.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.373075,
+          51.339696
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Leipzig",
+        "attackDate": "04.12.1943",
+        "attackMonth": "12-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.01922,
+          51.045925
+        ]
+      },
+      "properties": {
+        "name": "Leverkusen",
+        "attackDate": "26.10.1944",
+        "attackMonth": "10-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.44518,
+          49.47741000000001
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Ludwigshafen",
+        "attackDate": "05.01.1945",
+        "attackMonth": "01-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.686559,
+          53.865467
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Lübeck",
+        "attackDate": "29.03.1942",
+        "attackMonth": "03-1942"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.627624,
+          52.12053299999999
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Magdeburg",
+        "attackDate": "16.01.1945",
+        "attackMonth": "01-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.247253,
+          49.992862
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Mainz",
+        "attackDate": "27.02.1945",
+        "attackMonth": "02-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.466039,
+          49.48745899999999
+        ]
+      },
+      "properties": {
+        "name": "Mannheim",
+        "attackDate": "05./06.09.1943",
+        "attackMonth": "09-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.419013,
+          50.573912
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Meiningen",
+        "attackDate": "23.02.1945",
+        "attackMonth": "02-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.442804,
+          51.180457
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Mönchengladbach",
+        "attackDate": "30./31.08.1943",
+        "attackMonth": "08-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.884523,
+          51.418568
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Mülheim an der Ruhr",
+        "attackDate": "22./23. Juni 1943",
+        "attackMonth": "06-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.581981,
+          48.135125
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "München",
+        "attackDate": "25.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.626135,
+          51.960665
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Münster",
+        "attackDate": "25.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.687950999999999,
+          51.204197
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Neuss",
+        "attackDate": "31.07./1.08.1942",
+        "attackMonth": "08-1942"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.791581,
+          51.499079
+        ]
+      },
+      "properties": {
+        "attackers": "RAF/USAAF",
+        "name": "Nordhausen",
+        "attackDate": "03./04.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.07675,
+          49.45203
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Nürnberg",
+        "attackDate": "02.01.1945",
+        "attackMonth": "01-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.863776,
+          51.496334
+        ]
+      },
+      "properties": {
+        "name": "Oberhausen",
+        "attackDate": "02.06.1942",
+        "attackMonth": "06-1942"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.214552,
+          53.14345
+        ]
+      },
+      "properties": {
+        "name": "Oldenburg",
+        "attackDate": "21.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.776084,
+          50.095636
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Offenbach am Main",
+        "attackDate": "18.03.1944",
+        "attackMonth": "03-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.047179,
+          52.279911
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Osnabrück",
+        "attackDate": "13.09.1944",
+        "attackMonth": "09-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.757509,
+          51.71892
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Paderborn",
+        "attackDate": "27.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.767394,
+          54.13746
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Peenemünde",
+        "attackDate": "17./18.08.1943",
+        "attackMonth": "08-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.694629,
+          48.892186
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Pforzheim",
+        "attackDate": "23.02.1945",
+        "attackMonth": "02-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.600216000000001,
+          49.201555
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Pirmasens",
+        "attackDate": "15.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.136868,
+          50.497613
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Plauen",
+        "attackDate": "10.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.064473,
+          52.390569
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Potsdam",
+        "attackDate": "14.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.401506,
+          51.767073
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Rees",
+        "attackDate": "16.02.1945",
+        "attackMonth": "02-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.101624,
+          49.01343
+        ]
+      },
+      "properties": {
+        "attackers": "RAF, USAAF",
+        "name": "Regensburg",
+        "attackDate": "17.08.1943",
+        "attackMonth": "08-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.189696000000001,
+          51.178742
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Remscheid",
+        "attackDate": "31.07.1943",
+        "attackMonth": "07-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.118105,
+          47.857127
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Rosenheim",
+        "attackDate": "18.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.099147,
+          54.092441
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Rostock",
+        "attackDate": "24./27.04.1942",
+        "attackMonth": "04-1942"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.186739,
+          49.380183
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Rothenburg ob der Tauber",
+        "attackDate": "31.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.996933,
+          49.240157
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Saarbrücken",
+        "attackDate": "05.10.1944",
+        "attackMonth": "10-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.083141,
+          51.17020699999999
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Solingen",
+        "attackDate": "4./5.11.1944",
+        "attackMonth": "11-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.087714,
+          54.29940500000001
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Stralsund",
+        "attackDate": "06.10.1944",
+        "attackMonth": "10-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.181759,
+          48.775418
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Stuttgart",
+        "attackDate": "12.09.1944",
+        "attackMonth": "09-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.637143,
+          49.749992
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Trier",
+        "attackDate": "23.12.1944",
+        "attackMonth": "12-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.987608,
+          48.401082
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Ulm",
+        "attackDate": "17.12.1944",
+        "attackMonth": "12-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.629567999999999,
+          51.664308
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Wesel",
+        "attackDate": "16.02.1945",
+        "attackMonth": "02-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.239761,
+          50.07821799999999
+        ]
+      },
+      "properties": {
+        "name": "Wiesbaden",
+        "attackDate": "2./3.02.1945",
+        "attackMonth": "02-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.106872,
+          53.53233999999999
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Wilhelmshaven",
+        "attackDate": "15.10.1944",
+        "attackMonth": "10-1944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.451602,
+          53.89794199999999
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Wismar",
+        "attackDate": "14.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.350718,
+          49.63413700000001
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Worms",
+        "attackDate": "21.02.1945 und 18.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.953355,
+          49.791304
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Würzburg",
+        "attackDate": "16.03.1945",
+        "attackMonth": "03-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.150764000000001,
+          51.256213
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Wuppertal",
+        "attackDate": "29./30.5.1943 und 24./25.5.1943",
+        "attackMonth": "05-1943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.448650000000001,
+          51.657108
+        ]
+      },
+      "properties": {
+        "attackers": "RAF",
+        "name": "Xanten",
+        "attackDate": "10.02.1945",
+        "attackMonth": "02-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.084444,
+          51.96805599999999
+        ]
+      },
+      "properties": {
+        "attackers": "USAAF",
+        "name": "Zerbst",
+        "attackDate": "16.04.1945",
+        "attackMonth": "04-1945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.363402,
+          49.245053
+        ]
+      },
+      "properties": {
+        "attackers": "RCAF",
+        "name": "Zweibrücken",
+        "attackDate": "14.03.1945",
+        "attackMonth": "03-1945"
       }
     }
   ]

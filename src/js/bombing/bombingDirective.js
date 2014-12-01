@@ -42,6 +42,7 @@
                 scope.christbaumList = christbaumList;
                 scope.mosquitoAirplanes = mosquitoAirplanes;
                 scope.timelineDef = {};
+                scope.showBombsInteractive = false;
 
                 var svg = element[0],
                     animate = Talkie.animate(document.getElementById('bombs-wrapper'));

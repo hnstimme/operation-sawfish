@@ -103,7 +103,6 @@
 
                 // TODO setTimeout is a temporary workaround
                 setTimeout(function () {
-                    scope.activateInteractive();
                     var swapImage = function (toShow, toHide) {
                         return imgs[toShow].style('opacity', 1, 300).and(imgs[toHide].style('opacity', 0, 1000));
                     };

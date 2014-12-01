@@ -118,7 +118,9 @@ gulp.task('watch-files', function () {
  */
 gulp.task('deploy', function () {
     return gulp.src('./build/**/*')
-        .pipe(deploy());
+        .pipe(deploy({
+            cacheDir: '/Users/felix/temp/os'
+        }));
 });
 
 /**

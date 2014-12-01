@@ -5,6 +5,7 @@
         leafletMap: null,
         layers: {},
         init: function () {
+            L.Icon.Default.imagePath = 'bower_components/leaflet/dist/images';
             this.leafletMap = L.map('comparison-map', {
                 center: [51.1633, 10.4476],
                 zoom: 6,
@@ -26,7 +27,8 @@
             var marker = L.circleMarker(L.latLng(lat, lon), {
                 fillColor: '#FF0000',
                 strokeColor: '#FF0000',
-                color: '#FF0000'
+                color: '#FF0000',
+                radius: 2
             });
             map.leafletMap.addLayer(marker);
             return marker;
@@ -114,14 +116,14 @@
                 setTimeout(function () {
                     var timelineDef = {};
                     var startMoment = moment("01021942", "DDMMYYYY");
-                    var endMoment = moment("30081943", "DDMMYYYY");
+                    var endMoment = moment("30041945", "DDMMYYYY");
                     var monthsBetween = endMoment.diff(startMoment, 'months');
-                    var totalTime = 24;
+                    var totalTime = 18;
                     var timePerMonth = totalTime / monthsBetween;
-                    for (var currentMoment = moment(startMoment); currentMoment.isBefore(endMoment); currentMoment.add(2, 'months')) {
+                    for (var currentMoment = moment(startMoment); currentMoment.isBefore(endMoment); currentMoment.add(1, 'months')) {
                         (function () {
                             var citiesToDisplay = cities.filter(function (city) {
-                                return city.properties.month === currentMoment.format("MM-YYYY");
+                                return city.properties.attackMonth === currentMoment.format("MM-YYYY");
                             });
                             var currentMonthsBetween = currentMoment.diff(startMoment, 'months');
                             var time = timePerMonth * currentMonthsBetween;

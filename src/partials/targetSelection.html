@@ -1,4 +1,4 @@
-<div class="map-container" id="map" target-selection></div>
+<div class="map-container" target-selection></div>
 <div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
     <a class="selectionscreen-choice" ng-click="videogularAPI.play()">
         <img class="play" src="img/play.svg">
@@ -6,7 +6,7 @@
     </a>
 </div>
 <div class="selectionscreen" ng-show="showEndscreen">
-    <a class="selectionscreen-choice" ng-click="showEndscreen=false">
+    <a class="selectionscreen-choice" ng-click="activateInteractive()">
         <img src="img/endscreen/interaktiv.svg">
         Karte erkunden
     </a>

@@ -3,12 +3,11 @@
 
     var map = {
         leafletMap: null,
-        layers: {},
-        init: function () {
-            this.leafletMap = L.map('map', {
+        init: function (element) {
+            this.leafletMap = L.map(element, {
                 center: [49.145, 9.22],
                 zoom: 14,
-                minZoom: 5,
+                minZoom: 8,
                 maxZoom: 18
             });
 
@@ -53,11 +52,16 @@
         }
     };
 
-    angular.module('app').directive('targetSelection', function ($http, $analytics) {
+    angular.module('app').directive('targetSelection', function ($http, $analytics, $timeout) {
         return {
             restrict: 'A',
-            link: function (scope) {
-                map.init();
+            link: function (scope, element) {
+                map.init(element[0]);
+
+                scope.activateInteractive = function () {
+                    scope.showEndscreen = false;
+                    d3.select('.legend-intro').style('display', 'block');
+                };
 
                 var features = {};
                 var areas = {};
@@ -137,12 +141,14 @@
                             });
                         },
                         26.5: function () {
-                            scope.showEndscreen = true;
-                            d3.select('.legend-intro').style('display', 'block');
+                            var promise = $timeout(function () {
+                                scope.showEndscreen = true;
+                            }, 2000);
                             this.setUndo(function () {
+                                $timeout.cancel(promise);
                                 scope.showEndscreen = false;
                                 d3.select('.legend-intro').style('display', 'none');
-                            })
+                            });
                         }
                     });
 

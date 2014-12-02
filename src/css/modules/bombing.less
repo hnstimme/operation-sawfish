@@ -1,3 +1,5 @@
+@import "prefixer";
+
 .bomb-label {
   font-size: 22px;
 }
@@ -72,9 +74,37 @@
   font-weight: bold;
   font-size: 47px;
   line-height: 0.7;
+  @media (max-aspect-ratio: 5/7) {
+    left: 50%;
+    margin-left: -160px;
+  }
 }
 
 .bombs-counter-label {
   font-size: 30px;
   display: block;
+}
+
+#bombs-svg {
+  @media (max-aspect-ratio: 5/7) {
+    .city, .cloud {
+      .transform(scale(1.4) translate(-290px, 95px));
+    }
+
+    .clock-container {
+      .transform(scale(1.4) translate(0, -90px));
+      .transition(all 1s);
+      &.clock-container-moved {
+        .transform(scale(1.4) translate(280px, -230px));
+      }
+    }
+
+    .circles {
+      .transform(scale(1.4) translate(-290px, 103px));
+    }
+
+    .airplanes-container {
+      .transform(translate(0, -200px));
+    }
+  }
 }

@@ -186,6 +186,9 @@ text.counter {
   left: 0;
   width: 100%;
   background-size: 100% auto;
+  @media (max-aspect-ratio: 1/1) {
+    background-size: auto 100%;
+  }
   background-repeat: no-repeat;
   background-position: center center;
   .close-icon {

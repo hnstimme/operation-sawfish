@@ -4,7 +4,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "rathaus.jpg"
+        "img": "rathaus.jpg",
+        "description": "Die Heilbronner Kilianskirche nach dem Bombenangriff am 4. Dezember 1944."
       },
       "geometry": {
         "type": "Point",
@@ -17,7 +18,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "wollhausplatz.jpg"
+        "img": "wollhausplatz.jpg",
+        "description": "Der Blick auf den zerstörten Wollhausplatz."
       },
       "geometry": {
         "type": "Point",
@@ -30,7 +32,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "wiederaufbau2.jpg"
+        "img": "wiederaufbau2.jpg",
+        "description": "62 Prozent der Gesamtstadt werden am 4. Dezember zerstört, das Zentrum fast komplett."
       },
       "geometry": {
         "type": "Point",
@@ -43,7 +46,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "kiliansplatz.jpg"
+        "img": "kiliansplatz.jpg",
+        "description": "Der zerstörte Kiliansplatz."
       },
       "geometry": {
         "type": "Point",
@@ -56,7 +60,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "goetzenturm.jpg"
+        "img": "goetzenturm.jpg",
+        "description": "Die Brücke am Götzenturm ist komplett zerbombt."
       },
       "geometry": {
         "type": "Point",
@@ -69,7 +74,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "deutschhof.jpg"
+        "img": "deutschhof.jpg",
+        "description": "Auch der Deutschhof ist schwer beschädigt. Teile der Umfassungswände sind noch intakt."
       },
       "geometry": {
         "type": "Point",
@@ -82,7 +88,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "suelmer1.jpg"
+        "img": "suelmer1.jpg",
+        "description": "Die zerstörte Sülmerstraße."
       },
       "geometry": {
         "type": "Point",
@@ -95,7 +102,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "hafenmarktturm.jpg"
+        "img": "hafenmarktturm.jpg",
+        "description": "Der zerstörte Hafenmarktturm. Den Turmabschluss bildet heute ein handgeschmiedeter Phönix aus der Asche, Symbol für das Wiederaufstehen der Stadt nach dem Luftangriff am 4. Dezember 1944."
       },
       "geometry": {
         "type": "Point",
@@ -108,7 +116,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "kilianskirche2.jpg"
+        "img": "kilianskirche2.jpg",
+        "description": "Die Kilianskirche: Mit der Räumung des Trümmerschrottes aus Chor und Schiff beginnt im Dezember 1946 der Wiederaufbau des Heilbronner Wahrzeichens. Über drei Jahrzehnte dauern die Baumaßnahmen."
       },
       "geometry": {
         "type": "Point",
@@ -121,7 +130,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "luft.jpg"
+        "img": "luft.jpg",
+        "description": "Aus der Luft offenbart sich das Ausmaß der Zerstörung."
       },
       "geometry": {
         "type": "Point",
@@ -134,7 +144,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "hn.jpg"
+        "img": "hn.jpg",
+        "description": "Was von der Heilbronner Altstadt nach der Zerstörung am 4. Dezember übrig ist, wird 1945 zum Sperrgebiet erklärt. Das Quartier um Rathaus (links), Zehender (rechts), Rauchsches Palais und Hafenmarktturm (hinten) darf nur von Räumkommandos betreten werden. Die Ruinen drohen einzustürzen."
       },
       "geometry": {
         "type": "Point",
@@ -147,7 +158,8 @@
     {
       "type": "Feature",
       "properties": {
-        "img": "einhorn1.jpg"
+        "img": "einhorn1.jpg",
+        "description": "Das historische Rokoko-Gebäude der Einhorn-Apotheke wurde vollständig zerstört."
       },
       "geometry": {
         "type": "Point",

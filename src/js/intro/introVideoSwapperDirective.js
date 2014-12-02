@@ -13,6 +13,9 @@
                     scope.videogularConfig.sources = [{
                         src: "mov/film_komplett.mp4",
                         type: "video/mp4"
+                    }, {
+                        src: "mov/film_komplett.ogg",
+                        type: "video/ogg"
                     }];
 
                     var tryToPlayPromise;

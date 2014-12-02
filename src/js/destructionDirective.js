@@ -74,7 +74,7 @@
                 var imgsContainer = animate.select('.imgs');
 
                 var imagesOfDestructionGeojson;
-                $http.get('/data/imagesOfDestruction.json').success(function (geojson) {
+                var dataPromise = $http.get('/data/imagesOfDestruction.json').success(function (geojson) {
                     imagesOfDestructionGeojson = geojson;
                 });
 
@@ -102,13 +102,12 @@
                     scope.img = null;
                 };
 
-                // TODO setTimeout is a temporary workaround
-                setTimeout(function () {
+                dataPromise.then(function () {
                     var swapImage = function (toShow, toHide) {
                         return imgs[toShow].style('opacity', 1, 300).and(imgs[toHide].style('opacity', 0, 1000));
                     };
 
-                    Talkie.timeline("#audio-container audio", {
+                    var talkie = Talkie.timeline("#audio-container audio", {
                         0: function () {
                             $analytics.eventTrack('playing', {
                                 category: 'Heilbronn ist zerstört'
@@ -145,7 +144,10 @@
                             })
                         }
                     });
-                }, 500);
+                    scope.$on('$destroy', function () {
+                        talkie.destroy();
+                    });
+                });
             }
         }
     });

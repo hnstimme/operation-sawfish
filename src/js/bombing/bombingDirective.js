@@ -47,8 +47,7 @@
                 var svg = element[0],
                     animate = Talkie.animate(document.getElementById('bombs-wrapper'));
 
-                // TODO setTimeout is a temporary workaround
-                setTimeout(function () {
+                $timeout(function () {
                     var airplaneTransitionGroups = [];
                     airplanes.forEach(function (airplane) {
                         airplaneTransitionGroups.push({
@@ -243,8 +242,11 @@
                     scaleCircle(42.05, circles[6], 1.75);
                     scaleCircle(43.05, circles[7], 1.25);
 
-                    Talkie.timeline("#audio-container audio", scope.timelineDef);
-                }, 500);
+                    var talkie = Talkie.timeline("#audio-container audio", scope.timelineDef);
+                    scope.$on('$destroy', function () {
+                        talkie.destroy();
+                    })
+                });
             }
         }
     });

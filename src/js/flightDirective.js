@@ -69,19 +69,19 @@
         return array;
     }
 
-    angular.module('app').directive('flight', function ($http, $analytics, $timeout) {
+    angular.module('app').directive('flight', function ($http, $analytics, $timeout, $q) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
                 map.init();
 
                 var airportFeatures = [];
-                $http.get('data/airports.json').success(function (geojson) {
+                var airportsPromise = $http.get('data/airports.json').success(function (geojson) {
                     airportFeatures = geojson.features;
                 });
                 var airportsToReadingLines = [];
                 var readingToHnLine = null;
-                $http.get('data/waypoints.json').success(function (geojson) {
+                var waypointsPromise = $http.get('data/waypoints.json').success(function (geojson) {
                     geojson.features.forEach(function (feature) {
                         if (!feature.properties.id) {
                             airportsToReadingLines.push(feature);
@@ -167,146 +167,150 @@
                 var svg = element[0],
                     animate = Talkie.animate(svg);
 
-                // TODO setTimeout is a temporary workaround
-                setTimeout(function () {
-                    var timelineDef = {};
-                    var opacityTime = 4;
+                $q.all([airportsPromise, waypointsPromise]).then(function () {
+                    $timeout(function () {
+                        var timelineDef = {};
+                        var opacityTime = 4;
 
-                    var gPlanes = animate.select('.planes');
-                    var gPlaneTypes = animate.select('.plane-types');
+                        var gPlanes = animate.select('.planes');
+                        var gPlaneTypes = animate.select('.plane-types');
 
-                    var lancesters = [];
-                    scope.lancesterGroups.forEach(function (group) {
-                        group.lancesters.forEach(function (lancester) {
-                            lancesters.push(animate.select('.lancester-' + group.id + '-' + lancester.id));
-                        })
-                    });
-                    var lancesterCounter = animate.select('.lancester-counter');
-                    var timePerLancester = opacityTime / lancesters.length;
-                    shuffle(lancesters);
-                    var count = 0;
-                    lancesters.forEach(function (lancester, index) {
-                        count++;
-                        timelineDef[index * timePerLancester + 6] = lancester.attr('transform', lancester.element.attr('transform').replace(/ 8701/, " 0"), 2000);
-                        timelineDef[index * timePerLancester + 7.201] = lancesterCounter.text(count);
-                    });
-
-                    var mosquitos = [];
-                    scope.mosquitoGroups.forEach(function (group) {
-                        group.mosquitos.forEach(function (mosquito) {
-                            mosquitos.push(animate.select('.mosquito-' + group.id + '-' + mosquito.id));
-                        })
-                    });
-                    var mosquitoCounter = animate.select('.mosquito-counter');
-                    var timePerMosquito = opacityTime / mosquitos.length;
-                    shuffle(mosquitos);
-                    var mosquitoCount = 0;
-                    mosquitos.forEach(function (mosquito, index) {
-                        mosquitoCount++;
-                        timelineDef[index * timePerMosquito + 6.001] = mosquito.attr('transform', mosquito.element.attr('transform').replace(/ 188/, " 0"), 2500);
-                        timelineDef[index * timePerMosquito + 7.502] = mosquitoCounter.text(mosquitoCount);
-                    });
-
-                    timelineDef[5] = function () {
-                        element.attr('style', '');
-                        this.setUndo(function () {
-                            element.attr('style', 'visibility:hidden');
+                        var lancesters = [];
+                        scope.lancesterGroups.forEach(function (group) {
+                            group.lancesters.forEach(function (lancester) {
+                                lancesters.push(animate.select('.lancester-' + group.id + '-' + lancester.id));
+                            })
                         });
-                    };
-
-                    timelineDef[2] = function () {
-                        map.leafletMap.setView([52.00366, -0.547855], 8);
-                        this.setUndo(function () {
-                            map.leafletMap.setView([51.481382896100975, 5.196533203125], 6);
+                        var lancesterCounter = animate.select('.lancester-counter');
+                        var timePerLancester = opacityTime / lancesters.length;
+                        shuffle(lancesters);
+                        var count = 0;
+                        lancesters.forEach(function (lancester, index) {
+                            count++;
+                            timelineDef[index * timePerLancester + 6] = lancester.attr('transform', lancester.element.attr('transform').replace(/ 8701/, " 0"), 2000);
+                            timelineDef[index * timePerLancester + 7.201] = lancesterCounter.text(count);
                         });
-                    };
 
-                    timelineDef[13] = gPlanes.style('opacity', 0, 500);
-                    timelineDef[13.1] = gPlaneTypes.style('opacity', 1, 500);
-                    timelineDef[18.1] = animate.select('.lancester').style('opacity', 0.5, 500);
-                    timelineDef[18.2] = animate.select('.mosquito').style('opacity', 1, 500);
+                        var mosquitos = [];
+                        scope.mosquitoGroups.forEach(function (group) {
+                            group.mosquitos.forEach(function (mosquito) {
+                                mosquitos.push(animate.select('.mosquito-' + group.id + '-' + mosquito.id));
+                            })
+                        });
+                        var mosquitoCounter = animate.select('.mosquito-counter');
+                        var timePerMosquito = opacityTime / mosquitos.length;
+                        shuffle(mosquitos);
+                        var mosquitoCount = 0;
+                        mosquitos.forEach(function (mosquito, index) {
+                            mosquitoCount++;
+                            timelineDef[index * timePerMosquito + 6.001] = mosquito.attr('transform', mosquito.element.attr('transform').replace(/ 188/, " 0"), 2500);
+                            timelineDef[index * timePerMosquito + 7.502] = mosquitoCounter.text(mosquitoCount);
+                        });
 
-                    timelineDef[21] = function () {
-                        element.attr('style', 'visibility:hidden');
-                        this.setUndo(function () {
+                        timelineDef[5] = function () {
                             element.attr('style', '');
-                        });
-                    };
-
-                    // airports
-                    timelineDef[21.05] = function () {
-                        map.leafletMap.setView([53.186287573913305, 0.015106201171874998], 10);
-                        this.setUndo(function () {
-                            map.leafletMap.setView([52.00366, -0.547855], 8);
-                        });
-                    };
-                    airportFeatures.forEach(function (feature, index) {
-                        timelineDef[21.5 + 0.2 * index] = function () {
-                            var marker = map.addMarker(feature);
                             this.setUndo(function () {
-                                map.leafletMap.removeLayer(marker);
+                                element.attr('style', 'visibility:hidden');
                             });
-                        }
-                    });
+                        };
 
-                    // flight
-                    timelineDef[24] = function () {
-                        map.leafletMap.setView([52.315195264379575, 0], 7);
-                        this.setUndo(function () {
+                        timelineDef[2] = function () {
+                            map.leafletMap.setView([52.00366, -0.547855], 8);
+                            this.setUndo(function () {
+                                map.leafletMap.setView([51.481382896100975, 5.196533203125], 6);
+                            });
+                        };
+
+                        timelineDef[13] = gPlanes.style('opacity', 0, 500);
+                        timelineDef[13.1] = gPlaneTypes.style('opacity', 1, 500);
+                        timelineDef[18.1] = animate.select('.lancester').style('opacity', 0.5, 500);
+                        timelineDef[18.2] = animate.select('.mosquito').style('opacity', 1, 500);
+
+                        timelineDef[21] = function () {
+                            element.attr('style', 'visibility:hidden');
+                            this.setUndo(function () {
+                                element.attr('style', '');
+                            });
+                        };
+
+                        // airports
+                        timelineDef[21.05] = function () {
                             map.leafletMap.setView([53.186287573913305, 0.015106201171874998], 10);
+                            this.setUndo(function () {
+                                map.leafletMap.setView([52.00366, -0.547855], 8);
+                            });
+                        };
+                        airportFeatures.forEach(function (feature, index) {
+                            timelineDef[21.5 + 0.2 * index] = function () {
+                                var marker = map.addMarker(feature);
+                                this.setUndo(function () {
+                                    map.leafletMap.removeLayer(marker);
+                                });
+                            }
                         });
-                    };
-                    timelineDef[23.5] = function () {
-                        var circleMarker = map.addCircleMarker(51.542919, -0.962162);
-                        var polylines = [];
-                        airportsToReadingLines.forEach(function (line) {
-                            var polyline = map.addPolyline(line);
-                            polylines.push(polyline);
-                        });
-                        this.setUndo(function () {
-                            polylines.forEach(function (polyline) {
+
+                        // flight
+                        timelineDef[24] = function () {
+                            map.leafletMap.setView([52.315195264379575, 0], 7);
+                            this.setUndo(function () {
+                                map.leafletMap.setView([53.186287573913305, 0.015106201171874998], 10);
+                            });
+                        };
+                        timelineDef[23.5] = function () {
+                            var circleMarker = map.addCircleMarker(51.542919, -0.962162);
+                            var polylines = [];
+                            airportsToReadingLines.forEach(function (line) {
+                                var polyline = map.addPolyline(line);
+                                polylines.push(polyline);
+                            });
+                            this.setUndo(function () {
+                                polylines.forEach(function (polyline) {
+                                    map.leafletMap.removeLayer(polyline);
+                                });
+                                map.leafletMap.removeLayer(circleMarker);
+                            });
+                        };
+
+                        timelineDef[27] = function () {
+                            var polyline = map.addPolyline(readingToHnLine);
+                            this.setUndo(function () {
                                 map.leafletMap.removeLayer(polyline);
                             });
-                            map.leafletMap.removeLayer(circleMarker);
-                        });
-                    };
+                        };
+                        timelineDef[26.5] = function () {
+                            map.leafletMap.setView([51.42661449707482, 4.2626953125], 6);
+                            this.setUndo(function () {
+                                map.leafletMap.setView([52.315195264379575, 0], 7);
+                            });
+                        };
+                        timelineDef[36] = function () {
+                            var circleMarker = map.addCircleMarker(49.140281, 9.188591);
+                            this.setUndo(function () {
+                                map.leafletMap.removeLayer(circleMarker);
+                            });
+                        };
+                        timelineDef[36.5] = function () {
+                            var promise = $timeout(function () {
+                                scope.showEndscreen = true;
+                            }, 2000);
+                            this.setUndo(function () {
+                                $timeout.cancel(promise);
+                                scope.showEndscreen = false;
+                            })
+                        };
 
-                    timelineDef[27] = function () {
-                        var polyline = map.addPolyline(readingToHnLine);
-                        this.setUndo(function () {
-                            map.leafletMap.removeLayer(polyline);
-                        });
-                    };
-                    timelineDef[26.5] = function () {
-                        map.leafletMap.setView([51.42661449707482, 4.2626953125], 6);
-                        this.setUndo(function () {
-                            map.leafletMap.setView([52.315195264379575, 0], 7);
-                        });
-                    };
-                    timelineDef[36] = function () {
-                        var circleMarker = map.addCircleMarker(49.140281, 9.188591);
-                        this.setUndo(function () {
-                            map.leafletMap.removeLayer(circleMarker);
-                        });
-                    };
-                    timelineDef[36.5] = function () {
-                        var promise = $timeout(function () {
-                            scope.showEndscreen = true;
-                        }, 2000);
-                        this.setUndo(function () {
-                            $timeout.cancel(promise);
-                            scope.showEndscreen = false;
-                        })
-                    };
+                        timelineDef[0.1] = function () {
+                            $analytics.eventTrack('playing', {
+                                category: 'Der Anflug'
+                            });
+                        };
 
-                    timelineDef[0.1] = function () {
-                        $analytics.eventTrack('playing', {
-                            category: 'Der Anflug'
+                        var talkie = Talkie.timeline("#audio-container audio", timelineDef);
+                        scope.$on('$destroy', function () {
+                            talkie.destroy();
                         });
-                    };
-
-                    Talkie.timeline("#audio-container audio", timelineDef);
-                }, 500);
+                    });
+                });
             }
         }
     });

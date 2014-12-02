@@ -59,7 +59,7 @@
                 var animate = Talkie.animate(element[0]);
 
                 var cities = [];
-                $http.get('data/cities.json').success(function (geojson) {
+                var dataPromise = $http.get('data/cities.json').success(function (geojson) {
                     cities = geojson.features;
                 });
 
@@ -128,8 +128,7 @@
                         .attr("class", "line")
                 });
 
-                // TODO setTimeout is a temporary workaround
-                setTimeout(function () {
+                dataPromise.then(function () {
                     var legend = animate.select('.legend');
                     var currentDate = animate.select('.current-date');
                     var timelineDef = {};
@@ -189,8 +188,11 @@
                         })
                     };
 
-                    Talkie.timeline("#audio-container audio", timelineDef);
-                }, 500);
+                    var talkie = Talkie.timeline("#audio-container audio", timelineDef);
+                    scope.$on('$destroy', function () {
+                        talkie.destroy();
+                    });
+                });
             }
         }
     });

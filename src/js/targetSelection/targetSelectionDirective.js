@@ -61,16 +61,15 @@
 
                 var features = {};
                 var areas = {};
-                $http.get('data/targetareas.json').success(function (geojson) {
+                var dataPromise = $http.get('data/targetareas.json').success(function (geojson) {
                     geojson.features.forEach(function (feature) {
                         features[feature.properties.id] = feature;
                     });
                     map.addLegend(geojson.features);
                 });
 
-                // TODO setTimeout is a temporary workaround
-                setTimeout(function () {
-                    Talkie.timeline("#audio-container audio", {
+                dataPromise.then(function () {
+                    var talkie = Talkie.timeline("#audio-container audio", {
                         0.1: function () {
                             $analytics.eventTrack('playing', {
                                 category: 'Der Plan'
@@ -146,7 +145,11 @@
                             })
                         }
                     });
-                }, 500);
+
+                    scope.$on('$destroy', function () {
+                        talkie.destroy();
+                    })
+                });
             }
         }
     });

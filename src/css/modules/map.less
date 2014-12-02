@@ -24,15 +24,25 @@
   background: fadeout(@nav-bg, 60%);
   padding: 21px 21px 3px 21px;
   font-size: 16px;
+  @media (max-height: 800px) {
+    padding: 14px 14px 3px 14px;
+    font-size: 14px;
+  }
 }
 
 .legend-intro {
   margin-bottom: 14px;
+  @media (max-height: 800px) {
+    display: none !important;
+  }
 }
 
 .legend-entry {
   display: table;
   margin-bottom: 18px;
+  @media (max-height: 800px) {
+    margin-bottom: 11px;
+  }
 }
 
 

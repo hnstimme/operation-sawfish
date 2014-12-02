@@ -59,7 +59,7 @@
         }
     };
 
-    angular.module('app').directive('destruction', function ($analytics, $http) {
+    angular.module('app').directive('destruction', function ($analytics, $http, $timeout) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
@@ -133,15 +133,18 @@
                             });
                         },
                         21: function () {
-                            scope.showEndscreen = true;
+                            var promise = $timeout(function () {
+                                scope.showEndscreen = true;
+                            }, 2000);
                             this.setUndo(function () {
+                                $timeout.cancel(promise);
                                 scope.showEndscreen = false;
                                 scope.img = null;
                                 if (markerLayer) {
                                     map.leafletMap.setZoom(13);
                                     map.leafletMap.removeLayer(markerLayer);
                                 }
-                            })
+                            });
                         }
                     });
                     scope.$on('$destroy', function () {

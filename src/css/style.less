@@ -426,6 +426,7 @@ nav .info {
 border-right:1px solid darken(@font-color, 30%);
 width:50px;
 float:left;
+cursor: pointer;
 }
 
 .stimme {
@@ -492,5 +493,37 @@ float:left;
 
 .share-img {
     width:40px;
+    
+}
+
+.infoscreen {
+
+    max-width:600px;
+    max-height:600px;
+    
+    overflow-y:scroll;
+    position:absolute;
+    z-index:10;
+    background-color:#fff;
+    padding:20px;
+
+    margin: 0px auto;
+    left:30%;
+    top:10%;
+    
+    p  {
+	color:#000;
+	
+    }
+    h1 {
+	color:#000;
+    }
+    
+}
+
+#close {
+    max-width:600px;
+    max-height:600px;
+    
     
 }

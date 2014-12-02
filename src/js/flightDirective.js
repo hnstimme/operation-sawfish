@@ -91,15 +91,15 @@
                     });
                 });
 
-                scope.showLancesterDetails = function () {
-                    d3.select('.lancester .plane-label').transition().attr('y', 40);
-                    d3.select('.lancester-details').transition().style('opacity', 1);
-                    d3.select('.lancester').transition().style('opacity', 1);
+                scope.showLancasterDetails = function () {
+                    d3.select('.lancaster .plane-label').transition().attr('y', 40);
+                    d3.select('.lancaster-details').transition().style('opacity', 1);
+                    d3.select('.lancaster').transition().style('opacity', 1);
                     d3.select('.mosquito').style('display', 'none').style('opacity', 0);
                 };
-                scope.hideLancesterDetails = function () {
-                    d3.select('.lancester .plane-label').transition().attr('y', 70);
-                    d3.select('.lancester-details').transition().style('opacity', 0);
+                scope.hideLancasterDetails = function () {
+                    d3.select('.lancaster .plane-label').transition().attr('y', 70);
+                    d3.select('.lancaster-details').transition().style('opacity', 0);
                     d3.select('.mosquito').style('display', 'block').transition().delay(300).style('opacity', 0.6);
                 };
                 scope.showMosquitoDetails = function () {
@@ -107,16 +107,16 @@
                     d3.select('.mosquito-default-view').transition().attr('transform', 'translate(-520 0)');
                     d3.select('.mosquito-details').transition().style('opacity', 1);
                     d3.select('.mosquito').transition().style('opacity', 1);
-                    d3.select('.lancester').style('display', 'none').style('opacity', 0);
+                    d3.select('.lancaster').style('display', 'none').style('opacity', 0);
                 };
                 scope.hideMosquitoDetails = function () {
                     d3.select('.mosquito .plane-label').transition().attr('y', 70);
                     d3.select('.mosquito-default-view').transition().attr('transform', 'translate(0 0)');
                     d3.select('.mosquito-details').transition().style('opacity', 0);
-                    d3.select('.lancester').style('display', 'block').transition().delay(300).style('opacity', 0.5);
+                    d3.select('.lancaster').style('display', 'block').transition().delay(300).style('opacity', 0.5);
                 };
 
-                scope.lancesterGroups = [];
+                scope.lancasterGroups = [];
                 var groupsToBuild = [{
                     columns: 27,
                     rowOffset: 0,
@@ -140,10 +140,10 @@
                     }
                     for (var i = 0; i < groupToBuild.rows; i++) {
                         var rowId = i + groupToBuild.rowOffset;
-                        scope.lancesterGroups.push({
+                        scope.lancasterGroups.push({
                             'id': rowId,
                             'transform': 'translate(0 ' + rowId * 40 + ')',
-                            'lancesters': group
+                            'lancasters': group
                         });
                     }
                 });
@@ -175,20 +175,20 @@
                         var gPlanes = animate.select('.planes');
                         var gPlaneTypes = animate.select('.plane-types');
 
-                        var lancesters = [];
-                        scope.lancesterGroups.forEach(function (group) {
-                            group.lancesters.forEach(function (lancester) {
-                                lancesters.push(animate.select('.lancester-' + group.id + '-' + lancester.id));
+                        var lancasters = [];
+                        scope.lancasterGroups.forEach(function (group) {
+                            group.lancasters.forEach(function (lancaster) {
+                                lancasters.push(animate.select('.lancaster-' + group.id + '-' + lancaster.id));
                             })
                         });
-                        var lancesterCounter = animate.select('.lancester-counter');
-                        var timePerLancester = opacityTime / lancesters.length;
-                        shuffle(lancesters);
+                        var lancasterCounter = animate.select('.lancaster-counter');
+                        var timePerLancaster = opacityTime / lancasters.length;
+                        shuffle(lancasters);
                         var count = 0;
-                        lancesters.forEach(function (lancester, index) {
+                        lancasters.forEach(function (lancaster, index) {
                             count++;
-                            timelineDef[index * timePerLancester + 6] = lancester.attr('transform', lancester.element.attr('transform').replace(/ 8701/, " 0"), 2000);
-                            timelineDef[index * timePerLancester + 7.201] = lancesterCounter.text(count);
+                            timelineDef[index * timePerLancaster + 6] = lancaster.attr('transform', lancaster.element.attr('transform').replace(/ 8701/, " 0"), 2000);
+                            timelineDef[index * timePerLancaster + 7.201] = lancasterCounter.text(count);
                         });
 
                         var mosquitos = [];
@@ -223,7 +223,7 @@
 
                         timelineDef[13] = gPlanes.style('opacity', 0, 500);
                         timelineDef[13.1] = gPlaneTypes.style('opacity', 1, 500);
-                        timelineDef[18.1] = animate.select('.lancester').style('opacity', 0.5, 500);
+                        timelineDef[18.1] = animate.select('.lancaster').style('opacity', 0.5, 500);
                         timelineDef[18.2] = animate.select('.mosquito').style('opacity', 1, 500);
 
                         timelineDef[21] = function () {
@@ -309,7 +309,7 @@
                         scope.$on('$destroy', function () {
                             talkie.destroy();
                         });
-                    });
+                    }, 500);
                 });
             }
         }

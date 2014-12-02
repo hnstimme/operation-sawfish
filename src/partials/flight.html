@@ -5,7 +5,7 @@
 		<g class="planes">
 			<text x="0" y="30">Anzahl Flugzeuge</text>
 			<text x="930" y="490" class="counter"><tspan x="930" class="mosquito-counter counter-number">0</tspan><tspan x="930" dy="30" class="counter-label">Mosquito</tspan></text>
-			<text x="470" y="490" class="counter"><tspan x="470" class="lancester-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancaster</tspan></text>
+			<text x="470" y="490" class="counter"><tspan x="470" class="lancaster-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancaster</tspan></text>
 
 			<g transform="translate(700 460)">
 				<g ng-repeat="mosquitoGroup in mosquitoGroups" ng-attr-transform="{{mosquitoGroup.transform}}">
@@ -19,9 +19,9 @@
 				</g>
 			</g>
 
-			<g class="lancester-groups" transform="translate(-12, 40)">
-				<g ng-repeat="lancesterGroup in lancesterGroups" class="lancester-group-{{lancesterGroup.id}}" ng-attr-transform="{{lancesterGroup.transform}}">
-					<g ng-repeat="lancester in lancesterGroup.lancesters" class="lancester-{{lancesterGroup.id}}-{{lancester.id}}" ng-attr-transform="{{lancester.transform}}">
+			<g class="lancaster-groups" transform="translate(-12, 40)">
+				<g ng-repeat="lancasterGroup in lancasterGroups" class="lancaster-group-{{lancasterGroup.id}}" ng-attr-transform="{{lancasterGroup.transform}}">
+					<g ng-repeat="lancaster in lancasterGroup.lancasters" class="lancaster-{{lancasterGroup.id}}-{{lancaster.id}}" ng-attr-transform="{{lancaster.transform}}">
 						<path d="M250.2,59.002c11.001,0,20.176,9.165,20.176,20.777v122.24l171.12,95.954v42.779l-171.12-49.501v89.227l40.337,29.946v35.446l-60.52-20.18-60.502,20.166v-35.45l40.341-29.946v-89.227l-171.14,49.51v-42.779l171.14-95.954v-122.24c0-11.612,9.15-20.777,20.16-20.777z"/>
 					</g>
 				</g>
@@ -29,17 +29,17 @@
 		</g>
 
 		<g class="plane-types" style="opacity:0">
-			<g class="lancester" style="opacity:1">
-				<g class="clickable" ng-click="showLancesterDetails()">
+			<g class="lancaster" style="opacity:1">
+				<g class="clickable" ng-click="showLancasterDetails()">
 					<text x="270" y="70" text-anchor="middle" class="plane-label">Lancaster</text>
 					<g transform="translate(-80 -10) rotate(-67.5 420 340)">
-						<g transform="scale(0.88)" ng-include="'partials/svg/lancester_from_above.html'"></g>
+						<g transform="scale(0.88)" ng-include="'partials/svg/lancaster_from_above.html'"></g>
 					</g>
 				</g>
-				<rect x="0" y="0" width="550" height="480" ng-click="showLancesterDetails()" class="clickable clickable-layer"></rect>
-				<g class="lancester-details" style="opacity:0">
+				<rect x="0" y="0" width="550" height="480" ng-click="showLancasterDetails()" class="clickable clickable-layer"></rect>
+				<g class="lancaster-details" style="opacity:0">
 					<g transform="translate(960 20)">
-						<rect x="0" y="0" width="20" height="20" ng-click="hideLancesterDetails()" class="clickable clickable-layer"></rect>
+						<rect x="0" y="0" width="20" height="20" ng-click="hideLancasterDetails()" class="clickable clickable-layer"></rect>
 						<line x1="0" x2="20" y1="0" y2="20" class="dimension-line"></line>
 						<line x1="0" x2="20" y1="20" y2="0" class="dimension-line"></line>
 					</g>
@@ -77,10 +77,10 @@
 						<line x1="917" x2="917" y1="470" y2="435" class="dimension-line"></line>
 					</g>
 					<g transform="translate(560 320)">
-						<g transform="scale(0.38)" ng-include="'partials/svg/lancester_front.html'"></g>
+						<g transform="scale(0.38)" ng-include="'partials/svg/lancaster_front.html'"></g>
 					</g>
 					<g transform="translate(560 150) scale(1 -1) rotate(180 180 0)">
-						<g transform="scale(0.38)" ng-include="'partials/svg/lancester_side.html'"></g>
+						<g transform="scale(0.38)" ng-include="'partials/svg/lancaster_side.html'"></g>
 					</g>
 				</g>
 			</g>

@@ -6,9 +6,10 @@
         init: function (element) {
             this.leafletMap = L.map(element, {
                 center: [49.145, 9.22],
-                zoom: 14,
+                zoom: 12,
                 minZoom: 8,
-                maxZoom: 18
+                maxZoom: 18,
+                zoomControl: !Modernizr.touch
             });
 
             this.addTileLayer();
@@ -102,17 +103,22 @@
                         return legendEntries[id].style('display', 'block').style('opacity', 1, 1000);
                     };
 
-                    var setZoom = function (newZoomValue, previousZoomValue) {
-                        return function () {
-                            map.leafletMap.setZoom(newZoomValue);
-                            this.setUndo(function () {
-                                map.leafletMap.setZoom(previousZoomValue);
-                            });
-                        }
+                    var fitBoundsOuter = function () {
+                        map.leafletMap.fitBounds([
+                            [49.12705572350681, 9.185643196105957],
+                            [49.15347488527833, 9.2340087890625]
+                        ]);
+                    };
+                    var fitBoundsInner = function () {
+                        map.leafletMap.fitBounds([
+                            [49.13820346350291, 9.20401096343994],
+                            [49.148506575262644, 9.228086471557617]
+                        ]);
                     };
 
                     var talkie = Talkie.timeline("#audio-container audio", {
-                        0.1: function () {
+                        0: function () {
+                            fitBoundsOuter();
                             $analytics.eventTrack('playing', {
                                 category: 'Der Plan'
                             });
@@ -124,7 +130,12 @@
                             opacity: 1
                         }).and(fadeInLegendEntry('zielgebiet-stadt')).and(fillArea('zielgebiet-stadt')),
                         11.75: fillArea('zielgebiet-boeckingen'),
-                        13: setZoom(15, 14),
+                        13: function () {
+                            fitBoundsInner();
+                            this.setUndo(function () {
+                                fitBoundsOuter();
+                            });
+                        },
                         15: addArea('brandanfaellig', 7000),
                         22.25: fadeInLegendEntry('brandanfaellig').and(fillArea('brandanfaellig')),
                         26.5: function () {

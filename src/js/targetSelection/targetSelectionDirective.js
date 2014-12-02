@@ -3,39 +3,33 @@
 
     var map = {
         leafletMap: null,
-        layers: {},
-        init: function () {
-            this.leafletMap = L.map('map', {
+        init: function (element) {
+            this.leafletMap = L.map(element, {
                 center: [49.145, 9.22],
-                zoom: 14,
-                minZoom: 5,
-                maxZoom: 18
+                zoom: 12,
+                minZoom: 8,
+                maxZoom: 18,
+                zoomControl: !Modernizr.touch
             });
 
             this.addTileLayer();
         },
         addTileLayer: function () {
             var attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
-            // danielstahl.k91489gn
             L.tileLayer('https://{s}.tiles.mapbox.com/v3/danielstahl.k90gp8cm/{z}/{x}/{y}.png', {
                 'maxZoom': 18,
                 'attribution': attribution
             }).addTo(this.leafletMap);
-        },
-        addImageLayer: function () {
-            var imageUrl = 'img/hn-1944.png',
-                imageBounds = [[49.12107, 9.16907], [49.17003, 9.25135]];
-            L.imageOverlay(imageUrl, imageBounds).addTo(this.leafletMap);
         },
         addLegend: function (features) {
             var legend = L.control({position: 'topright'});
             legend.onAdd = function () {
                 var div = L.DomUtil.create('div', 'info legend');
                 div.style.opacity = 0;
-                div.style.minWidth = '300px';
+                div.style.width = '230px';
                 div.innerHTML += '<p class="legend-intro" style="display:none">Heilbronn geriet 1944 für einen Flächenangriff ins Visier der Royal Air Force.</p>';
                 features.forEach(function (feature) {
-                    div.innerHTML += '<p class="legend-entry legend-entry-' + feature.properties.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + feature.properties.color + '"></span> ' + feature.properties.label + '</p>';
+                    div.innerHTML += '<div class="legend-entry legend-entry-' + feature.properties.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + feature.properties.color + '"></span><span class="legend-label">' + feature.properties.label + '</span></div>';
                 });
                 return div;
             };
@@ -59,100 +53,107 @@
         }
     };
 
-    angular.module('app').directive('targetSelection', function ($http, $analytics) {
+    angular.module('app').directive('targetSelection', function ($http, $analytics, $timeout) {
         return {
             restrict: 'A',
-            link: function (scope) {
-                map.init();
+            link: function (scope, element) {
+                map.init(element[0]);
 
-                var features = {};
-                var areas = {};
+                scope.activateInteractive = function () {
+                    scope.showEndscreen = false;
+                    d3.select('.legend-intro').style('display', 'block');
+                };
+
+                var features = {}, areas = {};
                 $http.get('data/targetareas.json').success(function (geojson) {
                     geojson.features.forEach(function (feature) {
                         features[feature.properties.id] = feature;
                     });
                     map.addLegend(geojson.features);
-                });
 
-                // TODO setTimeout is a temporary workaround
-                setTimeout(function () {
-                    Talkie.timeline("#audio-container audio", {
-                        0.1: function () {
+                    var animate = Talkie.animate(element[0]);
+                    var legend = animate.select('.legend');
+                    var legendEntries = {
+                        'zielgebiet-stadt': animate.select('.legend-entry-zielgebiet-stadt'),
+                        'brandanfaellig': animate.select('.legend-entry-brandanfaellig')
+                    };
+
+                    var addArea = function (id, duration) {
+                        return function () {
+                            areas[id] = map.addArea(features[id]);
+                            if (!this.fast_forward) {
+                                new Walkway({selector: '.path-' + id, duration: duration, easing: 'linear'}).draw();
+                            }
+                            this.setUndo(function () {
+                                map.leafletMap.removeLayer(areas[id]);
+                            })
+                        }
+                    };
+
+                    var fillArea = function (id) {
+                        return function () {
+                            areas[id].setStyle({fillOpacity: 0.35});
+                            this.setUndo(function () {
+                                areas[id].setStyle({fillOpacity: 0});
+                            });
+                        }
+                    };
+
+                    var fadeInLegendEntry = function (id) {
+                        return legendEntries[id].style('display', 'block').style('opacity', 1, 1000);
+                    };
+
+                    var fitBoundsOuter = function () {
+                        map.leafletMap.fitBounds([
+                            [49.12705572350681, 9.185643196105957],
+                            [49.15347488527833, 9.2340087890625]
+                        ]);
+                    };
+                    var fitBoundsInner = function () {
+                        map.leafletMap.fitBounds([
+                            [49.13820346350291, 9.20401096343994],
+                            [49.148506575262644, 9.228086471557617]
+                        ]);
+                    };
+
+                    var talkie = Talkie.timeline("#audio-container audio", {
+                        0: function () {
+                            fitBoundsOuter();
                             $analytics.eventTrack('playing', {
                                 category: 'Der Plan'
                             });
                         },
-                        2.5: function () {
-                            areas['zielgebiet-stadt'] = map.addArea(features['zielgebiet-stadt']);
-                            new Walkway({
-                                selector: '.path-zielgebiet-stadt',
-                                duration: '4500',
-                                easing: 'linear'
-                            }).draw();
-                            this.setUndo(function () {
-                                map.leafletMap.removeLayer(areas['zielgebiet-stadt']);
-                                areas['zielgebiet-stadt'] = null;
-                            })
-                        },
-                        7.25: function () {
-                            areas['zielgebiet-boeckingen'] = map.addArea(features['zielgebiet-boeckingen']);
-                            new Walkway({
-                                selector: '.path-zielgebiet-boeckingen',
-                                duration: '4500',
-                                easing: 'linear'
-                            }).draw();
-                            this.setUndo(function () {
-                                map.leafletMap.removeLayer(areas['zielgebiet-boeckingen']);
-                                areas['zielgebiet-boeckingen'] = null;
-                            })
-                        },
-                        7: function () {
-                            areas['zielgebiet-stadt'].setStyle({
-                                fillOpacity: 0.35
-                            });
-                            d3.selectAll('.legend, .legend-entry-zielgebiet-stadt').style('display', 'block').transition().duration(1000).style('opacity', 1);
-                            this.setUndo(function () {
-                                d3.selectAll('.legend, .legend-entry-zielgebiet-stadt').style('display', 'none').style('opacity', 0);
-                            });
-                        },
-                        11.75: function () {
-                            areas['zielgebiet-boeckingen'].setStyle({
-                                fillOpacity: 0.35
-                            });
-                        },
+                        2.5: addArea('zielgebiet-stadt', 4500),
+                        7.25: addArea('zielgebiet-boeckingen', 4500),
+                        7: legend.style({
+                            display: 'block',
+                            opacity: 1
+                        }).and(fadeInLegendEntry('zielgebiet-stadt')).and(fillArea('zielgebiet-stadt')),
+                        11.75: fillArea('zielgebiet-boeckingen'),
                         13: function () {
-                            map.leafletMap.setZoom(15);
+                            fitBoundsInner();
                             this.setUndo(function () {
-                                map.leafletMap.setZoom(14);
+                                fitBoundsOuter();
                             });
                         },
-                        15: function () {
-                            areas['brandanfaellig'] = map.addArea(features['brandanfaellig']);
-                            new Walkway({selector: '.path-brandanfaellig', duration: '7000', easing: 'linear'}).draw();
-                            this.setUndo(function () {
-                                map.leafletMap.removeLayer(areas['brandanfaellig']);
-                                areas['brandanfaellig'] = null;
-                            });
-                        },
-                        22.25: function () {
-                            areas['brandanfaellig'].setStyle({
-                                fillOpacity: 0.35
-                            });
-                            d3.selectAll('.legend-entry-brandanfaellig').style('display', 'block').transition().duration(1000).style('opacity', 1);
-                            this.setUndo(function () {
-                                d3.selectAll('.legend-entry-brandanfaellig').style('display', 'none').style('opacity', 0);
-                            });
-                        },
+                        15: addArea('brandanfaellig', 7000),
+                        22.25: fadeInLegendEntry('brandanfaellig').and(fillArea('brandanfaellig')),
                         26.5: function () {
-                            scope.showEndscreen = true;
-                            d3.select('.legend-intro').style('display', 'block');
+                            var promise = $timeout(function () {
+                                scope.showEndscreen = true;
+                            }, 2000);
                             this.setUndo(function () {
+                                $timeout.cancel(promise);
                                 scope.showEndscreen = false;
                                 d3.select('.legend-intro').style('display', 'none');
-                            })
+                            });
                         }
                     });
-                }, 500);
+
+                    scope.$on('$destroy', function () {
+                        talkie.destroy();
+                    })
+                });
             }
         }
     });

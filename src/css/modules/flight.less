@@ -1,0 +1,84 @@
+@import "prefixer";
+
+#flight-svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  opacity: 0.8;
+  background: #FFF;
+  margin: 0 auto;
+  .mosquito path {
+    stroke-width: 3px;
+  }
+}
+
+#flight-map {
+  position: absolute;
+  top: 0;
+  bottom: 10%;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.move-keyframes() {
+  0% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: -10;
+  }
+  100% {
+    stroke-dasharray: 8;
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes move {
+  .move-keyframes();
+}
+
+@-webkit-keyframes move {
+  .move-keyframes();
+}
+
+@-moz-keyframes move {
+  .move-keyframes();
+}
+
+@-o-keyframes move {
+  .move-keyframes();
+}
+
+#flight-map svg path {
+  stroke-width: 4;
+  stroke: #FFFFFF;
+  .animation(move 60s linear infinite 2.3s);
+  &.path-reading-to-hn {
+    .animation(move 60s linear infinite 10s);
+  }
+}
+
+.plane-label {
+  font-size: 30px;
+}
+
+.plane-description {
+  font-size: 12px;
+}
+
+.plane-feature-list {
+  font-size: 9px;
+}
+
+.dimension-line {
+  stroke: @bg;
+  stroke-width: 1px;
+}
+
+.dimension-label {
+  font-size: 9px;
+}

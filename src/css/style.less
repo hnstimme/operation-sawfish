@@ -3,8 +3,9 @@
 @import "modules/videogular";
 @import "modules/controls";
 @import "modules/map";
-@import "modules/endscreen";
+@import "modules/selectionscreen";
 @import "modules/intro";
+@import "modules/flight";
 
 h1 {
   margin-bottom: 0.5em;
@@ -18,7 +19,7 @@ h1 {
     margin-top: -9px;
 }
 
-#a-wrapper svg,
+#flight-svg,
 .talkie-bombs svg {
   path {
     stroke-width: 1px;
@@ -153,11 +154,6 @@ line.second-hand {
 
 }
 
-#a-wrapper {
-  height: 100%;
-  position: relative;
-}
-
 text.counter {
   text-anchor: middle;
 }
@@ -172,146 +168,12 @@ text.counter {
   font-size: 40px;
 }
 
-.plane-label {
-  font-size: 30px;
-}
-
-.plane-description {
-  font-size: 12px;
-}
-
-.plane-feature-list {
-  font-size: 9px;
-}
-
-.dimension-line {
-  stroke: @bg;
-  stroke-width: 1px;
-}
-
-.dimension-label {
-  font-size: 9px;
-}
-
 .current-time {
   font-size: 30px;
 }
 
 .clickable-layer {
   opacity: 0;
-}
-
-svg#flight-svg {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  width: 100%;
-  z-index: 20;
-  opacity: 0.8;
-  background: #FFF;
-  margin: 0 auto;
-  .mosquito path {
-    stroke-width: 3px;
-  }
-}
-
-#flight-map {
-  position: absolute;
-  top: 0;
-  bottom: 10%;
-  height: 100%;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-}
-
-@keyframes move {
-  0% {
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-  }
-  15% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 2000;
-  }
-  15.01% {
-    stroke-dasharray: 8;
-    stroke-dashoffset: -10;
-  }
-  100% {
-    stroke-dasharray: 8;
-    stroke-dashoffset: -10000;
-  }
-}
-
-@-webkit-keyframes move {
-  0% {
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-  }
-  15% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 2000;
-  }
-  15.01% {
-    stroke-dasharray: 8;
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dasharray: 8;
-    stroke-dashoffset: -10000;
-  }
-}
-
-@-moz-keyframes move {
-  0% {
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-  }
-  15% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 2000;
-  }
-  15.01% {
-    stroke-dasharray: 8;
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dasharray: 8;
-    stroke-dashoffset: -10000;
-  }
-}
-
-@-o-keyframes move {
-  0% {
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-  }
-  15% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 2000;
-  }
-  15.01% {
-    stroke-dasharray: 8;
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dasharray: 8;
-    stroke-dashoffset: -10000;
-  }
-}
-
-#flight-map svg path {
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-  stroke-width: 4;
-  stroke: #FFFFFF;
-  .animation(move 160s linear infinite);
-  &.path-reading-to-hn {
-    .animation(move 270s linear infinite);
-  }
 }
 
 /** bombing **/
@@ -392,7 +254,8 @@ svg#flight-svg {
 }
 
 .bombs-counter-label {
-  font-size: 20px;
+  font-size: 30px;
+  display: block;
 }
 
 .img-container {

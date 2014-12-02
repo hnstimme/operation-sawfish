@@ -645,7 +645,7 @@ Talkie.timeline = function(soundtrack_element, timeline_spec) {
         }
     };
     var track_animations = order_timeline(timeline_spec);
-    soundtrack_element.addEventListener("timeupdate", function() {
+    var timeupdateHandler = function () {
         if (skip_the_next_timeUpdate) {
             skip_the_next_timeUpdate = false;
             return;
@@ -663,7 +663,11 @@ Talkie.timeline = function(soundtrack_element, timeline_spec) {
             run(track_animations[i][1], timeline_object);
             animation_current_index = i;
         }
-    }, false);
+    };
+    soundtrack_element.addEventListener("timeupdate", timeupdateHandler, false);
+    timeline_object.destroy = function () {
+        soundtrack_element.removeEventListener("timeupdate", timeupdateHandler);
+    };
     return timeline_object;
 };
 

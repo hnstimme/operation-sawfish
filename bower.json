@@ -25,7 +25,8 @@
     "videogular-themes-default": "~0.7.0",
     "odometer": "~0.4.7",
     "moment": "~2.8.4",
-    "angulartics": "~0.17.1"
+    "angulartics": "~0.17.1",
+    "modernizr": "~2.8.3"
   },
   "devDependencies": {},
   "resolutions": {

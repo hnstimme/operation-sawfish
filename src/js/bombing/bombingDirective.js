@@ -47,8 +47,7 @@
                 var svg = element[0],
                     animate = Talkie.animate(document.getElementById('bombs-wrapper'));
 
-                // TODO setTimeout is a temporary workaround
-                setTimeout(function () {
+                $timeout(function () {
                     var airplaneTransitionGroups = [];
                     airplanes.forEach(function (airplane) {
                         airplaneTransitionGroups.push({
@@ -93,6 +92,7 @@
                     var minuteHand = animate.select('.minute-hand');
                     var secondHand = animate.select('.second-hand');
                     var redClockArea = animate.select('.redclockarea');
+                    var redClockArea2 = animate.select('.redclockarea2');
                     var greenClockAreas = [];
                     for (var i = 1; i <= 4; i++) {
                         greenClockAreas.push(animate.select('.greenclockarea' + i));
@@ -118,7 +118,7 @@
                         value: 0,
                         duration: 0,
                         animation: 'count',
-                        format: '(.ddd),dd'
+                        format: '( ddd),dd'
                     });
 
                     var togglePlane = function (index, opacity, duration) {
@@ -176,22 +176,19 @@
                         25.35: togglePlane(0, 1, 3000),
                         25.5: setTime(19, 27).and(greenClockAreas[3].style('opacity', 0.6, 11400, 'linear')),
                         34: clockContainer.attr('transform', 'translate(350, -330)', 1500),
-                        35: setTime(19, 29, 0).and(bombsCounter.style('display', 'inline')).and(bombsCounterLabel.style('display', 'inline')).and(togglePlane(0, 0, 1000)),
+                        35: setTime(19, 29, 0).and(bombsCounter.style('display', 'inline')).and(bombsCounterLabel.style('display', 'block')).and(togglePlane(0, 0, 1000)),
                         36: bombsCounter.text('400').and(setTime(19, 29, 1)).and(cloud.style('opacity', 0.4, 16000)),
                         37: bombsCounter.text('800').and(setTime(19, 29, 2)),
                         38: bombsCounter.text('1200').and(setTime(19, 29, 3)),
                         39: bombsCounter.text('1600').and(setTime(19, 29, 4)),
                         40: bombsCounter.text('2000').and(setTime(19, 29, 5)),
-                        41: redClockArea.style('opacity', 0.6, 4000).and(function () {
-                            odometer.options.duration = 4000;
+                        41: redClockArea.style('opacity', 0.6, 4000).and(redClockArea2.style('opacity', 0.6, 8000)).and(function () {
+                            odometer.options.duration = 8000;
                             odometer.options.value = 245029;
                             this.setUndo(function () {
                                 odometer.options.duration = 0;
                             })
-                        }).and(bombsCounter.text('245029')).and(setTime(19, 40, undefined, 4000, 'linear')),
-                        47: clockContainer.attr('transform', 'translate(0, 0)', 1500).and(bombsCounter.style('display', 'none')).and(bombsCounterLabel.style('display', 'none')).and(bombs.style('opacity', 1, 1500)),
-                        48.5: explosiveBombs.style('opacity', 1, 1000).and(explosiveBombsLabel.style('opacity', 1, 1000)),
-                        51.5: fireBombs.style('opacity', 1, 1000).and(fireBombsLabel.style('opacity', 1, 1000)),
+                        }).and(bombsCounter.text('245029')).and(setTime(19, 55, undefined, 8000, 'linear')),
                         56: imgs['feuersturm'].style('opacity', 1, 1000),
                         59.5: imgs['hotel'].style('opacity', 1, 300).and(imgs['feuersturm'].style('opacity', 0, 1000)),
                         63: imgs['brand3'].style('opacity', 1, 300).and(imgs['hotel'].style('opacity', 0, 1000)),
@@ -245,7 +242,10 @@
                     scaleCircle(42.05, circles[6], 1.75);
                     scaleCircle(43.05, circles[7], 1.25);
 
-                    Talkie.timeline("#audio-container audio", scope.timelineDef);
+                    var talkie = Talkie.timeline("#audio-container audio", scope.timelineDef);
+                    scope.$on('$destroy', function () {
+                        talkie.destroy();
+                    })
                 }, 500);
             }
         }

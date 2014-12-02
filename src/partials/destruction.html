@@ -14,17 +14,21 @@
         </div>
     </div>
 
-    <div class="endscreen" ng-show="showEndscreen">
-        <div class="endscreen-choice">
-            <p><a ng-click="activateInteractive()"><img src="img/endscreen/interaktiv.svg"></a>
-            </p>
+    <div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
+        <a class="selectionscreen-choice" ng-click="videogularAPI.play()">
+            <img class="play" src="img/play.svg">
+            <h2>Kapitel 5: Heilbronn ist zerstört</h2>
+        </a>
+    </div>
 
-            <p class="endscreen-choice-title"><a ng-click="activateInteractive()">Zerstörte Stadt erkunden</a></p>
-        </div>
-        <div class="endscreen-choice">
-            <p><a href="/comparison"><img src="img/endscreen/next.svg" class="icon-next"></a></p>
-
-            <p class="endscreen-choice-title"><a href="/flight">Kapitel 6: Der Luftkrieg</a></p>
-        </div>
+    <div class="selectionscreen" ng-show="showEndscreen">
+        <a class="selectionscreen-choice" ng-click="activateInteractive()">
+            <img src="img/endscreen/interaktiv.svg">
+            Zerstörte Stadt erkunden
+        </a>
+        <a class="selectionscreen-choice" href="/comparison">
+            <img src="img/endscreen/next.svg">
+            Kapitel 6: Der Luftkrieg
+        </a>
     </div>
 </div>

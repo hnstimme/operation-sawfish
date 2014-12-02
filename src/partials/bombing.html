@@ -26,17 +26,21 @@
 			<clipPath id="redclockarea">
 			    <path d="M0,0L0,-98L220.1170,-98Z" transform="rotate(174)"></path>
 			</clipPath>
+			<clipPath id="redclockarea2">
+			    <path d="M0,0L0,-98L16004614,-98Z" transform="rotate(240)"></path>
+			</clipPath>
 		</defs>
 
 		<g class="clock-container">
 			<g transform="scale(0.9) translate(10 80)">
 				<g transform="translate(-300 200)">
 					<g class="clock-face" transform="translate(384 223.75)">
-						<circle cx="0" cy="0" r="98" fill="#00FF00" style="opacity:0" class="greenclockarea1" clip-path="url({{path}}#greenclockarea1)"></circle>
-						<circle cx="0" cy="0" r="98" fill="#00FF00" style="opacity:0" class="greenclockarea2" clip-path="url({{path}}#greenclockarea2)"></circle>
-						<circle cx="0" cy="0" r="98" fill="#00FF00" style="opacity:0" class="greenclockarea3" clip-path="url({{path}}#greenclockarea3)"></circle>
-						<circle cx="0" cy="0" r="98" fill="#00FF00" style="opacity:0" class="greenclockarea4" clip-path="url({{path}}#greenclockarea4)"></circle>
-						<circle cx="0" cy="0" r="98" fill="#FF0000" style="opacity:0" class="redclockarea" clip-path="url({{path}}#redclockarea)"></circle>
+						<circle cx="0" cy="0" r="95" fill="#BD8564" style="opacity:0" class="greenclockarea1" clip-path="url({{path}}#greenclockarea1)"></circle>
+						<circle cx="0" cy="0" r="95" fill="#BD8564" style="opacity:0" class="greenclockarea2" clip-path="url({{path}}#greenclockarea2)"></circle>
+						<circle cx="0" cy="0" r="95" fill="#BD8564" style="opacity:0" class="greenclockarea3" clip-path="url({{path}}#greenclockarea3)"></circle>
+						<circle cx="0" cy="0" r="95" fill="#BD8564" style="opacity:0" class="greenclockarea4" clip-path="url({{path}}#greenclockarea4)"></circle>
+						<circle cx="0" cy="0" r="95" fill="#993831" style="opacity:0" class="redclockarea" clip-path="url({{path}}#redclockarea)"></circle>
+						<circle cx="0" cy="0" r="95" fill="#6A3628" style="opacity:0" class="redclockarea2" clip-path="url({{path}}#redclockarea2)"></circle>
 						<line x1="0" x2="0" y1="0" y2="-50" class="hour-hand" transform="rotate(218.999999)"></line>
 						<line x1="0" x2="0" y1="0" y2="-70" class="minute-hand" transform="rotate(108)"></line>
 						<line x1="0" x2="0" y1="10" y2="-80" class="second-hand" style="opacity:0"></line>
@@ -64,12 +68,12 @@
 
 		<g class="airplanes">
 			<g ng-repeat="airplane in airplanes" class="airplane airplane-{{airplane.id}}" ng-attr-transform="{{airplane.transform}}">
-				<g transform="scale(0.35)" ng-include="'partials/svg/lancaster_side_simplified.html'" style="opacity:0"></g>
+				<g transform="scale(0.25) translate(0 70)" ng-include="'partials/svg/lancaster_side_simplified.html'" style="opacity:0"></g>
 			</g>
 		</g>
 
 		<g ng-repeat="christbaum in christbaumList" class="christbaum christbaum-{{christbaum.id}}" ng-attr-transform="{{christbaum.transform}}" style="opacity:0">
-			<g transform="translate(0, 100) scale(0.2)">
+			<g transform="translate(0, 100) scale(0.15)">
 				<g opacity="0.75" transform="translate(1210, -480) scale(2.5)">
 					<circle opacity="0.75" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="22.358"></circle>
 					<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" cx="-292.913" cy="347.989" r="38.833"></circle>
@@ -82,7 +86,7 @@
 		</g>
 
 		<g ng-repeat="mosquitoAirplane in mosquitoAirplanes" class="mosquito mosquito-{{mosquitoAirplane.id}}" transform="translate(-3000, 0)">
-			<g transform="translate(-250, -100) scale(0.3)" ng-include="'partials/svg/mosquito_side_simplified.html'"></g>
+			<g transform="translate(-250, -50) scale(0.25)" ng-include="'partials/svg/mosquito_side_simplified.html'"></g>
 		</g>
 
 		<g ng-repeat="circle in circles" class="circle circle-{{circle.id}}" ng-attr-transform="{{circle.translate}}" style="opacity:0">
@@ -100,19 +104,22 @@
 		</g>
     </svg>
 
-	<div class="endscreen" ng-show="showEndscreen">
-		<div class="endscreen-choice">
-			<p><a ng-click="showEndscreen=false;showBombsInteractive=true"><img src="img/endscreen/interaktiv.svg"></a>
-			</p>
+	<div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
+		<a class="selectionscreen-choice" ng-click="videogularAPI.play()">
+			<img class="play" src="img/play.svg">
+			<h2>Kapitel 4: Der Angriff</h2>
+		</a>
+	</div>
 
-			<p class="endscreen-choice-title"><a ng-click="showEndscreen=false;showBombsInteractive=true">Bomben
-				erkunden</a></p>
-		</div>
-		<div class="endscreen-choice">
-			<p><a href="/destruction"><img src="img/endscreen/next.svg" class="icon-next"></a></p>
-
-			<p class="endscreen-choice-title"><a href="/flight">Kapitel 5: Heilbronn ist zerstört</a></p>
-		</div>
+	<div class="selectionscreen" ng-show="showEndscreen">
+		<a class="selectionscreen-choice" ng-click="showEndscreen=false;showBombsInteractive=true">
+			<img src="img/endscreen/interaktiv.svg">
+			Bomben erkunden
+		</a>
+		<a class="selectionscreen-choice" href="/destruction">
+			<img src="img/endscreen/next.svg">
+			Kapitel 5: Heilbronn ist zerstört
+		</a>
 	</div>
 
 	<div class="bombs-interactive" ng-if="showBombsInteractive">

@@ -7,7 +7,7 @@
             L.Icon.Default.imagePath = 'bower_components/leaflet/dist/images';
             this.leafletMap = L.map('destruction-map', {
                 center: [49.1423, 9.2188],
-                zoom: 13,
+                zoom: 14,
                 minZoom: 5,
                 maxZoom: 18
             });
@@ -43,7 +43,7 @@
                 div.style.opacity = 0;
                 div.style.minWidth = '150px';
                 layers.forEach(function (layer) {
-                    div.innerHTML += '<p class="legend-entry legend-entry-' + layer.id + '" style="display:none;opacity:0"><span class="legend-color" style="opacity:1;background:' + layer.color + '"></span> ' + layer.label + '</p>';
+                    div.innerHTML += '<div class="legend-entry legend-entry-' + layer.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + layer.color + '"></span><span class="legend-label">' + layer.label + '</span></div>';
                 });
                 return div;
             };
@@ -59,7 +59,7 @@
         }
     };
 
-    angular.module('app').directive('destruction', function ($analytics, $http) {
+    angular.module('app').directive('destruction', function ($analytics, $http, $timeout) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
@@ -74,7 +74,7 @@
                 var imgsContainer = animate.select('.imgs');
 
                 var imagesOfDestructionGeojson;
-                $http.get('/data/imagesOfDestruction.json').success(function (geojson) {
+                var dataPromise = $http.get('/data/imagesOfDestruction.json').success(function (geojson) {
                     imagesOfDestructionGeojson = geojson;
                 });
 
@@ -102,13 +102,12 @@
                     scope.img = null;
                 };
 
-                // TODO setTimeout is a temporary workaround
-                setTimeout(function () {
+                dataPromise.then(function () {
                     var swapImage = function (toShow, toHide) {
                         return imgs[toShow].style('opacity', 1, 300).and(imgs[toHide].style('opacity', 0, 1000));
                     };
 
-                    Talkie.timeline("#audio-container audio", {
+                    var talkie = Talkie.timeline("#audio-container audio", {
                         0: function () {
                             $analytics.eventTrack('playing', {
                                 category: 'Heilbronn ist zerstört'
@@ -134,18 +133,24 @@
                             });
                         },
                         21: function () {
-                            scope.showEndscreen = true;
+                            var promise = $timeout(function () {
+                                scope.showEndscreen = true;
+                            }, 2000);
                             this.setUndo(function () {
+                                $timeout.cancel(promise);
                                 scope.showEndscreen = false;
                                 scope.img = null;
                                 if (markerLayer) {
                                     map.leafletMap.setZoom(13);
                                     map.leafletMap.removeLayer(markerLayer);
                                 }
-                            })
+                            });
                         }
                     });
-                }, 500);
+                    scope.$on('$destroy', function () {
+                        talkie.destroy();
+                    });
+                });
             }
         }
     });

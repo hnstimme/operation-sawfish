@@ -1,0 +1,35 @@
+.selectionscreen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background: fadeout(@bg, 20%);
+  display: table;
+}
+
+.selectionscreen-choice {
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+  width: 50%;
+  height: 100%;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+  img {
+    display: block;
+    width: 20%;
+    max-width: 80px;
+    margin: 21px auto;
+    &.play {
+      max-width: 120px;
+    }
+  }
+  h2 {
+    font-size: 28px;
+  }
+}

@@ -1,6 +1,6 @@
 <div class="video-container intro-video">
     <vg-video vg-src="videogularConfig.sources">
-        <span class="legal-notice">Quelle: Stadtarchiv Heilbronn</span>
+        <span class="legal-notice" ng-show="fullVideoConfigured">Quelle: Stadtarchiv Heilbronn<br/>Der Luftangriff auf Heilbronn wurde von einem Beobachter der Royal Air Force auf Film festgehalten</span>
     </vg-video>
     <vg-poster-image vg-url="videogularConfig.plugins.poster"></vg-poster-image>
 </div>
@@ -16,17 +16,15 @@
             </div>
         </div>
     </div>
-    <div class="endscreen"
-         ng-show="videogularAPI.isCompleted && videogularAPI.currentState === 'stop' && videoHasStarted">
-        <div class="endscreen-choice" intro-video-swapper ng-hide="fullVideoLoaded">
-            <p><a ng-click="showFullVideo()"><img src="img/endscreen/interaktiv.svg"></a></p>
-
-            <p class="endscreen-choice-title"><a ng-click="showFullVideo()">Video in voller Länge ansehen</a></p>
-        </div>
-        <div class="endscreen-choice">
-            <p><a href="/targetSelection"><img src="img/endscreen/next.svg" class="icon-next"></a></p>
-
-            <p class="endscreen-choice-title"><a href="/targetSelection">Kapitel 2: Der Plan</a></p>
-        </div>
+    <div class="selectionscreen"
+         ng-show="videogularAPI.isCompleted && videogularAPI.currentState === 'stop' && videoHasStarted && !fullVideoIsLoading">
+        <a class="selectionscreen-choice" intro-video-swapper ng-hide="fullVideoConfigured" ng-click="showFullVideo()">
+            <img src="img/endscreen/interaktiv.svg">
+            Video in voller Länge ansehen
+        </a>
+        <a class="selectionscreen-choice" href="/targetSelection">
+            <img src="img/endscreen/next.svg">
+            Kapitel 2: Der Plan
+        </a>
     </div>
 </div>

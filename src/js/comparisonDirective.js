@@ -28,9 +28,9 @@
                 fillColor: '#FF0000',
                 strokeColor: '#FF0000',
                 color: '#FF0000',
-                opacity: 0.3,
-                fillOpacity: 1,
-                radius: 2
+                opacity: 0,
+                fillOpacity: 0.3,
+                radius: 10
             });
             marker.bindPopup('<p class="leaflet-popup-title">' + city.properties.name + '</p><p>Schwerster Angriff: ' + city.properties.attackDate + '</p>');
             map.leafletMap.addLayer(marker);
@@ -59,7 +59,7 @@
                 var animate = Talkie.animate(element[0]);
 
                 var cities = [];
-                $http.get('data/cities.json').success(function (geojson) {
+                var dataPromise = $http.get('data/cities.json').success(function (geojson) {
                     cities = geojson.features;
                 });
 
@@ -128,8 +128,7 @@
                         .attr("class", "line")
                 });
 
-                // TODO setTimeout is a temporary workaround
-                setTimeout(function () {
+                dataPromise.then(function () {
                     var legend = animate.select('.legend');
                     var currentDate = animate.select('.current-date');
                     var timelineDef = {};
@@ -189,8 +188,11 @@
                         })
                     };
 
-                    Talkie.timeline("#audio-container audio", timelineDef);
-                }, 500);
+                    var talkie = Talkie.timeline("#audio-container audio", timelineDef);
+                    scope.$on('$destroy', function () {
+                        talkie.destroy();
+                    });
+                });
             }
         }
     });

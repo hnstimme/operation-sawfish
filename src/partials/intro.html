@@ -1,6 +1,6 @@
 <div class="video-container intro-video">
     <vg-video vg-src="videogularConfig.sources">
-        <span class="legal-notice" ng-show="fullVideoLoaded">Quelle: Stadtarchiv Heilbronn<br/>Der Luftangriff auf Heilbronn wurde von einem Beobachter der Royal Air Force auf Film festgehalten</span>
+        <span class="legal-notice" ng-show="fullVideoConfigured">Quelle: Stadtarchiv Heilbronn<br/>Der Luftangriff auf Heilbronn wurde von einem Beobachter der Royal Air Force auf Film festgehalten</span>
     </vg-video>
     <vg-poster-image vg-url="videogularConfig.plugins.poster"></vg-poster-image>
 </div>
@@ -17,8 +17,8 @@
         </div>
     </div>
     <div class="selectionscreen"
-         ng-show="videogularAPI.isCompleted && videogularAPI.currentState === 'stop' && videoHasStarted">
-        <a class="selectionscreen-choice" intro-video-swapper ng-hide="fullVideoLoaded" ng-click="showFullVideo()">
+         ng-show="videogularAPI.isCompleted && videogularAPI.currentState === 'stop' && videoHasStarted && !fullVideoIsLoading">
+        <a class="selectionscreen-choice" intro-video-swapper ng-hide="fullVideoConfigured" ng-click="showFullVideo()">
             <img src="img/endscreen/interaktiv.svg">
             Video in voller Länge ansehen
         </a>

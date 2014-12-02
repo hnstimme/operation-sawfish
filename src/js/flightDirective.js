@@ -128,11 +128,13 @@
                     d3.select('.lancaster .plane-label').transition().attr('y', 40);
                     d3.select('.lancaster-details').transition().style('opacity', 1);
                     d3.select('.lancaster').transition().style('opacity', 1);
+                    d3.select('.lancaster-default-view').classed('in-details', true);
                     d3.select('.mosquito').style('display', 'none').style('opacity', 0);
                 };
                 scope.hideLancasterDetails = function () {
                     d3.select('.lancaster .plane-label').transition().attr('y', 70);
                     d3.select('.lancaster-details').transition().style('opacity', 0);
+                    d3.select('.lancaster-default-view').classed('in-details', false);
                     d3.select('.mosquito').style('display', 'block').transition().delay(300).style('opacity', 0.6);
                 };
                 scope.showMosquitoDetails = function () {

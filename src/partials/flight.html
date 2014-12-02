@@ -2,13 +2,12 @@
 
 <svg width="100%" height="650px" viewBox="0 0 960 560" style="visibility:hidden" xml:space="preserve" id="flight-svg" flight>
 	<g class="planes">
-		<text x="0" y="30">Anzahl Flugzeuge</text>
-		<text x="930" y="490" class="counter"><tspan x="930" class="mosquito-counter counter-number">0</tspan><tspan x="930" dy="30" class="counter-label">Mosquito</tspan></text>
-		<text x="470" y="490" class="counter"><tspan x="470" class="lancaster-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancaster</tspan></text>
+		<text y="490" class="counter"><tspan x="895" class="mosquito-counter counter-number">0</tspan><tspan x="895" dy="30" class="counter-label">Mosquito</tspan></text>
+		<text y="490" class="counter"><tspan x="470" class="lancaster-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancaster</tspan></text>
 
-		<g transform="translate(700 460)">
+		<g transform="translate(670 470)">
 			<g ng-repeat="mosquitoGroup in mosquitoGroups" ng-attr-transform="{{mosquitoGroup.transform}}">
-				<g ng-repeat="mosquito in mosquitoGroup.mosquitos" class="mosquito-{{mosquitoGroup.id}}-{{mosquito.id}}" ng-attr-transform="{{mosquito.transform}}">
+				<g ng-repeat="mosquito in mosquitoGroup.mosquitos" class="mosquito-{{mosquitoGroup.id}}-{{mosquito.id}}" ng-attr-transform="{{mosquito.transform}}" style="opacity:0">
 					<g transform="scale(0.06)">
 						<g transform="rotate(90 0 0) translate(-140 -800)">
 							<path d="M250.2,59.002c11.001,0,20.176,9.165,20.176,20.777v122.24l171.12,95.954v42.779l-171.12-49.501v89.227l40.337,29.946v35.446l-60.52-20.18-60.502,20.166v-35.45l40.341-29.946v-89.227l-171.14,49.51v-42.779l171.14-95.954v-122.24c0-11.612,9.15-20.777,20.16-20.777z"/>
@@ -18,9 +17,9 @@
 			</g>
 		</g>
 
-		<g class="lancaster-groups" transform="translate(-12, 40)">
+		<g class="lancaster-groups" transform="translate(20, 40)">
 			<g ng-repeat="lancasterGroup in lancasterGroups" class="lancaster-group-{{lancasterGroup.id}}" ng-attr-transform="{{lancasterGroup.transform}}">
-				<g ng-repeat="lancaster in lancasterGroup.lancasters" class="lancaster-{{lancasterGroup.id}}-{{lancaster.id}}" ng-attr-transform="{{lancaster.transform}}">
+				<g ng-repeat="lancaster in lancasterGroup.lancasters" class="lancaster-{{lancasterGroup.id}}-{{lancaster.id}}" ng-attr-transform="{{lancaster.transform}}" style="opacity:0">
 					<path d="M250.2,59.002c11.001,0,20.176,9.165,20.176,20.777v122.24l171.12,95.954v42.779l-171.12-49.501v89.227l40.337,29.946v35.446l-60.52-20.18-60.502,20.166v-35.45l40.341-29.946v-89.227l-171.14,49.51v-42.779l171.14-95.954v-122.24c0-11.612,9.15-20.777,20.16-20.777z"/>
 				</g>
 			</g>
@@ -146,7 +145,7 @@
 	</g>
 </svg>
 
-<div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
+<div class="selectionscreen" style="visibility: hidden" track-video-start videogular-api ng-hide="videoHasStarted">
 	<a class="selectionscreen-choice" ng-click="videogularAPI.play()">
 		<img class="play" src="img/play.svg">
 

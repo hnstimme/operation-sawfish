@@ -168,7 +168,7 @@
                     for (var i = 0; i < groupToBuild.columns; i++) {
                         group.push({
                             'id': i,
-                            'transform': 'scale(0.06) translate(' + i * 580 + ' 8701)'
+                            'transform': 'scale(0.059) translate(' + i * 580 + ' 24701)'
                         });
                     }
                     for (var i = 0; i < groupToBuild.rows; i++) {
@@ -185,7 +185,7 @@
                 for (var j = 0; j < 5; j++) {
                     mosquitos.push({
                         id: j,
-                        transform: 'translate(' + j * 32 + ' 188)'
+                        transform: 'translate(' + j * 32 + ' 1088)'
                     })
                 }
                 scope.mosquitoGroups = [];
@@ -220,7 +220,7 @@
                         var count = 0;
                         lancasters.forEach(function (lancaster, index) {
                             count++;
-                            timelineDef[index * timePerLancaster + 6] = lancaster.attr('transform', lancaster.element.attr('transform').replace(/ 8701/, " 0"), 2000);
+                            timelineDef[index * timePerLancaster + 6] = lancaster.style('opacity', 1).attr('transform', lancaster.element.attr('transform').replace(/ 24701/, " 0"), 2000);
                             timelineDef[index * timePerLancaster + 7.201] = lancasterCounter.text(count);
                         });
 
@@ -236,7 +236,7 @@
                         var mosquitoCount = 0;
                         mosquitos.forEach(function (mosquito, index) {
                             mosquitoCount++;
-                            timelineDef[index * timePerMosquito + 6.001] = mosquito.attr('transform', mosquito.element.attr('transform').replace(/ 188/, " 0"), 2500);
+                            timelineDef[index * timePerMosquito + 6.001] = mosquito.style('opacity', 1).attr('transform', mosquito.element.attr('transform').replace(/ 1088/, " 0"), 2500);
                             timelineDef[index * timePerMosquito + 7.502] = mosquitoCounter.text(mosquitoCount);
                         });
 

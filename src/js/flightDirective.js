@@ -15,7 +15,8 @@
                 center: this.views.initial.center,
                 zoom: this.views.initial.zoom,
                 minZoom: 5,
-                maxZoom: 18
+                maxZoom: 18,
+                zoomControl: !Modernizr.touch
             });
 
             this.addTileLayer();

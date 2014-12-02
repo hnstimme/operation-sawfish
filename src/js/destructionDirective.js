@@ -9,7 +9,8 @@
                 center: [49.1423, 9.2188],
                 zoom: 14,
                 minZoom: 5,
-                maxZoom: 18
+                maxZoom: 18,
+                zoomControl: !Modernizr.touch
             });
 
             this.addLegend([{
@@ -34,7 +35,9 @@
         addDestructionAreas: function (id) {
             var imageUrl = 'img/destruction_areas_' + id + '.png',
                 imageBounds = [[49.12616111111112, 9.186772222222222], [49.16519166666667, 9.246605555555554]];
-            return L.imageOverlay(imageUrl, imageBounds).addTo(this.leafletMap);
+            return L.imageOverlay(imageUrl, imageBounds, {
+                opacity: 0.75
+            }).addTo(this.leafletMap);
         },
         addLegend: function (layers) {
             var legend = L.control({position: 'topright'});

@@ -41,9 +41,10 @@
                 }
             }).addTo(this.leafletMap);
         },
-        addCircleMarker: function (lat, lon) {
+        addCircleMarker: function (lat, lon, id) {
             var marker = L.circleMarker(L.latLng(lat, lon), {
-                fillColor: '#000000'
+                fillColor: '#000000',
+                className: 'circle-marker-' + id
             });
             map.leafletMap.addLayer(marker);
             return marker;
@@ -61,14 +62,14 @@
             },
             toAirports: function () {
                 map.leafletMap.fitBounds([
-                    [53.0577, -0.7740],
-                    [53.3203, 0.1856]
+                    [53.0477, -0.7840],
+                    [53.425900839266, 0.22521972656249997]
                 ]);
             },
             toReading: function () {
                 map.leafletMap.fitBounds([
                     [51.39920565355378, -1.25244140625],
-                    [53.3203, 0.1856]
+                    [53.425900839266, 0.22521972656249997]
                 ]);
             },
             toHeilbronn: function () {
@@ -114,6 +115,7 @@
                 var waypointsPromise = $http.get('data/waypoints.json').success(function (geojson) {
                     geojson.features.forEach(function (feature) {
                         if (!feature.properties.id) {
+                            feature.properties.id = Math.round(Math.random() * 10);
                             airportsToReadingLines.push(feature);
                         } else {
                             readingToHnLine = feature;
@@ -280,17 +282,30 @@
                         });
 
                         // flight
-                        timelineDef[24] = function () {
+                        timelineDef[23.5] = function () {
                             map.views.toReading();
                             this.setUndo(function () {
                                 map.views.toAirports();
                             });
                         };
-                        timelineDef[23.5] = function () {
-                            var circleMarker = map.addCircleMarker(51.542919, -0.962162);
+                        timelineDef[24] = function () {
+                            var that = this;
+                            var circleMarker = map.addCircleMarker(51.542919, -0.962162, 'reading');
                             var polylines = [];
                             airportsToReadingLines.forEach(function (line) {
                                 var polyline = map.addPolyline(line);
+                                if (!that.fast_forward) {
+                                    new Walkway({
+                                        selector: '.circle-marker-reading',
+                                        duration: 2250,
+                                        easing: 'linear'
+                                    }).draw();
+                                    new Walkway({
+                                        selector: '.path-' + line.properties.id,
+                                        duration: 2250,
+                                        easing: 'linear'
+                                    }).draw();
+                                }
                                 polylines.push(polyline);
                             });
                             this.setUndo(function () {
@@ -303,6 +318,13 @@
 
                         timelineDef[27] = function () {
                             var polyline = map.addPolyline(readingToHnLine);
+                            if (!this.fast_forward) {
+                                new Walkway({
+                                    selector: '.path-' + readingToHnLine.properties.id,
+                                    duration: 10000,
+                                    easing: 'linear'
+                                }).draw();
+                            }
                             this.setUndo(function () {
                                 map.leafletMap.removeLayer(polyline);
                             });
@@ -313,8 +335,11 @@
                                 map.views.toReading();
                             });
                         };
-                        timelineDef[36] = function () {
-                            var circleMarker = map.addCircleMarker(49.140281, 9.188591);
+                        timelineDef[35] = function () {
+                            var circleMarker = map.addCircleMarker(49.140281, 9.188591, 'hn');
+                            if (!this.fast_forward) {
+                                new Walkway({selector: '.circle-marker-hn', duration: 2250, easing: 'linear'}).draw();
+                            }
                             this.setUndo(function () {
                                 map.leafletMap.removeLayer(circleMarker);
                             });

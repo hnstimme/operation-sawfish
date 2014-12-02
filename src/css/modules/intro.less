@@ -2,13 +2,23 @@
 @import "prefixer";
 
 .intro-video {
+  height: 100%;
+  width: 100%;
+
   video,
   img {
     .transform(scale(1.75));
   }
   vg-poster-image img {
-    height: 100%;
-    margin: 0 auto;
+    @media (max-aspect-ratio: 1/1) {
+      width: 100%;
+      max-height: none;
+    }
+    @media (min-aspect-ratio: 1/1) {
+      height: 100%;
+      max-width: none;
+    }
+    margin: auto auto;
   }
 
   .legal-notice {

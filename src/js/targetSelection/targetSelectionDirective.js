@@ -63,83 +63,70 @@
                     d3.select('.legend-intro').style('display', 'block');
                 };
 
-                var features = {};
-                var areas = {};
-                var dataPromise = $http.get('data/targetareas.json').success(function (geojson) {
+                var features = {}, areas = {};
+                $http.get('data/targetareas.json').success(function (geojson) {
                     geojson.features.forEach(function (feature) {
                         features[feature.properties.id] = feature;
                     });
                     map.addLegend(geojson.features);
-                });
 
-                dataPromise.then(function () {
+                    var animate = Talkie.animate(element[0]);
+                    var legend = animate.select('.legend');
+                    var legendEntries = {
+                        'zielgebiet-stadt': animate.select('.legend-entry-zielgebiet-stadt'),
+                        'brandanfaellig': animate.select('.legend-entry-brandanfaellig')
+                    };
+
+                    var addArea = function (id, duration) {
+                        return function () {
+                            areas[id] = map.addArea(features[id]);
+                            if (!this.fast_forward) {
+                                new Walkway({selector: '.path-' + id, duration: duration, easing: 'linear'}).draw();
+                            }
+                            this.setUndo(function () {
+                                map.leafletMap.removeLayer(areas[id]);
+                            })
+                        }
+                    };
+
+                    var fillArea = function (id) {
+                        return function () {
+                            areas[id].setStyle({fillOpacity: 0.35});
+                            this.setUndo(function () {
+                                areas[id].setStyle({fillOpacity: 0});
+                            });
+                        }
+                    };
+
+                    var fadeInLegendEntry = function (id) {
+                        return legendEntries[id].style('display', 'block').style('opacity', 1, 1000);
+                    };
+
+                    var setZoom = function (newZoomValue, previousZoomValue) {
+                        return function () {
+                            map.leafletMap.setZoom(newZoomValue);
+                            this.setUndo(function () {
+                                map.leafletMap.setZoom(previousZoomValue);
+                            });
+                        }
+                    };
+
                     var talkie = Talkie.timeline("#audio-container audio", {
                         0.1: function () {
                             $analytics.eventTrack('playing', {
                                 category: 'Der Plan'
                             });
                         },
-                        2.5: function () {
-                            areas['zielgebiet-stadt'] = map.addArea(features['zielgebiet-stadt']);
-                            new Walkway({
-                                selector: '.path-zielgebiet-stadt',
-                                duration: '4500',
-                                easing: 'linear'
-                            }).draw();
-                            this.setUndo(function () {
-                                map.leafletMap.removeLayer(areas['zielgebiet-stadt']);
-                                areas['zielgebiet-stadt'] = null;
-                            })
-                        },
-                        7.25: function () {
-                            areas['zielgebiet-boeckingen'] = map.addArea(features['zielgebiet-boeckingen']);
-                            new Walkway({
-                                selector: '.path-zielgebiet-boeckingen',
-                                duration: '4500',
-                                easing: 'linear'
-                            }).draw();
-                            this.setUndo(function () {
-                                map.leafletMap.removeLayer(areas['zielgebiet-boeckingen']);
-                                areas['zielgebiet-boeckingen'] = null;
-                            })
-                        },
-                        7: function () {
-                            areas['zielgebiet-stadt'].setStyle({
-                                fillOpacity: 0.35
-                            });
-                            d3.selectAll('.legend, .legend-entry-zielgebiet-stadt').style('display', 'block').transition().duration(1000).style('opacity', 1);
-                            this.setUndo(function () {
-                                d3.selectAll('.legend, .legend-entry-zielgebiet-stadt').style('display', 'none').style('opacity', 0);
-                            });
-                        },
-                        11.75: function () {
-                            areas['zielgebiet-boeckingen'].setStyle({
-                                fillOpacity: 0.35
-                            });
-                        },
-                        13: function () {
-                            map.leafletMap.setZoom(15);
-                            this.setUndo(function () {
-                                map.leafletMap.setZoom(14);
-                            });
-                        },
-                        15: function () {
-                            areas['brandanfaellig'] = map.addArea(features['brandanfaellig']);
-                            new Walkway({selector: '.path-brandanfaellig', duration: '7000', easing: 'linear'}).draw();
-                            this.setUndo(function () {
-                                map.leafletMap.removeLayer(areas['brandanfaellig']);
-                                areas['brandanfaellig'] = null;
-                            });
-                        },
-                        22.25: function () {
-                            areas['brandanfaellig'].setStyle({
-                                fillOpacity: 0.35
-                            });
-                            d3.selectAll('.legend-entry-brandanfaellig').style('display', 'block').transition().duration(1000).style('opacity', 1);
-                            this.setUndo(function () {
-                                d3.selectAll('.legend-entry-brandanfaellig').style('display', 'none').style('opacity', 0);
-                            });
-                        },
+                        2.5: addArea('zielgebiet-stadt', 4500),
+                        7.25: addArea('zielgebiet-boeckingen', 4500),
+                        7: legend.style({
+                            display: 'block',
+                            opacity: 1
+                        }).and(fadeInLegendEntry('zielgebiet-stadt')).and(fillArea('zielgebiet-stadt')),
+                        11.75: fillArea('zielgebiet-boeckingen'),
+                        13: setZoom(15, 14),
+                        15: addArea('brandanfaellig', 7000),
+                        22.25: fadeInLegendEntry('brandanfaellig').and(fillArea('brandanfaellig')),
                         26.5: function () {
                             var promise = $timeout(function () {
                                 scope.showEndscreen = true;

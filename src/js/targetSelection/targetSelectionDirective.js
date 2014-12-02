@@ -25,10 +25,10 @@
             legend.onAdd = function () {
                 var div = L.DomUtil.create('div', 'info legend');
                 div.style.opacity = 0;
-                div.style.minWidth = '300px';
+                div.style.width = '230px';
                 div.innerHTML += '<p class="legend-intro" style="display:none">Heilbronn geriet 1944 für einen Flächenangriff ins Visier der Royal Air Force.</p>';
                 features.forEach(function (feature) {
-                    div.innerHTML += '<p class="legend-entry legend-entry-' + feature.properties.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + feature.properties.color + '"></span> ' + feature.properties.label + '</p>';
+                    div.innerHTML += '<div class="legend-entry legend-entry-' + feature.properties.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + feature.properties.color + '"></span><span class="legend-label">' + feature.properties.label + '</span></div>';
                 });
                 return div;
             };

@@ -43,7 +43,7 @@
                 div.style.opacity = 0;
                 div.style.minWidth = '150px';
                 layers.forEach(function (layer) {
-                    div.innerHTML += '<p class="legend-entry legend-entry-' + layer.id + '" style="display:none;opacity:0"><span class="legend-color" style="opacity:1;background:' + layer.color + '"></span> ' + layer.label + '</p>';
+                    div.innerHTML += '<div class="legend-entry legend-entry-' + layer.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + layer.color + '"></span><span class="legend-label">' + layer.label + '</span></div>';
                 });
                 return div;
             };

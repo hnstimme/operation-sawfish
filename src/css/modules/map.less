@@ -23,7 +23,7 @@
   max-width: 270px;
   background: fadeout(@nav-bg, 60%);
   padding: 21px 21px 3px 21px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .legend-intro {
@@ -31,15 +31,21 @@
 }
 
 .legend-entry {
-  line-height: 34px;
-  vertical-align: top;
+  display: table;
+  margin-bottom: 18px;
 }
 
+
 .legend-color {
-  display: inline-block;
+  display: table-cell;
   width: 30px;
   height: 30px;
   opacity: 0.35;
   border: 1px solid @font-color;
-  margin: 0 7px 7px 0;
+}
+
+.legend-label {
+  display: table-cell;
+  padding-left: 16px;
+  vertical-align: middle;
 }

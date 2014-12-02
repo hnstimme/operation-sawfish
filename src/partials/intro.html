@@ -18,15 +18,13 @@
     </div>
     <div class="selectionscreen"
          ng-show="videogularAPI.isCompleted && videogularAPI.currentState === 'stop' && videoHasStarted">
-        <div class="selectionscreen-choice" intro-video-swapper ng-hide="fullVideoLoaded">
-            <p><a ng-click="showFullVideo()"><img src="img/endscreen/interaktiv.svg"></a></p>
-
-            <p class="selectionscreen-choice-title"><a ng-click="showFullVideo()">Video in voller Länge ansehen</a></p>
-        </div>
-        <div class="selectionscreen-choice">
-            <p><a href="/targetSelection"><img src="img/endscreen/next.svg" class="icon-next"></a></p>
-
-            <p class="selectionscreen-choice-title"><a href="/targetSelection">Kapitel 2: Der Plan</a></p>
-        </div>
+        <a class="selectionscreen-choice" intro-video-swapper ng-hide="fullVideoLoaded" ng-click="showFullVideo()">
+            <img src="img/endscreen/interaktiv.svg">
+            Video in voller Länge ansehen
+        </a>
+        <a class="selectionscreen-choice" href="/targetSelection">
+            <img src="img/endscreen/next.svg">
+            Kapitel 2: Der Plan
+        </a>
     </div>
 </div>

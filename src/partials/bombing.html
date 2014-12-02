@@ -105,26 +105,21 @@
     </svg>
 
 	<div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
-		<div class="selectionscreen-choice clickable" ng-click="videogularAPI.play()">
+		<a class="selectionscreen-choice" ng-click="videogularAPI.play()">
+			<img class="play" src="img/play.svg">
 			<h2>Kapitel 4: Der Angriff</h2>
-
-			<p><img class="play" src="img/play.svg"></p>
-		</div>
+		</a>
 	</div>
 
 	<div class="selectionscreen" ng-show="showEndscreen">
-		<div class="selectionscreen-choice">
-			<p><a ng-click="showEndscreen=false;showBombsInteractive=true"><img src="img/endscreen/interaktiv.svg"></a>
-			</p>
-
-			<p class="selectionscreen-choice-title"><a ng-click="showEndscreen=false;showBombsInteractive=true">Bomben
-				erkunden</a></p>
-		</div>
-		<div class="selectionscreen-choice">
-			<p><a href="/destruction"><img src="img/endscreen/next.svg" class="icon-next"></a></p>
-
-			<p class="selectionscreen-choice-title"><a href="/flight">Kapitel 5: Heilbronn ist zerstört</a></p>
-		</div>
+		<a class="selectionscreen-choice" ng-click="showEndscreen=false;showBombsInteractive=true">
+			<img src="img/endscreen/interaktiv.svg">
+			Bomben erkunden
+		</a>
+		<a class="selectionscreen-choice" href="/destruction">
+			<img src="img/endscreen/next.svg">
+			Kapitel 5: Heilbronn ist zerstört
+		</a>
 	</div>
 
 	<div class="bombs-interactive" ng-if="showBombsInteractive">

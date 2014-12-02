@@ -243,7 +243,7 @@
                     scope.$on('$destroy', function () {
                         talkie.destroy();
                     })
-                }, 500);
+                }, 250);
             }
         }
     });

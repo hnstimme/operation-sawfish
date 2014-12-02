@@ -16,16 +16,10 @@
         },
         addTileLayer: function () {
             var attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
-            // danielstahl.k91489gn
             L.tileLayer('https://{s}.tiles.mapbox.com/v3/danielstahl.k90gp8cm/{z}/{x}/{y}.png', {
                 'maxZoom': 18,
                 'attribution': attribution
             }).addTo(this.leafletMap);
-        },
-        addImageLayer: function () {
-            var imageUrl = 'img/hn-1944.png',
-                imageBounds = [[49.12107, 9.16907], [49.17003, 9.25135]];
-            L.imageOverlay(imageUrl, imageBounds).addTo(this.leafletMap);
         },
         addLegend: function (features) {
             var legend = L.control({position: 'topright'});

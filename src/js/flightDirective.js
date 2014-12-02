@@ -12,10 +12,10 @@
         layers: {},
         init: function () {
             this.leafletMap = L.map('flight-map', {
-                center: [51.481382896100975, 5.196533203125],
-                zoom: 6,
+                center: this.views.initial.center,
+                zoom: this.views.initial.zoom,
                 minZoom: 5,
-                maxZoom: 20
+                maxZoom: 18
             });
 
             this.addTileLayer();
@@ -47,6 +47,36 @@
             });
             map.leafletMap.addLayer(marker);
             return marker;
+        },
+        views: {
+            initial: {
+                center: [51.481382896100975, 5.196533203125],
+                zoom: 5
+            },
+            toInitial: function () {
+                map.leafletMap.setView(map.center, map.zoom);
+            },
+            toEngland: function () {
+                map.leafletMap.setView([52.00366, -0.547855], 8);
+            },
+            toAirports: function () {
+                map.leafletMap.fitBounds([
+                    [53.0577, -0.7740],
+                    [53.3203, 0.1856]
+                ]);
+            },
+            toReading: function () {
+                map.leafletMap.fitBounds([
+                    [51.39920565355378, -1.25244140625],
+                    [53.3203, 0.1856]
+                ]);
+            },
+            toHeilbronn: function () {
+                map.leafletMap.fitBounds([
+                    [48.90805939965008, -1.2744140625],
+                    [53.553362785528094, 9.426269531249998]
+                ]);
+            }
         }
     };
 
@@ -215,9 +245,9 @@
                         };
 
                         timelineDef[2] = function () {
-                            map.leafletMap.setView([52.00366, -0.547855], 8);
+                            map.views.toEngland();
                             this.setUndo(function () {
-                                map.leafletMap.setView([51.481382896100975, 5.196533203125], 6);
+                                map.views.toInitial();
                             });
                         };
 
@@ -235,9 +265,9 @@
 
                         // airports
                         timelineDef[21.05] = function () {
-                            map.leafletMap.setView([53.186287573913305, 0.015106201171874998], 10);
+                            map.views.toAirports();
                             this.setUndo(function () {
-                                map.leafletMap.setView([52.00366, -0.547855], 8);
+                                map.views.toEngland();
                             });
                         };
                         airportFeatures.forEach(function (feature, index) {
@@ -251,9 +281,9 @@
 
                         // flight
                         timelineDef[24] = function () {
-                            map.leafletMap.setView([52.315195264379575, 0], 7);
+                            map.views.toReading();
                             this.setUndo(function () {
-                                map.leafletMap.setView([53.186287573913305, 0.015106201171874998], 10);
+                                map.views.toAirports();
                             });
                         };
                         timelineDef[23.5] = function () {
@@ -278,9 +308,9 @@
                             });
                         };
                         timelineDef[26.5] = function () {
-                            map.leafletMap.setView([51.42661449707482, 4.2626953125], 6);
+                            map.views.toHeilbronn();
                             this.setUndo(function () {
-                                map.leafletMap.setView([52.315195264379575, 0], 7);
+                                map.views.toReading();
                             });
                         };
                         timelineDef[36] = function () {

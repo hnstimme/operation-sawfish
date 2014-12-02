@@ -37,10 +37,7 @@
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
-                scope.airplanes = airplanes;
                 scope.circles = circles;
-                scope.christbaumList = christbaumList;
-                scope.mosquitoAirplanes = mosquitoAirplanes;
                 scope.timelineDef = {};
                 scope.showBombsInteractive = false;
 
@@ -52,7 +49,7 @@
                     airplanes.forEach(function (airplane) {
                         airplaneTransitionGroups.push({
                             'outer': animate.select('.airplane-' + airplane.id),
-                            'inner': animate.select('.airplane-' + airplane.id + ' g')
+                            'inner': animate.select('.airplane-' + airplane.id + ' use')
                         });
                     });
                     var airplanesGroup = animate.select('.airplanes');
@@ -172,7 +169,7 @@
                         24.5: mosquitoTransitionGroups[2].attr('transform', 'translate(3800 100)', 3000),
                         25: mosquitoTransitionGroups[3].attr('transform', 'translate(31000 40)', 3000),
                         23.1: togglePlane(0, 0, 0),
-                        25.1: airplaneTransitionGroups[0].outer.attr('transform', 'translate(-1300 220)').and(airplaneTransitionGroups[0].outer.attr('transform', 'translate(0 200)', 12000, 'linear')),
+                        25.1: airplaneTransitionGroups[0].outer.attr('transform', 'translate(-240 220)').and(airplaneTransitionGroups[0].outer.attr('transform', 'translate(1060 200)', 12000, 'linear')),
                         25.35: togglePlane(0, 1, 3000),
                         25.5: setTime(19, 27).and(greenClockAreas[3].style('opacity', 0.6, 11400, 'linear')),
                         34: clockContainer.attr('transform', 'translate(350, -330)', 1500),

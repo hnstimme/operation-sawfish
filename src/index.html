@@ -30,81 +30,87 @@
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-52745604-3', 'auto');
-
     </script>
 </head>
 <body ng-app="app" ng-controller="AudioCtrl" ng-cloak>
-    
-<div class="infoscreen"  >
+
+<div class="infoscreen">
     <div id="close">
-	Close X
+        Close X
     </div>
     <div id="text">
-	<h1>Team</h1>
+        <h1>Team</h1>
 
-	<p>Redaktion: Daniel Stahl (@stahlniel), Isabelle Müller (@isa_mue), Vanessa Wormer (@remrow)</p>
+        <p>Redaktion: Daniel Stahl (@stahlniel), Isabelle Müller (@isa_mue), Vanessa Wormer (@remrow)</p>
 
-	<p>Entwicklung: Felix Ebert (@femeb), Daniel Nowak (@snet_nowak)</p>
+        <p>Entwicklung: Felix Ebert (@femeb), Daniel Nowak (@snet_nowak)</p>
 
-	<p>Design: Heiko Nicht (@heikonicht)</p>
+        <p>Design: Heiko Nicht (@heikonicht)</p>
 
-	<p>Sprecher: Benedikt Witzenberger (@munichrocker)</p>
+        <p>Sprecher: Benedikt Witzenberger (@munichrocker)</p>
 
-	<p>(Framework: Talkie by kiln)</p>
-
-
-	<h1>Quellen</h1>
-
-	<p>Stadtarchiv Heilbronn</p>
-
-	<p>Kampfmittelbeseitigungsdienst Baden-Württemberg</p>
-
-	<p>Hubert Bläsi / Christhardt Schrenk: Heilbronn 1944/45, Leben und Sterben einer Stadt, Heilbronn 1995.</p>
-
-	<p>Uwe Jacobi: Heilbronn, 4. Dezember 1944, Protokoll einer Katastrophe, 1955.</p>
-
-	<p>Wilhelm Steinhilber, Heilbronn: Die schwersten Stunden der Stadt, 1988.</p>
-
-	<p>The National Archives, United Kingdom, Catalogue Ref: AIR 16/487</p>
-
-	<p>Royal Air Force http://www.raf.mod.uk/ </p>
-
-	<p>Oliver Sauer, Süddeutsches Eisenbahnmuseum Heilbronn</p>
-
-	<p>Hans Brunswig, Feuersturm über Hamburg, Stuttgart 2000.</p>
-
-	<p>Gebhard Aders, Bombenkrieg, Strategien der Zerstörung 1939-1945, Köln 2004.</p>
+        <p>(Framework: Talkie by kiln)</p>
 
 
-	<h1>Dank an</h1>
+        <h1>Quellen</h1>
 
-	<p>Stadtarchiv Heilbronn</p>
+        <p>Stadtarchiv Heilbronn</p>
 
-	<p>Kampfmittelbeseitigungsdienst Baden-Württemberg</p>
+        <p>Kampfmittelbeseitigungsdienst Baden-Württemberg</p>
+
+        <p>Hubert Bläsi / Christhardt Schrenk: Heilbronn 1944/45, Leben und Sterben einer Stadt, Heilbronn 1995.</p>
+
+        <p>Uwe Jacobi: Heilbronn, 4. Dezember 1944, Protokoll einer Katastrophe, 1955.</p>
+
+        <p>Wilhelm Steinhilber, Heilbronn: Die schwersten Stunden der Stadt, 1988.</p>
+
+        <p>The National Archives, United Kingdom, Catalogue Ref: AIR 16/487</p>
+
+        <p>Royal Air Force http://www.raf.mod.uk/ </p>
+
+        <p>Oliver Sauer, Süddeutsches Eisenbahnmuseum Heilbronn</p>
+
+        <p>Hans Brunswig, Feuersturm über Hamburg, Stuttgart 2000.</p>
+
+        <p>Gebhard Aders, Bombenkrieg, Strategien der Zerstörung 1939-1945, Köln 2004.</p>
 
 
-	<h1>Impressum</h1>
+        <h1>Dank an</h1>
 
-	<p>HEILBRONNER STIMME GmbH & Co. KG</p>
-	<p>Allee 2, 74072 Heilbronn</p>
-	<p>Telefon 07131 615-0</p>
-	<p>Fax 07131 615-200</p>
-	<p>E-Mail servicecenter@stimme.de</p>
-	<p>Amtsgericht Stuttgart HRA 103208</p>
-	<p>Umsatzsteuer ID: DE 145800252</p>
-	<p>phG: Heilbronner Stimme Verwaltungsgesellschaft mbH</p>
-	<p>Amtsgericht Stuttgart HRB 103454</p>
+        <p>Stadtarchiv Heilbronn</p>
 
-	<p>Geschäftsführer:</p>
-	<p>Tilmann Distelbarth, Bernd Herzberger</p>
+        <p>Kampfmittelbeseitigungsdienst Baden-Württemberg</p>
+
+
+        <h1>Impressum</h1>
+
+        <p>HEILBRONNER STIMME GmbH & Co. KG</p>
+
+        <p>Allee 2, 74072 Heilbronn</p>
+
+        <p>Telefon 07131 615-0</p>
+
+        <p>Fax 07131 615-200</p>
+
+        <p>E-Mail servicecenter@stimme.de</p>
+
+        <p>Amtsgericht Stuttgart HRA 103208</p>
+
+        <p>Umsatzsteuer ID: DE 145800252</p>
+
+        <p>phG: Heilbronner Stimme Verwaltungsgesellschaft mbH</p>
+
+        <p>Amtsgericht Stuttgart HRB 103454</p>
+
+        <p>Geschäftsführer:</p>
+
+        <p>Tilmann Distelbarth, Bernd Herzberger</p>
+    </div>
+
+
 </div>
 
 
-</div>
-    
-    
-    
-    
 <videogular vg-player-ready="onPlayerReady" id="audio-container" stop-video-on-route-change>
     <section class="content-container" ng-view></section>
     <vg-audio vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'audio'"></vg-audio>
@@ -143,26 +149,31 @@
                         <div class="menu-headline">Der Luftkrieg</div>
                     </a>
                 </div>
-		<div class="meta">
-		    <vg-volume>
-			<vg-mutebutton></vg-mutebutton>
-		    </vg-volume>
-		    <div class="share" ng-controller="ShareCtrl" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-			<img class="share-img" src="../img/share.png" width="40px" height="35px">
-			<div class="animate-show"  ng-show="hoverEdit" >
-			    <div class=" fb fb-share-button" data-href="http://sawfish.stimme.de" data-layout="button"></div>
-			    <div class="tw"><a href="https://www.twitter.com">Twitter</a></div>
-			    <div class="wa"><a href="https://www.whatsapp.com">Whatsapp</a></div>
-			</div>
-		    </div>
-		    <div class="info">
-			<img class="info-img" ng-controller="InfoCtrl" ng-mousedown="fadeIn()"  src="../img/info.png" width="40px" height="35px">
-		    </div>
-		    <div class="stimme">
-			<a href="http://www.stimme.de" target="_blank"><img class="stimme-img" src="../img/Stimme_white.svg" width="120px" height="100px"></a>
-		    </div>
-		    
-		</div>
+                <div class="meta">
+                    <vg-volume>
+                        <vg-mutebutton></vg-mutebutton>
+                    </vg-volume>
+                    <div class="share" ng-controller="ShareCtrl" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+                        <img class="share-img" src="../img/share.png" width="40px" height="35px">
+
+                        <div class="animate-show" ng-show="hoverEdit">
+                            <div class=" fb fb-share-button" data-href="http://sawfish.stimme.de"
+                                 data-layout="button"></div>
+                            <div class="tw"><a href="https://www.twitter.com">Twitter</a></div>
+                            <div class="wa"><a href="https://www.whatsapp.com">Whatsapp</a></div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <img class="info-img" ng-controller="InfoCtrl" ng-mousedown="fadeIn()" src="../img/info.png"
+                             width="40px" height="35px">
+                    </div>
+                    <div class="stimme">
+                        <a href="http://www.stimme.de" target="_blank"><img class="stimme-img"
+                                                                            src="../img/Stimme_white.svg" width="120px"
+                                                                            height="100px"></a>
+                    </div>
+
+                </div>
             </div>
         </vg-controls>
     </nav>
@@ -207,12 +218,13 @@
 <!-- endbuild -->
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

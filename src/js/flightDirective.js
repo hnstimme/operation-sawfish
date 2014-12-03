@@ -261,23 +261,17 @@
 
                         timelineDef[13] = gPlanes.style('opacity', 0, 500);
                         timelineDef[13.1] = gPlaneTypes.style('opacity', 1, 500);
-                        timelineDef[18.1] = animate.select('.lancaster').style('opacity', 0.5, 500);
-                        timelineDef[18.2] = animate.select('.mosquito').style('opacity', 1, 500);
+                        timelineDef[18.1] = animate.select('.lancaster').style('opacity', 0.5, 500).and(animate.select('.mosquito').style('opacity', 1, 500));
 
                         timelineDef[21] = function () {
                             element.attr('style', 'visibility:hidden');
-                            this.setUndo(function () {
-                                element.attr('style', '');
-                            });
-                        };
-
-                        // airports
-                        timelineDef[21.05] = function () {
                             map.views.toAirports();
                             this.setUndo(function () {
+                                element.attr('style', '');
                                 map.views.toEngland();
                             });
                         };
+
                         airportFeatures.forEach(function (feature, index) {
                             timelineDef[21.5 + 0.2 * index] = function () {
                                 var marker = map.addMarker(feature);

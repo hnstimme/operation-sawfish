@@ -112,18 +112,15 @@ text.counter {
 .bombs-counter-container {
   position: absolute;
   z-index: 30;
-  left: 40%;
+  left: 0;
   right: 0;
   top: 14.5%;
+  width: 100%;
   text-align: center;
   color: #572623;
   font-weight: bold;
   font-size: 47px;
   line-height: 0.7;
-  @media (max-aspect-ratio: 5/7) {
-    left: 50%;
-    margin-left: -160px;
-  }
 }
 
 .bombs-counter-label {
@@ -132,9 +129,9 @@ text.counter {
 }
 
 #bombs-svg {
-  @media (max-aspect-ratio: 5/7) {
+  @media (max-aspect-ratio: 6/7) {
     .city, .cloud {
-      .transform(scale(1.4) translate(-290px, 95px));
+      .transform(scale(1.4) translate(-290px, 110px));
     }
 
     .clock-container {

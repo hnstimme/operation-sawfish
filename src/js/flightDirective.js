@@ -14,7 +14,7 @@
             this.leafletMap = L.map('flight-map', {
                 center: this.views.initial.center,
                 zoom: this.views.initial.zoom,
-                minZoom: 5,
+                minZoom: 4,
                 maxZoom: 18,
                 zoomControl: !Modernizr.touch
             });
@@ -53,13 +53,16 @@
         views: {
             initial: {
                 center: [51.481382896100975, 5.196533203125],
-                zoom: 5
+                zoom: L.Browser.mobile ? 4 : 6
             },
             toInitial: function () {
                 map.leafletMap.setView(map.center, map.zoom);
             },
             toEngland: function () {
-                map.leafletMap.setView([52.00366, -0.547855], 8);
+                map.leafletMap.fitBounds([
+                    [49.97982455, -6.08849263],
+                    [55.0535025, 0.89881206]
+                ]);
             },
             toAirports: function () {
                 map.leafletMap.fitBounds([

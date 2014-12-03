@@ -7,11 +7,11 @@
         init: function () {
             this.leafletMap = L.map('comparison-map', {
                 center: [51.1633, 10.4476],
-                zoom: 6,
+                zoom: L.Browser.mobile ? 5 : 6,
                 minZoom: 5,
-                maxZoom: 18
+                maxZoom: 18,
+                zoomControl: !Modernizr.touch
             });
-
             this.addTileLayer();
             this.addLegend();
         },

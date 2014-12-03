@@ -10,5 +10,8 @@
         $scope.onPlayerReady = function (API) {
             $scope.videogularAPI = API;
         };
+        $scope.modals = {
+            infoscreen: false
+        };
     });
 })(angular);

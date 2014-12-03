@@ -2,14 +2,13 @@
 	<div class="img-container img-hbf" style="opacity:0"></div>
 	<div class="img-container img-hotel" style="opacity:0"></div>
 	<div class="img-container img-feuersturm" style="opacity:0"></div>
-	<div class="img-container img-brand3" style="opacity:0"></div>
 
 	<div class="bombs-counter-container">
 		<div class="odometer bombs-counter" id="bombs-counter" style="display:none">0</div>
 		<span class="bombs-counter-label" style="display:none">Bomben</span>
 	</div>
 
-	<svg width="100%" height="560px" viewBox="0 0 960 560" xml:space="preserve" id="bombs-svg" bombing>
+	<svg width="100%" height="560px" viewBox="-20 0 1060 560" xml:space="preserve" id="bombs-svg" bombing>
 		<defs>
 			<clipPath id="greenclockarea1">
 			    <path d="M0,0L0,-98L20.830543043662164,-98Z" transform="rotate(108)"></path>
@@ -31,7 +30,7 @@
 			</clipPath>
 		</defs>
 
-		<g class="clock-container">
+		<g class="clock-container" id="clock-container">
 			<g transform="scale(0.9) translate(10 80)">
 				<g transform="translate(-300 200)">
 					<g class="clock-face" transform="translate(384 223.75)">
@@ -66,25 +65,36 @@
 			</g>
 		</g>
 
-		<g class="airplanes">
-			<g style="display:none">
-				<g id="lancasterTemplate" transform="scale(0.25) translate(0 70)" ng-include="'partials/svg/lancaster_side_simplified.html'"></g>
+		<g class="airplanes-container">
+			<g class="airplanes">
+				<g style="display:none">
+					<g id="lancasterTemplate" transform="scale(0.25) translate(0 70)" ng-include="'partials/svg/lancaster_side_simplified.html'"></g>
+				</g>
+				<g class="airplane airplane-0">
+					<use xlink:href="{{'lancasterTemplate' | svgHref}}" transform="translate(-1060 -30)" style="opacity:0"></use>
+				</g>
+				<g class="airplane airplane-1">
+					<use xlink:href="{{'lancasterTemplate' | svgHref}}" transform="translate(-725 15)" style="opacity:0"></use>
+				</g>
+				<g class="airplane airplane-2">
+					<use xlink:href="{{'lancasterTemplate' | svgHref}}" transform="translate(-610 -50)" style="opacity:0"></use>
+				</g>
+				<g class="airplane airplane-3">
+					<use xlink:href="{{'lancasterTemplate' | svgHref}}" transform="translate(-300 0)" style="opacity:0"></use>
+				</g>
 			</g>
-			<g class="airplane airplane-0">
-				<use xlink:href="{{'lancasterTemplate' | svgHref}}" transform="translate(-1060 -30)" style="opacity:0"></use>
-			</g>
-			<g class="airplane airplane-1">
-				<use xlink:href="{{'lancasterTemplate' | svgHref}}" transform="translate(-725 15)" style="opacity:0"></use>
-			</g>
-			<g class="airplane airplane-2">
-				<use xlink:href="{{'lancasterTemplate' | svgHref}}" transform="translate(-610 -50)" style="opacity:0"></use>
-			</g>
-			<g class="airplane airplane-3">
-				<use xlink:href="{{'lancasterTemplate' | svgHref}}" transform="translate(-300 0)" style="opacity:0"></use>
+
+			<g class="mosquitos">
+				<g class="mosquito mosquito-0" transform="translate(-3000, 0)">
+					<g id="mosquitoTemplate" transform="translate(-250, -50) scale(0.25)" ng-include="'partials/svg/mosquito_side_simplified.html'"></g>
+				</g>
+				<use xlink:href="{{'mosquitoTemplate' | svgHref}}" class="mosquito mosquito-1" transform="translate(-3000, 0)"></use>
+				<use xlink:href="{{'mosquitoTemplate' | svgHref}}" class="mosquito mosquito-2" transform="translate(-3000, 0)"></use>
+				<use xlink:href="{{'mosquitoTemplate' | svgHref}}" class="mosquito mosquito-3" transform="translate(-3000, 0)"></use>
 			</g>
 		</g>
 
-		<g class="christbaums">
+		<g class="christbaums" transform="translate(100 0)">
 			<g class="christbaum christbaum-1" transform="translate(30,40)" style="opacity:0">
 				<g id="christbaumTemplate" transform="translate(0, 100) scale(0.15)">
 					<g opacity="0.75" transform="translate(1210, -480) scale(2.5)">
@@ -104,27 +114,21 @@
 			<use xlink:href="{{'christbaumTemplate' | svgHref}}" class="christbaum christbaum-6" transform="translate(785,10)" style="opacity:0"></use>
 		</g>
 
-		<g class="mosquitos">
-			<g class="mosquito mosquito-0" transform="translate(-3000, 0)">
-				<g id="mosquitoTemplate" transform="translate(-250, -50) scale(0.25)" ng-include="'partials/svg/mosquito_side_simplified.html'"></g>
-			</g>
-			<use xlink:href="{{'mosquitoTemplate' | svgHref}}" class="mosquito mosquito-1" transform="translate(-3000, 0)"></use>
-			<use xlink:href="{{'mosquitoTemplate' | svgHref}}" class="mosquito mosquito-2" transform="translate(-3000, 0)"></use>
-			<use xlink:href="{{'mosquitoTemplate' | svgHref}}" class="mosquito mosquito-3" transform="translate(-3000, 0)"></use>
-		</g>
-
-		<g ng-repeat="circle in circles" class="circle circle-{{circle.id}}" ng-attr-transform="{{circle.translate}}" style="opacity:0">
-			<g class="inner-circle-group" opacity="{{circle.opacity}}" ng-attr-transform="{{circle.scale}}">
-				<circle class="inner-circle-1" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="10.983"></circle>
-				<circle class="inner-circle-2" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="22.358"></circle>
-				<circle class="inner-circle-3" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="38.833"></circle>
-				<circle class="inner-circle-4" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="62.37"></circle>
-				<circle class="inner-circle-5" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="92.183"></circle>
+		<g class="circles">
+			<g ng-repeat="circle in circles" class="circle circle-{{circle.id}}" ng-attr-transform="{{circle.translate}}" style="opacity:0">
+				<g class="inner-circle-group" opacity="{{circle.opacity}}" ng-attr-transform="{{circle.scale}}">
+					<circle class="inner-circle-1" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="10.983"></circle>
+					<circle class="inner-circle-2" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="22.358"></circle>
+					<circle class="inner-circle-3" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="38.833"></circle>
+					<circle class="inner-circle-4" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="62.37"></circle>
+					<circle class="inner-circle-5" opacity="0" fill-rule="evenodd" clip-rule="evenodd" fill="{{circle.color}}" cx="0" cy="0" r="92.183"></circle>
+				</g>
 			</g>
 		</g>
 
 		<g class="city">
 			<g transform="translate(135,138)" ng-include="'partials/svg/city.html'"></g>
+			<rect style="fill:#4E4E4E" x="-3000" y="550" width="6960" height="100"></rect>
 		</g>
     </svg>
 

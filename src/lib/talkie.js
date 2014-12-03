@@ -374,7 +374,7 @@ function startTransition(element, timeline, duration, easing) {
     if (typeof duration === "undefined") duration = 0;
     cancelTransition(element);
     var k = element.node().__kiln_transitions__;
-    var t = element.transition().duration(Talkie.fast_forward ? 0 : duration);
+    var t = element.transition().duration(timeline.fast_forward ? 0 : duration);
     if (easing) t.ease(easing);
     return {
         attr: function(name, value) {
@@ -503,7 +503,9 @@ Talkie_Animate.prototype._style_single = function(element, timeline, style, to_v
     t.style(style, to_value);
     timeline.setUndo(function() {
         cancelTransition(element);
-        element.style(style, from_value);
+        setTimeout(function () {
+            element.style(style, from_value);
+        }, 100);
     });
     return this;
 };

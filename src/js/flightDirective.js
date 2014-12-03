@@ -14,8 +14,9 @@
             this.leafletMap = L.map('flight-map', {
                 center: this.views.initial.center,
                 zoom: this.views.initial.zoom,
-                minZoom: 5,
-                maxZoom: 18
+                minZoom: 4,
+                maxZoom: 18,
+                zoomControl: !Modernizr.touch
             });
 
             this.addTileLayer();
@@ -52,13 +53,16 @@
         views: {
             initial: {
                 center: [51.481382896100975, 5.196533203125],
-                zoom: 5
+                zoom: L.Browser.mobile ? 4 : 6
             },
             toInitial: function () {
                 map.leafletMap.setView(map.center, map.zoom);
             },
             toEngland: function () {
-                map.leafletMap.setView([52.00366, -0.547855], 8);
+                map.leafletMap.fitBounds([
+                    [49.97982455, -6.08849263],
+                    [55.0535025, 0.89881206]
+                ]);
             },
             toAirports: function () {
                 map.leafletMap.fitBounds([
@@ -127,11 +131,13 @@
                     d3.select('.lancaster .plane-label').transition().attr('y', 40);
                     d3.select('.lancaster-details').transition().style('opacity', 1);
                     d3.select('.lancaster').transition().style('opacity', 1);
+                    d3.select('.lancaster-default-view').classed('in-details', true);
                     d3.select('.mosquito').style('display', 'none').style('opacity', 0);
                 };
                 scope.hideLancasterDetails = function () {
                     d3.select('.lancaster .plane-label').transition().attr('y', 70);
                     d3.select('.lancaster-details').transition().style('opacity', 0);
+                    d3.select('.lancaster-default-view').classed('in-details', false);
                     d3.select('.mosquito').style('display', 'block').transition().delay(300).style('opacity', 0.6);
                 };
                 scope.showMosquitoDetails = function () {
@@ -167,7 +173,7 @@
                     for (var i = 0; i < groupToBuild.columns; i++) {
                         group.push({
                             'id': i,
-                            'transform': 'scale(0.06) translate(' + i * 580 + ' 8701)'
+                            'transform': 'scale(0.059) translate(' + i * 580 + ' 24701)'
                         });
                     }
                     for (var i = 0; i < groupToBuild.rows; i++) {
@@ -184,7 +190,7 @@
                 for (var j = 0; j < 5; j++) {
                     mosquitos.push({
                         id: j,
-                        transform: 'translate(' + j * 32 + ' 188)'
+                        transform: 'translate(' + j * 32 + ' 1088)'
                     })
                 }
                 scope.mosquitoGroups = [];
@@ -219,7 +225,7 @@
                         var count = 0;
                         lancasters.forEach(function (lancaster, index) {
                             count++;
-                            timelineDef[index * timePerLancaster + 6] = lancaster.attr('transform', lancaster.element.attr('transform').replace(/ 8701/, " 0"), 2000);
+                            timelineDef[index * timePerLancaster + 6] = lancaster.style('opacity', 1).attr('transform', lancaster.element.attr('transform').replace(/ 24701/, " 0"), 2000);
                             timelineDef[index * timePerLancaster + 7.201] = lancasterCounter.text(count);
                         });
 
@@ -235,7 +241,7 @@
                         var mosquitoCount = 0;
                         mosquitos.forEach(function (mosquito, index) {
                             mosquitoCount++;
-                            timelineDef[index * timePerMosquito + 6.001] = mosquito.attr('transform', mosquito.element.attr('transform').replace(/ 188/, " 0"), 2500);
+                            timelineDef[index * timePerMosquito + 6.001] = mosquito.style('opacity', 1).attr('transform', mosquito.element.attr('transform').replace(/ 1088/, " 0"), 2500);
                             timelineDef[index * timePerMosquito + 7.502] = mosquitoCounter.text(mosquitoCount);
                         });
 
@@ -255,23 +261,17 @@
 
                         timelineDef[13] = gPlanes.style('opacity', 0, 500);
                         timelineDef[13.1] = gPlaneTypes.style('opacity', 1, 500);
-                        timelineDef[18.1] = animate.select('.lancaster').style('opacity', 0.5, 500);
-                        timelineDef[18.2] = animate.select('.mosquito').style('opacity', 1, 500);
+                        timelineDef[18.1] = animate.select('.lancaster').style('opacity', 0.5, 500).and(animate.select('.mosquito').style('opacity', 1, 500));
 
                         timelineDef[21] = function () {
                             element.attr('style', 'visibility:hidden');
-                            this.setUndo(function () {
-                                element.attr('style', '');
-                            });
-                        };
-
-                        // airports
-                        timelineDef[21.05] = function () {
                             map.views.toAirports();
                             this.setUndo(function () {
+                                element.attr('style', '');
                                 map.views.toEngland();
                             });
                         };
+
                         airportFeatures.forEach(function (feature, index) {
                             timelineDef[21.5 + 0.2 * index] = function () {
                                 var marker = map.addMarker(feature);

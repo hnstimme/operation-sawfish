@@ -124,30 +124,12 @@
             <div class="controls-container">
                 <vg-play-pause-button class="control"></vg-play-pause-button>
                 <div class="chapters-nav">
-                    <a href="/">
-                        <span class="chapter-number">1</span>
-                        <span class="chapter-title">Heilbronn brennt</span>
-                    </a>
-                    <a href="/targetSelection">
-                        <span class="chapter-number">2</span>
-                        <span class="chapter-title">Der Plan</span>
-                    </a>
-                    <a href="/flight">
-                        <span class="chapter-number">3</span>
-                        <span class="chapter-title">Der Anflug</span>
-                    </a>
-                    <a href="/bombing">
-                        <span class="chapter-number">4</span>
-                        <span class="chapter-title">Der Angriff</span>
-                    </a>
-                    <a href="/destruction">
-                        <span class="chapter-number">5</span>
-                        <span class="chapter-title">Zerstörte Stadt</span>
-                    </a>
-                    <a href="/comparison">
-                        <span class="chapter-number">6</span>
-                        <span class="chapter-title">Der Luftkrieg</span>
-                    </a>
+                    <nav-item href="/" number="1" title="Heilbronn brennt"></nav-item>
+                    <nav-item href="/targetSelection" number="2" title="Der Plan"></nav-item>
+                    <nav-item href="/flight" number="3" title="Der Anflug"></nav-item>
+                    <nav-item href="/bombing" number="4" title="Der Angriff"></nav-item>
+                    <nav-item href="/destruction" number="5" title="Zerstörte Stadt"></nav-item>
+                    <nav-item href="/comparison" number="6" title="Der Luftkrieg"></nav-item>
                 </div>
                 <vg-volume class="control">
                     <vg-mutebutton></vg-mutebutton>
@@ -181,6 +163,7 @@
 <script src="lib/talkie.js"></script>
 <script src="lib/walkway.js"></script>
 <script src="js/app.js"></script>
+<script src="js/navItemDirective.js"></script>
 <script src="js/svgHrefFilter.js"></script>
 <script src="js/video/stopVideoOnRouteChangeDirective.js"></script>
 <script src="js/video/trackVideoStartDirective.js"></script>

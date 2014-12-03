@@ -37,7 +37,15 @@
     height: 100%;
     vertical-align: bottom;
     padding: 20px 18px 0 38px;
+    margin-left: -4px;
+    &:first-child {
+      margin-left: 0;
+    }
     width: auto;
+
+    &.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
 
     @media (min-width: 1500px) {
       width: 184px;

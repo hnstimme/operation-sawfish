@@ -7,11 +7,11 @@
         init: function () {
             this.leafletMap = L.map('comparison-map', {
                 center: [51.1633, 10.4476],
-                zoom: L.Browser.mobile ? 5 : 6,
+                zoom: 6,
                 minZoom: 5,
-                maxZoom: 18,
-                zoomControl: !Modernizr.touch
+                maxZoom: 18
             });
+
             this.addTileLayer();
             this.addLegend();
         },
@@ -37,7 +37,7 @@
             return marker;
         },
         addLegend: function () {
-            var legend = L.control({position: 'topright'});
+            var legend = L.control({position: 'bottomleft'});
             legend.onAdd = function () {
                 var div = L.DomUtil.create('div', 'info legend');
                 div.style.minWidth = '150px';
@@ -135,7 +135,7 @@
                     var startMoment = moment("01021942", "DDMMYYYY");
                     var endMoment = moment("31051945", "DDMMYYYY");
                     var monthsBetween = endMoment.diff(startMoment, 'months');
-                    var totalTime = 12;
+                    var totalTime = 18;
                     var timePerMonth = totalTime / monthsBetween;
                     for (var currentMoment = moment(startMoment); currentMoment.isBefore(endMoment); currentMoment.add(1, 'months')) {
                         (function () {
@@ -167,18 +167,16 @@
                     });
 
                     var imgs = [];
-                    ['tote', 'wiederaufbau', 'wiederaufbau2'].forEach(function (imgClass) {
+                    ['wiederaufbau', 'wiederaufbau2'].forEach(function (imgClass) {
                         imgs[imgClass] = animate.select('.img-' + imgClass);
                     });
                     var imgsContainer = animate.select('.imgs');
                     var swapImage = function (toShow, toHide) {
-                        return imgs[toShow].style('opacity', 1, 1000).and(imgs[toHide].style('opacity', 0, 3000));
+                        return imgs[toShow].style('opacity', 1, 300).and(imgs[toHide].style('opacity', 0, 1000));
                     };
 
-                    timelineDef[12.5] = imgsContainer.style('display', 'block');
-                    timelineDef[13] = imgs['tote'].style('opacity', 1, 1000);
-                    timelineDef[19] = swapImage('wiederaufbau2', 'tote');
-                    timelineDef[24] = swapImage('wiederaufbau', 'wiederaufbau2');
+                    timelineDef[22] = imgsContainer.style('display', 'block');
+                    timelineDef[25] = swapImage('wiederaufbau2', 'wiederaufbau');
 
                     timelineDef[26] = function () {
                         var promise = $timeout(function () {

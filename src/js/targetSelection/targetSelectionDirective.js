@@ -124,11 +124,11 @@
                             });
                         },
                         2.5: addArea('zielgebiet-stadt', 4500),
+                        7.25: addArea('zielgebiet-boeckingen', 4500),
                         7: legend.style({
                             display: 'block',
                             opacity: 1
                         }).and(fadeInLegendEntry('zielgebiet-stadt')).and(fillArea('zielgebiet-stadt')),
-                        7.4: addArea('zielgebiet-boeckingen', 4500),
                         11.75: fillArea('zielgebiet-boeckingen'),
                         13: function () {
                             fitBoundsInner();

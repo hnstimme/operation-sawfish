@@ -21,35 +21,16 @@
   .mosquito-default-view path {
     stroke-width: 4px;
   }
-  @media (max-aspect-ratio: 5/7) {
-    .lancaster-default-view {
-      .transform(scale(1.4) translate(55px, -270px));
-      text {
-        .transform(translate(0, 40px));
-      }
-      &.in-details {
-        .transform(scale(1.4) translate(55px, -230px));
-      }
-    }
+}
 
-    .lancaster-details {
-      .plane-description {
-        font-size: 20px;
-        .transform(translate(200px, -250px));
-      }
-    }
-
-    .dimension-lines {
-      display: none;
-    }
-
-    .mosquito-default-view {
-      .transform(scale(1.4) translate(-440px, 120px));
-      text {
-        .transform(translate(0, 80px));
-      }
-    }
-  }
+#flight-map {
+  position: absolute;
+  top: 0;
+  bottom: 10%;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .move-keyframes() {
@@ -79,21 +60,12 @@
   .move-keyframes();
 }
 
-#flight-map {
-  position: absolute;
-  top: 0;
-  bottom: 10%;
-  height: 100%;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-  svg path {
-    stroke-width: 4;
-    stroke: #FFFFFF;
-    .animation(move 60s linear infinite 2.3s);
-    &.path-reading-to-hn {
-      .animation(move 60s linear infinite 10s);
-    }
+#flight-map svg path {
+  stroke-width: 4;
+  stroke: #FFFFFF;
+  .animation(move 60s linear infinite 2.3s);
+  &.path-reading-to-hn {
+    .animation(move 60s linear infinite 10s);
   }
 }
 
@@ -102,11 +74,11 @@
 }
 
 .plane-description {
-  font-size: 18px;
+  font-size: 12px;
 }
 
 .plane-feature-list {
-  font-size: 16px;
+  font-size: 9px;
 }
 
 .dimension-line {

@@ -9,8 +9,7 @@
                 center: [49.1423, 9.2188],
                 zoom: 14,
                 minZoom: 5,
-                maxZoom: 18,
-                zoomControl: !Modernizr.touch
+                maxZoom: 18
             });
 
             this.addLegend([{
@@ -35,9 +34,7 @@
         addDestructionAreas: function (id) {
             var imageUrl = 'img/destruction_areas_' + id + '.png',
                 imageBounds = [[49.12616111111112, 9.186772222222222], [49.16519166666667, 9.246605555555554]];
-            return L.imageOverlay(imageUrl, imageBounds, {
-                opacity: 0.75
-            }).addTo(this.leafletMap);
+            return L.imageOverlay(imageUrl, imageBounds).addTo(this.leafletMap);
         },
         addLegend: function (layers) {
             var legend = L.control({position: 'topright'});
@@ -119,7 +116,7 @@
                         1.5: swapImage('wollhaus', 'luft'),
                         4.5: swapImage('rathaus', 'wollhaus'),
                         7: swapImage('kiliansplatz', 'rathaus'),
-                        9: imgs['kiliansplatz'].style('opacity', 0, 1000).and(function () {
+                        10: imgs['kiliansplatz'].style('opacity', 0).and(imgsContainer.style('display', 'none')).and(function () {
                             var layer = map.addDestructionAreas('total');
                             d3.selectAll('.legend, .legend-entry-total').style('display', 'block').transition().duration(2000).style('opacity', 1);
                             this.setUndo(function () {
@@ -127,7 +124,6 @@
                                 d3.selectAll('.legend, .legend-entry-total').style('display', 'none').style('opacity', 0);
                             });
                         }),
-                        10: imgsContainer.style('display', 'none'),
                         14: function () {
                             var layer = map.addDestructionAreas('partial');
                             d3.selectAll('.legend, .legend-entry-partial').style('display', 'block').transition().duration(2000).style('opacity', 1);

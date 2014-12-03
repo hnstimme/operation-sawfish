@@ -1,85 +1,61 @@
-h1 {
-  margin-bottom: 0.5em;
-}
-
 .start {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/img/Stratscreen_zugeschnitten.jpg");
-  background-size: 100% 100%;
-  float: left;
+  background-image: url("../img/Startscreen_zugeschnitten.jpg");
+  background-size: 100% auto;
+  @media (max-aspect-ratio: 1/1) {
+    background-size: auto 100%;
+  }
   z-index: 1;
 }
 
-.container {
-  width: 80%;
-  height: 250px;
-  top: 0;
+.start-content {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  display: table;
+  font-size: 16px;
 
+  h1 {
+    font-size: 4em;
+    line-height: 1em;
+    margin-bottom: 0.5em;
+  }
+  h2 {
+    font-size: 2em;
+    line-height: 1.3em;
+  }
+  h1, h2 {
+    text-shadow: 3px 3px #222222;
+  }
 }
 
 .playbutton {
-  height: 450px;
-  width: 550px;
-  background-image: url("/img/Play_white.svg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  float: left;
-  margin-left: -150px;
-  margin-top: -30px;
+  display: table-cell;
+  width: 325px;
+  margin-right: 40px;
 }
 
 .headline {
-  float: left;
-  margin-top: 120px;
-  margin-left: -50px;
-
+  display: table-cell;
+  vertical-align: middle;
 }
 
-.start h1 {
-  font-size: 4em;
-  line-height: 0.5em;
+@media (max-width: 767px) {
+  .playbutton,
+  .headline {
+    display: table-row;
+  }
 
-}
-
-.start h2 {
-  font-size: 2em;
-  line-height: 1.3em;
-
-}
-
-// Responsive ab 960 pixel
-@media only screen and (max-width: 960px) {
-  .container {
-    width: 80%;
-    height: 150px;
-    top: 0;
-
+  .start-content {
+    font-size: 10px;
+    left: 4%;
   }
 
   .playbutton {
-    height: 150px;
-    width: 250px;
-    margin-left: 0;
-    margin-top: 0;
-
-  }
-
-  .headline {
-    float: left;
-    margin-top: 20px;
-
-  }
-
-  .start h1 {
-    font-size: 1em;
-    line-height: 0.2em;
-
-  }
-
-  .start h2 {
-    font-size: 0.8em;
+    width: 160px;
+    margin-bottom: 20px;
   }
 }

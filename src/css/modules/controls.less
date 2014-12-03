@@ -1,30 +1,161 @@
 @import "variables";
 
 .controls-container {
-  height: @nav-height - @scrubbar-height;
+  height: @controls-height;
   width: 100%;
-  margin-top:15px;
+  display: table;
+  padding: 8px 0;
+  box-sizing: border-box;
+  .control:last-child {
+    border-right: none;
+  }
+  @media (max-width: 767px) {
+    padding: 4px 0;
+    height: @controls-height-mobile;
+  }
+}
+
+.control {
+  vertical-align: middle;
+  line-height: 14px;
+  display: table-cell;
+  img {
+    display: inline;
+  }
 }
 
 .chapters-nav {
-  width: auto;
   display: table-cell;
-  
+  width: auto;
+
   a {
-    font-weight: bold;
-    display: inline-block;
-    background: none;
-    border: none;
-    border-right: 1px solid darken(@font-color, 30%);
-    font-size: 12px;
-    padding: 10px 10px ;
-    color: @font-color;
-    text-decoration: none;
-    padding-left:20px;
+    position: relative;
+    display: inline-table;
+    box-sizing: border-box;
+    font-size: 17px;
+    line-height: 100%;
+    height: 100%;
+    vertical-align: bottom;
+    padding: 20px 18px 0 38px;
+    margin-left: -4px;
+    &:first-child {
+      margin-left: 0;
+    }
+    width: auto;
+
+    &.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (min-width: 1500px) {
+      width: 184px;
+    }
+    @media (min-width: 1350px) and (max-width: 1499px) {
+      width: 154px;
+    }
+    @media (min-width: 1200px) and (max-width: 1349px) {
+      width: 134px;
+    }
+    @media (min-width: 1075px) and (max-width: 1199px) {
+      width: 84px;
+    }
+    @media (min-width: 800px) and (max-width: 1074px) {
+      width: 84px;
+      font-size: 15px;
+      padding: 20px 10px 0 24px;
+    }
+    @media (min-width: 768px) and (max-width: 799px) {
+      width: 34px;
+      padding: 20px 10px 0 12px;
+    }
+    @media (max-width: 767px) {
+      width: 32px;
+      padding: 15px 9px 0 9px;
+    }
   }
-  
-  .iconButton play {
-      font-size:2.5em;
-      
+
+  .chapter-number {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 28px;
+    font-weight: bold;
+
+    @media (min-width: 800px) and (max-width: 1074px) {
+      font-size: 24px;
+      left: 6px;
+    }
+    @media (min-width: 768px) and (max-width: 799px) {
+      display: none
+    }
+    @media (max-width: 767px) {
+      position: relative;
+      top: 0;
+      left: 0;
+      font-size: 22px;
+    }
+  }
+
+  .chapter-title {
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 969px) {
+  vg-volume {
+    display: none !important;
+  }
+}
+
+.control,
+.chapters-nav a {
+  border-right: 1px solid darken(@font-color, 30%);
+}
+
+.control-icon {
+  width: 40px;
+  text-align: center;
+  img {
+    padding-top: 4px;
+    height: 23px;
+  }
+  @media (max-width: 768px) {
+    width: 30px;
+    img {
+      height: 20px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .control-logo {
+    display: none !important;
+  }
+
+  .control-icon-before-logo {
+    border-right: none;
+  }
+}
+.control-logo {
+  padding: 0 17px;
+  width: 140px;
+  @media (max-width: 879px) {
+    width: 70px !important;
+    padding: 0 10px;
+  }
+  @media (max-width: 800px) {
+    width: 50px !important;
+    padding: 0 7px;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  videogular vg-play-pause-button {
+    width: 36px;
   }
 }

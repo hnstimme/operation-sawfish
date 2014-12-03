@@ -30,81 +30,75 @@
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-52745604-3', 'auto');
-
     </script>
 </head>
 <body ng-app="app" ng-controller="AudioCtrl" ng-cloak>
-    
-<div class="infoscreen"  >
-    <div id="close">
-	Close X
-    </div>
-    <div id="text">
-	<h1>Team</h1>
+<div class="infoscreen" ng-show="modals.infoScreen">
+    <h1>Team</h1>
 
-	<p>Redaktion: Daniel Stahl (@stahlniel), Isabelle Müller (@isa_mue), Vanessa Wormer (@remrow)</p>
+    <p>Redaktion: Daniel Stahl (@stahlniel), Isabelle Müller (@isa_mue), Vanessa Wormer (@remrow)</p>
 
-	<p>Entwicklung: Felix Ebert (@femeb), Daniel Nowak (@snet_nowak)</p>
+    <p>Entwicklung: Felix Ebert (@femeb), Daniel Nowak (@snet_nowak)</p>
 
-	<p>Design: Heiko Nicht (@heikonicht)</p>
+    <p>Design: Heiko Nicht (@heikonicht)</p>
 
-	<p>Sprecher: Benedikt Witzenberger (@munichrocker)</p>
+    <p>Sprecher: Benedikt Witzenberger (@munichrocker)</p>
 
-	<p>(Framework: Talkie by kiln)</p>
+    <p>(Framework: Talkie by kiln)</p>
 
+    <h1>Quellen</h1>
 
-	<h1>Quellen</h1>
+    <p>Stadtarchiv Heilbronn</p>
 
-	<p>Stadtarchiv Heilbronn</p>
+    <p>Kampfmittelbeseitigungsdienst Baden-Württemberg</p>
 
-	<p>Kampfmittelbeseitigungsdienst Baden-Württemberg</p>
+    <p>Hubert Bläsi / Christhardt Schrenk: Heilbronn 1944/45, Leben und Sterben einer Stadt, Heilbronn 1995.</p>
 
-	<p>Hubert Bläsi / Christhardt Schrenk: Heilbronn 1944/45, Leben und Sterben einer Stadt, Heilbronn 1995.</p>
+    <p>Uwe Jacobi: Heilbronn, 4. Dezember 1944, Protokoll einer Katastrophe, 1955.</p>
 
-	<p>Uwe Jacobi: Heilbronn, 4. Dezember 1944, Protokoll einer Katastrophe, 1955.</p>
+    <p>Wilhelm Steinhilber, Heilbronn: Die schwersten Stunden der Stadt, 1988.</p>
 
-	<p>Wilhelm Steinhilber, Heilbronn: Die schwersten Stunden der Stadt, 1988.</p>
+    <p>The National Archives, United Kingdom, Catalogue Ref: AIR 16/487</p>
 
-	<p>The National Archives, United Kingdom, Catalogue Ref: AIR 16/487</p>
+    <p>Royal Air Force http://www.raf.mod.uk/ </p>
 
-	<p>Royal Air Force http://www.raf.mod.uk/ </p>
+    <p>Oliver Sauer, Süddeutsches Eisenbahnmuseum Heilbronn</p>
 
-	<p>Oliver Sauer, Süddeutsches Eisenbahnmuseum Heilbronn</p>
+    <p>Hans Brunswig, Feuersturm über Hamburg, Stuttgart 2000.</p>
 
-	<p>Hans Brunswig, Feuersturm über Hamburg, Stuttgart 2000.</p>
+    <p>Gebhard Aders, Bombenkrieg, Strategien der Zerstörung 1939-1945, Köln 2004.</p>
 
-	<p>Gebhard Aders, Bombenkrieg, Strategien der Zerstörung 1939-1945, Köln 2004.</p>
+    <h1>Dank an</h1>
 
+    <p>Stadtarchiv Heilbronn</p>
 
-	<h1>Dank an</h1>
+    <p>Kampfmittelbeseitigungsdienst Baden-Württemberg</p>
 
-	<p>Stadtarchiv Heilbronn</p>
+    <h1>Impressum</h1>
 
-	<p>Kampfmittelbeseitigungsdienst Baden-Württemberg</p>
+    <p>HEILBRONNER STIMME GmbH & Co. KG</p>
 
+    <p>Allee 2, 74072 Heilbronn</p>
 
-	<h1>Impressum</h1>
+    <p>Telefon 07131 615-0</p>
 
-	<p>HEILBRONNER STIMME GmbH & Co. KG</p>
-	<p>Allee 2, 74072 Heilbronn</p>
-	<p>Telefon 07131 615-0</p>
-	<p>Fax 07131 615-200</p>
-	<p>E-Mail servicecenter@stimme.de</p>
-	<p>Amtsgericht Stuttgart HRA 103208</p>
-	<p>Umsatzsteuer ID: DE 145800252</p>
-	<p>phG: Heilbronner Stimme Verwaltungsgesellschaft mbH</p>
-	<p>Amtsgericht Stuttgart HRB 103454</p>
+    <p>Fax 07131 615-200</p>
 
-	<p>Geschäftsführer:</p>
-	<p>Tilmann Distelbarth, Bernd Herzberger</p>
+    <p>E-Mail servicecenter@stimme.de</p>
+
+    <p>Amtsgericht Stuttgart HRA 103208</p>
+
+    <p>Umsatzsteuer ID: DE 145800252</p>
+
+    <p>phG: Heilbronner Stimme Verwaltungsgesellschaft mbH</p>
+
+    <p>Amtsgericht Stuttgart HRB 103454</p>
+
+    <p>Geschäftsführer:</p>
+
+    <p>Tilmann Distelbarth, Bernd Herzberger</p>
 </div>
 
-
-</div>
-    
-    
-    
-    
 <videogular vg-player-ready="onPlayerReady" id="audio-container" stop-video-on-route-change>
     <section class="content-container" ng-view></section>
     <vg-audio vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'audio'"></vg-audio>
@@ -116,53 +110,23 @@
                 </vg-scrubBar>
             </div>
             <div class="controls-container">
-                <vg-play-pause-button></vg-play-pause-button>
+                <vg-play-pause-button class="control"></vg-play-pause-button>
                 <div class="chapters-nav">
-                    <a href="/">
-                        <div class="number">1</div>
-                        <div class="menu-headline">Heilbronn brennt</div>
-                    </a>
-                    <a href="/targetSelection">
-                        <div class="number">2</div>
-                        <div class="menu-headline">Der Plan</div>
-                    </a>
-                    <a href="/flight">
-                        <div class="number">3</div>
-                        <div class="menu-headline">Der Anflug</div>
-                    </a>
-                    <a href="/bombing">
-                        <div class="number">4</div>
-                        <div class="menu-headline">Der Angriff</div>
-                    </a>
-                    <a href="/destruction">
-                        <div class="number">5</div>
-                        <div class="menu-headline">Zerstörte Stadt</div>
-                    </a>
-                    <a href="/comparison">
-                        <div class="number">6</div>
-                        <div class="menu-headline">Der Luftkrieg</div>
-                    </a>
+                    <nav-item href="/" number="1" title="Heilbronn brennt"></nav-item>
+                    <nav-item href="/targetSelection" number="2" title="Der Plan"></nav-item>
+                    <nav-item href="/flight" number="3" title="Der Anflug"></nav-item>
+                    <nav-item href="/bombing" number="4" title="Der Angriff"></nav-item>
+                    <nav-item href="/destruction" number="5" title="Zerstörte Stadt"></nav-item>
+                    <nav-item href="/comparison" number="6" title="Der Luftkrieg"></nav-item>
                 </div>
-		<div class="meta">
-		    <vg-volume>
-			<vg-mutebutton></vg-mutebutton>
-		    </vg-volume>
-		    <div class="share" ng-controller="ShareCtrl" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-			<img class="share-img" src="../img/share.png" width="40px" height="35px">
-			<div class="animate-show"  ng-show="hoverEdit" >
-			    <div class=" fb fb-share-button" data-href="http://sawfish.stimme.de" data-layout="button"></div>
-			    <div class="tw"><a href="https://www.twitter.com">Twitter</a></div>
-			    <div class="wa"><a href="https://www.whatsapp.com">Whatsapp</a></div>
-			</div>
-		    </div>
-		    <div class="info">
-			<img class="info-img" ng-controller="InfoCtrl" ng-mousedown="fadeIn()"  src="../img/info.png" width="40px" height="35px">
-		    </div>
-		    <div class="stimme">
-			<a href="http://www.stimme.de" target="_blank"><img class="stimme-img" src="../img/Stimme_white.svg" width="120px" height="100px"></a>
-		    </div>
-		    
-		</div>
+                <vg-volume class="control">
+                    <vg-mutebutton></vg-mutebutton>
+                </vg-volume>
+                <a class="control control-icon"><img src="img/share.png"></a>
+                <a class="control control-icon control-icon-before-logo" ng-click="showInfoScreen()"><img
+                        src="img/info.png"></a>
+                <a class="control control-logo" href="http://www.stimme.de" target="_blank"><img
+                        src="img/Stimme_white.svg"></a>
             </div>
         </vg-controls>
     </nav>
@@ -188,6 +152,7 @@
 <script src="lib/talkie.js"></script>
 <script src="lib/walkway.js"></script>
 <script src="js/app.js"></script>
+<script src="js/navItemDirective.js"></script>
 <script src="js/svgHrefFilter.js"></script>
 <script src="js/video/stopVideoOnRouteChangeDirective.js"></script>
 <script src="js/video/trackVideoStartDirective.js"></script>
@@ -207,12 +172,13 @@
 <!-- endbuild -->
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

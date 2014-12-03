@@ -2,13 +2,12 @@
 
 <svg width="100%" height="650px" viewBox="0 0 960 560" style="visibility:hidden" xml:space="preserve" id="flight-svg" flight>
 	<g class="planes">
-		<text x="0" y="30">Anzahl Flugzeuge</text>
-		<text x="930" y="490" class="counter"><tspan x="930" class="mosquito-counter counter-number">0</tspan><tspan x="930" dy="30" class="counter-label">Mosquito</tspan></text>
-		<text x="470" y="490" class="counter"><tspan x="470" class="lancaster-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancaster</tspan></text>
+		<text y="490" class="counter"><tspan x="895" class="mosquito-counter counter-number">0</tspan><tspan x="895" dy="30" class="counter-label">Mosquito</tspan></text>
+		<text y="490" class="counter"><tspan x="470" class="lancaster-counter counter-number">0</tspan><tspan x="470" dy="30" class="counter-label">Lancaster</tspan></text>
 
-		<g transform="translate(700 460)">
+		<g transform="translate(670 470)">
 			<g ng-repeat="mosquitoGroup in mosquitoGroups" ng-attr-transform="{{mosquitoGroup.transform}}">
-				<g ng-repeat="mosquito in mosquitoGroup.mosquitos" class="mosquito-{{mosquitoGroup.id}}-{{mosquito.id}}" ng-attr-transform="{{mosquito.transform}}">
+				<g ng-repeat="mosquito in mosquitoGroup.mosquitos" class="mosquito-{{mosquitoGroup.id}}-{{mosquito.id}}" ng-attr-transform="{{mosquito.transform}}" style="opacity:0">
 					<g transform="scale(0.06)">
 						<g transform="rotate(90 0 0) translate(-140 -800)">
 							<path d="M250.2,59.002c11.001,0,20.176,9.165,20.176,20.777v122.24l171.12,95.954v42.779l-171.12-49.501v89.227l40.337,29.946v35.446l-60.52-20.18-60.502,20.166v-35.45l40.341-29.946v-89.227l-171.14,49.51v-42.779l171.14-95.954v-122.24c0-11.612,9.15-20.777,20.16-20.777z"/>
@@ -18,9 +17,9 @@
 			</g>
 		</g>
 
-		<g class="lancaster-groups" transform="translate(-12, 40)">
+		<g class="lancaster-groups" transform="translate(20, 40)">
 			<g ng-repeat="lancasterGroup in lancasterGroups" class="lancaster-group-{{lancasterGroup.id}}" ng-attr-transform="{{lancasterGroup.transform}}">
-				<g ng-repeat="lancaster in lancasterGroup.lancasters" class="lancaster-{{lancasterGroup.id}}-{{lancaster.id}}" ng-attr-transform="{{lancaster.transform}}">
+				<g ng-repeat="lancaster in lancasterGroup.lancasters" class="lancaster-{{lancasterGroup.id}}-{{lancaster.id}}" ng-attr-transform="{{lancaster.transform}}" style="opacity:0">
 					<path d="M250.2,59.002c11.001,0,20.176,9.165,20.176,20.777v122.24l171.12,95.954v42.779l-171.12-49.501v89.227l40.337,29.946v35.446l-60.52-20.18-60.502,20.166v-35.45l40.341-29.946v-89.227l-171.14,49.51v-42.779l171.14-95.954v-122.24c0-11.612,9.15-20.777,20.16-20.777z"/>
 				</g>
 			</g>
@@ -37,16 +36,16 @@
 			</g>
 			<rect x="0" y="0" width="550" height="480" ng-click="showLancasterDetails()" class="clickable clickable-layer"></rect>
 			<g class="lancaster-details" style="opacity:0">
-				<g transform="translate(960 20)">
+				<g transform="translate(892 20)">
 					<rect x="0" y="0" width="20" height="20" ng-click="hideLancasterDetails()" class="clickable clickable-layer"></rect>
 					<line x1="0" x2="20" y1="0" y2="20" class="dimension-line"></line>
 					<line x1="0" x2="20" y1="20" y2="0" class="dimension-line"></line>
 				</g>
 				<text y="70" class="plane-description">
-					<tspan x="270" text-anchor="middle">Die viermotorige Avro Lancaster war der bekannteste Langstreckenbomber</tspan>
-					<tspan x="270" dy="18" text-anchor="middle">der Royal Air Force im Zweiten Weltkrieg.</tspan>
+					<tspan x="270" text-anchor="middle">Die viermotorige Avro Lancaster war der bekannteste</tspan>
+					<tspan x="270" dy="18" text-anchor="middle">Langstreckenbomber der Royal Air Force im Zweiten Weltkrieg.</tspan>
 				</text>
-				<text y="320" class="plane-feature-list">
+				<text y="310" class="plane-feature-list">
 					<tspan x="360">Hersteller: A. V. Roe & Co. Ltd.</tspan>
 					<tspan x="360" dy="16">Besatzung: Sieben Personen</tspan>
 					<tspan x="360" dy="16">Höchstgeschwindigkeit: 462 km/h</tspan>
@@ -54,26 +53,28 @@
 					<tspan x="360" dy="16">Reichweite: 4.827 Kilometer</tspan>
 					<tspan x="360" dy="16">Ladegewicht: Bis zu 9.000 kg Bomben.</tspan>
 				</text>
-				<g class="dimension-line-length">
-					<line x1="0" x2="50" y1="118" y2="118" class="dimension-line"></line>
-					<line x1="0" x2="0" y1="118" y2="290" class="dimension-line"></line>
-					<text x="85" y="212" transform="rotate(90 0 210)" class="dimension-label">21 m</text>
-					<line x1="0" x2="0" y1="320" y2="470" class="dimension-line"></line>
-					<line x1="0" x2="50" y1="470" y2="470" class="dimension-line"></line>
-				</g>
-				<g class="dimension-line-height">
-					<line x1="917" x2="887" y1="225" y2="225" class="dimension-line"></line>
-					<line x1="917" x2="917" y1="225" y2="247" class="dimension-line"></line>
-					<text x="42" y="-704" transform="rotate(90 0 210)" class="dimension-label">6 m</text>
-					<line x1="917" x2="917" y1="272" y2="292" class="dimension-line"></line>
-					<line x1="917" x2="887" y1="292" y2="292" class="dimension-line"></line>
-				</g>
-				<g class="dimension-line-width">
-					<line x1="568" x2="568" y1="470" y2="435" class="dimension-line"></line>
-					<line x1="568" x2="728" y1="470" y2="470" class="dimension-line"></line>
-					<text x="733" y="473" class="dimension-label">31 m</text>
-					<line x1="758" x2="917" y1="470" y2="470" class="dimension-line"></line>
-					<line x1="917" x2="917" y1="470" y2="435" class="dimension-line"></line>
+				<g class="dimension-lines">
+					<g class="dimension-line-length">
+						<line x1="0" x2="50" y1="118" y2="118" class="dimension-line"></line>
+						<line x1="0" x2="0" y1="118" y2="290" class="dimension-line"></line>
+						<text x="85" y="212" transform="rotate(90 0 210)" class="dimension-label">21 m</text>
+						<line x1="0" x2="0" y1="320" y2="470" class="dimension-line"></line>
+						<line x1="0" x2="50" y1="470" y2="470" class="dimension-line"></line>
+					</g>
+					<g class="dimension-line-height">
+						<line x1="917" x2="887" y1="225" y2="225" class="dimension-line"></line>
+						<line x1="917" x2="917" y1="225" y2="247" class="dimension-line"></line>
+						<text x="42" y="-704" transform="rotate(90 0 210)" class="dimension-label">6 m</text>
+						<line x1="917" x2="917" y1="272" y2="292" class="dimension-line"></line>
+						<line x1="917" x2="887" y1="292" y2="292" class="dimension-line"></line>
+					</g>
+					<g class="dimension-line-width">
+						<line x1="568" x2="568" y1="470" y2="435" class="dimension-line"></line>
+						<line x1="568" x2="728" y1="470" y2="470" class="dimension-line"></line>
+						<text x="733" y="473" class="dimension-label">31 m</text>
+						<line x1="758" x2="917" y1="470" y2="470" class="dimension-line"></line>
+						<line x1="917" x2="917" y1="470" y2="435" class="dimension-line"></line>
+					</g>
 				</g>
 				<g transform="translate(560 320)">
 					<g transform="scale(0.38)" ng-include="'partials/svg/lancaster_front.html'"></g>
@@ -93,23 +94,24 @@
 			</g>
 			<rect x="560" y="0" width="400" height="480" ng-click="showMosquitoDetails()" class="clickable clickable-layer"></rect>
 			<g class="mosquito-details" style="opacity:0">
-				<g transform="translate(960 20)">
+				<g transform="translate(892 20)">
 					<rect x="0" y="0" width="20" height="20" ng-click="hideMosquitoDetails()" class="clickable clickable-layer"></rect>
 					<line x1="0" x2="20" y1="0" y2="20" class="dimension-line"></line>
 					<line x1="0" x2="20" y1="20" y2="0" class="dimension-line"></line>
 				</g>
 				<text y="70" class="plane-description">
-					<tspan x="240" text-anchor="middle">Die zweimotorige Mosquito war ein aus Holz gebautes Flugzeug, das eine</tspan>
-					<tspan x="240" dy="18" text-anchor="middle">Geschwindigkeit von über 600 km/h erreichen konnte und zunächst</tspan>
-					<tspan x="240" dy="18" text-anchor="middle">hauptsächlich als Aufklärer-Flugzeug im Einsatz war.</tspan>
-					<tspan x="240" dy="18" text-anchor="middle">Die Schnellbombervariante konnte knapp 1000 Kilogramm Bomben transportieren.</tspan>
+					<tspan x="240" text-anchor="middle">Die zweimotorige Mosquito war ein aus Holz gebautes Flugzeug,</tspan>
+					<tspan x="240" dy="18" text-anchor="middle">das eine Geschwindigkeit von über 600 km/h erreichen</tspan>
+					<tspan x="240" dy="18" text-anchor="middle">konnte und zunächst hauptsächlich als Aufklärer-Flugzeug</tspan>
+					<tspan x="240" dy="18" text-anchor="middle">im Einsatz war. Die Schnellbombervariante konnte knapp</tspan>
+					<tspan x="240" dy="18" text-anchor="middle">1000 Kilogramm Bomben transportieren.</tspan>
 				</text>
 				<text y="320" class="plane-feature-list">
 					<tspan x="360">Hersteller: de Havilland Aircraft Company</tspan>
 					<tspan x="360" dy="16">Besatzung: Zwei Personen</tspan>
 					<tspan x="360" dy="16">Höchstgeschwindigkeit: 670 km/h</tspan>
-					<tspan x="360" dy="16">Reichweite: 2.400 km bei 1,8 kg Bombenladung</tspan>
-					<tspan x="360" dy="16">Ladegewicht: 1,8 kg</tspan>
+					<tspan x="360" dy="16">Reichweite: 2.400 km bei 1,8 t Bombenladung</tspan>
+					<tspan x="360" dy="16">Ladegewicht: 1,8 t</tspan>
 				</text>
 				<g class="dimension-line-length">
 					<line x1="0" x2="50" y1="172" y2="172" class="dimension-line"></line>

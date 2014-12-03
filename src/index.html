@@ -122,58 +122,40 @@
                 </vg-scrubBar>
             </div>
             <div class="controls-container">
-                <vg-play-pause-button></vg-play-pause-button>
+                <vg-play-pause-button class="control"></vg-play-pause-button>
                 <div class="chapters-nav">
                     <a href="/">
-                        <div class="number">1</div>
-                        <div class="menu-headline">Heilbronn brennt</div>
+                        <span class="chapter-number">1</span>
+                        <span class="chapter-title">Heilbronn brennt</span>
                     </a>
                     <a href="/targetSelection">
-                        <div class="number">2</div>
-                        <div class="menu-headline">Der Plan</div>
+                        <span class="chapter-number">2</span>
+                        <span class="chapter-title">Der Plan</span>
                     </a>
                     <a href="/flight">
-                        <div class="number">3</div>
-                        <div class="menu-headline">Der Anflug</div>
+                        <span class="chapter-number">3</span>
+                        <span class="chapter-title">Der Anflug</span>
                     </a>
                     <a href="/bombing">
-                        <div class="number">4</div>
-                        <div class="menu-headline">Der Angriff</div>
+                        <span class="chapter-number">4</span>
+                        <span class="chapter-title">Der Angriff</span>
                     </a>
                     <a href="/destruction">
-                        <div class="number">5</div>
-                        <div class="menu-headline">Zerstörte Stadt</div>
+                        <span class="chapter-number">5</span>
+                        <span class="chapter-title">Zerstörte Stadt</span>
                     </a>
                     <a href="/comparison">
-                        <div class="number">6</div>
-                        <div class="menu-headline">Der Luftkrieg</div>
+                        <span class="chapter-number">6</span>
+                        <span class="chapter-title">Der Luftkrieg</span>
                     </a>
                 </div>
-                <div class="meta">
-                    <vg-volume>
-                        <vg-mutebutton></vg-mutebutton>
-                    </vg-volume>
-                    <div class="share" ng-controller="ShareCtrl" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-                        <img class="share-img" src="../img/share.png" width="40px" height="35px">
-
-                        <div class="animate-show" ng-show="hoverEdit">
-                            <div class=" fb fb-share-button" data-href="http://sawfish.stimme.de"
-                                 data-layout="button"></div>
-                            <div class="tw"><a href="https://www.twitter.com">Twitter</a></div>
-                            <div class="wa"><a href="https://www.whatsapp.com">Whatsapp</a></div>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <img class="info-img" ng-controller="InfoCtrl" ng-mousedown="fadeIn()" src="../img/info.png"
-                             width="40px" height="35px">
-                    </div>
-                    <div class="stimme">
-                        <a href="http://www.stimme.de" target="_blank"><img class="stimme-img"
-                                                                            src="../img/Stimme_white.svg" width="120px"
-                                                                            height="100px"></a>
-                    </div>
-
-                </div>
+                <vg-volume class="control">
+                    <vg-mutebutton></vg-mutebutton>
+                </vg-volume>
+                <div class="control control-icon"><img src="img/share.png"></div>
+                <div class="control control-icon"><img src="img/info.png"></div>
+                <a class="control control-logo" href="http://www.stimme.de" target="_blank"><img
+                        src="img/Stimme_white.svg"></a>
             </div>
         </vg-controls>
     </nav>

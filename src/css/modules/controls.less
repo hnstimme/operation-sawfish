@@ -1,30 +1,93 @@
 @import "variables";
 
 .controls-container {
-  height: @nav-height - @scrubbar-height;
+  height: @controls-height;
   width: 100%;
-  margin-top:15px;
+  display: table;
+  padding: 8px 0;
+  box-sizing: border-box;
+  .control:last-child {
+    border-right: none;
+  }
+}
+
+.control {
+  vertical-align: middle;
+  line-height: 14px;
+  display: table-cell;
+  img {
+    display: inline;
+  }
 }
 
 .chapters-nav {
-  width: auto;
   display: table-cell;
-  
+  width: auto;
+
   a {
+    position: relative;
+    display: inline-table;
+    box-sizing: border-box;
+    font-size: 17px;
+    line-height: 100%;
+    height: 100%;
+    vertical-align: bottom;
+    padding: 20px 18px 0 38px;
+    width: 184px;
+  }
+
+  .chapter-number {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    font-size: 30px;
     font-weight: bold;
-    display: inline-block;
-    background: none;
-    border: none;
-    border-right: 1px solid darken(@font-color, 30%);
-    font-size: 12px;
-    padding: 10px 10px ;
-    color: @font-color;
-    text-decoration: none;
-    padding-left:20px;
   }
-  
-  .iconButton play {
-      font-size:2.5em;
-      
+}
+
+.control,
+.chapters-nav a {
+  border-right: 1px solid darken(@font-color, 30%);
+}
+
+.control-icon {
+  width: 40px;
+  text-align: center;
+  img {
+    padding-top: 4px;
+    height: 23px;
   }
+}
+
+.control-logo {
+  padding: 0 17px;
+  width: 140px;
+  img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  .number {
+    display: block;
+
+  }
+
+  .menu-headline {
+    display: none;
+    min-width: 40px;
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+
+  .stimme {
+    display: none;
+  }
+
+  .meta {
+    width: 150px;
+  }
+
 }

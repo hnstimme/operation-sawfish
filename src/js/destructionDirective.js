@@ -119,7 +119,7 @@
                         1.5: swapImage('wollhaus', 'luft'),
                         4.5: swapImage('rathaus', 'wollhaus'),
                         7: swapImage('kiliansplatz', 'rathaus'),
-                        10: imgs['kiliansplatz'].style('opacity', 0).and(imgsContainer.style('display', 'none')).and(function () {
+                        9: imgs['kiliansplatz'].style('opacity', 0, 1000).and(function () {
                             var layer = map.addDestructionAreas('total');
                             d3.selectAll('.legend, .legend-entry-total').style('display', 'block').transition().duration(2000).style('opacity', 1);
                             this.setUndo(function () {
@@ -127,6 +127,7 @@
                                 d3.selectAll('.legend, .legend-entry-total').style('display', 'none').style('opacity', 0);
                             });
                         }),
+                        10: imgsContainer.style('display', 'none'),
                         14: function () {
                             var layer = map.addDestructionAreas('partial');
                             d3.selectAll('.legend, .legend-entry-partial').style('display', 'block').transition().duration(2000).style('opacity', 1);

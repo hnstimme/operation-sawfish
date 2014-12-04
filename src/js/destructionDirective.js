@@ -1,6 +1,16 @@
 (function (angular) {
     'use strict';
 
+    var legendEntries = [{
+        id: 'total',
+        color: '#880717',
+        label: 'TOTAL_DESTRUCTION'
+    }, {
+        id: 'partial',
+        color: '#FD938A',
+        label: 'PARTIAL_DESTRUCTION'
+    }];
+
     var map = {
         leafletMap: null,
         init: function () {
@@ -13,15 +23,6 @@
                 zoomControl: !Modernizr.touch
             });
 
-            this.addLegend([{
-                id: 'total',
-                color: '#880717',
-                label: 'Totalschaden'
-            }, {
-                id: 'partial',
-                color: '#FD938A',
-                label: 'Teilschaden'
-            }]);
             this.addTileLayer();
         },
         addTileLayer: function () {
@@ -39,14 +40,14 @@
                 opacity: 0.75
             }).addTo(this.leafletMap);
         },
-        addLegend: function (layers) {
+        addLegend: function (layers, $translate) {
             var legend = L.control({position: 'topright'});
             legend.onAdd = function () {
                 var div = L.DomUtil.create('div', 'info legend');
                 div.style.opacity = 0;
                 div.style.minWidth = '150px';
                 layers.forEach(function (layer) {
-                    div.innerHTML += '<div class="legend-entry legend-entry-' + layer.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + layer.color + '"></span><span class="legend-label">' + layer.label + '</span></div>';
+                    div.innerHTML += '<div class="legend-entry legend-entry-' + layer.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + layer.color + '"></span><span class="legend-label">' + $translate.instant(layer.label) + '</span></div>';
                 });
                 return div;
             };
@@ -62,11 +63,12 @@
         }
     };
 
-    angular.module('app').directive('destruction', function ($analytics, $http, $timeout) {
+    angular.module('app').directive('destruction', function ($analytics, $http, $timeout, $rootScope, $translate) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
                 map.init();
+                map.addLegend(legendEntries, $translate);
                 var animate = Talkie.animate(element[0]);
 
                 var imgClasses = ['kiliansplatz', 'wollhaus', 'rathaus', 'luft'];
@@ -80,6 +82,13 @@
                 var dataPromise = $http.get('/data/imagesOfDestruction.json').success(function (geojson) {
                     imagesOfDestructionGeojson = geojson;
                 });
+
+                var updateLegend = function () {
+                    legendEntries.forEach(function (legendEntry) {
+                        document.getElementsByClassName('legend-entry-' + legendEntry.id)[0].getElementsByClassName('legend-label')[0].innerHTML = $translate.instant(legendEntry.label);
+                    });
+                };
+                $rootScope.$on('$translateChangeSuccess', updateLegend);
 
                 angular.element(document.getElementsByTagName('html')[0]).bind("keyup", function (event) {
                     if (event.which === 27) {

@@ -53,7 +53,10 @@
             BOMBS_LIGHT_DESC: 'Diese sogenannten Christbäume warfen die Flugzeuge an Fallschirmen ab. Die Bomben sanken nur langsam zur Erde. Sie hatten einen etwa neun Kilogramm schweren Leuchtsatz geladen, der rund vier Minuten lang brannte. Mit etwa 1000 dieser Bomben beleuchteten die Kampfflugzeuge den Himmel, um in der Nacht eine bessere Sicht auf Heilbronn zu haben.',
             BOMBS_MARKER: 'Zielmarkierungsbomben',
             BOMBS_MARKER_DESC: 'Diese Bomben waren meistens mit 60 Leuchtsätzen bestückt. Sie explodierten am Boden und setzten dann eine roten, grünen oder gelben Rauch frei. Etwa 13 dieser Bomben landeten in Heilbronn. Mit ihrer Hilfe sollten die Kampfflugzeuge ihre Ziele besser erkennen.',
-            BOMBS_COMPARISON: 'Bomben im Vergleich'
+            BOMBS_COMPARISON: 'Bomben im Vergleich',
+            EXPLORE_DESTRUCTION: 'Zerstörte Stadt erkunden',
+            TOTAL_DESTRUCTION: 'Totalschaden',
+            PARTIAL_DESTRUCTION: 'Teilschaden'
         });
         $translateProvider.translations('en', {
             AUDIO_SUFFIX: 'englisch',
@@ -108,7 +111,10 @@
             BOMBS_LIGHT_DESC: 'The so-called “christmas trees”  were attached to small parachutes. Therefore, they came down to earth slowly. They were equipped with an approximately nine kilograms heavy flash entity which burned for about four minutes. With about 1000 of these bombs the air crafts lightned up the sky in order to have a better view on Heilbronn at night.',
             BOMBS_MARKER: 'target marker bombs',
             BOMBS_MARKER_DESC: 'These bombs usually were equipped with 60 flash enitites. They exploded on the ground and, next, discharged red, green or yellow smoke. About 13 of these bombs landed in Heilbronn. They were supposed to help the air crafts find their targets.',
-            BOMBS_COMPARISON: 'Comparison of bombs'
+            BOMBS_COMPARISON: 'Comparison of bombs',
+            EXPLORE_DESTRUCTION: 'Explore destroyed city',
+            TOTAL_DESTRUCTION: 'Total desctruction',
+            PARTIAL_DESTRUCTION: 'Partly desctruction'
         });
         $translateProvider.preferredLanguage('de');
     });

@@ -18,18 +18,19 @@
     <div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
         <a class="selectionscreen-choice" ng-click="videogularAPI.play()">
             <img class="play" src="img/play.svg">
-            <h2>Kapitel 5: Heilbronn ist zerstört</h2>
+
+            <h2>{{'CHAPTER' | translate}} 5: {{'CHAPTER_5' | translate}}</h2>
         </a>
     </div>
 
     <div class="selectionscreen" ng-show="showEndscreen">
         <a class="selectionscreen-choice" ng-click="activateInteractive()">
             <img src="img/endscreen/interaktiv.svg">
-            Zerstörte Stadt erkunden
+            {{'EXPLORE_DESTRUCTION' | translate}}
         </a>
         <a class="selectionscreen-choice" href="/comparison" start-video-on-click>
             <img src="img/endscreen/next.svg">
-            Kapitel 6: Der Luftkrieg
+            {{'CHAPTER' | translate}} 6: {{'CHAPTER_6' | translate}}
         </a>
     </div>
 </div>

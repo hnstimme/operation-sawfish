@@ -44,16 +44,16 @@
 					</g>
 				</g>
 				<text y="70" class="plane-description">
-					<tspan x="270" text-anchor="middle">Die viermotorige Avro Lancaster war der bekannteste</tspan>
-					<tspan x="270" dy="18" text-anchor="middle">Langstreckenbomber der Royal Air Force im Zweiten Weltkrieg.</tspan>
+					<tspan x="270" text-anchor="middle">{{'LANCASTER_DESC_1' | translate}}</tspan>
+					<tspan x="270" dy="18" text-anchor="middle">{{'LANCASTER_DESC_2' | translate}}</tspan>
 				</text>
 				<text y="310" class="plane-feature-list">
-					<tspan x="360">Hersteller: A. V. Roe & Co. Ltd.</tspan>
-					<tspan x="360" dy="16">Besatzung: Sieben Personen</tspan>
-					<tspan x="360" dy="16">Höchstgeschwindigkeit: 462 km/h</tspan>
-					<tspan x="360" dy="16">Reisegeschwindigkeit: 322 km/h</tspan>
-					<tspan x="360" dy="16">Reichweite: 4.827 Kilometer</tspan>
-					<tspan x="360" dy="16">Ladegewicht: Bis zu 9.000 kg Bomben.</tspan>
+					<tspan x="360">{{'MANUFACTURER' | translate}}: A. V. Roe & Co. Ltd.</tspan>
+					<tspan x="360" dy="16">{{'CREW' | translate}}: {{'SEVEN_PERSONS' | translate}}</tspan>
+					<tspan x="360" dy="16">{{'TOP_SPEED' | translate}}: 462 km/h</tspan>
+					<tspan x="360" dy="16">{{'CRUISING_SPEED' | translate}}: 322 km/h</tspan>
+					<tspan x="360" dy="16">{{'RANGE' | translate}}: 4.827 km</tspan>
+					<tspan x="360" dy="16">{{'LOADING_WEIGHT' | translate}}: {{'LANCASTER_LOADING_WEIGHT' | translate}}</tspan>
 				</text>
 				<g class="dimension-lines">
 					<g class="dimension-line-length">
@@ -111,20 +111,20 @@
 				</g>
 				<g class="plane-description-group">
 					<text y="70" class="plane-description">
-						<tspan x="240" text-anchor="middle">Die zweimotorige Mosquito war ein aus Holz gebautes Flugzeug,</tspan>
-						<tspan x="240" dy="18" text-anchor="middle">das eine Geschwindigkeit von über 600 km/h erreichen</tspan>
-						<tspan x="240" dy="18" text-anchor="middle">konnte und zunächst hauptsächlich als Aufklärer-Flugzeug</tspan>
-						<tspan x="240" dy="18" text-anchor="middle">im Einsatz war. Die Schnellbombervariante konnte knapp</tspan>
-						<tspan x="240" dy="18" text-anchor="middle">1000 Kilogramm Bomben transportieren.</tspan>
+						<tspan x="240" text-anchor="middle">{{'MOSQUITO_DESC_1' | translate}}</tspan>
+						<tspan x="240" dy="18" text-anchor="middle">{{'MOSQUITO_DESC_2' | translate}}</tspan>
+						<tspan x="240" dy="18" text-anchor="middle">{{'MOSQUITO_DESC_3' | translate}}</tspan>
+						<tspan x="240" dy="18" text-anchor="middle">{{'MOSQUITO_DESC_4' | translate}}</tspan>
+						<tspan x="240" dy="18" text-anchor="middle">{{'MOSQUITO_DESC_5' | translate}}</tspan>
 					</text>
 				</g>
 				<g class="plane-feature-list-group">
 					<text y="320" class="plane-feature-list">
-						<tspan x="360">Hersteller: de Havilland Aircraft Company</tspan>
-						<tspan x="360" dy="16">Besatzung: Zwei Personen</tspan>
-						<tspan x="360" dy="16">Höchstgeschwindigkeit: 670 km/h</tspan>
-						<tspan x="360" dy="16">Reichweite: 2.400 km bei 1,8 t Bombenladung</tspan>
-						<tspan x="360" dy="16">Ladegewicht: 1,8 t</tspan>
+						<tspan x="360">{{'MANUFACTURER' | translate}}: de Havilland Aircraft Company</tspan>
+						<tspan x="360" dy="16">{{'CREW' | translate}}: {{'TWO_PERSONS' | translate}}</tspan>
+						<tspan x="360" dy="16">{{'TOP_SPEED' | translate}}: 670 km/h</tspan>
+						<tspan x="360" dy="16">{{'RANGE' | translate}}: 2.400 km {{'AT' | translate}} 1,8 t {{'BOMB_LOADING' | translate}}</tspan>
+						<tspan x="360" dy="16">{{'LOADING_WEIGHT' | translate}}: 1,8 t</tspan>
 					</text>
 				</g>
 				<g class="dimension-lines">
@@ -171,17 +171,17 @@
 	<a class="selectionscreen-choice" ng-click="videogularAPI.play()">
 		<img class="play" src="img/play.svg">
 
-		<h2>Kapitel 3: Der Anflug</h2>
+		<h2>{{'CHAPTER' | translate}} 3: {{'CHAPTER_3' | translate}}</h2>
 	</a>
 </div>
 
 <div class="selectionscreen" ng-show="showEndscreen" videogular-api>
 	<a class="selectionscreen-choice" ng-click="showEndscreen=false;videogularAPI.seekTime(14)">
 		<img src="img/endscreen/interaktiv.svg">
-		Flugzeuge erkunden
+		{{'EXPLORE_AIRPLANES' | translate}}
 	</a>
 	<a class="selectionscreen-choice" href="/bombing">
 		<img src="img/endscreen/next.svg" start-video-on-click>
-		Kapitel 4: Der Angriff
+		{{'CHAPTER' | translate}} 4: {{'CHAPTER_4' | translate}}
 	</a>
 </div>

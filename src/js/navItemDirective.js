@@ -4,8 +4,8 @@
         return {
             restrict: "E",
             replace: true,
-            scope: {title: '@title', number: '@number', href: '@href'},
-            template: '<a ng-class="cssClasses"><span class="chapter-number">{{number}}</span><span class="chapter-title">{{title}}</span></a>',
+            scope: {number: '@number', href: '@href'},
+            template: '<a ng-class="cssClasses"><span class="chapter-number">{{number}}</span><span class="chapter-title">{{\'CHAPTER_\' + number | translate}}</span></a>',
             link: function (scope, elem) {
                 $rootScope.$on('$routeChangeSuccess', function () {
                     scope.cssClasses = $location.path() === scope.href ? 'active' : '';

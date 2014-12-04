@@ -36,7 +36,8 @@
 </head>
 <body ng-app="app" ng-controller="AudioCtrl" ng-cloak>
 
-<videogular vg-player-ready="onPlayerReady" id="audio-container" stop-video-on-route-change>
+<videogular vg-player-ready="onPlayerReady" id="audio-container" stop-video-on-route-change
+            switch-video-on-language-change>
     <section class="content-container" ng-view></section>
     <vg-audio vg-src="videogularConfig.sources" ng-if="videogularConfig.objectType === 'audio'"></vg-audio>
     <nav ng-controller="NavCtrl" class="main-nav">
@@ -49,16 +50,19 @@
             <div class="controls-container">
                 <vg-play-pause-button class="control"></vg-play-pause-button>
                 <div class="chapters-nav">
-                    <nav-item href="/" number="1" title="Heilbronn brennt"></nav-item>
-                    <nav-item href="/targetSelection" number="2" title="Der Plan"></nav-item>
-                    <nav-item href="/flight" number="3" title="Der Anflug"></nav-item>
-                    <nav-item href="/bombing" number="4" title="Der Angriff"></nav-item>
-                    <nav-item href="/destruction" number="5" title="Zerstörte Stadt"></nav-item>
-                    <nav-item href="/comparison" number="6" title="Der Luftkrieg"></nav-item>
+                    <nav-item href="/" number="1"></nav-item>
+                    <nav-item href="/targetSelection" number="2"></nav-item>
+                    <nav-item href="/flight" number="3"></nav-item>
+                    <nav-item href="/bombing" number="4"></nav-item>
+                    <nav-item href="/destruction" number="5"></nav-item>
+                    <nav-item href="/comparison" number="6"></nav-item>
                 </div>
                 <vg-volume class="control">
                     <vg-mutebutton></vg-mutebutton>
                 </vg-volume>
+                <a class="control control-icon"
+                   ng-click="changeLanguage()"><img
+                        src="img/share.png"></a>
                 <a class="control control-icon"
                    ng-click="modals.shareScreen=!modals.shareScreen;modals.infoScreen=false"><img
                         src="img/share.png"></a>
@@ -87,13 +91,6 @@
                    data-hashtags="4dez"></a>
             </div>
         </div>
-        <div class="share-icon-container">
-            <div class="share-icon">
-                <div gplus class="g-plus" data-size="medium" data-annotation="bubble"
-                     data-href='http://sawfish.stimme.de'
-                     data-action='share'></div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -102,6 +99,7 @@
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
 <script src="bower_components/videogular/videogular.js"></script>
 <script src="bower_components/videogular-controls/controls.js"></script>
 <script src="bower_components/videogular-overlay-play/overlay-play.js"></script>
@@ -118,6 +116,7 @@
 <script src="lib/talkie.js"></script>
 <script src="lib/walkway.js"></script>
 <script src="js/app.js"></script>
+<script src="js/translate.js"></script>
 <script src="js/navItemDirective.js"></script>
 <script src="js/svgHrefFilter.js"></script>
 <script src="js/video/stopVideoOnRouteChangeDirective.js"></script>

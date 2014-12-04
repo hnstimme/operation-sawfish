@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict';
 
-    angular.module('app').controller('AudioCtrl', function ($scope) {
+    angular.module('app').controller('AudioCtrl', function ($scope, $translate) {
         $scope.videogularConfig = {
             sources: [{src: "audio/Kapitel_1_deutsch.mp3", type: "audio/mp3"}],
             objectType: 'audio'
@@ -12,6 +12,9 @@
         };
         $scope.modals = {
             infoscreen: false
+        };
+        $scope.changeLanguage = function () {
+            $translate.use($translate.use() === 'en' ? 'de' : 'en');
         };
     });
 })(angular);

@@ -1,11 +1,11 @@
 (function (angular) {
     'use strict';
-    angular.module('app').controller('IntroController', function ($scope, $analytics) {
+    angular.module('app').controller('IntroController', function ($scope, $analytics, $translate, $rootScope) {
         $scope.videogularConfig.sources = [{
-            src: "mov/Video_deutscher_Text.mp4",
+            src: "mov/Video_" + $translate.instant('AUDIO_SUFFIX') + ".mp4",
             type: "video/mp4"
         }, {
-            src: "mov/Video_deutscher_Text.oggtheora.ogv",
+            src: "mov/Video_" + $translate.instant('AUDIO_SUFFIX') + ".oggtheora.ogv",
             type: "video/ogg"
         }];
         $scope.videogularConfig.objectType = 'video';

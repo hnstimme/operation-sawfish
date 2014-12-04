@@ -2,16 +2,17 @@
 <div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
     <a class="selectionscreen-choice" ng-click="videogularAPI.play()">
         <img class="play" src="img/play.svg">
-        <h2>Kapitel 2: Der Plan</h2>
+
+        <h2>{{'CHAPTER' | translate}} 2: {{'CHAPTER_2' | translate}}</h2>
     </a>
 </div>
 <div class="selectionscreen" ng-show="showEndscreen">
     <a class="selectionscreen-choice" ng-click="activateInteractive()">
         <img src="img/endscreen/interaktiv.svg">
-        Karte erkunden
+        {{'EXPLORE_MAP' | translate}}
     </a>
     <a class="selectionscreen-choice" href="/flight" start-video-on-click>
         <img src="img/endscreen/next.svg">
-        Kapitel 3: Der Anflug
+        {{'CHAPTER' | translate}} 2: {{'CHAPTER_3' | translate}}
     </a>
 </div>

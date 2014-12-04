@@ -1,7 +1,8 @@
 <div class="video-container intro-video">
     <vg-video vg-src="videogularConfig.sources">
-        <span class="legal-notice" ng-show="fullVideoConfigured">Quelle: Stadtarchiv Heilbronn<br/><span
-                class="legal-notice-long">Diese stummen Filmaufnahmen stammen von der britischen Royal Air Force. Sie zeigen den Luftangriff vom 4. Dezember 1944 auf Heilbronn aus der Perspektive eines Bombers. Das Video dauert 3 Minuten und 26 Sekunden. Es wurde als Beobachtungsvideo aufgenommen. Dazu saßen in einem der Bomber hinter dem Piloten zwei Aufklärer mit Videokameras. Mit den Aufnahmen wollten die Engländer analysieren, wie erfolgreich ihr Luftangriff war. Das Video ist auch im Heilbronner Haus der Stadtgeschichte zu sehen.</span></span>
+        <span class="legal-notice"
+              ng-show="fullVideoConfigured">{{'ORIGIN' | translate}}: Stadtarchiv Heilbronn<br/><span
+                class="legal-notice-long">{{'VIDEO_DESCRIPTION' | translate}}</span></span>
     </vg-video>
     <vg-poster-image vg-url="videogularConfig.plugins.poster"></vg-poster-image>
 </div>
@@ -12,7 +13,8 @@
 
             <div class="headline">
                 <h1>Operation Sawfish</h1>
-                <h2>Die Bombardierung Heilbronns <br/>am 4. Dezember 1944</h2>
+
+                <h2>{{'TITLE_H2' | translate}}</h2>
             </div>
         </div>
     </div>
@@ -20,11 +22,11 @@
          ng-show="videogularAPI.isCompleted && videogularAPI.currentState === 'stop' && videoHasStarted && !fullVideoIsLoading">
         <a class="selectionscreen-choice" intro-video-swapper ng-hide="fullVideoConfigured" ng-click="showFullVideo()">
             <img src="img/endscreen/interaktiv.svg">
-            Video in voller Länge ansehen
+            {{'SHOW_FULL_VIDEO' | translate}}
         </a>
         <a class="selectionscreen-choice" href="/targetSelection" start-video-on-click>
             <img src="img/endscreen/next.svg">
-            Kapitel 2: Der Plan
+            {{'CHAPTER' | translate}} 2: {{'CHAPTER_2' | translate}}
         </a>
     </div>
 </div>

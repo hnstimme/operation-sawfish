@@ -24,11 +24,20 @@
 
   .legal-notice {
     position: absolute;
-    bottom: 10px;
-    right: 20px;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    max-width: 650px;
+    padding: 10px;
+    box-sizing: border-box;
     z-index: 20;
     font-size: 12px;
     color: darken(@font-color, 30%);
-    display: none;
+  }
+
+  .legal-notice-long {
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 }

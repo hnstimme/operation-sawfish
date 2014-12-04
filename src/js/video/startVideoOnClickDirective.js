@@ -1,6 +1,6 @@
 (function (angular) {
     'use strict';
-    angular.module('app').directive("startVideoOnClick", function ($rootScope) {
+    angular.module('app').directive("startVideoOnClick", function ($rootScope, $timeout) {
         return {
             restrict: "A",
             require: "^videogular",
@@ -10,9 +10,9 @@
                     if (!listener) {
                         listener = $rootScope.$on('$routeChangeSuccess', function () {
                             listener();
-                            setTimeout(function () {
+                            $timeout(function () {
                                 API.play();
-                            }, 1000);
+                            });
                         });
                     }
                 };

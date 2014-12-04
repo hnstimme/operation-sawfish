@@ -21,22 +21,21 @@
                 'attribution': attribution
             }).addTo(this.leafletMap);
         },
-        addLegend: function (features) {
+        addLegend: function (features, $translate) {
             var legend = L.control({position: 'topright'});
             legend.onAdd = function () {
                 var div = L.DomUtil.create('div', 'info legend');
                 div.style.opacity = 0;
                 div.style.width = '230px';
-                div.innerHTML += '<p class="legend-intro" style="display:none">Heilbronn geriet 1944 für einen Flächenangriff ins Visier der Royal Air Force.</p>';
                 features.forEach(function (feature) {
-                    div.innerHTML += '<div class="legend-entry legend-entry-' + feature.properties.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + feature.properties.color + '"></span><span class="legend-label">' + feature.properties.label + '</span></div>';
+                    div.innerHTML += '<div class="legend-entry legend-entry-' + feature.properties.id + '" style="display:none;opacity:0"><span class="legend-color" style="background:' + feature.properties.color + '"></span><span class="legend-label">' + $translate.instant('TARGET_SELECTION_' + feature.properties.id.toUpperCase()) + '</span></div>';
                 });
                 return div;
             };
             legend.addTo(this.leafletMap);
             return legend;
         },
-        addArea: function (feature) {
+        addArea: function (feature, $translate) {
             return L.geoJson(feature, {
                 style: {
                     fillColor: feature.properties.color,
@@ -47,13 +46,13 @@
                     className: 'path-' + feature.properties.id
                 },
                 onEachFeature: function (feature, layer) {
-                    layer.bindPopup('<p class="leaflet-popup-title">' + feature.properties.label + '</p><p>' + feature.properties.description + '</p>');
+                    layer.bindPopup('<p class="leaflet-popup-title">' + $translate.instant('TARGET_SELECTION_' + feature.properties.id.toUpperCase()) + '</p><p>' + $translate.instant('TARGET_SELECTION_' + feature.properties.id.toUpperCase() + '_DESC') + '</p>');
                 }
             }).addTo(this.leafletMap);
         }
     };
 
-    angular.module('app').directive('targetSelection', function ($http, $analytics, $timeout) {
+    angular.module('app').directive('targetSelection', function ($http, $analytics, $timeout, $rootScope, $translate) {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -61,7 +60,6 @@
 
                 scope.activateInteractive = function () {
                     scope.showEndscreen = false;
-                    d3.select('.legend-intro').style('display', 'block');
                 };
 
                 var features = {}, areas = {};
@@ -69,18 +67,24 @@
                     geojson.features.forEach(function (feature) {
                         features[feature.properties.id] = feature;
                     });
-                    map.addLegend(geojson.features);
-
                     var animate = Talkie.animate(element[0]);
+
+                    map.addLegend(geojson.features, $translate);
                     var legend = animate.select('.legend');
                     var legendEntries = {
                         'zielgebiet-stadt': animate.select('.legend-entry-zielgebiet-stadt'),
                         'brandanfaellig': animate.select('.legend-entry-brandanfaellig')
                     };
+                    var updateLegend = function () {
+                        geojson.features.forEach(function (feature) {
+                            document.getElementsByClassName('legend-entry-' + feature.properties.id)[0].getElementsByClassName('legend-label')[0].innerHTML = $translate.instant('TARGET_SELECTION_' + feature.properties.id.toUpperCase());
+                        });
+                    };
+                    $rootScope.$on('$translateChangeSuccess', updateLegend);
 
                     var addArea = function (id, duration) {
                         return function () {
-                            areas[id] = map.addArea(features[id]);
+                            areas[id] = map.addArea(features[id], $translate);
                             if (!this.fast_forward) {
                                 new Walkway({selector: '.path-' + id, duration: duration, easing: 'linear'}).draw();
                             }
@@ -145,7 +149,6 @@
                             this.setUndo(function () {
                                 $timeout.cancel(promise);
                                 scope.showEndscreen = false;
-                                d3.select('.legend-intro').style('display', 'none');
                             });
                         }
                     });

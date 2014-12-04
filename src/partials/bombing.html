@@ -5,7 +5,7 @@
 
 	<div class="bombs-counter-container">
 		<div class="odometer bombs-counter" id="bombs-counter" style="display:none">0</div>
-		<span class="bombs-counter-label" style="display:none">Bomben</span>
+		<span class="bombs-counter-label" style="display:none">{{'BOMBS' | translate}}</span>
 	</div>
 
 	<svg width="100%" height="560px" viewBox="-20 0 1060 560" xml:space="preserve" id="bombs-svg" bombing>
@@ -52,17 +52,6 @@
 
 		<g class="cloud" style="opacity:0">
 			<g transform="scale(0.7) translate(60 240)" ng-include="'partials/svg/cloud.html'"></g>
-		</g>
-
-		<g class="bombs" style="opacity:0">
-			<g class="explosive-bombs" style="opacity:0.5">
-				<text x="432" y="80" class="bomb-label" style="opacity:0">Sprengbomben</text>
-				<g transform="scale(0.45) translate(740 -20)" ng-include="'partials/svg/explosiveBombs.html'"></g>
-			</g>
-			<g class="fire-bombs" transform="translate(480 79)" style="opacity:0.5">
-				<text x="210" y="100" class="bomb-label" style="opacity:0">Brandbomben</text>
-				<g transform="scale(0.45)" ng-include="'partials/svg/fireBomb.html'"></g>
-			</g>
 		</g>
 
 		<g class="airplanes-container">
@@ -135,25 +124,26 @@
 	<div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
 		<a class="selectionscreen-choice" ng-click="videogularAPI.play()">
 			<img class="play" src="img/play.svg">
-			<h2>Kapitel 4: Der Angriff</h2>
+
+			<h2>{{'CHAPTER' | translate}} 4: {{'CHAPTER_4' | translate}}</h2>
 		</a>
 	</div>
 
 	<div class="selectionscreen" ng-show="showEndscreen">
 		<a class="selectionscreen-choice" ng-click="showEndscreen=false;showBombsInteractive=true">
 			<img src="img/endscreen/interaktiv.svg">
-			Bomben erkunden
+			{{'EXPLORE_BOMBS' | translate}}
 		</a>
 		<a class="selectionscreen-choice" href="/destruction" start-video-on-click>
 			<img src="img/endscreen/next.svg">
-			Kapitel 5: Heilbronn ist zerstört
+			{{'CHAPTER' | translate}} 5: {{'CHAPTER_5' | translate}}
 		</a>
 	</div>
 
 	<div class="bombs-interactive" ng-if="showBombsInteractive">
 		<div class="bombs-interactive-container">
 
-			<h2 class="bomb-comparison-title">Bomben im Vergleich</h2>
+			<h2 class="bomb-comparison-title">{{'BOMBS_COMPARISON' | translate}}</h2>
 			<img src="img/bombs/07_Bomben_im_Vergleich.svg" class="bomb-comparison-img">
 
 			<table class="bomb-table">
@@ -163,12 +153,9 @@
 						<img src="img/bombs/08_Grosse_Sprengbombe.svg">
 					</td>
 					<td class="bomb-desc">
-						<p class="bomb-detail-label">12000-lb-Sprengbomben</p>
+						<p class="bomb-detail-label">{{'BOMBS_EXPLOSIVE_12000' | translate}}</p>
 
-						<p>Diese großen Sprengbomben waren mit über 5000 Kilogramm Sprengstoff befüllt. Fünf bis zehn
-							dieser Bomben warfen die Briten über Heilbronn ab. Sie explodierten schon mehrere Meter über
-							dem Boden. So sollten sie die Dächer von den Häusern reißen, damit später kleinere Bomben in
-							die Häuser fallen.</p>
+						<p>{{'BOMBS_EXPLOSIVE_12000_DESC' | translate}}</p>
 					</td>
 				</tr>
 				<tr>
@@ -180,12 +167,9 @@
 						<img src="img/bombs/08_Sprengbombe4.svg">
 					</td>
 					<td class="bomb-desc">
-						<p class="bomb-detail-label">Andere Sprengbomben</p>
+						<p class="bomb-detail-label">{{'BOMBS_EXPLOSIVES' | translate}}</p>
 
-						<p>Über 1000 solcher Bomben fielen am 4. Dezember auf Heilbronn. Je nach Größe waren sie mit
-							zwischen 500 und 1800 Kilo Sprengstoff befüllt. Manche der Bomben hatten eingebauten
-							Zeitzünder, um erst später zu explodieren. Diese Bomben finden Arbeiter zum Teil heute noch
-							auf Baustellen, weil die Zeitzünder nicht immer funktionierten.</p>
+						<p>{{'BOMBS_EXPLOSIVES_DESC' | translate}}</p>
 					</td>
 				</tr>
 				<tr>
@@ -193,13 +177,9 @@
 						<img src="img/bombs/08_Stabbrandbomben.svg">
 					</td>
 					<td class="bomb-desc">
-						<p class="bomb-detail-label">Stabbrandbomben</p>
+						<p class="bomb-detail-label">{{'BOMBS_FIRE' | translate}}</p>
 
-						<p>Der große Teil der Bomben, die über Heilbronn fielen, waren solche Stabbrandbomben. Rund
-							200.000 dieser etwa 60 Zentimeter langen Stäbe warfen die Briten ab. Die Bomben waren mit
-							Thermiten gefüllt, die schnell große Hitze entstehen lassen. So sollte ganz Heilbronn
-							brennen. Reste dieser Bomben finden sich heute noch häufig auf Baustellen, zum Beispiel auf
-							dem BuGa-Areal.</p>
+						<p>{{'BOMBS_FIRE_DESC' | translate}}</p>
 					</td>
 				</tr>
 				<tr>
@@ -207,12 +187,9 @@
 						<img src="img/bombs/08_Leuchtbombe_Christbaum.svg">
 					</td>
 					<td class="bomb-desc">
-						<p class="bomb-detail-label">Leuchtbomben</p>
+						<p class="bomb-detail-label">{{'BOMBS_LIGHT' | translate}}</p>
 
-						<p>Diese sogenannten Christbäume warfen die Flugzeuge an Fallschirmen ab. Die Bomben sanken nur
-							langsam zur Erde. Sie hatten einen etwa neun Kilogramm schweren Leuchtsatz geladen, der rund
-							vier Minuten lang brannte. Mit etwa 1000 dieser Bomben beleuchteten die Kampfflugzeuge den
-							Himmel, um in der Nacht eine bessere Sicht auf Heilbronn zu haben.</p>
+						<p>{{'BOMBS_LIGHT_DESC' | translate}}</p>
 					</td>
 				</tr>
 				<tr>
@@ -220,12 +197,9 @@
 						<img src="img/bombs/08_Markierungsbombe.svg">
 					</td>
 					<td class="bomb-desc">
-						<p class="bomb-detail-label">Zielmarkierungsbomben</p>
+						<p class="bomb-detail-label">{{'BOMBS_MARKER' | translate}}</p>
 
-						<p>Diese Bomben waren meistens mit 60 Leuchtsätzen bestückt. Sie explodierten am Boden und
-							setzten
-							dann eine roten, grünen oder gelben Rauch frei. Etwa 13 dieser Bomben landeten in Heilbronn.
-							Mit ihrer Hilfe sollten die Kampfflugzeuge ihre Ziele besser erkennen.</p>
+						<p>{{'BOMBS_MARKER_DESC' | translate}}</p>
 					</td>
 				</tr>
 				</tbody>

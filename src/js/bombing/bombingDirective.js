@@ -64,7 +64,6 @@
                     var currentTime = animate.select('.current-time');
                     var bombsCounter = animate.select('.bombs-counter');
                     var bombsCounterLabel = animate.select('.bombs-counter-label');
-                    var bombs = animate.select('.bombs');
                     var cloud = animate.select('.cloud');
 
                     var imgClasses = ['hbf', 'hotel', 'feuersturm'];

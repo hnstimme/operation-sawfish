@@ -1,6 +1,8 @@
 (function (angular) {
     angular.module('app').config(function ($translateProvider) {
         $translateProvider.translations('de', {
+            LOCALE: 'DE',
+            LOCALE_OS: 'EN',
             AUDIO_SUFFIX: 'deutsch',
             AUDIO_SUFFIX_OS: 'englisch',
             SWITCH_LANGUAGE: '[switch to english]',
@@ -60,6 +62,8 @@
             HEAVIEST_ATTACK: 'Schwerster Angriff'
         });
         $translateProvider.translations('en', {
+            LOCALE: 'EN',
+            LOCALE_OS: 'DE',
             AUDIO_SUFFIX: 'englisch',
             AUDIO_SUFFIX_OS: 'deutsch',
             SWITCH_LANGUAGE: '[deutsche Version]',

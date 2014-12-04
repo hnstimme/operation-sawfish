@@ -1,8 +1,6 @@
 <div class="talkie-wrapper" comparison>
     <div class="map-container" id="comparison-map"></div>
 
-    <svg viewBox="0 0 960 560" xml:space="preserve" class="comparison-chart" style="display: none;"></svg>
-
     <div class="imgs" style="display:none">
         <div class="img-container img-tote" style="opacity:0"></div>
         <div class="img-container img-kilianskirche-west" style="opacity:0"></div>
@@ -12,14 +10,15 @@
     <div class="selectionscreen" track-video-start videogular-api ng-hide="videoHasStarted">
         <a class="selectionscreen-choice" ng-click="videogularAPI.play()">
             <img class="play" src="img/play.svg">
-            <h2>Kapitel 6: Der Luftkrieg</h2>
+
+            <h2>{{'CHAPTER' | translate}} 6: {{'CHAPTER_6' | translate}}</h2>
         </a>
     </div>
 
     <div class="selectionscreen" ng-show="showEndscreen" videogular-api>
         <a class="selectionscreen-choice" ng-click="showEndscreen=false;videogularAPI.seekTime(12)">
             <img src="img/endscreen/interaktiv.svg">
-            Karte erkunden
+            {{'EXPLORE_MAP' | translate}}
         </a>
     </div>
 </div>

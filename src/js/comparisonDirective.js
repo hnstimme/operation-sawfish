@@ -23,7 +23,7 @@
                 'attribution': attribution
             }).addTo(this.leafletMap);
         },
-        addCircleMarker: function (city) {
+        addCircleMarker: function (city, $translate) {
             var marker = L.circleMarker(L.latLng(city.geometry.coordinates[1], city.geometry.coordinates[0]), {
                 fillColor: '#FF0000',
                 strokeColor: '#FF0000',
@@ -32,7 +32,7 @@
                 fillOpacity: 0.3,
                 radius: 10
             });
-            marker.bindPopup('<p class="leaflet-popup-title">' + city.properties.name + '</p><p>Schwerster Angriff: ' + city.properties.attackDate + '</p>');
+            marker.bindPopup('<p class="leaflet-popup-title">' + city.properties.name + '</p><p><span class="heaviest_attack_label">' + $translate.instant('HEAVIEST_ATTACK') + ':</span> ' + city.properties.attackDate + '</p>');
             map.leafletMap.addLayer(marker);
             return marker;
         },
@@ -50,82 +50,16 @@
         }
     };
 
-    angular.module('app').directive('comparison', function ($http, $analytics, $timeout) {
+    angular.module('app').directive('comparison', function ($http, $analytics, $timeout, $translate, $rootScope) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
-                moment.locale("de");
                 map.init();
                 var animate = Talkie.animate(element[0]);
 
                 var cities = [];
                 var dataPromise = $http.get('data/cities.json').success(function (geojson) {
                     cities = geojson.features;
-                });
-
-                // chart
-                var margin = {top: 20, right: 20, bottom: 30, left: 50},
-                    width = 960 - margin.left - margin.right,
-                    height = 560 - margin.top - margin.bottom;
-
-                var x = d3.time.scale()
-                    .range([0, width]);
-
-                var y = d3.scale.linear()
-                    .range([height, 0]);
-
-                var xAxis = d3.svg.axis()
-                    .scale(x)
-                    .orient("bottom");
-
-                var yAxis = d3.svg.axis()
-                    .scale(y)
-                    .orient("left");
-
-                var line = d3.svg.line()
-                    .x(function (d) {
-                        return x(d.date);
-                    })
-                    .y(function (d) {
-                        return y(d.effectivity);
-                    });
-
-                var svg = d3.select(".comparison-chart")
-                    .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-                var effectivityData;
-                d3.csv("data/effectivity.csv", function (error, data) {
-                    effectivityData = data;
-                    data.forEach(function (d) {
-                        d.date = moment(d.date, 'MM-YYYY');
-                        d.effectivity = +d.effectivity;
-                    });
-
-                    x.domain(d3.extent(data, function (d) {
-                        return d.date;
-                    }));
-                    y.domain(d3.extent(data, function (d) {
-                        return d.effectivity;
-                    }));
-
-                    svg.append("g")
-                        .attr("class", "x axis")
-                        .attr("transform", "translate(0," + height + ")")
-                        .call(xAxis);
-
-                    svg.append("g")
-                        .attr("class", "y axis")
-                        .call(yAxis)
-                        .append("text")
-                        .attr("transform", "rotate(-90)")
-                        .attr("y", 6)
-                        .attr("dy", ".71em")
-                        .style("text-anchor", "end")
-                        .text("Treffgenauigkeit der Nachtangriffe in Prozent");
-
-                    svg.append("path")
-                        .attr("class", "line")
                 });
 
                 dataPromise.then(function () {
@@ -148,7 +82,7 @@
                             timelineDef[time] = currentDate.text(currentMoment.format("MMMM YYYY")).and(function () {
                                 var markers = [];
                                 citiesToDisplay.forEach(function (city) {
-                                    var marker = map.addCircleMarker(city);
+                                    var marker = map.addCircleMarker(city, $translate);
                                     markers.push(marker);
                                 });
 

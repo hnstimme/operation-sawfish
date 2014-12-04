@@ -88,7 +88,7 @@
                         document.getElementsByClassName('legend-entry-' + legendEntry.id)[0].getElementsByClassName('legend-label')[0].innerHTML = $translate.instant(legendEntry.label);
                     });
                 };
-                $rootScope.$on('$translateChangeSuccess', updateLegend);
+                var destroyListener = $rootScope.$on('$translateChangeSuccess', updateLegend);
 
                 angular.element(document.getElementsByTagName('html')[0]).bind("keyup", function (event) {
                     if (event.which === 27) {
@@ -163,6 +163,7 @@
                     });
                     scope.$on('$destroy', function () {
                         talkie.destroy();
+                        destroyListener();
                     });
                 });
             }

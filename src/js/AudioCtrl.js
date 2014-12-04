@@ -13,8 +13,10 @@
         $scope.modals = {
             infoscreen: false
         };
+        moment.locale($translate.use());
         $scope.changeLanguage = function () {
             $translate.use($translate.use() === 'en' ? 'de' : 'en');
+            moment.locale($translate.use());
         };
     });
 })(angular);

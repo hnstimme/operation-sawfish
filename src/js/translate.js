@@ -56,7 +56,8 @@
             BOMBS_COMPARISON: 'Bomben im Vergleich',
             EXPLORE_DESTRUCTION: 'Zerstörte Stadt erkunden',
             TOTAL_DESTRUCTION: 'Totalschaden',
-            PARTIAL_DESTRUCTION: 'Teilschaden'
+            PARTIAL_DESTRUCTION: 'Teilschaden',
+            HEAVIEST_ATTACK: 'Schwerster Angriff'
         });
         $translateProvider.translations('en', {
             AUDIO_SUFFIX: 'englisch',
@@ -112,9 +113,10 @@
             BOMBS_MARKER: 'target marker bombs',
             BOMBS_MARKER_DESC: 'These bombs usually were equipped with 60 flash enitites. They exploded on the ground and, next, discharged red, green or yellow smoke. About 13 of these bombs landed in Heilbronn. They were supposed to help the air crafts find their targets.',
             BOMBS_COMPARISON: 'Comparison of bombs',
-            EXPLORE_DESTRUCTION: 'Explore destroyed city',
+            EXPLORE_DESTRUCTION: 'Show destroyed city',
             TOTAL_DESTRUCTION: 'Total desctruction',
-            PARTIAL_DESTRUCTION: 'Partly desctruction'
+            PARTIAL_DESTRUCTION: 'Partial desctruction',
+            HEAVIEST_ATTACK: 'heaviest attack'
         });
         $translateProvider.preferredLanguage('de');
     });

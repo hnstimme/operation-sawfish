@@ -80,7 +80,7 @@
                             document.getElementsByClassName('legend-entry-' + feature.properties.id)[0].getElementsByClassName('legend-label')[0].innerHTML = $translate.instant('TARGET_SELECTION_' + feature.properties.id.toUpperCase());
                         });
                     };
-                    $rootScope.$on('$translateChangeSuccess', updateLegend);
+                    var destroyListener = $rootScope.$on('$translateChangeSuccess', updateLegend);
 
                     var addArea = function (id, duration) {
                         return function () {
@@ -155,6 +155,7 @@
 
                     scope.$on('$destroy', function () {
                         talkie.destroy();
+                        destroyListener();
                     })
                 });
             }

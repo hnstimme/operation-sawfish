@@ -142,10 +142,10 @@
                         },
                         15: addArea('brandanfaellig', 7000),
                         22.25: fadeInLegendEntry('brandanfaellig').and(fillArea('brandanfaellig')),
-                        26.5: function () {
+                        25: function () {
                             var promise = $timeout(function () {
                                 scope.showEndscreen = true;
-                            }, 2000);
+                            }, $translate.use() === "de" ? 3500 : 2000);
                             this.setUndo(function () {
                                 $timeout.cancel(promise);
                                 scope.showEndscreen = false;

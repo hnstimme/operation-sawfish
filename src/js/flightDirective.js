@@ -56,7 +56,7 @@
                 zoom: L.Browser.mobile ? 4 : 6
             },
             toInitial: function () {
-                map.leafletMap.setView(map.center, map.zoom);
+                map.leafletMap.setView(map.views.initial.center, map.views.initial.zoom);
             },
             toEngland: function () {
                 map.leafletMap.fitBounds([
@@ -104,7 +104,7 @@
         return array;
     }
 
-    angular.module('app').directive('flight', function ($http, $analytics, $timeout, $q) {
+    angular.module('app').directive('flight', function ($http, $analytics, $timeout, $q, $translate) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
@@ -347,7 +347,7 @@
                         timelineDef[36.5] = function () {
                             var promise = $timeout(function () {
                                 scope.showEndscreen = true;
-                            }, 2000);
+                            }, $translate.use() === "de" ? 2000 : 3000);
                             this.setUndo(function () {
                                 $timeout.cancel(promise);
                                 scope.showEndscreen = false;

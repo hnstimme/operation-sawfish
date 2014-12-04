@@ -114,10 +114,10 @@
                     timelineDef[19] = swapImage('kilianskirche-west', 'tote');
                     timelineDef[24] = swapImage('wiederaufbau', 'kilianskirche-west');
 
-                    timelineDef[26] = function () {
+                    timelineDef[25] = function () {
                         var promise = $timeout(function () {
                             scope.showEndscreen = true;
-                        }, 2000);
+                        }, $translate.use() === "de" ? 4000 : 2000);
                         this.setUndo(function () {
                             $timeout.cancel(promise);
                             scope.showEndscreen = false;

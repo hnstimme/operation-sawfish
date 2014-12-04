@@ -149,7 +149,7 @@
                         21: function () {
                             var promise = $timeout(function () {
                                 scope.showEndscreen = true;
-                            }, 2000);
+                            }, $translate.use() === "de" ? 2000 : 7000);
                             this.setUndo(function () {
                                 $timeout.cancel(promise);
                                 scope.showEndscreen = false;

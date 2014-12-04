@@ -167,7 +167,7 @@
                     });
 
                     var imgs = [];
-                    ['tote', 'wiederaufbau', 'wiederaufbau2'].forEach(function (imgClass) {
+                    ['tote', 'wiederaufbau', 'kilianskirche-west'].forEach(function (imgClass) {
                         imgs[imgClass] = animate.select('.img-' + imgClass);
                     });
                     var imgsContainer = animate.select('.imgs');
@@ -177,8 +177,8 @@
 
                     timelineDef[12.5] = imgsContainer.style('display', 'block');
                     timelineDef[13] = imgs['tote'].style('opacity', 1, 1000);
-                    timelineDef[19] = swapImage('wiederaufbau2', 'tote');
-                    timelineDef[24] = swapImage('wiederaufbau', 'wiederaufbau2');
+                    timelineDef[19] = swapImage('kilianskirche-west', 'tote');
+                    timelineDef[24] = swapImage('wiederaufbau', 'kilianskirche-west');
 
                     timelineDef[26] = function () {
                         var promise = $timeout(function () {

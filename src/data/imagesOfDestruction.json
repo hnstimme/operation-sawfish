@@ -168,6 +168,20 @@
           49.14294821430463
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "img": "kilianskirche-west.jpg",
+        "description": "Dieses Foto zeigt die Kilianskirche aus westlicher Ansicht."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.220898151397705,
+          49.1416427512459
+        ]
+      }
     }
   ]
 }

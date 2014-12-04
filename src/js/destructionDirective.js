@@ -92,6 +92,7 @@
                 var showImg = function (event) {
                     scope.$apply(function () {
                         scope.img = event.target.feature.properties.img;
+                        scope.imgDesc = event.target.feature.properties.description;
                     });
                 };
 

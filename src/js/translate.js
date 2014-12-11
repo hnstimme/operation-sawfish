@@ -122,7 +122,13 @@
             PARTIAL_DESTRUCTION: 'Partial desctruction',
             HEAVIEST_ATTACK: 'heaviest attack'
         });
-        $translateProvider.preferredLanguage('de');
+        var getLocale = function () {
+            var nav = window.navigator;
+            return ((angular.isArray(nav.languages) ? nav.languages[0] : nav.language || nav.browserLanguage || nav.systemLanguage || nav.userLanguage) || '').split('-').join('_');
+        };
+        $translateProvider.determinePreferredLanguage(function () {
+            return getLocale().indexOf('de') === 0 ? 'de' : 'en';
+        });
     });
 
     angular.module('app').directive("switchVideoOnLanguageChange", function ($rootScope, $translate, $timeout) {

@@ -159,4 +159,12 @@
             }
         }
     });
+
+    angular.module('app').run(function ($translate, $rootScope) {
+        moment.locale($translate.use());
+        $rootScope.changeLanguage = function () {
+            $translate.use($translate.use() === 'en' ? 'de' : 'en');
+            moment.locale($translate.use());
+        };
+    });
 })(angular);

@@ -98,8 +98,10 @@
                 };
                 var destroyListener = $rootScope.$on('$translateChangeSuccess', updateLegend);
 
+                var imgDate = moment();
                 var showImg = function (event) {
                     scope.$apply(function () {
+                        imgDate = moment();
                         scope.img = event.target.feature.properties.img;
                         scope.imgDesc = event.target.feature.properties.description;
                     });
@@ -116,7 +118,9 @@
                 };
 
                 scope.$on('escape', function () {
-                    scope.$apply(scope.hideImg);
+                    if (moment().diff(imgDate) >= 1000) {
+                        scope.$apply(scope.hideImg);
+                    }
                 });
 
                 dataPromise.then(function () {

@@ -133,13 +133,16 @@
                     d3.select('.lancaster-details').transition().style('opacity', 1);
                     d3.select('.lancaster').classed('in-details', true).transition().style('opacity', 1);
                     d3.select('.mosquito').style('display', 'none').style('opacity', 0);
-                    hideAirplane = scope.hideLancasterDetails;
+                    $timeout(function () {
+                        hideAirplane = scope.hideLancasterDetails;
+                    }, 500);
                 };
                 scope.hideLancasterDetails = function () {
                     d3.select('.lancaster .plane-label').transition().attr('y', 70);
                     d3.select('.lancaster-details').transition().style('opacity', 0);
                     d3.select('.lancaster').classed('in-details', false);
                     d3.select('.mosquito').style('display', 'block').transition().delay(300).style('opacity', 0.6);
+                    hideAirplane = null;
                 };
                 scope.showMosquitoDetails = function () {
                     d3.select('.mosquito .plane-label').transition().attr('y', 40);
@@ -147,7 +150,9 @@
                     d3.select('.mosquito-details').transition().style('opacity', 1);
                     d3.select('.mosquito').classed('in-details', true).transition().style('opacity', 1);
                     d3.select('.lancaster').style('display', 'none').style('opacity', 0);
-                    hideAirplane = scope.hideMosquitoDetails;
+                    $timeout(function () {
+                        hideAirplane = scope.hideMosquitoDetails;
+                    }, 500);
                 };
                 scope.hideMosquitoDetails = function () {
                     d3.select('.mosquito .plane-label').transition().attr('y', 70);
@@ -155,6 +160,7 @@
                     d3.select('.mosquito-details').transition().style('opacity', 0);
                     d3.select('.mosquito').classed('in-details', false);
                     d3.select('.lancaster').style('display', 'block').transition().delay(300).style('opacity', 0.5);
+                    hideAirplane = null;
                 };
 
                 scope.$on('escape', function () {

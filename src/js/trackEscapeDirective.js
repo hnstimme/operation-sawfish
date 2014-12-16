@@ -10,6 +10,9 @@
                         scope.$broadcast('escape');
                     }
                 });
+                element.bind('click', function () {
+                    scope.$broadcast('escape');
+                });
             }
         }
     });

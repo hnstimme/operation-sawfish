@@ -26,9 +26,7 @@
         addCircleMarker: function (city, $translate) {
             var marker = L.circleMarker(L.latLng(city.geometry.coordinates[1], city.geometry.coordinates[0]), {
                 fillColor: '#FF0000',
-                strokeColor: '#FF0000',
-                color: '#FF0000',
-                opacity: 0,
+                weight: 0,
                 fillOpacity: 0.3,
                 radius: 10
             });

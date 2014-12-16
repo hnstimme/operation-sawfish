@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app" track-escape>
 <head>
     <base href="/">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -33,7 +33,7 @@
         ga('create', 'UA-52745604-3', 'auto');
     </script>
 </head>
-<body ng-app="app" ng-controller="AudioCtrl" ng-cloak>
+<body ng-controller="AudioCtrl" ng-cloak>
 
 <videogular vg-player-ready="onPlayerReady" id="audio-container" stop-video-on-route-change
             switch-video-on-language-change>
@@ -130,6 +130,7 @@
 <script src="js/destructionDirective.js"></script>
 <script src="js/comparisonDirective.js"></script>
 <script src="js/targetSelection/targetSelectionDirective.js"></script>
+<script src="js/trackEscapeDirective.js"></script>
 <script src="js/AudioCtrl.js"></script>
 <!-- endbuild -->
 <script>

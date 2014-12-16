@@ -66,7 +66,7 @@
     angular.module('app').directive('destruction', function ($analytics, $http, $timeout, $rootScope, $translate) {
         return {
             restrict: 'A',
-            link: function (scope, element, attrs, ctrl) {
+            link: function (scope, element) {
                 map.init();
                 map.addLegend(legendEntries, $translate);
                 var animate = Talkie.animate(element[0]);
@@ -90,14 +90,6 @@
                 };
                 var destroyListener = $rootScope.$on('$translateChangeSuccess', updateLegend);
 
-                angular.element(document.getElementsByTagName('html')[0]).bind("keyup", function (event) {
-                    if (event.which === 27) {
-                        scope.$apply(function () {
-                            scope.hideImg();
-                        });
-                    }
-                });
-
                 var showImg = function (event) {
                     scope.$apply(function () {
                         scope.img = event.target.feature.properties.img;
@@ -114,6 +106,10 @@
                 scope.hideImg = function () {
                     scope.img = null;
                 };
+
+                scope.$on('escape', function () {
+                    scope.$apply(scope.hideImg);
+                });
 
                 dataPromise.then(function () {
                     var swapImage = function (toShow, toHide) {

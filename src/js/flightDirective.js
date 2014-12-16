@@ -107,7 +107,7 @@
     angular.module('app').directive('flight', function ($http, $analytics, $timeout, $q, $translate) {
         return {
             restrict: 'A',
-            link: function (scope, element, attrs, ctrl) {
+            link: function (scope, element) {
                 map.init();
 
                 var airportFeatures = [];
@@ -127,11 +127,13 @@
                     });
                 });
 
+                var hideAirplane;
                 scope.showLancasterDetails = function () {
                     d3.select('.lancaster .plane-label').transition().attr('y', 40);
                     d3.select('.lancaster-details').transition().style('opacity', 1);
                     d3.select('.lancaster').classed('in-details', true).transition().style('opacity', 1);
                     d3.select('.mosquito').style('display', 'none').style('opacity', 0);
+                    hideAirplane = scope.hideLancasterDetails;
                 };
                 scope.hideLancasterDetails = function () {
                     d3.select('.lancaster .plane-label').transition().attr('y', 70);
@@ -145,6 +147,7 @@
                     d3.select('.mosquito-details').transition().style('opacity', 1);
                     d3.select('.mosquito').classed('in-details', true).transition().style('opacity', 1);
                     d3.select('.lancaster').style('display', 'none').style('opacity', 0);
+                    hideAirplane = scope.hideMosquitoDetails;
                 };
                 scope.hideMosquitoDetails = function () {
                     d3.select('.mosquito .plane-label').transition().attr('y', 70);
@@ -153,6 +156,10 @@
                     d3.select('.mosquito').classed('in-details', false);
                     d3.select('.lancaster').style('display', 'block').transition().delay(300).style('opacity', 0.5);
                 };
+
+                scope.$on('escape', function () {
+                    if (hideAirplane) hideAirplane();
+                });
 
                 scope.lancasterGroups = [];
                 var groupsToBuild = [{
@@ -176,8 +183,8 @@
                             'transform': 'scale(0.059) translate(' + i * 580 + ' 24701)'
                         });
                     }
-                    for (var i = 0; i < groupToBuild.rows; i++) {
-                        var rowId = i + groupToBuild.rowOffset;
+                    for (var j = 0; j < groupToBuild.rows; j++) {
+                        var rowId = j + groupToBuild.rowOffset;
                         scope.lancasterGroups.push({
                             'id': rowId,
                             'transform': 'translate(0 ' + rowId * 40 + ')',

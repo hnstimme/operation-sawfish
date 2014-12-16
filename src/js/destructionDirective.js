@@ -56,6 +56,14 @@
         },
         addMarkers: function (geojson, cb) {
             return L.geoJson(geojson.features, {
+                pointToLayer: function (feature, latLng) {
+                    return L.circleMarker(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]), {
+                        fillColor: '#2E71CC',
+                        fillOpacity: 1,
+                        weight: 4,
+                        color: '#FFFFFF'
+                    });
+                },
                 onEachFeature: function (feature, layer) {
                     layer.on('click', cb)
                 }

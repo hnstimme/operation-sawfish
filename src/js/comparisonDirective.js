@@ -23,7 +23,7 @@
                 'attribution': attribution
             }).addTo(this.leafletMap);
         },
-        addCircleMarker: function (city, $translate) {
+        getCircleMarker: function (city, $translate) {
             var marker = L.circleMarker(L.latLng(city.geometry.coordinates[1], city.geometry.coordinates[0]), {
                 fillColor: '#FF0000',
                 weight: 0,
@@ -31,7 +31,6 @@
                 radius: 10
             });
             marker.bindPopup('<p class="leaflet-popup-title">' + city.properties.name + '</p><p><span class="heaviest_attack_label">' + $translate.instant('HEAVIEST_ATTACK') + ':</span> ' + city.properties.attackDate + '</p>');
-            map.leafletMap.addLayer(marker);
             return marker;
         },
         addLegend: function () {
@@ -42,7 +41,7 @@
                 div.style.display = 'none';
                 div.innerHTML += '<p class="legend-title"></p>';
                 div.innerHTML += '<ul class="legend-slider-labels"><li>1942</li><li>1943</li><li>1944</li><li>1945</li></ul>';
-                div.innerHTML += '<input type="range" min="1" max="48" value="2" disabled class="legend-slider">';
+                div.innerHTML += '<input type="range" min="1" max="48" value="2" class="legend-slider">';
                 return div;
             };
             legend.addTo(this.leafletMap);
@@ -77,31 +76,42 @@
                     var monthsBetween = endMoment.diff(startMoment, 'months');
                     var totalTime = 12;
                     var timePerMonth = totalTime / monthsBetween;
-                    for (var currentMoment = moment(startMoment); currentMoment.isBefore(endMoment); currentMoment.add(1, 'months')) {
+                    for (var currentMoment = moment(startMoment); currentMoment.isBefore(endMoment); currentMoment.add(3, 'months')) {
                         (function () {
-                            var citiesToDisplay = cities.filter(function (city) {
-                                return city.properties.attackMonth === currentMoment.format("MM-YYYY");
-                            });
                             var currentMonthsBetween = currentMoment.diff(startMoment, 'months');
                             var time = timePerMonth * currentMonthsBetween;
 
                             timelineDef[time] = function () {
-                                var markers = [];
-                                citiesToDisplay.forEach(function (city) {
-                                    var marker = map.addCircleMarker(city, $translate);
-                                    markers.push(marker);
-                                });
-                                slider.property("value", currentMonthsBetween + 2);
+                                slider.property('value', currentMonthsBetween + 2).on('change')();
 
                                 this.setUndo(function () {
-                                    markers.forEach(function (marker) {
-                                        map.leafletMap.removeLayer(marker);
-                                    });
-                                    slider.property('value', currentMonthsBetween + 1);
+                                    slider.property('value', currentMonthsBetween - 1).on('change')();
                                 })
                             };
                         })();
                     }
+
+                    var currentMarkerGroup;
+                    slider.on('change', function () {
+                        var selectedLimit = moment(startMoment).add(slider.property('value') - 1, 'months');
+
+                        var citiesToDisplay = cities.filter(function (city) {
+                            return moment(city.properties.attackMonth, "MM-YYYY").isBefore(selectedLimit);
+                        });
+
+                        var newMarkerGroup = L.layerGroup();
+                        citiesToDisplay.forEach(function (city) {
+                            var marker = map.getCircleMarker(city, $translate);
+                            newMarkerGroup.addLayer(marker);
+                        });
+
+                        if (currentMarkerGroup) {
+                            map.leafletMap.removeLayer(currentMarkerGroup);
+                        }
+                        newMarkerGroup.addTo(map.leafletMap);
+                        currentMarkerGroup = newMarkerGroup;
+                    });
+
                     timelineDef[0.001] = legend.style('display', 'block').and(function () {
                         $analytics.eventTrack('playing', {
                             category: 'Der Luftkrieg'

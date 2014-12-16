@@ -59,7 +59,8 @@
             EXPLORE_DESTRUCTION: 'Zerstörte Stadt erkunden',
             TOTAL_DESTRUCTION: 'Totalschaden',
             PARTIAL_DESTRUCTION: 'Teilschaden',
-            HEAVIEST_ATTACK: 'Schwerster Angriff'
+            HEAVIEST_ATTACK: 'Schwerster Angriff',
+            COMPARISON_LEGEND_TITLE: 'Der Luftkrieg über Deutschland'
         });
         $translateProvider.translations('en', {
             LOCALE: 'EN',
@@ -120,7 +121,8 @@
             EXPLORE_DESTRUCTION: 'Show destroyed city',
             TOTAL_DESTRUCTION: 'Total desctruction',
             PARTIAL_DESTRUCTION: 'Partial desctruction',
-            HEAVIEST_ATTACK: 'heaviest attack'
+            HEAVIEST_ATTACK: 'heaviest attack',
+            COMPARISON_LEGEND_TITLE: 'The air war over Germany'
         });
         var getLocale = function () {
             var nav = window.navigator;

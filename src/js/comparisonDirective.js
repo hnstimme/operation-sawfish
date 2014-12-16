@@ -40,7 +40,9 @@
                 var div = L.DomUtil.create('div', 'info legend');
                 div.style.minWidth = '150px';
                 div.style.display = 'none';
-                div.innerHTML += '<p class="current-date"></p>';
+                div.innerHTML += '<p class="legend-title"></p>';
+                div.innerHTML += '<ul class="legend-slider-labels"><li>1942</li><li>1943</li><li>1944</li><li>1945</li></ul>';
+                div.innerHTML += '<input type="range" min="1" max="48" value="2" disabled class="legend-slider">';
                 return div;
             };
             legend.addTo(this.leafletMap);
@@ -60,11 +62,17 @@
                     cities = geojson.features;
                 });
 
+                var updateLegend = function () {
+                    document.getElementsByClassName('legend-title')[0].innerHTML = $translate.instant('COMPARISON_LEGEND_TITLE');
+                };
+                updateLegend();
+                var destroyListener = $rootScope.$on('$translateChangeSuccess', updateLegend);
+
                 dataPromise.then(function () {
                     var legend = animate.select('.legend');
-                    var currentDate = animate.select('.current-date');
+                    var slider = d3.select('.legend-slider');
                     var timelineDef = {};
-                    var startMoment = moment("01021942", "DDMMYYYY");
+                    var startMoment = moment("30011942", "DDMMYYYY");
                     var endMoment = moment("31051945", "DDMMYYYY");
                     var monthsBetween = endMoment.diff(startMoment, 'months');
                     var totalTime = 12;
@@ -77,19 +85,21 @@
                             var currentMonthsBetween = currentMoment.diff(startMoment, 'months');
                             var time = timePerMonth * currentMonthsBetween;
 
-                            timelineDef[time] = currentDate.text(currentMoment.format("MMMM YYYY")).and(function () {
+                            timelineDef[time] = function () {
                                 var markers = [];
                                 citiesToDisplay.forEach(function (city) {
                                     var marker = map.addCircleMarker(city, $translate);
                                     markers.push(marker);
                                 });
+                                slider.property("value", currentMonthsBetween + 2);
 
                                 this.setUndo(function () {
                                     markers.forEach(function (marker) {
                                         map.leafletMap.removeLayer(marker);
-                                    })
+                                    });
+                                    slider.property('value', currentMonthsBetween + 1);
                                 })
-                            });
+                            };
                         })();
                     }
                     timelineDef[0.001] = legend.style('display', 'block').and(function () {
@@ -125,6 +135,7 @@
                     var talkie = Talkie.timeline("#audio-container audio", timelineDef);
                     scope.$on('$destroy', function () {
                         talkie.destroy();
+                        destroyListener();
                     });
                 });
             }

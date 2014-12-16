@@ -1,62 +1,101 @@
-.current-date {
-  font-size: 16px;
-  padding-bottom: 18px;
-}
+@import "prefixer";
 
-@keyframes linefill {
-  to {
-    stroke-dashoffset: 0;
+#comparison-map {
+  .legend {
+    background: fadeOut(black, 40%);
+    max-width: none;
+    font-size: 12px;
+    padding-bottom: 1.5em;
   }
 }
 
-@-webkit-keyframes linefill {
-  to {
-    stroke-dashoffset: 0;
+.legend-title {
+  font-weight: bold;
+}
+
+.legend-slider-labels {
+  list-style: none;
+  width: 300px;
+  display: table;
+  margin-top: 1em;
+  li {
+    display: table-cell;
+  }
+
+  @media (max-width: 768px) {
+    width: 200px;
   }
 }
 
-@-moz-keyframes linefill {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
+.legend-slider {
+  width: 300px;
+  -webkit-appearance: none;
+  border: none;
+  .border-radius(3px);
+  margin: 0;
+  padding: 0;
 
-@-o-keyframes linefill {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-svg.comparison-chart {
-  background: rgba(255, 255, 255, 0.5);
-  position: absolute;
-  top: 28px;
-  right: 28px;
-  width: 30%;
-
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: #4E4E4E;
-    shape-rendering: crispEdges;
+  @media (max-width: 768px) {
+    width: 200px;
   }
 
-  .x.axis path {
-    display: none;
+  .track() {
+    width: 300px;
+    height: 8px;
+    background: #ddd;
+    border: none;
+    .border-radius(3px);
+
+    @media (max-width: 768px) {
+      width: 200px;
+    }
   }
 
-  .line {
-    fill: none;
-    stroke: steelblue;
-    stroke-width: 1.5px;
+  .thumb() {
+    -webkit-appearance: none;
+    border: none;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: fadeOut(#FF0000, 30%);
+    margin-top: -1px;
   }
 
-  .line-fill {
-    stroke-dasharray: 1700;
-    stroke-dashoffset: 1700;
-    animation: linefill 24s linear forwards;
-    -webkit-animation: linefill 24s linear forwards;
-    -moz-animation: linefill 24s linear forwards;
-    -o-animation: linefill 24s linear forwards;
+  &::-webkit-slider-runnable-track {
+    .track();
+  }
+  &::-webkit-slider-thumb {
+    .thumb();
+  }
+
+  &::-moz-range-track {
+    .track();
+  }
+  &::-moz-range-thumb {
+    .thumb();
+  }
+  &:-moz-focusring {
+    outline: 1px solid white;
+    outline-offset: -1px;
+  }
+
+  &::-ms-track {
+    .track();
+    height: 10px;
+    color: transparent;
+    background: transparent;
+    border-color: transparent;
+    border-width: 6px 0;
+  }
+  &::-ms-fill-lower {
+    background: #ddd;
+    border-radius: 3px;
+  }
+  &::-ms-fill-upper {
+    background: #888;
+    border-radius: 3px;
+  }
+  &::-ms-thumb {
+    .thumb();
   }
 }

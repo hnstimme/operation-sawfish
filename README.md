@@ -1,6 +1,6 @@
 # Interactive Talkie Operation Sawfish
 
-Source code of the interactive talkie "Operation Sawfish" by the German local newspaper "Heilbronner Stimme".
+Source code of the interactive talkie [Operation Sawfish](http://sawfish.stimme.de) by the German local newspaper "Heilbronner Stimme".
 
 
 # Benötigte Software

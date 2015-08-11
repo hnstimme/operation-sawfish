@@ -2,6 +2,8 @@
 
 Source code of the interactive talkie [Operation Sawfish](http://sawfish.stimme.de) by the German local newspaper "Heilbronner Stimme".
 
+![alt tag](<a href="http://de.tinypic.com?ref=54u7ig" target="_blank"><img src="http://i61.tinypic.com/54u7ig.png" border="0" alt="Image and video hosting by TinyPic"></a>)
+
 Based on [Talkie by Kiln](http://www.kiln.it/talkie/) and inspired by [InFlight](http://www.theguardian.com/world/ng-interactive/2014/aviation-100-years) and [Verbotene Flugrouten](http://interaktiv.morgenpost.de/abseits-der-flugrouten/).
 
 The webapp is built with [AngularJS](https://angularjs.org), a Javascript framework by Google, which suites for single page web applications. The responsive part is realized with [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries).

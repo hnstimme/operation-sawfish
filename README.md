@@ -4,6 +4,11 @@ Source code of the interactive talkie [Operation Sawfish](http://sawfish.stimme.
 
 Based on [Talkie by Kiln](http://www.kiln.it/talkie/) and inspired by [InFlight](http://www.theguardian.com/world/ng-interactive/2014/aviation-100-years) and [Verbotene Flugrouten](http://interaktiv.morgenpost.de/abseits-der-flugrouten/).
 
+The webapp is built with [AngularJS](https://angularjs.org), a Javascript framework by Google, which suites for single page web applications. The responsive part is realized with [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries).
+The [Talkie Framework](http://www.kiln.it/talkie/) by Kiln simplifies the synchronisation of animations and sound. [Videogular](http://www.videogular.com), a HTML5 video player for projects based on AngularJS, enables the adaption of the audio control elements. For the English version we worked with [Angular Translate](http://angular-translate.github.io) to load translation tables dynamically.
+We basically worked with [Mapbox Studio](https://www.mapbox.com/mapbox-studio/#darwin) and [LeafletJS](http://leafletjs.com) and we used [Google Earth](https://www.google.com/earth/) for georeferencing and digitalizing the analog maps. To draw lines and polygons on the maps we used [WalkwayJS](https://github.com/ConnorAtherton/walkway). The SVG graphics are embedded inline and animated with [D3JS](http://d3js.org). Talkie.js simplifies the animation of the elements. 
+
+
 # Benötigte Software
 
 - node.js

@@ -2,6 +2,7 @@
 
 Source code of the interactive talkie [Operation Sawfish](http://sawfish.stimme.de) by the German local newspaper "Heilbronner Stimme".
 
+Based on [Talkie by Kiln](http://www.kiln.it/talkie/) and inspired by [InFlight](http://www.theguardian.com/world/ng-interactive/2014/aviation-100-years) and [Verbotene Flugrouten](http://interaktiv.morgenpost.de/abseits-der-flugrouten/).
 
 # Benötigte Software
 

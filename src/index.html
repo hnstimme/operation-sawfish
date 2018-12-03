@@ -61,11 +61,8 @@
                 </vg-volume>
                 <a class="control control-icon control-icon-lng"
                    ng-click="changeLanguage()">{{'LOCALE_OS' | translate}}</a>
-                <a class="control control-icon"
-                   ng-click="modals.shareScreen=!modals.shareScreen;modals.infoScreen=false"><img
-                        src="img/share.png"></a>
                 <a class="control control-icon control-icon-before-logo"
-                   ng-click="modals.infoScreen=!modals.infoScreen;modals.shareScreen=false"><img
+                   ng-click="modals.infoScreen=!modals.infoScreen"><img
                         src="img/info.png"></a>
                 <a class="control control-logo" href="http://www.stimme.de/4dez" target="_blank"><img
                         src="img/Stimme_white.svg"></a>
@@ -75,22 +72,6 @@
 </videogular>
 
 <div class="infoscreen" ng-show="modals.infoScreen" ng-include="'partials/info.html'"></div>
-<div class="sharescreen" ng-show="modals.shareScreen">
-    <div class="share-icons">
-        <div class="share-icon-container">
-            <div class="share-icon">
-                <div class="fb-share-button" data-href="http://sawfish.stimme.de" data-layout="button_count"></div>
-            </div>
-        </div>
-        <div class="share-icon-container">
-            <div class="share-icon">
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sawfish.stimme.de"
-                   data-text="Der Luftangriff auf Heilbronn am 4. Dezember 1944 interaktiv erzählt"
-                   data-hashtags="4dez"></a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- build:js js/app.min.js -->
 <script src="bower_components/angular/angular.js"></script>
@@ -133,34 +114,5 @@
 <script src="js/trackEscapeDirective.js"></script>
 <script src="js/AudioCtrl.js"></script>
 <!-- endbuild -->
-<script>
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '1588324454735392',
-            xfbml: true,
-            version: 'v2.2'
-        });
-    };
-
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-            return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-<script>!function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-    if (!d.getElementById(id)) {
-        js = d.createElement(s);
-        js.id = id;
-        js.src = p + '://platform.twitter.com/widgets.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }
-}(document, 'script', 'twitter-wjs');</script>
 </body>
 </html>

@@ -16,7 +16,7 @@
             this.addLegend();
         },
         addTileLayer: function () {
-            var attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
+            var attribution = '© <a href=\'https://www.mapbox.com/about/maps/\'>Mapbox</a> © <a href=\'http://www.openstreetmap.org/copyright\'>OpenStreetMap</a> <strong><a href=\'https://www.mapbox.com/map-feedback/\' target=\'_blank\'>Improve this map</a></strong>';
             // danielstahl.k91489gn
             L.tileLayer('https://{s}.tiles.mapbox.com/v3/danielstahl.k90gp8cm/{z}/{x}/{y}.png', {
                 'maxZoom': 18,
@@ -49,7 +49,7 @@
         }
     };
 
-    angular.module('app').directive('comparison', function ($http, $analytics, $timeout, $translate, $rootScope) {
+    angular.module('app').directive('comparison', function ($http, $timeout, $translate, $rootScope) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, ctrl) {
@@ -112,11 +112,7 @@
                         currentMarkerGroup = newMarkerGroup;
                     });
 
-                    timelineDef[0.001] = legend.style('display', 'block').and(function () {
-                        $analytics.eventTrack('playing', {
-                            category: 'Der Luftkrieg'
-                        });
-                    });
+                    timelineDef[0.001] = legend.style('display', 'block');
 
                     var imgs = [];
                     ['tote', 'wiederaufbau', 'kilianskirche-west'].forEach(function (imgClass) {

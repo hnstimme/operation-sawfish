@@ -15,7 +15,7 @@
             this.addTileLayer();
         },
         addTileLayer: function () {
-            var attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
+            var attribution = '© <a href=\'https://www.mapbox.com/about/maps/\'>Mapbox</a> © <a href=\'http://www.openstreetmap.org/copyright\'>OpenStreetMap</a> <strong><a href=\'https://www.mapbox.com/map-feedback/\' target=\'_blank\'>Improve this map</a></strong>';
             L.tileLayer('https://{s}.tiles.mapbox.com/v3/danielstahl.k90gp8cm/{z}/{x}/{y}.png', {
                 'maxZoom': 18,
                 'attribution': attribution
@@ -52,7 +52,7 @@
         }
     };
 
-    angular.module('app').directive('targetSelection', function ($http, $analytics, $timeout, $rootScope, $translate) {
+    angular.module('app').directive('targetSelection', function ($http, $timeout, $rootScope, $translate) {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -123,9 +123,6 @@
                     var talkie = Talkie.timeline("#audio-container audio", {
                         0: function () {
                             fitBoundsOuter();
-                            $analytics.eventTrack('playing', {
-                                category: 'Der Plan'
-                            });
                         },
                         2.5: addArea('zielgebiet-stadt', 4500),
                         7: legend.style({

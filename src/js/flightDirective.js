@@ -22,7 +22,7 @@
             this.addTileLayer();
         },
         addTileLayer: function () {
-            var attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
+            var attribution = '© <a href=\'https://www.mapbox.com/about/maps/\'>Mapbox</a> © <a href=\'http://www.openstreetmap.org/copyright\'>OpenStreetMap</a> <strong><a href=\'https://www.mapbox.com/map-feedback/\' target=\'_blank\'>Improve this map</a></strong>';
             L.tileLayer('https://{s}.tiles.mapbox.com/v3/danielstahl.k90gp8cm/{z}/{x}/{y}.png', {
                 'maxZoom': 18,
                 'attribution': attribution
@@ -104,7 +104,7 @@
         return array;
     }
 
-    angular.module('app').directive('flight', function ($http, $analytics, $timeout, $q, $translate) {
+    angular.module('app').directive('flight', function ($http, $timeout, $q, $translate) {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -365,12 +365,6 @@
                                 $timeout.cancel(promise);
                                 scope.showEndscreen = false;
                             })
-                        };
-
-                        timelineDef[0.1] = function () {
-                            $analytics.eventTrack('playing', {
-                                category: 'Der Anflug'
-                            });
                         };
 
                         var talkie = Talkie.timeline("#audio-container audio", timelineDef);

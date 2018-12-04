@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="app" track-escape>
 <head>
-    <base href="/">
+    <base href="/4dez/">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="description" content="Der Luftangriff auf Heilbronn am 4. Dezember 1944 interaktiv erzählt"/>
-    <meta property="og:image" content="http://sawfish.stimme.de/img/Startscreen_zugeschnitten.jpg"/>
+    <meta content="https://projekte.stimme.de/4dez/img/Startscreen_zugeschnitten.jpg" property="og:image"/>
     <!-- build:css css/app.min.css -->
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
@@ -15,22 +15,19 @@
     <link rel="stylesheet" href="bower_components/odometer/themes/odometer-theme-default.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <!-- endbuild -->
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
     <title>Operation Sawfish</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-7127143-56"></script>
     <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        window.dataLayer = window.dataLayer || [];
 
-        ga('create', 'UA-52745604-3', 'auto');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag("js", new Date());
+        gtag("config", "UA-7127143-56", { anonymize_ip: true });
     </script>
 </head>
 <body ng-controller="AudioCtrl" ng-cloak>
@@ -49,12 +46,12 @@
             <div class="controls-container">
                 <vg-play-pause-button class="control"></vg-play-pause-button>
                 <div class="chapters-nav">
-                    <nav-item href="/" number="1"></nav-item>
-                    <nav-item href="/targetSelection" number="2"></nav-item>
-                    <nav-item href="/flight" number="3"></nav-item>
-                    <nav-item href="/bombing" number="4"></nav-item>
-                    <nav-item href="/destruction" number="5"></nav-item>
-                    <nav-item href="/comparison" number="6"></nav-item>
+                    <nav-item href="#/" number="1"></nav-item>
+                    <nav-item href="#/targetSelection" number="2"></nav-item>
+                    <nav-item href="#/flight" number="3"></nav-item>
+                    <nav-item href="#/bombing" number="4"></nav-item>
+                    <nav-item href="#/destruction" number="5"></nav-item>
+                    <nav-item href="#/comparison" number="6"></nav-item>
                 </div>
                 <vg-volume class="control">
                     <vg-mutebutton></vg-mutebutton>
@@ -85,8 +82,6 @@
 <script src="bower_components/videogular-poster/poster.js"></script>
 <script src="bower_components/videogular-buffering/buffering.js"></script>
 <script src="bower_components/d3/d3.js"></script>
-<script src="bower_components/angulartics/src/angulartics.js"></script>
-<script src="bower_components/angulartics/src/angulartics-ga.js"></script>
 <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
 <script src="bower_components/odometer/odometer.js"></script>
 <script src="bower_components/moment/moment.js"></script>

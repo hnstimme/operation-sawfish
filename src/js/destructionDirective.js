@@ -26,7 +26,7 @@
             this.addTileLayer();
         },
         addTileLayer: function () {
-            var attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
+            var attribution = '© <a href=\'https://www.mapbox.com/about/maps/\'>Mapbox</a> © <a href=\'http://www.openstreetmap.org/copyright\'>OpenStreetMap</a> <strong><a href=\'https://www.mapbox.com/map-feedback/\' target=\'_blank\'>Improve this map</a></strong>';
             // danielstahl.k91489gn
             L.tileLayer('https://{s}.tiles.mapbox.com/v3/danielstahl.k90gp8cm/{z}/{x}/{y}.png', {
                 'maxZoom': 18,
@@ -71,7 +71,7 @@
         }
     };
 
-    angular.module('app').directive('destruction', function ($analytics, $http, $timeout, $rootScope, $translate) {
+    angular.module('app').directive('destruction', function ($http, $timeout, $rootScope, $translate) {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -87,7 +87,7 @@
                 var imgsContainer = animate.select('.imgs');
 
                 var imagesOfDestructionGeojson;
-                var dataPromise = $http.get('/data/imagesOfDestruction.json').success(function (geojson) {
+                var dataPromise = $http.get('data/imagesOfDestruction.json').success(function (geojson) {
                     imagesOfDestructionGeojson = geojson;
                 });
 
@@ -129,11 +129,6 @@
                     };
 
                     var talkie = Talkie.timeline("#audio-container audio", {
-                        0: function () {
-                            $analytics.eventTrack('playing', {
-                                category: 'Heilbronn ist zerstört'
-                            });
-                        },
                         1.5: swapImage('wollhaus', 'luft'),
                         4.5: swapImage('rathaus', 'wollhaus'),
                         7: swapImage('kiliansplatz', 'rathaus'),

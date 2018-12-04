@@ -1,6 +1,6 @@
 (function (angular) {
     'use strict';
-    angular.module('app').directive('bombing', function ($analytics, $timeout) {
+    angular.module('app').directive('bombing', function ($timeout) {
         var airplanes = [
             {id: 0, transform: 'translate(-1060 -30)'},
             {id: 1, transform: 'translate(-725 15)'},
@@ -175,11 +175,7 @@
                     };
 
                     angular.extend(scope.timelineDef, {
-                        0: greenClockAreas[0].style('opacity', 0.6, 5900, 'linear').and(function () {
-                            $analytics.eventTrack('playing', {
-                                category: 'Der Angriff'
-                            });
-                        }),
+                        0: greenClockAreas[0].style('opacity', 0.6, 5900, 'linear'),
                         0.5: movePlanes(1060, 0, 3000),
                         1: togglePlane(3, 1, 1000).and(togglePlane(2, 1, 1500)).and(togglePlane(1, 1, 2000)).and(togglePlane(0, 1, 3400)),
                         2.3: addCircle(circles[3]),
